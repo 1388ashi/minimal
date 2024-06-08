@@ -209,4 +209,8 @@ class Product extends Model implements HasMedia
         {
             return $this->belongsToMany(Comment::class);
         }
+        public function colors(): BelongsToMany 
+        {
+            return $this->belongsToMany(Color::class);
+        }
 }

@@ -47,6 +47,11 @@
 						<li><a href="{{route('admin.specifications.index')}}"  class="slide-item" >مشخصه محصولات</a></li>
 					</ul>
 					@endcan
+					@can('view colors')
+					<ul class="slide-menu">
+						<li><a href="{{route('admin.colors.index')}}"  class="slide-item" >رنگ های محصولات</a></li>
+					</ul>
+					@endcan
 					@can('view products')
 					<ul class="slide-menu">
 						<li><a  class="slide-item" href="{{route('admin.products.index')}}">مدیریت محصولات</a></li>

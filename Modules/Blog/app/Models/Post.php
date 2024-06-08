@@ -48,7 +48,7 @@ class Post extends Model implements HasMedia, Viewable
     public static function getFilterInputs(): array
     {
         $filters = Arr::only(config('core.filters'), self::$filterColumns);
-        $filters['category_id']['options'] = Cache::rememberForever('all_categories', function () {
+        $filters['category_id']['options'] = Cache::rememberForever('all_blog_categories', function () {
             return BlogCategory::query()
                 ->latest('title')
                 ->pluck('title', 'id');

@@ -116,6 +116,11 @@ class RolesAndPermissionsSeeder extends Seeder
             'create sliders' => 'ایجاد اسلایدر',
             'edit sliders' => 'ویرایش اسلایدر ',
             'delete sliders' => 'حذف اسلایدر ',
+            //colors
+            'view colors' => 'مشاهده رنگ ها ',
+            'create colors' => 'ایجاد رنگ',
+            'edit colors' => 'ویرایش رنگ ',
+            'delete colors' => 'حذف رنگ ',
             // //posts
             // 'view posts' => 'مشاهده مقاله ها',
             // 'create posts' => 'ایجاد مقاله ها',

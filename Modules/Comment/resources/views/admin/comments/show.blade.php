@@ -57,8 +57,8 @@
             <div class="col-xl-12 col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="mt-1">
-                            دلیل رد کردن نظر:
+                        <div class="mt-1 text-danger">
+                            توضیحات ادمین:
                             {{$comment->description}}
                         </div>
                     </div>

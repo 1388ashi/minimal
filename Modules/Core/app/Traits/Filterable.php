@@ -23,6 +23,8 @@ trait Filterable
                         $query->whereHas($relation['name'], function (Builder $query) use ($column, $operator, $value) {
                             $query->where($column, $operator, $value);
                         });
+                    } elseif ($relation['type'] == 'belongsTo') {
+                        $query->where($column, '=', $value);
                     }
                 } elseif (in_array($type, ['text', 'email']) && $operator == 'like') {
                     $query->where($column, 'like', "%{$value}%");

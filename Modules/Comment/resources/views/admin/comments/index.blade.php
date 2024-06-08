@@ -50,6 +50,7 @@
                                     <td>{{ $comment->mobile }}</td>
                                     {{-- <td>{{ __('custom.statuses.' .  $comment->status) }} --}}
                                     <td>
+                                        @include('comment::admin.status', ['status' => $comment->status])
                                         @if($comment->status == 'pending')
                                         <span class="badge badge-primary ">در حال بررسی</span>
                                         @elseif($comment->status == 'rejected')

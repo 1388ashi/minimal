@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Product\Http\Controllers\CategoryController;
+use Modules\Product\Http\Controllers\ColorController;
 use Modules\Product\Http\Controllers\ProductController;
 
 /*
@@ -16,7 +17,7 @@ use Modules\Product\Http\Controllers\ProductController;
 */
 
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
-
+    //products
     Route::resource('categories',CategoryController::class);
     Route::delete('categories/deleteImage/{category}', [CategoryController::class, 'destroyImage'])->name('categories.image.destroy');
     
@@ -24,4 +25,7 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
     Route::post('/get-specifications', [ProductController::class, 'getSpecifications'])->name('get-specifications');
     Route::delete('products/deleteGalleries/{product}', [ProductController::class, 'destroyGalleries'])->name('products.galleries.destroy');
     Route::delete('products/deleteVideo/{product}', [ProductController::class, 'destroyVideo'])->name('products.video.destroy');
+    
+    //colors
+    Route::resource('colors',ColorController::class);
 });
