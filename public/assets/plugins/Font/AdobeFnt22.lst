@@ -1,0 +1,636 @@
+%!Adobe-FontList 1.22
+%Locale:0x409
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:IRANSans
+FamilyName:IRANSans
+StyleName:Regular
+FullName:IRANSans
+MenuName:IRANSans
+StyleBits:0
+FamilyNameNative:IRANSans
+StyleNameNative:Regular
+FullNameNative:IRANSans Regular
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\IRANSans.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:104296
+FileModTime:1547395600
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Win,1,IRANSans
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:IRANSansWeb
+FamilyName:IRANSansWeb
+StyleName:Regular
+FullName:IRANSansWeb
+MenuName:IRANSansWeb
+StyleBits:0
+FamilyNameNative:IRANSansWeb
+StyleNameNative:Regular
+FullNameNative:IRANSansWeb Regular
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\IRANSansWeb.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:58668
+FileModTime:1459198662
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,IRANSansWeb
+NameArray:0,Win,1,IRANSansWeb
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:IRANSansWeb-Bold
+FamilyName:IRANSansWeb
+StyleName:Bold
+FullName:IRANSansWeb Bold
+MenuName:IRANSansWeb
+StyleBits:2
+FamilyNameNative:IRANSansWeb
+StyleNameNative:Bold
+FullNameNative:IRANSansWeb Bold
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\IRANSansWeb_Bold.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:57760
+FileModTime:1459198662
+WeightClass:700
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,IRANSansWeb Bold
+NameArray:0,Win,1,IRANSansWeb
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:IRANSansWeb-Light
+FamilyName:IRANSansWeb
+StyleName:Light
+FullName:IRANSansWeb Light
+MenuName:IRANSansWeb Light
+StyleBits:0
+FamilyNameNative:IRANSansWeb
+StyleNameNative:Light
+FullNameNative:IRANSansWeb Light
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\IRANSansWeb_Light.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:59968
+FileModTime:1459198662
+WeightClass:300
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,IRANSansWeb Light
+NameArray:0,Win,1,IRANSansWeb Light
+NameArray:0,Win,16,IRANSansWeb
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:IRANSansWeb-Medium
+FamilyName:IRANSansWeb
+StyleName:Medium
+FullName:IRANSansWeb Medium
+MenuName:IRANSansWeb Medium
+StyleBits:0
+FamilyNameNative:IRANSansWeb
+StyleNameNative:Medium
+FullNameNative:IRANSansWeb Medium
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\IRANSansWeb_Medium.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:57544
+FileModTime:1459198662
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,IRANSansWeb Medium
+NameArray:0,Win,1,IRANSansWeb Medium
+NameArray:0,Win,16,IRANSansWeb
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:IRANSansWeb-UltraLight
+FamilyName:IRANSansWeb
+StyleName:UltraLight
+FullName:IRANSansWeb UltraLight
+MenuName:IRANSansWeb UltraLight
+StyleBits:0
+FamilyNameNative:IRANSansWeb
+StyleNameNative:UltraLight
+FullNameNative:IRANSansWeb UltraLight
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\IRANSansWeb_UltraLight.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:55640
+FileModTime:1459198662
+WeightClass:200
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,IRANSansWeb UltraLight
+NameArray:0,Win,1,IRANSansWeb UltraLight
+NameArray:0,Win,16,IRANSansWeb
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:IRANSans-Black
+FamilyName:IRANSans
+StyleName:Black
+FullName:IRANSans Black
+MenuName:IRANSans Black
+StyleBits:0
+FamilyNameNative:IRANSans
+StyleNameNative:Black
+FullNameNative:IRANSans Black
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\IRANSans_Black.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:98216
+FileModTime:1547395600
+WeightClass:900
+WidthClass:5
+AngleClass:0
+NameArray:0,Win,1,IRANSans Black
+NameArray:0,Win,16,IRANSans
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:IRANSans-Bold
+FamilyName:IRANSans
+StyleName:Bold
+FullName:IRANSans Bold
+MenuName:IRANSans
+StyleBits:2
+FamilyNameNative:IRANSans
+StyleNameNative:Bold
+FullNameNative:IRANSans Bold
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\IRANSans_Bold.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:100628
+FileModTime:1547395600
+WeightClass:700
+WidthClass:5
+AngleClass:0
+NameArray:0,Win,1,IRANSans
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:IRANSans-Light
+FamilyName:IRANSans
+StyleName:Light
+FullName:IRANSans Light
+MenuName:IRANSans Light
+StyleBits:0
+FamilyNameNative:IRANSans
+StyleNameNative:Light
+FullNameNative:IRANSans Light
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\IRANSans_Light.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:97244
+FileModTime:1547395600
+WeightClass:300
+WidthClass:5
+AngleClass:0
+NameArray:0,Win,1,IRANSans Light
+NameArray:0,Win,16,IRANSans
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:IRANSans-Medium
+FamilyName:IRANSans
+StyleName:Medium
+FullName:IRANSans Medium
+MenuName:IRANSans Medium
+StyleBits:0
+FamilyNameNative:IRANSans
+StyleNameNative:Medium
+FullNameNative:IRANSans Medium
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\IRANSans_Medium.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:92576
+FileModTime:1547395600
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Win,1,IRANSans Medium
+NameArray:0,Win,16,IRANSans
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:IRANSans-UltraLight
+FamilyName:IRANSans
+StyleName:UltraLight
+FullName:IRANSans UltraLight
+MenuName:IRANSans UltraLight
+StyleBits:0
+FamilyNameNative:IRANSans
+StyleNameNative:UltraLight
+FullNameNative:IRANSans UltraLight
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\IRANSans_UltraLight.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:102516
+FileModTime:1547395600
+WeightClass:200
+WidthClass:5
+AngleClass:0
+NameArray:0,Win,1,IRANSans UltraLight
+NameArray:0,Win,16,IRANSans
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:YekanBakh-Hairline
+FamilyName:Yekan Bakh
+StyleName:Hairline
+FullName:YekanBakh-Hairline
+MenuName:Yekan Bakh Hairline
+StyleBits:0
+FamilyNameNative:Yekan Bakh
+StyleNameNative:Hairline
+FullNameNative:Yekan Bakh Hairline
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\yekan bakh en 01 hairline.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:65756
+FileModTime:1605447280
+WeightClass:100
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Yekan Bakh Hairline
+NameArray:0,Win,1,Yekan Bakh Hairline
+NameArray:0,Win,16,Yekan Bakh
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:YekanBakh-Thin
+FamilyName:Yekan Bakh
+StyleName:Thin
+FullName:YekanBakh-Thin
+MenuName:Yekan Bakh Thin
+StyleBits:0
+FamilyNameNative:Yekan Bakh
+StyleNameNative:Thin
+FullNameNative:Yekan Bakh Thin
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\yekan bakh en 02 thin.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:65660
+FileModTime:1605447652
+WeightClass:200
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Yekan Bakh Thin
+NameArray:0,Win,1,Yekan Bakh Thin
+NameArray:0,Win,16,Yekan Bakh
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:YekanBakh-Light
+FamilyName:Yekan Bakh
+StyleName:Light
+FullName:YekanBakh-Light
+MenuName:Yekan Bakh Light
+StyleBits:0
+FamilyNameNative:Yekan Bakh
+StyleNameNative:Light
+FullNameNative:Yekan Bakh Light
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\yekan bakh en 03 light.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:65512
+FileModTime:1605447498
+WeightClass:300
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Yekan Bakh Light
+NameArray:0,Win,1,Yekan Bakh Light
+NameArray:0,Win,16,Yekan Bakh
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:YekanBakh-Regular
+FamilyName:Yekan Bakh
+StyleName:Regular
+FullName:YekanBakh-Regular
+MenuName:Yekan Bakh
+StyleBits:0
+FamilyNameNative:Yekan Bakh
+StyleNameNative:Regular
+FullNameNative:Yekan Bakh Regular
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\yekan bakh en 04 regular.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:65084
+FileModTime:1605447606
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Yekan Bakh Regular
+NameArray:0,Win,1,Yekan Bakh
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:YekanBakh-Medium
+FamilyName:Yekan Bakh
+StyleName:Medium
+FullName:YekanBakh-Medium
+MenuName:Yekan Bakh Medium
+StyleBits:0
+FamilyNameNative:Yekan Bakh
+StyleNameNative:Medium
+FullNameNative:Yekan Bakh Medium
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\yekan bakh en 05 medium.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:64820
+FileModTime:1605447554
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Yekan Bakh Medium
+NameArray:0,Win,1,Yekan Bakh Medium
+NameArray:0,Win,16,Yekan Bakh
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:YekanBakh-Bold
+FamilyName:Yekan Bakh
+StyleName:Bold
+FullName:YekanBakh-Bold
+MenuName:Yekan Bakh
+StyleBits:2
+FamilyNameNative:Yekan Bakh
+StyleNameNative:Bold
+FullNameNative:Yekan Bakh Bold
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\yekan bakh en 06 bold.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:64380
+FileModTime:1605446882
+WeightClass:700
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Yekan Bakh Bold
+NameArray:0,Win,1,Yekan Bakh
+NameArray:0,Win,16,Yekan Bakh
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:YekanBakh-Heavy
+FamilyName:Yekan Bakh
+StyleName:Heavy
+FullName:YekanBakh-Heavy
+MenuName:Yekan Bakh Heavy
+StyleBits:0
+FamilyNameNative:Yekan Bakh
+StyleNameNative:Heavy
+FullNameNative:Yekan Bakh Heavy
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\yekan bakh en 07 heavy.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:64476
+FileModTime:1605447332
+WeightClass:900
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Yekan Bakh Heavy
+NameArray:0,Win,1,Yekan Bakh Heavy
+NameArray:0,Win,16,Yekan Bakh
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:YekanBakh-Fat
+FamilyName:Yekan Bakh
+StyleName:Fat
+FullName:YekanBakh-Fat
+MenuName:Yekan Bakh Fat
+StyleBits:0
+FamilyNameNative:Yekan Bakh
+StyleNameNative:Fat
+FullNameNative:Yekan Bakh Fat
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\yekan bakh en 08 fat.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:64512
+FileModTime:1605447230
+WeightClass:1000
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Yekan Bakh Fat
+NameArray:0,Win,1,Yekan Bakh Fat
+NameArray:0,Win,16,Yekan Bakh
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Irancell-SemiBold
+FamilyName:Irancell
+StyleName:SemiBold
+FullName:Irancell SemiBold
+MenuName:Irancell_SemiBold
+StyleBits:0
+FamilyNameNative:Irancell
+StyleNameNative:SemiBold
+FullNameNative:Irancell SemiBold
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\ایرانسل 2.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:76336
+FileModTime:1564328818
+WeightClass:300
+WidthClass:5
+AngleClass:0
+NameArray:0,Win,1,Irancell_SemiBold
+NameArray:0,Win,16,Irancell
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Irancell-Black
+FamilyName:Irancell
+StyleName:Black
+FullName:Irancell Black
+MenuName:Irancell Black
+StyleBits:0
+FamilyNameNative:Irancell
+StyleNameNative:Black
+FullNameNative:Irancell Black
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\ایرانسل بلک .ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:77792
+FileModTime:1564328820
+WeightClass:600
+WidthClass:5
+AngleClass:0
+NameArray:0,Win,1,Irancell Black
+NameArray:0,Win,16,Irancell
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Irancell-Light
+FamilyName:Irancell
+StyleName:Light
+FullName:Irancell Light
+MenuName:Irancell Light
+StyleBits:0
+FamilyNameNative:Irancell
+StyleNameNative:Light
+FullNameNative:Irancell Light
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\ایرانسل لایت .otf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:81436
+FileModTime:1564328824
+WeightClass:300
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,18,Irancell Light
+NameArray:0,Mac,4,Irancell Light
+NameArray:0,Win,1,Irancell Light
+NameArray:0,Win,16,Irancell
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Irancell-Medium
+FamilyName:Irancell
+StyleName:Medium
+FullName:Irancell Medium
+MenuName:Irancell Medium
+StyleBits:0
+FamilyNameNative:Irancell
+StyleNameNative:Medium
+FullNameNative:Irancell Medium
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\ایرانسل مدیوم .ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:80764
+FileModTime:1564328826
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Win,1,Irancell Medium
+NameArray:0,Win,16,Irancell
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Irancell-Regular
+FamilyName:Irancell
+StyleName:Regular
+FullName:Irancell
+MenuName:Irancell
+StyleBits:0
+FamilyNameNative:Irancell
+StyleNameNative:Regular
+FullNameNative:Irancell Regular
+WritingScript:Arabic
+OutlineFileName:C:\Users\click\Desktop\Font\ایرانسل.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:80760
+FileModTime:1564328828
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Win,1,Irancell
+%EndFont
+

@@ -1,0 +1,13 @@
+{
+    "Permission": true,
+    "Auth": true,
+    "Core": true,
+    "Admin": true,
+    "Product": true,
+    "Setting": true,
+    "Specification": true,
+    "Blog": true,
+    "Faq": true,
+    "Comment": true,
+    "Slider": true
+}
