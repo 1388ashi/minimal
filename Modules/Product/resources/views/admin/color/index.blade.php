@@ -41,6 +41,7 @@
                                     <th class="wd-20p border-bottom-0">ردیف</th>
                                     <th class="wd-20p border-bottom-0">عنوان</th>
                                     <th class="wd-20p border-bottom-0">کد رنگ</th>
+                                    <th class="wd-20p border-bottom-0">رنگ</th>
                                     <th class="wd-25p border-bottom-0">تاریخ ثبت</th>
                                     <th class="wd-10p border-bottom-0">عملیات</th>
                                 </tr>
@@ -51,6 +52,7 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{ $color->title }}</td>
                                 <td>{{ $color->code }}</td>
+                                <td><a class="d-flex " style="justify-content: center;"><div style="background-color:{{$color->code}};width: 25px;height:25px;border-radius: 50%;margin-left: 6px;justify-content: center;"></div></a></td>
                                 <td>{{verta($color->created_at)}}</td>
                                 <td>
                                     {{-- Edit--}}
@@ -109,8 +111,8 @@
                         </div>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <button class="btn btn-outline-danger  text-right item-right" data-dismiss="modal">برگشت</button>
                     <button  class="btn btn-primary  text-right item-right">ثبت</button>
+                    <button class="btn btn-outline-danger  text-right item-right" data-dismiss="modal">برگشت</button>
                 </div>
             </form>
             </div>

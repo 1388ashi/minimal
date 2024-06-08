@@ -97,8 +97,8 @@
                         </div>
                     </div>
                     <div class="modal-footer justify-content-center">
-                        <button class="btn btn-outline-danger  text-right item-right" data-dismiss="modal">برگشت</button>
                         <button  class="btn btn-primary  text-right item-right">ثبت</button>
+                        <button class="btn btn-outline-danger  text-right item-right" data-dismiss="modal">برگشت</button>
                     </div>
                 </form>
                 </div>

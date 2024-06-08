@@ -37,8 +37,8 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <button class="btn btn-outline-danger  text-right item-right" data-dismiss="modal">برگشت</button>
                     <button  class="btn btn-warning text-right item-right">به روزرسانی</button>
+                    <button class="btn btn-outline-danger  text-right item-right" data-dismiss="modal">برگشت</button>
                 </div>
                 </form>
             </div>
