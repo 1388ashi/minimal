@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('title')->unique();
             $table->string('slug');
-            $table->string('slug');
             $table->text('summary');
             $table->longText('description');
             $table->unsignedInteger('price');

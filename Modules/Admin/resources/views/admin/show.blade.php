@@ -75,7 +75,7 @@
                     <div class="col-xl-12 col-lg-12 col-md-12">
                         <div class="card mb-0">
                             <div class="card-header border-0">
-                                <p class="card-title" style="font-size: 16px"><a href="{{route('admin.admins.index')}}">فعالیت ادمین ها</a></p>
+                                <p class="card-title" style="font-size: 16px">فعالیت ادمین ها</p>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">

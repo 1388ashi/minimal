@@ -121,6 +121,16 @@ class RolesAndPermissionsSeeder extends Seeder
             'create colors' => 'ایجاد رنگ',
             'edit colors' => 'ویرایش رنگ ',
             'delete colors' => 'حذف رنگ ',
+            //teams
+            'view teams' => 'مشاهده تیم ها ',
+            'create teams' => 'ایجاد تیم',
+            'edit teams' => 'ویرایش تیم ',
+            'delete teams' => 'حذف تیم ',
+            //customerRaviews
+            'view customerRaviews' => 'مشاهده نظر مشتریان ها ',
+            'create customerRaviews' => 'ایجاد نظر مشتریان',
+            'edit customerRaviews' => 'ویرایش نظر مشتریان ',
+            'delete customerRaviews' => 'حذف نظر مشتریان ',
             // //posts
             // 'view posts' => 'مشاهده مقاله ها',
             // 'create posts' => 'ایجاد مقاله ها',

@@ -98,8 +98,16 @@
                                     </div>
                                 </div>
                             </div>
-    
-                            <hr>    
+                            <hr>
+                            <h6>رنگ ها</h6>
+                                <div class="row">
+                                    @foreach ($colors as $color)
+                                    <div class="d-flex">
+                                            <div style="background-color:{{$color->code}};width: 25px;height:25px;border-radius: 50%;margin-left: 6px;justify-content: center;"></div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            <hr>
                             <h6>مشخصه ها</h6>
                             <hr>
                             <div v-for="specification in specifications">

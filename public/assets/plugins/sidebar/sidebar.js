@@ -135,9 +135,5 @@
 	
 	
 	// ______________ PerfectScrollbar	
-	const ps8 = new PerfectScrollbar('.sidebar-right', {
-	  useBothWheelAxes:true,
-	  suppressScrollX:true,
-	});
   
 }(jQuery);

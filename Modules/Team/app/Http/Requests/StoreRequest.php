@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Product\Http\Requests\Color;
+namespace Modules\Team\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -12,7 +12,8 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+            'role' => 'required'
         ];
     }
 

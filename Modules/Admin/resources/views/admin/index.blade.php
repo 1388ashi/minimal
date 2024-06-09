@@ -76,45 +76,22 @@
                                             @method('DELETE')
                                         </form> --}}
                                         @can('delete admins')
-                                        <button  class="btn btn-danger btn-sm item-delete text-white" data-toggle="modal" data-target="#deleteModal" data-title="{{$admin->name}}" data-original-title="حذف" data-id="{{$admin->id}}">
+                                        <button type="button" class="btn btn-danger btn-sm text-white" data-original-title="حذف" onclick="confirmDelete('delete-{{ $admin->id }}')">
                                             <i class="fa fa-trash-o"></i>
                                         </button>
                                         @endcan
                                     </td>
                                 </tr>
                                 @if ($admin->name !== 'مدیر کل')
-                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                
-                                                <div>
-                                                    <span>آیا از حذف</span>
-                                                    <mark id="delete_title"></mark>
-                                                    <span>مطمئن هستید؟</span>
-                                                </div>
-                                
-                                            </div>
-                                            <div class="modal-footer">
-                                                <form action="{{ route('admin.admins.destroy',$admin)}}" method="post">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <input type="hidden" name="type" value="cat_delete">
-                                                    <input type="hidden" name="item_id" id="item_id" value="">
-                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">انصراف</button>
-                                                    <button type="submit" class="btn btn-danger">حذف شود</button>
-                                                </form>                    
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endif
+                                <form 
+                                    action="{{ route('admin.admins.destroy')}}" 
+                                    id="delete-{{$admin->id}}" 
+                                    method="POST" 
+                                    style="display: none;">
+                                    @csrf
+                                    @method("DELETE")
+                                </form>
+                                @endif
                             @empty
                                 <tr>
                                     <td colspan="5">

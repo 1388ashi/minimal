@@ -92,6 +92,14 @@
 					</a>
 				</li>
 				@endcan
+				@can('view teams')
+				<li class="slide">
+					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.teams.index')}}">
+						<i class="fa fa-users sidemenu_icon"></i>
+						<span class="side-menu__label">تیم ما</span>
+					</a>
+				</li>
+				@endcan
 				@can('view faq')
 				<li class="slide">
 					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.asks.index')}}">
@@ -100,12 +108,6 @@
 					</a>
 				</li>
 				@endcan
-				{{-- <li class="slide">
-					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.comments.index')}}">
-						<i class="las la-comment sidemenu_icon"></i>
-						<span class="side-menu__label">مدیریت نظرات</span>
-					</a> --}}
-				</li>
 				@can('view settings')
 				<li class="slide">
 					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.settings.index')}}">

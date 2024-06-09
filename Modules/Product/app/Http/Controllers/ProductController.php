@@ -11,6 +11,7 @@ use Modules\Product\Http\Requests\Product\StoreRequest;
 use Modules\Product\Http\Requests\Product\UpdateRequest;
 use Modules\Product\Models\Category;
 use Modules\Product\Models\Product;
+use Modules\Product\Models\Color;
 use Modules\Specification\Models\Specification;
 
 class ProductController extends Controller implements HasMiddleware
@@ -96,6 +97,8 @@ class ProductController extends Controller implements HasMiddleware
     }
     public function create(): Renderable
     {
+        $colors = Color::select('id','title','code')->latest('id')->get();
+
         $categories = Category::query()
         ->latest('id')
         ->whereNull('parent_id')
@@ -103,7 +106,7 @@ class ProductController extends Controller implements HasMiddleware
         ->with('children:id,title,parent_id','recursiveChildren:id,title,parent_id')
         ->get();
 
-        return view('product::admin.product.create', compact('categories'));
+        return view('product::admin.product.create', compact('categories','colors'));
     }
     public function store(StoreRequest $request)
     {

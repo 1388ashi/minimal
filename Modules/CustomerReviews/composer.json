@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/customerreviews",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\CustomerReviews\\": "app/",
+            "Modules\\CustomerReviews\\Database\\Factories\\": "database/factories/",
+            "Modules\\CustomerReviews\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\CustomerReviews\\Tests\\": "tests/"
+        }
+    }
+}

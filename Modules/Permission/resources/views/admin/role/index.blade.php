@@ -58,7 +58,7 @@
                                     <td>
                                         {{-- Edit--}}
                                         @can('edit roles')
-                                        <a href="{{ route('admin.roles.edit', [$role->id]) }}" class="btn btn-warning btn-sm text-white" data-toggle="tooltip" data-original-title="ویرایش"><i class="fa fa-pencil"></i></a>
+                                        <a href="{{ route('admin.roles.edit', [$role->id]) }}" style="pointer-events: {{$role->name == 'super_admin' ?'none':null;}}" class="btn btn-warning btn-sm text-white" data-toggle="tooltip" data-original-title="ویرایش"><i class="fa fa-pencil"></i></a>
                                         @endcan
                                         
                                         @can('delete roles')

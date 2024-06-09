@@ -9,5 +9,7 @@
     "Blog": true,
     "Faq": true,
     "Comment": true,
-    "Slider": true
+    "Slider": true,
+    "Team": true,
+    "CustomerReviews": true
 }
