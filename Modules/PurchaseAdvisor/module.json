@@ -1,0 +1,11 @@
+{
+    "name": "PurchaseAdvisor",
+    "alias": "purchaseadvisor",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PurchaseAdvisor\\Providers\\PurchaseAdvisorServiceProvider"
+    ],
+    "files": []
+}

@@ -1,8 +1,8 @@
 @font-face {
-    font-family: 'YourFontName';
-    src: url('../font/Vazirmatn-Black.ttf') format('truetype');
+    font-family: 'Vazir';
+    src: url('../font/Vazir-Medium-FD.woff');
 }
 
 body {
-    font-family: YourFontName, sans-serif;
+    font-family: Vazir, sans-serif;
 }

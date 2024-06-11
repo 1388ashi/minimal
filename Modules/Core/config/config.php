@@ -114,6 +114,18 @@ return [
                 'type' => 'belongsTo'
             ]
         ],
+        'job_id' => [
+            'column' => 'job_id',
+            'type' => 'select',
+            'placeholder' => 'شغل را انتخاب کنید',
+            'options' => [],
+            'operator' => '=',
+            'column_type' => 'int',
+            'relation' => [
+                'name' => 'jobOffer',
+                'type' => 'belongsTo'
+            ]
+        ],
         'file_type' => [
             'column' => 'file_type',
             'type' => 'select',
@@ -141,6 +153,31 @@ return [
                 'pending' => 'در حال بررسی',
                 'accepted' => 'تایید شده',
                 'rejected' => 'رد شده',
+            ],
+            'operator' => '=',
+            'column_type' => 'string'
+        ],
+        'purchase' => [
+            'column' => 'status',
+            'type' => 'select',
+            'placeholder' => 'وضعیت را انتخاب کنید',
+            'options' => [
+                'called' => 'تماس گرفته شد',
+                'notcalled' => 'تماس گرفته نشده',
+            ],
+            'operator' => '=',
+            'column_type' => 'string'
+        ],
+        'resumes' => [
+            'column' => 'resumes',
+            'type' => 'select',
+            'placeholder' => 'وضعیت را انتخاب کنید',
+            'options' => [
+                'new' => 'جدید',
+                'pending' => 'در حال بررسی',
+                'rejected' => 'رد شده',
+                'accepted' => 'جذب شده',
+                'confim_interview' => 'تایید مصاحبه',
             ],
             'operator' => '=',
             'column_type' => 'string'

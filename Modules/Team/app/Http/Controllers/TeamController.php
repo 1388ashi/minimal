@@ -4,13 +4,11 @@ namespace Modules\Team\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Http\Request;
 use Modules\Team\Models\Team;
 use Modules\Team\Http\Requests\StoreRequest;
-use Illuminate\Http\Response;
 
 class TeamController extends Controller implements HasMiddleware
 {

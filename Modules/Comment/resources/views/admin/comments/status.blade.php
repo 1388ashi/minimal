@@ -1,7 +1,7 @@
 @if($comment->status == 'pending')
-    <span class="badge badge-primary ">در حال بررسی</span>
+    <p data-placement="top" data-toggle="tooltip" title="وضعیت" class="badge badge-primary ">در حال بررسی</p>
 @elseif($comment->status == 'rejected')
-    <span class="badge badge-danger ">رد شده</span>
+    <p data-placement="top" data-toggle="tooltip" title="وضعیت" class="badge badge-danger ">رد شده</p>
 @elseif($comment->status == 'accepted')
-    <span class="badge badge-success ">تایید شده</span>
+    <p data-placement="top" data-toggle="tooltip" title="وضعیت" class="badge badge-success ">تایید شده</p>
 @endif

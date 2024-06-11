@@ -57,8 +57,6 @@ class Post extends Model implements HasMedia, Viewable
         return $filters;
     }
 
-
-
     public function category(): BelongsTo 
     {
         return $this->belongsTo(BlogCategory::class);

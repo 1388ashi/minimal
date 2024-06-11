@@ -15,7 +15,7 @@
         <div class="col-md-12">
             <x-core::filter action="{{ route('admin.comments.index') }}" :inputs="$filterInputs"/>
             <div class="card">
-                <div class="card-header">
+                <div class="card-header border-0">
                     <div class="card-title">لیست همه نظرات ({{ $comments->total() }})</div>
                     <div class="card-options">
                         <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
@@ -30,13 +30,13 @@
                         <table id="example-2" class="table table-striped table-bordered text-nowrap text-center">
                             <thead>
                                 <tr>
-                                    <th class="wd-20p border-bottom-0">ردیف</th>
-                                    <th class="wd-20p border-bottom-0">نام</th>
-                                    <th class="wd-20p border-bottom-0">محصول</th>
-                                    <th class="wd-20p border-bottom-0">موبایل</th>
-                                    <th class="wd-20p border-bottom-0">وضعیت</th>
-                                    <th class="wd-25p border-bottom-0">تاریخ ثبت</th>
-                                    <th class="wd-10p border-bottom-0">عملیات</th>
+                                    <th class="border-top">ردیف</th>
+                                    <th class="border-top">نام</th>
+                                    <th class="border-top">محصول</th>
+                                    <th class="border-top">موبایل</th>
+                                    <th class="border-top">وضعیت</th>
+                                    <th class="border-top">تاریخ ثبت</th>
+                                    <th class="border-top">عملیات</th>
                                 </tr>
                             </thead>
                         <tbody>
@@ -50,14 +50,7 @@
                                     <td>{{ $comment->mobile }}</td>
                                     {{-- <td>{{ __('custom.statuses.' .  $comment->status) }} --}}
                                     <td>
-                                        @include('comment::admin.status', ['status' => $comment->status])
-                                        @if($comment->status == 'pending')
-                                        <span class="badge badge-primary ">در حال بررسی</span>
-                                        @elseif($comment->status == 'rejected')
-                                        <span class="badge badge-danger ">رد شده</span>
-                                        @elseif($comment->status == 'accepted')
-                                        <span class="badge badge-success ">تایید شده</span>
-                                        @endif
+                                        @include('comment::admin.comments.status', ['status' => $comment->status])
                                     </td>
                                     {{-- <td class="text-center">@include('includes.status',["status" => $comment->status])</td> --}}
                                     <td>{{ verta($comment->created_at) }}</td>

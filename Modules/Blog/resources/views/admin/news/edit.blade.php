@@ -74,7 +74,7 @@
                         </div>
                         <div class="row">
                             <label >توضیحات</label><span class="text-danger">&starf;</span>
-                            <textarea name="body" id="example" cols="100" rows="4">{{$news->body}}</textarea>
+                            <textarea name="body" class="form-control" id="example" cols="100" rows="4">{{$news->body}}</textarea>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-4">

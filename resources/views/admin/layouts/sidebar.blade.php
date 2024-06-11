@@ -3,11 +3,7 @@
 			<div class="app-sidebar__user">
 				<div class="dropdown user-pro-body text-center">
 					<div class="user-pic">
-						<img src="{{asset('images.jfif')}}" alt="user-img" class="avatar-xxl rounded-circle mb-1">
-					</div>
-					<div class="user-info">
-						<h5 class="text-white mb-2">مدیریت وبسایت مینیمال</h5>
-						<span class="text-muted app-sidebar__user-name text-sm"></span>
+						<img src="{{asset('02.png')}}" style="width: 60%;height: 40%;" alt="user-img" class="border-0 avatar-xxl  mb-1">
 					</div>
 				</div>
 			</div>
@@ -92,6 +88,14 @@
 					</a>
 				</li>
 				@endcan
+				@can('view faq')
+				<li class="slide">
+					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.customer-reviews.index')}}">
+						<i class="fa fa-comments sidemenu_icon"></i>
+						<span class="side-menu__label">نظر مشتریان </span>
+					</a>
+				</li>
+				@endcan
 				@can('view teams')
 				<li class="slide">
 					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.teams.index')}}">
@@ -105,6 +109,33 @@
 					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.asks.index')}}">
 						<i class="fa fa-question sidemenu_icon"></i>
 						<span class="side-menu__label">سوالات متداول</span>
+					</a>
+				</li>
+				@endcan
+				<li class="slide">
+					<a class="side-menu__item" data-toggle="slide" >
+						<i class="fa fa-briefcase sidemenu_icon"></i>
+						<span class="side-menu__label">مدیریت فرصت شغل</span><i class="angle fa fa-angle-left"></i>
+					</a>
+					@can('view jobs')
+					<ul class="slide-menu">
+						<li><a href="{{route('admin.job-offers.index')}}" class="slide-item">مدیریت شغل ها</a></li>
+					</ul>
+					@endcan
+				</li>
+				@can('view purchase_advisors')
+				<li class="slide">
+					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.purchase-advistors.index')}}">
+						<i class="fa fa-shopping-basket sidemenu_icon"></i>
+						<span class="side-menu__label">مشاوره خرید</span>
+					</a>
+				</li>
+				@endcan
+				@can('view tickets')
+				<li class="slide">
+					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.tickets.index')}}">
+						<i class="fa fa-ticket sidemenu_icon"></i>
+						<span class="side-menu__label">مدیریت تیکت ها</span>
 					</a>
 				</li>
 				@endcan

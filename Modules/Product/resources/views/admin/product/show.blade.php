@@ -3,7 +3,7 @@
 <div class="app-content main-content" style="margin-right:0px;margin-top:0px;align-items: center;justify-content: center;">
     <div class="side-app">
         <!--Page header-->
-        <div class="page-header mx-2">
+        <div class="page-header ">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
                 <li class="breadcrumb-item active" aria-current="page">نمایش محصول</li>
@@ -30,7 +30,7 @@
             <div class="col-xl-6 col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="header p-3" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">اطلاعات اولیه</h3>
+                        <p class="header p-3" style="font-size: 22px" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">اطلاعات اولیه</p>
                         <ul class="list-group">
                             <li class="list-group-item"><b class="bold">عنوان: </b>{{$product->title}}</li>
                             <li class="list-group-item"><b class="bold">قیمت: </b>{{ number_format($product->price) }}</li>
@@ -96,10 +96,8 @@
                 
             <div class="col-xl-6 col-md-12">
                 <div class="card">
-                    <div class="card-header  border-0">
-                        <div class="card-title">Specifications</div>
-                    </div>
                     <div class="card-body">
+                        <p class="header p-3" style="font-size: 22px" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">مشخصات</p>
                         <div class="table-responsive">
                             <table class="table mb-0 border-top table-bordered text-nowrap">
                                 <tbody>

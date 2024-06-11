@@ -62,7 +62,7 @@
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <label >خلاصه توضیحات</label>
-                                    <textarea name="summary" cols="86" rows="3">{{$article->summary}}</textarea>
+                                    <textarea class="form-control" name="summary" cols="86" rows="3">{{$article->summary}}</textarea>
                                 </div>
                             </div>
                             <div class="col-md-4">

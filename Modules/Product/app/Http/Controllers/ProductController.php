@@ -98,14 +98,14 @@ class ProductController extends Controller implements HasMiddleware
     public function create(): Renderable
     {
         $colors = Color::select('id','title','code')->latest('id')->get();
-
+        
         $categories = Category::query()
         ->latest('id')
         ->whereNull('parent_id')
         ->select('id','title')
         ->with('children:id,title,parent_id','recursiveChildren:id,title,parent_id')
         ->get();
-
+        
         return view('product::admin.product.create', compact('categories','colors'));
     }
     public function store(StoreRequest $request)
@@ -117,10 +117,15 @@ class ProductController extends Controller implements HasMiddleware
         foreach($specifications as $id => $value) {
             $product->specifications()->attach($id, ['value' => $value]);
         }
-            
+        
         $categories = $request->categories;
         foreach($categories as $category) {
             $product->categories()->attach($category);
+        }
+    
+        $colors = $request->colors;
+        foreach($colors as $color) {
+            $product->colors()->attach($color);
         }
             
         $data = [
@@ -135,7 +140,8 @@ class ProductController extends Controller implements HasMiddleware
     public function edit(Product $product): Renderable
     {
         $product = $product->load('specifications');
-
+        
+        $colors = Color::select('id','title','code')->latest('id')->get();
         $categories = Category::query()
         ->latest('id')
         ->whereNull('parent_id')
@@ -152,7 +158,7 @@ class ProductController extends Controller implements HasMiddleware
             ]);
         }
         
-        return view('product::admin.product.edit', compact('categories','product', 'specifications'));
+        return view('product::admin.product.edit', compact('categories','product', 'specifications','colors'));
     }
     public function update(UpdateRequest $request, Product $product)
     {
@@ -170,6 +176,12 @@ class ProductController extends Controller implements HasMiddleware
 
             foreach($categories as $category) {
                 $product->categories()->sync($category);
+            }
+        
+            $colors = $request->colors;
+
+            foreach($colors as $color) {
+                $product->colors()->sync($color);
             }
 
     }
@@ -203,18 +215,15 @@ class ProductController extends Controller implements HasMiddleware
     // // /**
     // //  * Remove the specified resource from storage.
     // //  */
-    // // public function destroy(Admin $admin)
-    // // {
-        // //     $role = $admin->getRoleNames()->first();
-    // //     $admin->removeRole($role);
-    // //     $admin->delete();
+    public function destroy(Product $product)
+    {
+        $product->delete();
+        $data = [
+            'status' => 'success',
+            'message' => 'محصول با موفقیت حذف شد'
+        ];
 
-    // //     $data = [
-    // //         'status' => 'success',
-    // //         'message' => 'ادمین با موفقیت حذف شد'
-    // //     ];
-
-    // //     return redirect()->route('admin.products.index')
-    // //         ->with($data);
-    // }
+        return redirect()->route('admin.products.index')
+            ->with($data);
+    }
 }

@@ -3,101 +3,110 @@
 <div class="app-content main-content" style="margin-right:0px;margin-top:0px;align-items: center;justify-content: center;">
     <div class="side-app">
         <!--Page header-->
-        <div class="page-header d-xl-flex d-block">
-            <div class="page-leftheader">
-                <h4 class="page-title">{{$admin->name}} نمایش ادمین</h4>
-            </div>
-            <div class="page-leftheader mr-md-auto">
-                <div class="d-flex align-items-end flex-wrap my-auto right-content breadcrumb-right">
-                    <div class="btn-list">
-                        <a href="{{route('admin.admins.create')}}" class="btn btn-primary " data-toggle="modal" data-target="#addjobmodal"><i class="feather feather-plus fs-15 my-auto ml-2"></i>اضافه کردن ادمین</a>
-                        <button  class="btn btn-light" data-toggle="tooltip" data-placement="top" title="E-mail"> <i class="feather feather-mail"></i> </button>
-                        <button  class="btn btn-light" data-placement="top" data-toggle="tooltip" title="Contact"> <i class="feather feather-phone-call"></i> </button>
-                        <button  class="btn btn-primary" data-placement="top" data-toggle="tooltip" title="Info"> <i class="feather feather-info"></i> </button>
-                    </div>
+        <div class="page-header">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
+                <li class="breadcrumb-item active" aria-current="page">نمایش ادمین</li>
+                
+            </ol>
+            <div>
+                <div class="d-flex align-items-center flex-wrap text-nowrap">
+                    @can('edit faq')
+                    <a href="{{ route('admin.admins.edit',$admin) }}" class="btn btn-warning">
+                        ویرایش  {{$admin->name}}
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    @endcan
                 </div>
             </div>
         </div>
         <!--End Page header-->
 
         <!-- Row -->
-        <div class="row">
-            <div class="col-xl-4 col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="mb-5 ">
-                            <a class="text-dark" href="#">
-                            <p style="font-size: 15px" class="mb-2">{{$admin->name}}</p></a>
-                        </div>
-                                @php
-                                $vertaDate = verta($admin->created_at);
-                                @endphp
-                        <p class="mb-3 mt-5  text-muted font-weight-semibold">اطلاعات ادمین</p>
-                        <div class="table-responsive">
-                            <table class="table row table-borderless w-100 m-0 text-nowrap">
-                                <tbody class="col-lg-12 col-xl-6 p-0">
-                                    <tr>
-                                        @foreach($admin->roles as $role)
-                                        <td><span class="font-weight-semibold">نقش ادمین :</span>{{ $role->label}}</td>
-                                        @endforeach
-                                    </tr>
-                                    <tr>
-                                        <td><span class="font-weight-semibold">شماره موبایل :</span>{{$admin->mobile}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="font-weight-semibold">وضعیت :</span>@include('includes.status',["status" => $admin->status])</td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="font-weight-semibold">وضعیت :</span>{{$vertaDate->format('Y/n/j')}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="list-id">
-                            <div class="row">
-                                <div class="col">
-                                    <a class="mb-0">شناسه ادمین :{{ $admin->id}}#</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="icons">
-                            <a class="btn btn-danger icons" href="{{route('admin.admins.index')}}"> برگشت</a>
-                        </div>
+        <div class="card">
+
+            <div class="card-header border-0">
+                <p class="card-title ml-2">مشخصات ادمین</p>
+            </div>
+            
+            <div class="card-body">
+    
+                <div class="row">
+    
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="d-flex align-items-center my-1">
+                    <span class="fs-16 font-weight-bold ml-1">شناسه کاربر :</span>
+                    <span class="fs-14 mr-1"> {{ $admin->id }} </span>
                     </div>
                 </div>
+    
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="d-flex align-items-center my-1">
+                    <span class="fs-16 font-weight-bold ml-1">نام و نام خانوادگی :</span>
+                    <span class="fs-14 mr-1"> {{ $admin->name }} </span>
+                    </div>
+                </div>
+    
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="d-flex align-items-center my-1">
+                    <span class="fs-16 font-weight-bold ml-1">شماره موبایل :</span>
+                    <span class="fs-14 mr-1"> {{ $admin->mobile }} </span>
+                    </div>
+                </div>
+    
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="d-flex align-items-center my-1">
+                    <span class="fs-16 font-weight-bold ml-1">نقش :</span>
+                    @foreach($admin->roles as $role)
+                    <span class="fs-14 mr-1"> {{ $role->label }} </span>
+                    @endforeach
+                    </div>
+                </div>
+    
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="d-flex align-items-center my-1">
+                    <span class="fs-16 font-weight-bold ml-1">وضعیت :</span>
+                    <x-core::badge
+                        type="{{ $admin->status ? 'success' : 'danger' }}"
+                        text="{{ $admin->status ? 'فعال' : 'غیر فعال' }}"
+                    />
+                    </div>
+                </div>
+    
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="d-flex align-items-center my-1">
+                    <span class="fs-16 font-weight-bold ml-1">تاریخ ثبت :</span>
+                    <span class="fs-14 mr-1"> {{ verta($admin->created_at)->format('Y/m/d') }} </span>
+                    </div>
+                </div>
+    
+                </div>
+    
             </div>
-            <div class="col-xl-8 col-md-12">
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12">
-                        <div class="card mb-0">
-                            <div class="card-header border-0">
-                                <p class="card-title" style="font-size: 16px">فعالیت ادمین ها</p>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table id="example-2" class="table table-striped table-bordered text-nowrap text-center">
-                                        <thead>
-                                            <tr>
-                                                <th class="wd-20p border-bottom-0 text-muted">توضیحات</th>
-                                                <th class="wd-20p border-bottom-0 text-muted">تاریخ عملیات</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($logActivitys as $item)
-                                            <tr>
-                                                <td>{{$item->description}}</td>
-                                                <td>{{verta($admin->created_at)}}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+    
+            </div>
+            <div class="card mb-0">
+                <div class="card-header border-0">
+                    <p class="card-title" style="font-size: 16px">فعالیت ادمین ها</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="example-2" class="table table-striped table-bordered text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th class="text-center border-top text-muted">توضیحات</th>
+                                    <th class="text-center border-top text-muted">تاریخ عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($logActivitys as $item)
+                                <tr>
+                                    <td class="text-right">{{$item->description}}</td>
+                                    <td class="text-center">{{verta($admin->created_at)}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

@@ -94,6 +94,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label">خلاصه توضیحات</label>
+                                    <textarea class="form-control" name="summary" cols="134" rows="3">{{$product->summary}}</textarea>
+                                </div>
+                            </div>
+                            </div>
                         <div class="row">
                             <label class="control-label">توضیحات</label><span class="text-danger">&starf;</span>
                             <textarea name="body" id="editor2" class="form-control" cols="100"  rows="4">{{$product->description}}</textarea>
@@ -121,12 +129,34 @@
                             @endif
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label mr-3">وضعیت</label><span class="text-danger">&starf;</span>
-                                    <br>
-                                    <input type="checkbox" class="mt-1 mr-3" name="status" value="1" @checked($product->status)><span class="mr-2">فعال</span>
+                                    <div class="form-group">
+                                        <span class="control-label ">
+                                            وضعیت
+                                        </span>
+                                        <span class="text-danger">&starf;</span>
+                                        <label class="custom-control custom-checkbox mr-1 mt-1">
+                                            <input type="checkbox" class="custom-control-input" name="status" value="1" @checked($product->status)>
+                                            <span class="custom-control-label">فعال</span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <hr>
+                        <p>رنگ ها</p>
+                            <div class="row">
+                                @foreach ($colors as $color)
+                                <div class="d-flex ml-5">
+                                    <div style="background-color:{{$color->code}};width: 25px;height:25px;border-radius: 50%;margin-left: 6px;justify-content: center;"></div>
+                                    <div class="form-group">
+                                        <label class="custom-control custom-checkbox mr-1 mb-5">
+                                            <input type="checkbox" class="custom-control-input" name="colors[]" value="1" @checked($product->status)>
+                                            <span class="custom-control-label">فعال</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
                         <hr>    
                         <h6>مشخصه ها</h6>
                         <hr>

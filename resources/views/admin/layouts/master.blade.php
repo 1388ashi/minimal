@@ -64,7 +64,7 @@
 
 	<body class="app sidebar-mini">
 		
-		<!---Global-loader-->
+		<!---Global-loader-->	
 		<div id="global-loader" >
 			<img src="{{asset('assets/images/svgs/loader.svg')}}" alt="loader">
 		</div>
@@ -113,7 +113,10 @@
 			
 			<!--Sidemenu js-->
 			<script src="{{asset('assets/plugins/sidemenu/sidemenu.js')}}"></script>
-			
+
+			<!-- P-scroll js-->
+			<script src="{{asset('assets/plugins/p-scrollbar/p-scrollbar.js')}}"></script>
+			<script src="{{asset('assets/plugins/p-scrollbar/p-scroll1.js')}}"></script>
 			<!--Sidebar js-->
 			<script src="{{asset('assets/plugins/sidebar/sidebar.js')}}"></script>
 			
@@ -129,8 +132,6 @@
 			<script src="{{asset('assets/plugins/apexchart/apexcharts.js')}}"></script>
 			<script src="{{asset('assets\js\sweetalert.min.js')}}"></script>
 
-			<!-- sortable js-->
-			
 			<!-- INTERNAL Vertical-scroll js-->
 			<script src="{{asset('assets/plugins/vertical-scroll/jquery.bootstrap.newsbox.js')}}"></script>
 			<script src="{{asset('assets/plugins/vertical-scroll/vertical-scroll.js')}}"></script>

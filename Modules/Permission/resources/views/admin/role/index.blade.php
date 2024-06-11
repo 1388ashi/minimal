@@ -2,11 +2,10 @@
 
 @section('content')
     <!--  Page-header opened -->
-    <div class="page-header mx-3">
+    <div class="page-header mx-5">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
             <li class="breadcrumb-item active" aria-current="page">لیست همه نقش ها</li>
-            
         </ol>
         <div class="mt-3">
             <div class="d-flex align-items-center flex-wrap text-nowrap">
@@ -24,7 +23,7 @@
     <div class="row mx-3">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header border-0">
                     <div class="card-title">لیست همه نقش ها ({{ $roles->total() }})</div>
                     <div class="card-options">
                         <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
@@ -39,11 +38,11 @@
                         <table id="example-2" class="table table-striped table-bordered text-nowrap text-center">
                             <thead>
                                 <tr>
-                                    <th class="wd-20p border-bottom-0">ردیف</th>
-                                    <th class="wd-20p border-bottom-0">نام</th>
-                                    <th class="wd-20p border-bottom-0">نام قابل مشاهده</th>
-                                    <th class="wd-25p border-bottom-0">تاریخ ثبت</th>
-                                    <th class="wd-10p border-bottom-0">عملیات</th>
+                                    <th class="border-top">ردیف</th>
+                                    <th class="border-top">نام</th>
+                                    <th class="border-top">نام قابل مشاهده</th>
+                                    <th class="border-top">تاریخ ثبت</th>
+                                    <th class="border-top">عملیات</th>
                                 </tr>
                             </thead>
                             <tbody>

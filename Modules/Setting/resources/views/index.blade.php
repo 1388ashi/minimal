@@ -27,7 +27,7 @@
                                     <div class="card bg-{{ $options['bg'] }} mb-lg-0">
                                         <div class="card-body text-center text-white">
                                             <i class="fe fe-{{ $options['icon'] }} fs-50 "></i>
-                                            <h3 class="font-weight-bold mt-4">{{ $options['title'] }}</h3>
+                                            <p style="font-size:24px;" class=" mt-4">{{ $options['title'] }}</p>
                                             <p class="mt-3 mb-5">{{ $options['summary'] }}</p>
                                             @can('edit settings')
                                                 <a class="btn btn-white mx-1 btn-pill"

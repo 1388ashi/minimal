@@ -11,5 +11,8 @@
     "Comment": true,
     "Slider": true,
     "Team": true,
-    "CustomerReviews": true
+    "CustomerReview": true,
+    "Ticket": true,
+    "PurchaseAdvisor": true,
+    "JobOffer": true
 }

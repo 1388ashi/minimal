@@ -2,7 +2,7 @@
 
 @section('content')
     <!--  Page-header opened -->
-    <div class="page-header mx-3">
+    <div class="page-header mx-5">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
             <li class="breadcrumb-item active" aria-current="page">لیست همه رنگ ها</li>
@@ -38,12 +38,12 @@
                         <table id="example-2" class="table table-striped table-bordered text-nowrap text-center">
                             <thead>
                                 <tr>
-                                    <th class="wd-20p border-bottom-0">ردیف</th>
-                                    <th class="wd-20p border-bottom-0">عنوان</th>
-                                    <th class="wd-20p border-bottom-0">کد رنگ</th>
-                                    <th class="wd-20p border-bottom-0">رنگ</th>
-                                    <th class="wd-25p border-bottom-0">تاریخ ثبت</th>
-                                    <th class="wd-10p border-bottom-0">عملیات</th>
+                                    <th class="border-top">ردیف</th>
+                                    <th class="border-top">عنوان</th>
+                                    <th class="border-top">کد رنگ</th>
+                                    <th class="border-top">رنگ</th>
+                                    <th class="border-top">تاریخ ثبت</th>
+                                    <th class="border-top">عملیات</th>
                                 </tr>
                         </thead>
                         <tbody>

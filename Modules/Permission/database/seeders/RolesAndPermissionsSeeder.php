@@ -127,10 +127,20 @@ class RolesAndPermissionsSeeder extends Seeder
             'edit teams' => 'ویرایش تیم ',
             'delete teams' => 'حذف تیم ',
             //customerRaviews
-            'view customerRaviews' => 'مشاهده نظر مشتریان ها ',
-            'create customerRaviews' => 'ایجاد نظر مشتریان',
-            'edit customerRaviews' => 'ویرایش نظر مشتریان ',
-            'delete customerRaviews' => 'حذف نظر مشتریان ',
+            'view customerReviews' => 'مشاهده نظر مشتریان ها ',
+            'create customerReviews' => 'ایجاد نظر مشتریان',
+            'edit customerReviews' => 'ویرایش نظر مشتریان ',
+            'delete customerReviews' => 'حذف نظر مشتریان ',
+            //ticket
+            'view tickets' => 'مشاهده تیکت ها ',
+            //purchaseAdvisor
+            'view purchase_advisors' => 'مشاهده مشاوره خرید ها ',
+            'edit purchase_advisors' => 'مشاهده مشاوره خرید ها ',
+            //jobs
+            'view jobs' => 'مشاهده شغل ها ',
+            'create jobs' => 'ایجاد شغل',
+            'edit jobs' => 'ویرایش شغل ',
+            'delete jobs' => 'حذف شغل ',
             // //posts
             // 'view posts' => 'مشاهده مقاله ها',
             // 'create posts' => 'ایجاد مقاله ها',

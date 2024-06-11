@@ -31,7 +31,7 @@
                     <div class="card-body">
                         <x-alert-danger></x-alert-danger>
                         <x-alert-success></x-alert-success>
-                        <h4 class="header p-3" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">{{ $comment->name }} </h4>
+                        <p class="header p-3" style="font-size: 21px" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">{{ $comment->name }} </p>
                         <div class="mt-1">
                             متن نظر:
                             {!!$comment->text!!}
@@ -42,7 +42,7 @@
                                 <p class="mb-0 ">شناسه محصول: <a class="text-info" href="{{route('admin.products.show',[$comment->product_id])}}">{{ $comment->product_id }}#</a></p>
                             </div>
                             <p class="badge badge-warning ml-1" data-placement="top" data-toggle="tooltip" title="ستاره">{{$comment->star}}</p>
-                            <p class="badge badge-light mr-l" data-placement="top" data-toggle="tooltip" title="وضعیت">{{ __('custom.statuses.' .  $comment->status) }}</p>
+                            @include('comment::admin.comments.status', ['status' => $comment->status])
                             <div class="col col-auto">
                                 <li class="mt-1" style="list-style-type: none;" data-placement="top" data-toggle="tooltip" title="تاریخ ساخت نظر">
                                     <a class="icons" > <i class="feather feather-calendar"></i>{{$vertaDate->format('Y/n/j')}}</a>
@@ -93,7 +93,7 @@
                         </div>
                         <div class="form-group">
                             <label >توضیحات</labeld>
-                            <textarea name="description" cols="61" rows="3"></textarea>
+                            <textarea class="form-control" name="description" cols="63" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-center">

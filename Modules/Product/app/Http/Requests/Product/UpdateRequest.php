@@ -27,12 +27,13 @@ class UpdateRequest extends FormRequest
         return [
                 'title' => ['required',Rule::unique('products')->ignore($productId)],
                 'description' => 'required',
+                'summary' => 'nullable',    
 
                 'price' => 'integer|required',
                 'discount' => 'nullable|integer ',
                 'status' => ['nullable', 'in:1'],
 
-                'image' => 'image|mimes:jpeg,png,jpg,gif',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
                 'galleries.*' => 'nullable',
                 'galleries' => 'nullable|array',  
                 
