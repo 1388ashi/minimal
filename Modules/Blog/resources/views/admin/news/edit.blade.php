@@ -61,7 +61,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="form-group">
-                                    <label >خلاصه توضیحات</label>
+                                    <label >خلاصه توضیحات</label> <span class="text-danger">&starf;</span>
                                     <textarea name="summary" cols="86" rows="3">{{$news->summary}}</textarea>
                                 </div>
                             </div>

@@ -16,7 +16,7 @@ class StoreRequest extends FormRequest
                 'writer' => 'required',
                 'read' => 'required',
                 'body' => 'required|string',
-                'summary' => 'nullable|string',
+                'summary' => 'required|string',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg',
                 'category_id' => 'required|integer|exists:blog_categories,id',
                 'published_at' => 'nullable|date',
