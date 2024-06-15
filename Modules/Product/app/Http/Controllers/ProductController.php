@@ -45,10 +45,12 @@ class ProductController extends Controller implements HasMiddleware
         $data = [];
         $specifications = $specifications->unique('id');
         foreach ($specifications as $specification) {
+            $value = $product->specifications->where('id', $specification->id)->first()->pivot->value ?? null;
+            
             $data[] = [
                 'id' => $specification->id,
                 'name' => $specification->name,
-                'value' => $product && $product->specifications->isNotEmpty() ? $product->specifications->where('id', $specification->id)->first()->pivot->value : null
+                'value' => $value
             ];
         }
 
