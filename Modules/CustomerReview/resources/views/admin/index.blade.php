@@ -52,6 +52,13 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{ $customerReview->name }}</td>
                                 <td>{{ $customerReview->city }}</td>
+                                <td class="text-center">
+                                    <a href="{{ $customerReview->image['url'] }}" target="_blanck">
+                                    <div class="bg-light pb-1 pt-1 img-holder img-show" style="max-height: 50px;border-radius: 4px;">
+                                        <img src="{{ $customerReview->image['url'] }}" style="height: 40px;"  alt="{{ $customerReview->image['name'] }}">
+                                    </div>
+                                    </a>
+                                </td>
                                 <td class="text-center"><a href="{{ $customerReview->image['url'] }}" target="_blanck"><img src="{{ $customerReview->image['url'] }}" style="width: 80px;height: 60px;"  alt="{{ $customerReview->image['name'] }}"></a></td>
                                 <td>{{verta($customerReview->created_at)->format('Y/m/d H:i')}}</td>
                                 <td>
