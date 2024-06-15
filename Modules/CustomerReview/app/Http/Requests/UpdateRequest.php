@@ -12,9 +12,8 @@ class UpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        $reviewsId = $this->route('customer-reviews')->param('customer-review');
         return [
-            'name' => ['required', Rule::unique('customer_reviews')->ignore($reviewsId)],
+            'name' => ['required'],
             'city' => 'required',
             'image' => 'nullable',
             'description' => 'required'

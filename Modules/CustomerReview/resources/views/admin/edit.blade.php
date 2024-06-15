@@ -23,7 +23,7 @@
                         <input type="text" id="city"  class="form-control" name="city" placeholder="شهر را اینجا وارد کنید" value="{{ old('city', $customerReview->city) }}" required autofocus>
                     </div>
                     <div class="form-group">
-                        <label class="control-label" for="label" >تصویر</label><span class="text-danger">&starf;</span>
+                        <label class="control-label" for="label" >تصویر</label>
                         <input  class="form-control" type="file" name="image">
                     </div>
                     <div class="form-group">
