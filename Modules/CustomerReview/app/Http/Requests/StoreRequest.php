@@ -17,6 +17,7 @@ class StoreRequest extends FormRequest
             'image' => 'required',
             'description' => 'required'
         ];
+    
     }
 
     /**

@@ -53,7 +53,7 @@
                                 <td>{{ $customerReview->name }}</td>
                                 <td>{{ $customerReview->city }}</td>
                                 <td class="text-center"><a href="{{ $customerReview->image['url'] }}" target="_blanck"><img src="{{ $customerReview->image['url'] }}" style="width: 80px;height: 60px;"  alt="{{ $customerReview->image['name'] }}"></a></td>
-                                <td>{{verta($customerReview->created_at)}}</td>
+                                <td>{{verta($customerReview->created_at)->format('Y/m/d H:i')}}</td>
                                 <td>
                                     {{-- Edit--}}
                                     @can('view customerReviews')
