@@ -32,7 +32,6 @@ class ProductController extends Controller implements HasMiddleware
 
         $specifications = collect([]);
         foreach ($categories as $category) {
-
             if ($category) {
                 $specifications = $specifications->merge($category->specifications);
             }
@@ -124,8 +123,10 @@ class ProductController extends Controller implements HasMiddleware
         }
     
         $colors = $request->colors;
-        foreach($colors as $color) {
-            $product->colors()->attach($color);
+        if(filled($colors)){
+            foreach($colors as $color) {
+                $product->colors()->attach($color);
+            }
         }
             
         $data = [
@@ -179,9 +180,10 @@ class ProductController extends Controller implements HasMiddleware
             }
         
             $colors = $request->colors;
-
-            foreach($colors as $color) {
-                $product->colors()->sync($color);
+            if(filled($colors)){
+                foreach($colors as $color) {
+                    $product->colors()->sync($color);
+                }
             }
 
     }
