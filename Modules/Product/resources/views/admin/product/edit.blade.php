@@ -104,7 +104,7 @@
                             </div>
                         <div class="row">
                             <label class="control-label">توضیحات</label><span class="text-danger">&starf;</span>
-                            <textarea name="body" id="editor2" class="form-control" cols="100"  rows="4">{{$product->description}}</textarea>
+                            <textarea name="description" id="editor2" class="form-control" cols="100"  rows="4">{{$product->description}}</textarea>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-4">
@@ -158,7 +158,7 @@
                                 @endforeach
                             </div>
                         <hr>    
-                        <h6>مشخصه ها</h6>
+                        <p class="fp-20">مشخصه ها</p>
                         <hr>
                         <div v-for="specification in specifications">
                             <div class="row">

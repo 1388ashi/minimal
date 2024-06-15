@@ -33,7 +33,7 @@ class UpdateRequest extends FormRequest
                 'discount' => 'nullable|integer ',
                 'status' => ['nullable', 'in:1'],
 
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+                'image' => 'nullable|mimes:jpeg,png,jpg,gif',
                 'galleries.*' => 'nullable',
                 'galleries' => 'nullable|array',  
                 
