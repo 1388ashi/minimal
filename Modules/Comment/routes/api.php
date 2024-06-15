@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Comment\Http\Controllers\CommentController;
 
 /*
  *--------------------------------------------------------------------------
@@ -13,7 +12,6 @@ use Modules\Comment\Http\Controllers\CommentController;
  * is assigned the "api" middleware group. Enjoy building your API!
  *
 */
-
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('comment', CommentController::class)->names('comment');
+Route::name('api')->group(function() {
+    Route::post('/comments', [\Modules\Product\Http\Controllers\Api\CommentController::class,'store']);
 });

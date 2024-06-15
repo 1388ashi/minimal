@@ -19,6 +19,7 @@ class JobOffer extends Model
         'title',
         'times',
         'type',
+        'description',
         'status',
     ];
     public function getActivitylogOptions() : LogOptions

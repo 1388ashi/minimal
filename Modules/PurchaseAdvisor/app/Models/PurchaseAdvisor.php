@@ -4,6 +4,7 @@ namespace Modules\PurchaseAdvisor\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Arr;
 use Modules\Core\Traits\Filterable;
 use Illuminate\Support\Facades\Cache;
@@ -21,7 +22,6 @@ class PurchaseAdvisor extends Model
     protected $fillable = [
         'name',
         'mobile',
-        'description',
         'product_id',
         'status',
     ];
@@ -48,5 +48,9 @@ class PurchaseAdvisor extends Model
                 static::STATUS_CALLED,
                 static::STATUS_NOTCALLED
             ];
+        }
+        public function product(): BelongsTo 
+        {
+            return $this->belongsTo(Product::class);
         }
 }

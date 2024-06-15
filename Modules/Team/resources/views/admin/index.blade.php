@@ -52,8 +52,14 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{ $team->name }}</td>
                                 <td>{{ $team->role }}</td>
-                                <td class="text-center"><a href="{{ $team->image['url'] }}" target="_blanck"><img src="{{ $team->image['url'] }}" style="width: 80px;height: 60px;"  alt="{{ $team->image['name'] }}"></a></td>
-                                <td>{{verta($team->created_at)}}</td>
+                                <td class="text-center">
+                                    <a href="{{ $team->image['url'] }}" target="_blanck">
+                                        <div class="bg-light pb-1 pt-1 img-holder img-show" style="max-height: 50px;border-radius: 4px;">
+                                        <img src="{{ $team->image['url'] }}" style="height: 40px;"  alt="{{ $team->image['name'] }}">
+                                    </div>
+                                    </a>
+                                </td>
+                                <td>{{verta($team->created_at)->format('Y/m/d H:i')}}</td>
                                 <td>
                                     {{-- Edit--}}
                                     @can('edit teams')

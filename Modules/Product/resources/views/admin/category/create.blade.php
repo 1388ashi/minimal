@@ -64,7 +64,7 @@
                                 <div class="form-group">
                                     <label class="control-label mr-3">ویژه</label><span class="text-danger">&starf;</span>
                                     <br>
-                                    <input type="checkbox" class="mt-1 mr-3" name="featured"><span class="mr-2">غیر فعال</span>
+                                    <input type="checkbox" class="mt-1 mr-3" name="featured"><span class="mr-2">فعال</span>
                                 </div>
                             </div>
                             <div class="col-md-4">

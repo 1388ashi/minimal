@@ -53,7 +53,7 @@
                                 <td>{{ $blog_category->title }}</td>
                                 <td class="text-center"><span>@if($blog_category->type == 'news'){{'خبری'}}@else {{'مقاله'}} @endif</span></td>
                                 <td class="text-center">@include('includes.status',["status" => $blog_category->status])</td>
-                                <td>{{verta($blog_category->created_at)}}</td>
+                                <td>{{verta($blog_category->created_at)->format('Y/m/d H:i')}}</td>
                                 <td>
                                     {{-- Edit--}}
                                     @can('edit categories')

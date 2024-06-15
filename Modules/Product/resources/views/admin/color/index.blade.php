@@ -53,7 +53,7 @@
                                 <td>{{ $color->title }}</td>
                                 <td>{{ $color->code }}</td>
                                 <td><a class="d-flex " style="justify-content: center;"><div style="background-color:{{$color->code}};width: 25px;height:25px;border-radius: 50%;margin-left: 6px;justify-content: center;"></div></a></td>
-                                <td>{{verta($color->created_at)}}</td>
+                                <td>{{verta($color->created_at)->format('Y/m/d H:i')}}</td>
                                 <td>
                                     {{-- Edit--}}
                                     @can('edit colors')

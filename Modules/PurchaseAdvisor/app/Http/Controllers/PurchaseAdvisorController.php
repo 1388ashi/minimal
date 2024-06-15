@@ -23,7 +23,8 @@ class PurchaseAdvisorController extends Controller implements HasMiddleware
     public function index()
     {
         $purchaseAdvisors = PurchaseAdvisor::filters(request()->query())
-        ->select('id','name','mobile','status','description')
+        ->select('id','name','mobile','status','product_id')
+        ->with('product:id,title')
         ->latest('id')
         ->paginate(15);
         $filterInputs = PurchaseAdvisor::getFilterInputs();

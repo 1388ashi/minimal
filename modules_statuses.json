@@ -14,5 +14,7 @@
     "CustomerReview": true,
     "Ticket": true,
     "PurchaseAdvisor": true,
-    "JobOffer": true
+    "JobOffer": true,
+    "Brand": true,
+    "Home": true
 }

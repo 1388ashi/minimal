@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Faq\Http\Controllers\FaqController;
-
+use Modules\Faq\Http\Controllers\Api\FaqController;
 /*
  *--------------------------------------------------------------------------
  * API Routes
@@ -13,7 +12,6 @@ use Modules\Faq\Http\Controllers\FaqController;
  * is assigned the "api" middleware group. Enjoy building your API!
  *
 */
-
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('faq', FaqController::class)->names('faq');
+Route::name('api')->group(function() {
+    Route::get('/faq', [FaqController::class,'index']);
 });

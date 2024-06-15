@@ -139,4 +139,5 @@
     useBothWheelAxes:true,
     suppressScrollX:true,
   });
+  
 }(jQuery);

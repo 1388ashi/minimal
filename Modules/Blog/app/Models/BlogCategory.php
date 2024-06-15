@@ -5,6 +5,7 @@ namespace Modules\Blog\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Sluggable\HasSlug;
@@ -19,9 +20,9 @@ class BlogCategory extends Model
         'type',
         'status',
     ];
-    public function posts(): BelongsToMany 
+    public function posts(): HasMany 
     {
-        return $this->belongsToMany(Post::class);
+        return $this->hasMany(Post::class,'category_id');
     }
     public function getActivitylogOptions() : LogOptions
     {

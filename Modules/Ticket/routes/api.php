@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Ticket\Http\Controllers\TicketController;
-
+use Modules\Ticket\Http\Controllers\Api\TicketController;
 /*
  *--------------------------------------------------------------------------
  * API Routes
@@ -14,6 +13,7 @@ use Modules\Ticket\Http\Controllers\TicketController;
  *
 */
 
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('ticket', TicketController::class)->names('ticket');
+
+Route::name('api')->group(function() {
+    Route::post('/tickets', [TicketController::class,'store']);
 });

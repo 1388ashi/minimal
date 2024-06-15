@@ -44,7 +44,7 @@
                                 <td>{{ $ticket->name }}</td>
                                 <td>{{ $ticket->mobile }}</td>
                                 <td>{{ $ticket->email }}</td>
-                                <td>{{verta($ticket->created_at)}}</td>
+                                <td>{{verta($ticket->created_at)->format('Y/m/d H:i')}}</td>
                                 <td>
                                     {{-- Edit--}}
                                     @can('view tickets')

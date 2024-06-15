@@ -53,9 +53,15 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{ $slider->title }}</td>
                                 <td>{{ $slider->link }}</td>
-                                <td class="text-center"><a href="{{ $slider->image['url'] }}" target="_blanck"><img src="{{ $slider->image['url'] }}" style="width: 80px;height: 60px;"  alt="{{ $slider->image['name'] }}"></a></td>
+                                <td class="text-center">
+                                    <a href="{{ $slider->image['url'] }}" target="_blanck">
+                                    <div class="bg-light pb-1 pt-1 img-holder img-show" style="width: 200px;max-height: 50px;border-radius: 4px;">
+                                        <img src="{{ $slider->image['url'] }}" style="height: 40px;"  alt="{{ $slider->image['name'] }}">
+                                    </div>
+                                    </a>
+                                </td>
                                 <td class="text-center">@include('includes.status',["status" => $slider->status])</td>
-                                <td>{{verta($slider->created_at)}}</td>
+                                <td>{{verta($slider->created_at)->format('Y/m/d H:i')}}</td>
                                 <td>
                                     {{-- Edit--}}
                                     @can('edit sliders')

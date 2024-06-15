@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Product\Http\Controllers\ProductController;
+use Modules\Product\Http\Controllers\Api\AdvisorController;
+use Modules\Product\Http\Controllers\Api\CommentController;
 
 /*
  *--------------------------------------------------------------------------
@@ -14,6 +15,8 @@ use Modules\Product\Http\Controllers\ProductController;
  *
 */
 
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('product', ProductController::class)->names('product');
+Route::name('api')->group(function() {
+    Route::get('/products', [\Modules\Product\Http\Controllers\Api\ProductController::class,'index']);
+    Route::get('/products/{id}', [\Modules\Product\Http\Controllers\Api\ProductController::class,'show']);
+    
 });

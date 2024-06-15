@@ -151,6 +151,7 @@ return [
     */
     'attributes' => [
         "name" => "نام",
+        "stars" => "ستاره ها",
         "username" => "نام کاربری",
         "email" => "پست الکترونیکی",
         "first_name" => "نام",
@@ -194,6 +195,8 @@ return [
         "link"=> "پیوند",
         "price "=> "قیمت",
         "discount"=> "تخفیف",
+        "product_id"=> "شناسه محصول",
+        "job_id"=> "شناسه شغل",
         "categories"=> "دسته بندی ها",
         "current_password" => "کلمه عبور فعلی",
         "new_password" => "کلمه عبور جدید"

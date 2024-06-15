@@ -54,10 +54,16 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{ $category->title }}</td>
                                 @if (!empty($category->parent->title))<td>{{ $category->parent->title}}</td>@else<td>-</td>@endif
-                                <td class="text-center"><a href="{{ $category->image['url'] }}" target="_blanck"><img src="{{ $category->image['url'] }}" style="width: 80px;height: 60px;"  alt="{{ $category->image['name'] }}"></a></td>
+                                <td class="text-center">
+                                    <a href="{{ $category->image['url'] }}" target="_blanck">
+                                        <div class="bg-light pb-1 pt-1 img-holder img-show" style="width: 200px;max-height: 50px;border-radius: 4px;">
+                                        <img src="{{ $category->image['url'] }}" style="height: 40px;"  alt="{{ $category->image['name'] }}">
+                                    </div>
+                                    </a>
+                                </td>
                                 <td class="text-center">@include('includes.status',["status" => $category->featured])</td>
                                 <td class="text-center">@include('includes.status',["status" => $category->status])</td>
-                                <td>{{verta($category->created_at)}}</td>
+                                <td>{{verta($category->created_at)->format('Y/m/d H:i')}}</td>
                                 <td>
                                     {{-- Edit--}}
                                     @can('edit categories')

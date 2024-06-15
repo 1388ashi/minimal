@@ -14,7 +14,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <select name="status">
+                        <select class="select2" name="status">
                             <option value="called" @selected($purchaseAdvisor->status == 'called')>تماس گرفته شده</option>
                             <option value="notcalled" @selected($purchaseAdvisor->status == 'notcalled')>تماس گرفته نشده</option>
                         </select>

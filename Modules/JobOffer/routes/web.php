@@ -16,6 +16,6 @@ use Modules\JobOffer\Http\Controllers\ResumesController;
 */
 
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
-    Route::resource('job-offers',JobOfferController::class);
+    Route::resource('jobs',JobOfferController::class);
     Route::resource('resumes',ResumesController::class);
 });

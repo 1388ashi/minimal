@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Cache;
 
 class Comment extends Model
 {
-    use HasFactory,LogsActivity, Filterable;
+    use HasFactory, Filterable;
 
     const STATUS_PENDING = 'pending';
 
@@ -57,17 +57,6 @@ class Comment extends Model
             static::STATUS_ACCEPTED,
             static::STATUS_REJECTED
         ];
-    }
-    
-    public function getActivitylogOptions() : LogOptions
-    {
-        $modelid = $this->attributes['id'];
-        $userid = auth()->user()->id;
-        $description =" نظر با شناسه {$modelid} توسط کاربر باشناسه {$userid}";
-        
-        return LogOptions::defaults()
-        ->logOnly($this->fillable)
-        ->setDescriptionForEvent(fn(string $eventName) => $description . __('custom.'.$eventName));
     }
     public function product(): BelongsTo 
     {

@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Setting\Http\Controllers\SettingController;
-
+use Modules\Setting\Http\Controllers\Api\SettingController;
 /*
  *--------------------------------------------------------------------------
  * API Routes
@@ -14,6 +13,6 @@ use Modules\Setting\Http\Controllers\SettingController;
  *
 */
 
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('setting', SettingController::class)->names('setting');
+Route::name('api')->group(function() {
+    Route::get('/settings', [SettingController::class,'index']);
 });

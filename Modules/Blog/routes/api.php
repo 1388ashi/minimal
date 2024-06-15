@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Blog\Http\Controllers\BlogController;
+use Modules\Blog\Http\Controllers\Api\PostsController;
 
 /*
  *--------------------------------------------------------------------------
@@ -13,7 +13,7 @@ use Modules\Blog\Http\Controllers\BlogController;
  * is assigned the "api" middleware group. Enjoy building your API!
  *
 */
-
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('blog', BlogController::class)->names('blog');
+Route::name('api')->group(function() {
+    Route::get('/posts', [PostsController::class,'index']);
+    Route::get('/posts/{id}', [PostsController::class,'show']);
 });

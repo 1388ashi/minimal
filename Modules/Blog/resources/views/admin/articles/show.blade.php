@@ -30,25 +30,25 @@
             <div class="col-xl-6 col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="header p-3" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">اطلاعات اولیه</h3>
+                        <p class="header p-3" style="font-size: 20px" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">اطلاعات اولیه</p>
                         <ul class="list-group">
                             <li class="list-group-item"><b class="bold">عنوان: </b>{{$article->title}}</li>
                             <li class="list-group-item"><b class="bold">نویسنده: </b>{{$article->writer}}</li>
                             <li class="list-group-item"><b class="bold">دسته بندی: </b>{{$article->category->title}}</li>
-                                <li class="list-group-item"><b class="bold">ویژه
-                                    : </b>@include('includes.status',["status" => $article->featured])
-                                </li>
-                                <li class="list-group-item"><b class="bold">وضعیت
+                            <li class="list-group-item"><b class="bold">ویژه
+                                : </b>@include('includes.status',["status" => $article->featured])
+                            </li>
+                            <li class="list-group-item"><b class="bold">وضعیت
                                     نمایش: </b>@include('includes.status',["status" => $article->status])
                                 </li>
-                            <li class="list-group-item"><b>تاریخ ثبت: </b>{{$vertaDate->format('Y/n/j')}}</li>
-                        </ul>
-                        <div class="mt-1">
-                            <label class=" form-label">خلاصه توضیحات:</label><p class="bold">{!!$article->summary!!}</p>
+                                <li class="list-group-item"><b>تاریخ ثبت: </b>{{$vertaDate->format('Y/n/j')}}</li>
+                            </ul>
+                            <div class="mt-1">
+                                <label class=" form-label">خلاصه توضیحات:</label><p class="bold">{!!$article->summary!!}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             <div class="col-xl-6 col-md-12">
                 <div class="card">
                     <div class="card-body">
@@ -58,7 +58,7 @@
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
                                             <a href="{{ $article->image['url'] }}" target="_blanck">
-                                            <img src="{{ $article->image['url'] }}" style="height: 310px" class="img-fluid"  alt="{{ $article->image['name'] }}">
+                                                <img src="{{ $article->image['url'] }}" style="height: 310px" class="img-fluid"  alt="{{ $article->image['name'] }}">
                                             </a>
                                         </div>
                                     </div>
@@ -70,15 +70,17 @@
             </div>
         </div>
         @if ($article->body)
+        <div class="row">
         <div class="col-xl-12 col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header p-3" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">بدنه ی مقاله:</h4>
+                    <p class="header p-3 " style="font-size: 20px" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">بدنه ی مقاله:</p>
                     <div class="mt-1">
                         {!!$article->body!!}
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         @endif
         <div class="card-body">

@@ -61,7 +61,7 @@
                                     <td class="text-center">@include('includes.status',["status" => $post->featured])</td>
                                     <td class="text-center">@include('includes.status',["status" => $post->status])</td>
                                     <td>
-                                        {{ verta($post->created_at) }}
+                                        {{ verta($post->created_at)->format('Y/m/d H:i') }}
                                     </td>
                                     <td>
                                         {{-- Edit--}}

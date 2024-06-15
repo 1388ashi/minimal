@@ -3,6 +3,7 @@
 namespace Modules\Specification\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateRequest extends FormRequest
 {
@@ -11,8 +12,9 @@ class UpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+        $specificationId = $this->route()->parameter('specification')->id;
         return [
-            'name' => 'required',
+            'name' => ['required',Rule::unique('specifications')->ignore($specificationId)],
 
             'categories.*' => 'required',
             'categories' => 'required|array',  

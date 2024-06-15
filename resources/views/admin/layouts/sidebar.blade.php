@@ -1,12 +1,11 @@
-	
-		<div class="app-sidebar1">
-			<div class="app-sidebar__user">
-				<div class="dropdown user-pro-body text-center">
-					<div class="user-pic">
-						<img src="{{asset('02.png')}}" style="width: 60%;height: 40%;" alt="user-img" class="border-0 avatar-xxl  mb-1">
-					</div>
-				</div>
+	<div class="app-sidebar__user">
+		<div class="dropdown user-pro-body text-center">
+			<div class="user-pic">
+				<img src="{{asset('02.png')}}" style="width: 60%;height: 40%;" alt="user-img" class="border-0 avatar-xxl">
 			</div>
+		</div>
+	</div>
+		<div class="app-sidebar3 mt-0">
 			<ul class="side-menu">
 				<li class="slide">
 					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.dashboard')}}">
@@ -51,6 +50,11 @@
 					@can('view products')
 					<ul class="slide-menu">
 						<li><a  class="slide-item" href="{{route('admin.products.index')}}">مدیریت محصولات</a></li>
+					</ul>
+					@endcan
+					@can('view products')
+					<ul class="slide-menu">
+						<li><a href="{{route('admin.suggestions.index')}}"  class="slide-item" >محصول پیشنهادی</a></li>
 					</ul>
 					@endcan
 					@can('view comments')
@@ -104,6 +108,14 @@
 					</a>
 				</li>
 				@endcan
+				@can('view brands')
+				<li class="slide">
+					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.brands.index')}}">
+						<i class="fa fa-th-large sidemenu_icon"></i>
+						<span class="side-menu__label">برند ها</span>
+					</a>
+				</li>
+				@endcan
 				@can('view faq')
 				<li class="slide">
 					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.asks.index')}}">
@@ -115,17 +127,22 @@
 				<li class="slide">
 					<a class="side-menu__item" data-toggle="slide" >
 						<i class="fa fa-briefcase sidemenu_icon"></i>
-						<span class="side-menu__label">مدیریت فرصت شغل</span><i class="angle fa fa-angle-left"></i>
+						<span class="side-menu__label">مدیریت فرصت شغلی</span><i class="angle fa fa-angle-left"></i>
 					</a>
 					@can('view jobs')
 					<ul class="slide-menu">
-						<li><a href="{{route('admin.job-offers.index')}}" class="slide-item">مدیریت شغل ها</a></li>
+						<li><a href="{{route('admin.jobs.index')}}" class="slide-item">مدیریت شغل ها</a></li>
+					</ul>
+					@endcan
+					@can('view jobs')
+					<ul class="slide-menu">
+						<li><a href="{{route('admin.resumes.index')}}" class="slide-item">مدیریت رزومه ها</a></li>
 					</ul>
 					@endcan
 				</li>
 				@can('view purchase_advisors')
 				<li class="slide">
-					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.purchase-advistors.index')}}">
+					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.purchase-advisors.index')}}">
 						<i class="fa fa-shopping-basket sidemenu_icon"></i>
 						<span class="side-menu__label">مشاوره خرید</span>
 					</a>

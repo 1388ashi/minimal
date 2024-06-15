@@ -15,7 +15,7 @@ class CommentController extends Controller implements HasMiddleware
     public static function middleware(){
         return [
             new Middleware('can:view comments',['index','show']),
-            new Middleware('can:edit comments',['edit','update']),
+            new Middleware('can:edit comments',['update']),
             new Middleware('can:delete comments',['destroy']),
         ];
     }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Modules\Product\Http\Controllers\CategoryController;
 use Modules\Product\Http\Controllers\ColorController;
 use Modules\Product\Http\Controllers\ProductController;
+use Modules\Product\Http\Controllers\SuggestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
     Route::delete('products/deleteGalleries/{product}', [ProductController::class, 'destroyGalleries'])->name('products.galleries.destroy');
     Route::delete('products/deleteVideo/{product}', [ProductController::class, 'destroyVideo'])->name('products.video.destroy');
     
+    Route::resource('suggestions',SuggestController::class);
     //colors
     Route::resource('colors',ColorController::class);
 });

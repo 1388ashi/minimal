@@ -20,6 +20,7 @@ use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 class Resumes extends Model implements HasMedia
 {
     use HasFactory, Filterable, InteractsWithMedia;
+    
     const STATUS_NEW = 'new';
     const STATUS_PENDING = 'pending';
     const STATUS_ACCEPTED = 'accepted';
@@ -40,13 +41,12 @@ class Resumes extends Model implements HasMedia
         'name',
         'resumes',
         'job_id',
-        'status'
     ];
 
     public static function getFilterInputs(): array
     {
         $filters = Arr::only(config('core.filters'), self::$filterColumns);
-        $filters['category_id']['options'] = Cache::rememberForever('all_job_offers', function () {
+        $filters['job_id']['options'] = Cache::rememberForever('all_job_offers', function () {
             return JobOffer::query()
                 ->latest('title')
                 ->pluck('title', 'id');
@@ -64,7 +64,7 @@ class Resumes extends Model implements HasMedia
             static::STATUS_REJECTED
         ];
     }
-    public function jobOffer(): BelongsTo 
+    public function job(): BelongsTo 
     {
         return $this->belongsTo(JobOffer::class);
     }

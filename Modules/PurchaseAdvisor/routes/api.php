@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\PurchaseAdvisor\Http\Controllers\PurchaseAdvisorController;
+use Modules\Product\Http\Controllers\Api\AdvisorController;
 
 /*
  *--------------------------------------------------------------------------
@@ -13,7 +13,6 @@ use Modules\PurchaseAdvisor\Http\Controllers\PurchaseAdvisorController;
  * is assigned the "api" middleware group. Enjoy building your API!
  *
 */
-
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('purchaseadvisor', PurchaseAdvisorController::class)->names('purchaseadvisor');
+Route::name('api')->group(function() {
+    Route::post('/advisors', [AdvisorController::class,'store']);
 });

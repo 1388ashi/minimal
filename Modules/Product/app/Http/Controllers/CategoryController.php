@@ -134,10 +134,10 @@ class CategoryController extends Controller implements HasMiddleware
     }
     public function destroy(Category $category)
     {
-        if ($category->products) {
+        if ($category->products->isNotEmpty() || $category->children->isNotEmpty()) {
             $data = [
                 'status' => 'danger',
-                'message' => 'دسته بندی به محصولی وصل هست'
+                'message' => 'دسته بندی قابل حذف نمیباشد هست'
             ];
             return redirect()->route('admin.categories.index')->with($data);
         }

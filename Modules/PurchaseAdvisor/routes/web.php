@@ -16,5 +16,5 @@ use Modules\PurchaseAdvisor\Http\Controllers\PurchaseAdvisorController;
 
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
 
-    Route::resource('purchase-advistors',PurchaseAdvisorController::class);
+    Route::resource('purchase-advisors',PurchaseAdvisorController::class);
 });

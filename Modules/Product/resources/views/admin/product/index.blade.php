@@ -72,7 +72,7 @@
                                     </td>
                                     <td class="text-center">@include('includes.status',["status" => $product->status])</td>
                                     <td>
-                                        {{ verta($product->created_at) }}
+                                        {{ verta($product->created_at)->format('Y/m/d H:i') }}
                                     </td>
                                     <td>
                                         {{-- Edit--}}

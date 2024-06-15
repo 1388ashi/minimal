@@ -55,7 +55,7 @@
                                     <td>{{Str::limit($ask->reply,60, '...')}}</td>
                                     <td class="text-center">@include('includes.status',["status" => $ask->status])</td>
                                     <td>
-                                        {{ verta($ask->created_at) }}
+                                        {{ verta($ask->created_at)->format('Y/m/d H:i') }}
                                     </td>
                                     <td>
                                         {{-- Edit--}}

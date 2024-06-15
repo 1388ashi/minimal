@@ -11,6 +11,7 @@ class UpdateRequest extends FormRequest
         return [
                 'title' => 'required',
                 'writer' => 'required',
+                'read' => 'required',
                 'body' => 'required|string',
                 'summary' => 'required|string',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg',

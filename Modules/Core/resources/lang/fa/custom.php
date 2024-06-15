@@ -13,5 +13,16 @@ return [
             'pending' => 'در انتظار بررسی',
             'rejected' => 'رد شده',
             'accepted' => 'تایید شده',
-        ]
+        ],
+        'typeJob' => [
+            'part-time' => 'پاره وقت',
+            'full-time' => 'تمام وقت',
+        ],
+        'resumes' => [
+            'new' => 'جدید',
+            'confirm_interview' => 'تایید برای مصاحبه',
+            'pending' => 'در انتظار بررسی',
+            'rejected' => 'رد شده',
+            'accepted' => 'تایید شده',
+        ],
 ];

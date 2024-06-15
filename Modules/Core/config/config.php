@@ -122,7 +122,7 @@ return [
             'operator' => '=',
             'column_type' => 'int',
             'relation' => [
-                'name' => 'jobOffer',
+                'name' => 'job',
                 'type' => 'belongsTo'
             ]
         ],
@@ -169,7 +169,7 @@ return [
             'column_type' => 'string'
         ],
         'resumes' => [
-            'column' => 'resumes',
+            'column' => 'status',
             'type' => 'select',
             'placeholder' => 'وضعیت را انتخاب کنید',
             'options' => [

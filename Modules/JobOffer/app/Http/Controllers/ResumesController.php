@@ -5,63 +5,55 @@ namespace Modules\JobOffer\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+use Modules\JobOffer\Http\Requests\Resumes\UpdateRequest;
+use Modules\JobOffer\Models\Resumes;
 
-class ResumesController extends Controller
+class ResumesController extends Controller implements HasMiddleware
 {
+    public static function middleware(){
+        return [
+            new Middleware('can:view resumes',['index','show']),
+            new Middleware('can:delete resumes',['destroy']),
+        ];
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('joboffer::index');
-    }
+        $resumes = Resumes::filters(request()->query())
+        ->select('id','name','mobile','job_id','created_at','status')
+        ->with('job:id,title')
+        ->latest('id')
+        ->paginate(15);
+        $filterInputs = Resumes::getFilterInputs();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('joboffer::create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request): RedirectResponse
-    {
-        //
-    }
-
+        return view('joboffer::admin.resumes.index', compact('resumes','filterInputs')); 
+    }  
     /**
      * Show the specified resource.
      */
     public function show($id)
     {
-        return view('joboffer::show');
-    }
+        $resume = Resumes::with('job:id,title')->findOrFail($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {
-        return view('joboffer::edit');
+        return view('joboffer::admin.resumes.show', compact('resume')); 
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id): RedirectResponse
+    
+    public function update(Resumes $resume,Request $request): RedirectResponse
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
-    {
-        //
+        $resume->update([
+            'status' => $request->status,
+        ]);
+        
+        $data = [
+            'status' => 'success',
+            'message' => 'رزومه با موفقیت به روزرسانی شد'
+        ];
+        
+        return redirect()->route('admin.resumes.index')
+        ->with($data);
     }
 }

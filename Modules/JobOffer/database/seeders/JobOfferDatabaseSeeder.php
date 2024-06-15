@@ -2,7 +2,10 @@
 
 namespace Modules\JobOffer\Database\Seeders;
 
+use Faker\Factory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Modules\JobOffer\Models\JobOffer;
 
 class JobOfferDatabaseSeeder extends Seeder
 {
@@ -11,6 +14,16 @@ class JobOfferDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call([]);
+        $status = ['pending','new','confirm_interview','rejected','accepted'];
+        $faker = Factory::create('fa_IR');
+        foreach (range(1,90) as $r) { 
+            DB::table('resumes')->insert([
+                'name' => $faker->name(),
+                'mobile' => $faker->phoneNumber(),
+                'job_id' => JobOffer::all()->random()->id,
+                'status' => $status[rand(0,2)],
+                'created_at'=> now(),
+            ]);
+        }
     }
 }

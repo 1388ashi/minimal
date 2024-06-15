@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title',80);
             $table->string('slug');
             $table->string('writer');
+            $table->string('read');
             $table->text('summary');
             $table->longText('body');
             $table->enum('type',['news','article']);

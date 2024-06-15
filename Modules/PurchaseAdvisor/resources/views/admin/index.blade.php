@@ -12,7 +12,7 @@
     <!-- row opened -->
     <div class="row mx-3">
         <div class="col-md-12">
-            <x-core::filter action="{{ route('admin.purchase-advistors.index') }}" :inputs="$filterInputs"/>
+            <x-core::filter action="{{ route('admin.purchase-advisors.index') }}" :inputs="$filterInputs"/>
             <div class="card">
                 <div class="card-header border-0">
                     <div class="card-title">لیست مشاوره خرید ({{ $purchaseAdvisors->total() }})</div>
@@ -32,6 +32,7 @@
                                     <th class="border-top">ردیف</th>
                                     <th class="border-top">نام</th>
                                     <th class="border-top">موبایل</th>
+                                    <th class="border-top">محصول</th>
                                     <th class="border-top">وضعیت</th>
                                     <th class="border-top">تاریخ ثبت</th>
                                     <th class="border-top">عملیات</th>
@@ -43,18 +44,11 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{ $purchaseAdvisor->name }}</td>
                                 <td>{{ $purchaseAdvisor->mobile }}</td>
-                                <td>{{ $purchaseAdvisor->status }}</td>
-                                <td>{{verta($purchaseAdvisor->created_at)}}</td>
+                                <td>{{ $purchaseAdvisor->product->title }}</td>
+                                <td>  @include('purchaseadvisor::admin.status', ['status' => $purchaseAdvisor->status])</td>
+                                <td>{{verta($purchaseAdvisor->created_at)->format('Y/m/d H:i')}}</td>
                                 <td>
                                     {{-- Edit--}}
-                                    @can('view purchase_advisors')
-                                    <button type="button" class="btn btn-primary btn-sm ml-1"
-                                    data-toggle="modal"
-                                    onclick="showDescriptionModal('{{$purchaseAdvisor->description}}')"
-                                    data-original-title="توضیحات">
-                                    <i class="fa fa-eye"></i>
-                                    </button> 
-                                    @endcan
                                     @can('edit purchase_advisors')
                                     <button data-toggle="modal" data-original-title="ویرایش" data-target="#edit-menu-{{ $purchaseAdvisor->id }}"  class="btn btn-warning btn-sm text-white">
                                         <i class="fa fa-pencil"></i>
@@ -80,15 +74,5 @@
             <!-- section-wrapper -->
         </div>
     </div>
-    @include('purchaseadvisor::admin.description')
     @include('purchaseadvisor::admin.edit')
-@endsection
-@section('scripts')
-<script>
-    function showDescriptionModal (description) {
-        let modal = $('#showDescriptionModal');
-        modal.find('#description').text(description ?? '-');
-        modal.modal('show');
-    }
-</script>
 @endsection

@@ -141,26 +141,16 @@ class RolesAndPermissionsSeeder extends Seeder
             'create jobs' => 'ایجاد شغل',
             'edit jobs' => 'ویرایش شغل ',
             'delete jobs' => 'حذف شغل ',
-            // //posts
-            // 'view posts' => 'مشاهده مقاله ها',
-            // 'create posts' => 'ایجاد مقاله ها',
-            // 'edit posts' => 'ویرایش مقاله ها',
-            // 'delete posts' => 'حذف مقاله ها',
-            // //consultations
-            // 'view consultations' => 'مشاهده درخواست مشاهده ها',
-            // 'create consultations' => 'ایجاد درخواست مشاهده ها',
-            // 'edit consultations' => 'ویرایش درخواست مشاهده ها',
-            // 'delete consultations' => 'حذف درخواست مشاهده ها',
-            // //comments
-            // 'view comments' => 'مشاهده نظر ها',
-            // 'create comments' => 'ایجاد نظر ها',
-            // 'edit comments' => 'ویرایش نظر ها',
-            // 'delete comments' => 'حذف نظر ها',
-            // //comments
-            // 'view orders' => 'مشاهده خرید ها',
-            // 'create orders' => 'ایجاد خرید ها',
-            // 'edit orders' => 'ویرایش خرید ها',
-            // 'delete orders' => 'حذف خرید ها',
+            //resumes
+            'view resumes' => 'مشاهده رزومه ها ',
+            'create resumes' => 'ایجاد رزومه',
+            'edit resumes' => 'ویرایش رزومه ',
+            'delete resumes' => 'حذف رزومه ',
+            //resumes
+            'view brands' => 'مشاهده برند ها ',
+            'create brands' => 'ایجاد برند',
+            'edit brands' => 'ویرایش برند ',
+            'delete brands' => 'حذف برند ',
         ];
 
         foreach ($permissions as $name => $label) {

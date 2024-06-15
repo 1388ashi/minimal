@@ -31,7 +31,7 @@
             <div class="col-xl-6 col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="header p-3" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">اطلاعات اولیه</h3>
+                        <p class="header p-3 " style="font-size: 20px" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">اطلاعات اولیه</p>
                         <ul class="list-group">
                             <li class="list-group-item">عنوان:{{$news->title}}</li>
                             <li class="list-group-item"><b class="bold">نویسنده: </b>{{$news->writer}}</li>
@@ -72,15 +72,17 @@
             </div>
         </div>
         @if ($news->body)
+        <div class="row">
         <div class="col-xl-12 col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header p-3" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">بدنه ی خبر:</h4>
+                    <p class="header p-3 " style="font-size: 20px" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">بدنه ی خبر:</p>
                     <div class="mt-1">
                         {!!$news->body!!}
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         @endif
         <div class="card-body">

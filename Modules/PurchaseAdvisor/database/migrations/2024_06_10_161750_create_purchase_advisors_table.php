@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
             $table->string('name');
             $table->string('mobile');
-            $table->text('description');
             $table->enum('status', PurchaseAdvisor::getPurchaseStatues());
             $table->timestamps();
         });

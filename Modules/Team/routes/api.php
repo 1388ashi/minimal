@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Team\Http\Controllers\TeamController;
-
 /*
  *--------------------------------------------------------------------------
  * API Routes
@@ -14,6 +12,6 @@ use Modules\Team\Http\Controllers\TeamController;
  *
 */
 
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('team', TeamController::class)->names('team');
+Route::name('api')->group(function() {
+    Route::get('/teams', [\Modules\Team\Http\Controllers\Api\TeamController::class,'index']);
 });

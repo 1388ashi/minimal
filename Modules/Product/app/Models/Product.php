@@ -2,10 +2,15 @@
 
 namespace Modules\Product\Models;
 
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Modules\Comment\Models\Comment;
+use Modules\PurchaseAdvisor\Models\PurchaseAdvisor;
 use Modules\Specification\Models\Specification;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -20,9 +25,9 @@ use Spatie\Activitylog\LogOptions;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Product extends Model implements HasMedia
+class Product extends Model implements Viewable,HasMedia
 {
-    use HasFactory, InteractsWithMedia, LogsActivity,HasSlug;
+    use HasFactory, InteractsWithMedia, LogsActivity,HasSlug, InteractsWithViews;
     protected $fillable = [
         'title',
         'slug',
@@ -60,6 +65,24 @@ class Product extends Model implements HasMedia
 
         return $price - $discount;
 	}
+    public static function getTopDiscountedProducts()
+    {
+        $topDiscountedProducts = Product::select('id', 'title', 'price','discount','slug')->where('status',1)->orderByDesc('discount')->take(20)->get();
+
+        return $topDiscountedProducts;
+    }
+    public static function getTopPriceProducts()
+    {
+        $topPriceProducts = Product::select('id', 'title', 'price','discount','slug')->where('status',1)->orderByDesc('price')->take(20)->get();
+
+        return $topPriceProducts;
+    }
+    public static function getTopCheapProducts()
+    {
+        $topCheapProducts =  Product::select('id', 'title', 'price','discount','slug')->where('status',1)->orderBy('price', 'ASC')->take(20)->get();
+
+        return $topCheapProducts;
+    }
     /**
      * The attributes that are mass assignable.
      */
@@ -205,12 +228,20 @@ class Product extends Model implements HasMedia
         {
             return $this->belongsToMany(Category::class);
         }
-        public function comments(): BelongsToMany 
+        public function advisors(): HasMany 
         {
-            return $this->belongsToMany(Comment::class);
+            return $this->hasMany(PurchaseAdvisor::class);
+        }
+        public function comments(): HasMany 
+        {
+            return $this->hasMany(Comment::class);
         }
         public function colors(): BelongsToMany 
         {
             return $this->belongsToMany(Color::class);
+        }
+        public function suggest(): HasOne 
+        {
+            return $this->hasOne(Suggest::class);
         }
 }

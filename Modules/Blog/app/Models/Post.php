@@ -35,6 +35,7 @@ class Post extends Model implements HasMedia, Viewable
         'type',
         'published_at',
         'writer',
+        'read',
         'featured',
         'status',
     ];

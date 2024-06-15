@@ -62,6 +62,7 @@ class NewsController extends Controller implements HasMiddleware
             'title' => $request->title,
             'writer' => $request->writer,
             'type' => 'news',
+            'read' => $request->read,
             'category_id' => $request->category_id,
             'summary' => $request->summary,
             'body' => $request->body,
@@ -112,6 +113,7 @@ class NewsController extends Controller implements HasMiddleware
         $news->update([
             'title' => $request->title,
             'writer' => $request->writer,
+            'read' => $request->read,
             'type' => 'news',
             'category_id' => $request->category_id,
             'summary' => $request->summary,

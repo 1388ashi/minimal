@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\JobOffer\Http\Controllers\JobOfferController;
+use Modules\JobOffer\Http\Controllers\Api\JobOfferController;
 
 /*
  *--------------------------------------------------------------------------
@@ -13,7 +13,7 @@ use Modules\JobOffer\Http\Controllers\JobOfferController;
  * is assigned the "api" middleware group. Enjoy building your API!
  *
 */
-
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('joboffer', JobOfferController::class)->names('joboffer');
+Route::name('api')->group(function() {
+    Route::get('/joboffers', [JobOfferController::class,'index']);
+    Route::post('/resumes', [JobOfferController::class,'store']);
 });

@@ -59,7 +59,7 @@
                                     @endforeach
                                     <td class="text-center">@include('includes.status',["status" => $admin->status])</td>
                                     <td>
-                                        {{verta($admin->created_at)}}
+                                        {{verta($admin->created_at)->format('Y/m/d H:i')}}
                                     </td>
                                     <td>
                                         {{-- Edit--}}
