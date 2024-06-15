@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Blog\Http\Controllers\Api\PostsController;
+use Modules\Blog\Http\Controllers\api\PostsController;
 
 /*
  *--------------------------------------------------------------------------
