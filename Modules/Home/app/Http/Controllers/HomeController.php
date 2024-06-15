@@ -33,7 +33,7 @@ class HomeController extends Controller
 
         $countCategories = Category::whereNull('parent_id')->select('id','title')->where('status',1)->withCount('products')->get();
         $customerReview = CustomerReview::select('id','name','city','description')->latest('id')->get();
-        $posts = Post::select('id','title','writer','summary','created_at')->where('status',1)->latest('id')->get();
+        $posts = Post::select('id','title','writer','summary','created_at')->where('status',1)->latest('id')->take(4)->get();
         $brands = Brand::select('id','status')->where('status',1)->latest('id')->get();
 
         $categories = Category::query()
@@ -45,49 +45,6 @@ class HomeController extends Controller
             })
             ->get();
             
-
-        // $categories = Category::select('id','title')->with('products.suggest')->get();
-        // foreach ($categories as $category) {
-        //     if ($category->product->suggest->isEmpty()) {
-        //         $suggestedProducts = Product::where('category_id', $category->id)->take(8)->get();
-        //     }else{
-        //         Product::whereHas('recommendations', function ($query) use ($category) {
-        //             $query->where('category_id', $category->id);
-        //         })->take(5)->get();
-        //         $suggestedProducts = Suggest::
-        //         select('id','product_id')
-        //         ->with('product:id,title,price,discount')
-        //         ->whereHas('product.categories', function ($query) use ($category) {
-        //             $query->where('id', $category->id);
-        //         })->get();
-        //     }
-        // }
-
-        // $lastProducts = Product::query()
-        // ->select('id', 'title', 'discount', 'discount_type', 'price')
-        // ->latest('id')
-        // ->take(10)
-        // ->get();
-
-        // $lastProducts->map(function ($product) {
-        //     return $product->setAttribute('price_with_discount', $product->totalPriceWithDiscount());
-        // });
-        // $mostDiscountProducts = Product::getTopDiscountedProducts();
-
-        // $mostViewedProducts  = Product::orderByViews()->take(10)->get();
-
-        // $bestSellingProducts = DB::table('order_items')
-        //     ->select('product_id', DB::raw('SUM(quantity) as total_quantity'))
-        //     ->groupBy('product_id')
-        //     ->orderByDesc('total_quantity')
-        //     ->limit(10)
-        //     ->get();
-        // $productIds = $bestSellingProducts->pluck('product_id');
-
-        // $productsMostSales = DB::table('products')
-        //     ->whereIn('id', $productIds)
-        //     ->get();
-
         return response()->success('',compact('categories', 'sliders','countCategories','customerReview','brands','posts','products'));
     }
 }

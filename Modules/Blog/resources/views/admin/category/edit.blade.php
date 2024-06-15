@@ -31,7 +31,7 @@
                         </span>
                         <span class="text-danger">&starf;</span>
                         <label class="custom-control custom-checkbox mr-1 mt-1">
-                            <input type="checkbox" class="custom-control-input" name="status" value="1" @checked($blog_category->status)>
+                            <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="status" value="1" @checked($blog_category->status)>
                             <span class="custom-control-label">فعال</span>
                         </label>
                     </div>

@@ -40,6 +40,7 @@ class SuggestController extends Controller
      */
     public function destroy(Suggest $suggest)
     {
+        dd($suggest->id);
         $suggest->delete();
         $data = [
             'status' => 'success',

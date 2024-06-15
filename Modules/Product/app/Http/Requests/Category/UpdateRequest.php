@@ -18,7 +18,7 @@ class UpdateRequest extends FormRequest
         return [
             'title' => ['required',Rule::unique('categories')->ignore($categoryId)],
             'parent_id' => ['nullable', 'numeric'],
-            'image' => 'required|image|mimes:jpeg,png,jpg',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg',
         ];
     }
     protected function passedValidation(): void

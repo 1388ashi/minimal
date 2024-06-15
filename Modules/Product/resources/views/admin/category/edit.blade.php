@@ -35,19 +35,15 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="label" class="control-label">تصویر<span class="text-danger">&starf;</span></label>
+                                    <label for="label" class="control-label">تصویر</label>
                                     <input  class="form-control" type="file" name="image">
                                 </div>
                             </div>
                             @if ($category->image['url'])
                             <div class="col-md-4">
-                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('delete-image-{{ $category->id }}')">
-                                    <i class="fa fa-trash-o"></i>
-                                </button>
-                                <br>
-                                <figure class="figure">
+                                <figure class="figure" style="min-width: 170px;max-height: 170px">
                                     <a target="blank" href="{{ $category->image['url'] }}">
-                                    <img src="{{ $category->image['url'] }}" class="img-thumbnail" width="50" height="50" />
+                                    <img src="{{ $category->image['url'] }}" class="img-thumbnail" width="150" height="150" />
                                     </a>
                                 </figure>
                             </div>
@@ -77,16 +73,26 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label mr-3">ویژه</label><span class="text-danger">&starf;</span>
-                                    <br>
-                                    <input type="checkbox" class="mt-1 mr-3" name="featured" @checked($category->featured)><span class="mr-2">فعال</span>
+                                    <span class="control-label ">
+                                        ویژه
+                                    </span>
+                                    <span class="text-danger">&starf;</span>
+                                    <label class="custom-control custom-checkbox mr-1 mt-1">
+                                        <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="featured" value="1" @checked($category->featured)>
+                                        <span class="custom-control-label">فعال</span>
+                                    </label>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label mr-3">وضعیت</label><span class="text-danger">&starf;</span>
-                                    <br>
-                                    <input type="checkbox" class="mt-1 mr-3" name="status" value="1" @checked($category->status)><span class="mr-2">فعال</span>
+                                    <span class="control-label ">
+                                        وضعیت
+                                    </span>
+                                    <span class="text-danger">&starf;</span>
+                                    <label class="custom-control custom-checkbox mr-1 mt-1">
+                                        <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="status" value="1" @checked($category->status)>
+                                        <span class="custom-control-label">فعال</span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -104,14 +110,4 @@
         </div><!-- col end -->
     </div>
     <!-- row closed -->
-    @if ($category->image['url'])
-        <form 
-            action="{{ route('admin.categories.image.destroy', $category) }}" 
-            id="delete-image-{{$category->id}}" 
-            method="POST" 
-            style="display: none;">
-            @csrf
-            @method("DELETE")
-        </form>
-    @endif
 @endsection

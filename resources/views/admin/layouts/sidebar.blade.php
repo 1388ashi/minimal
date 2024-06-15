@@ -15,9 +15,9 @@
 				</li>
 				@role('super_admin')
 				<li class="slide">
-					<a class="side-menu__item" data-toggle="slide" >
+					<a class="side-menu__item" style="cursor: pointer" data-toggle="slide" >
 						<i class="feather feather-edit sidemenu_icon"></i>
-						<span class="side-menu__label">اطلاعات پایه</span><i class="angle fa fa-angle-left"></i>
+						<span  class="side-menu__label">اطلاعات پایه</span><i class="angle fa fa-angle-left"></i>
 					</a>
 					<ul class="slide-menu">
 						<li><a href="{{route('admin.roles')}}" class="slide-item">مدیریت نقش ها و مجوز ها</a></li>
@@ -28,7 +28,7 @@
 				</li>
 				@endrole
 				<li class="slide">
-					<a class="side-menu__item" data-toggle="slide" >
+					<a class="side-menu__item" style="cursor: pointer" data-toggle="slide" >
 						<i class="fa fa-shopping-bag sidemenu_icon"></i>
 						<span class="side-menu__label">مدیریت محصولات</span><i class="angle fa fa-angle-left"></i>
 					</a>
@@ -64,7 +64,7 @@
 					@endcan
 				</li>
 				<li class="slide">
-					<a class="side-menu__item" data-toggle="slide" >
+					<a class="side-menu__item" style="cursor: pointer" data-toggle="slide" >
 						<i class="fa fa-newspaper-o sidemenu_icon"></i>
 						<span class="side-menu__label">وبلاگ</span><i class="angle fa fa-angle-left"></i>
 					</a>
@@ -125,7 +125,7 @@
 				</li>
 				@endcan
 				<li class="slide">
-					<a class="side-menu__item" data-toggle="slide" >
+					<a class="side-menu__item" style="cursor: pointer" data-toggle="slide" >
 						<i class="fa fa-briefcase sidemenu_icon"></i>
 						<span class="side-menu__label">مدیریت فرصت شغلی</span><i class="angle fa fa-angle-left"></i>
 					</a>

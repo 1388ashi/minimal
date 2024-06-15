@@ -6,6 +6,7 @@
         <div class="page-header">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('admin.admins.index') }}">لیست ادمین ها</a></li>
                 <li class="breadcrumb-item active" aria-current="page">نمایش ادمین</li>
                 
             </ol>
@@ -26,7 +27,7 @@
         <div class="card">
 
             <div class="card-header border-0">
-                <p class="card-title ml-2">مشخصات ادمین</p>
+                <p  class="card-title ml-2">مشخصات ادمین</p>
             </div>
             
             <div class="card-body">
@@ -76,7 +77,7 @@
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="d-flex align-items-center my-1">
                     <span class="fs-16 font-weight-bold ml-1">تاریخ ثبت :</span>
-                    <span class="fs-14 mr-1"> {{ verta($admin->created_at)->format('Y/m/d') }} </span>
+                    <span class="fs-14 mr-1"> {{ verta($admin->created_at)->format('Y/m/d H:i') }} </span>
                     </div>
                 </div>
     
@@ -87,22 +88,24 @@
             </div>
             <div class="card mb-0">
                 <div class="card-header border-0">
-                    <p class="card-title" style="font-size: 16px">فعالیت ادمین ها</p>
+                    <p class=" card-title">فعالیت های ادمین</p>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="example-2" class="table table-striped table-bordered text-nowrap">
                             <thead>
                                 <tr>
-                                    <th class="text-center border-top text-muted">توضیحات</th>
-                                    <th class="text-center border-top text-muted">تاریخ عملیات</th>
+                                    <th class="w-30 text-center border-top">ردیف</th>
+                                    <th class="w-30 text-center border-top">توضیحات</th>
+                                    <th class="w-30 text-center border-top">تاریخ عملیات</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($logActivitys as $item)
                                 <tr>
-                                    <td class="text-right">{{$item->description}}</td>
-                                    <td class="text-center">{{verta($admin->created_at)}}</td>
+                                    <td class="text-center font-weight-bold">{{$loop->iteration}}</td>
+                                    <td class="text-center">{{$item->description}}</td>
+                                    <td class="text-center">{{verta($admin->created_at)->format('Y/m/d H:i')}}</td>
                                 </tr>
                             @endforeach
                         </tbody>

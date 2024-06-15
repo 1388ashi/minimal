@@ -137,7 +137,7 @@ class CategoryController extends Controller implements HasMiddleware
         if ($category->products->isNotEmpty() || $category->children->isNotEmpty()) {
             $data = [
                 'status' => 'danger',
-                'message' => 'دسته بندی قابل حذف نمیباشد هست'
+                'message' => 'دسته بندی قابل حذف نمی باشد '
             ];
             return redirect()->route('admin.categories.index')->with($data);
         }

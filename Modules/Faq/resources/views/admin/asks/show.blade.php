@@ -6,6 +6,7 @@
         <div class="page-header">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('admin.asks.index') }}">لیست سوال </a></li>
                 <li class="breadcrumb-item active" aria-current="page">نمایش سوال</li>
                 
             </ol>
@@ -30,7 +31,7 @@
             <div class="col-xl-12 col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="header p-3" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">{!!$ask->question!!} </h4>
+                        <p class="header font-weight-bold p-3" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">{!!$ask->question!!} </p>
                         <div class="mt-1">
                             جواب:
                             {!!$ask->reply!!}

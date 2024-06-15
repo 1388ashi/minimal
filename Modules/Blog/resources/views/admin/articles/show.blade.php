@@ -6,6 +6,7 @@
         <div class="page-header mx-2">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('admin.articles.index') }}">لیست مقاله </a></li>
                 <li class="breadcrumb-item active" aria-current="page">نمایش مقاله</li>
                 
             </ol>

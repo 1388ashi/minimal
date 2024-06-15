@@ -58,8 +58,8 @@
                                     {{-- Edit--}}
                                     @can('edit categories')
                                     <button type="button" class="btn btn-warning btn-sm ml-1"
-                                    data-toggle="modal"
-                                    data-target="#edit-menu-{{ $blog_category->id }}">
+                                        data-toggle="modal"
+                                        data-target="#edit-menu-{{ $blog_category->id }}">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                     </button>
                                     @endcan
@@ -119,7 +119,7 @@
                             </span>
                             <span class="text-danger">&starf;</span>
                             <label class="custom-control custom-checkbox mr-1 mt-1">
-                                <input type="checkbox" class="custom-control-input" name="status" value="1" checked>
+                                <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="status" value="1" checked>
                                 <span class="custom-control-label">فعال</span>
                             </label>
                         </div>

@@ -29,6 +29,7 @@ class CategoryController extends Controller implements HasMiddleware
     {
         $blog_categories = BlogCategory::query()
                     ->select('id','title','type','status','created_at')
+                    ->with('posts:id,title')
                     ->latest('id')
                     ->paginate(15);
                     

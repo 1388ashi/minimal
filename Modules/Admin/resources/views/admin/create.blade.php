@@ -26,19 +26,19 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="name" class="control-label">نام<span class="text-danger">&starf;</span></label>
+                                    <label for="name" class="control-label">نام <span class="text-danger">&starf;</span> </label>
                                     <input type="text" class="form-control" name="name" id="name" placeholder="نام ادمین اینجا وارد کنید" value="{{ old('name') }}" required autofocus>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="label" class="control-label">شماره موبایل<span class="text-danger">&starf;</span></label>
+                                    <label for="label" class="control-label">شماره موبایل <span class="text-danger">&starf;</span> </label>
                                     <input type="text" class="form-control" name="mobile" id="mobile" placeholder="شماره موبایل اینجا وارد کنید" value="{{ old('mobile') }}" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">نقش ادمین</label><span class="text-danger">&starf;</span>
+                                    <label class="control-label">نقش ادمین</label> <span class="text-danger">&starf; </span>
                                     <select class="form-control custom-select select2" data-placeholder="Select Package" name="role">
                                         <option selected disabled>- انتخاب کنید  -</option>
                                         @foreach($roles as $role)
@@ -65,7 +65,7 @@
                                 <div class="form-group">
                                     <label class="control-label mr-3">وضعیت</label><span class="text-danger">&starf;</span>
                                     <br>
-                                    <input type="checkbox" class="mt-1 mr-3" name="status" value="1" checked><span class="mr-2">فعال</span>
+                                    <input style="cursor: pointer" type="checkbox" style="cursor: pointer" class="mt-1 mr-3" name="status" value="1" checked><span class="mr-2">فعال</span>
                                 </div>
                             </div>
                         </div>

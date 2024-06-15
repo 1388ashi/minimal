@@ -6,6 +6,7 @@
         <div class="page-header ">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('admin.products.index') }}">لیست محصول ها</a></li>
                 <li class="breadcrumb-item active" aria-current="page">نمایش محصول</li>
                 
             </ol>

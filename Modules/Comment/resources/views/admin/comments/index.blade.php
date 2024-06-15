@@ -53,7 +53,7 @@
                                         @include('comment::admin.comments.status', ['status' => $comment->status])
                                     </td>
                                     {{-- <td class="text-center">@include('includes.status',["status" => $comment->status])</td> --}}
-                                    <td>{{ verta($comment->created_at) }}</td>
+                                    <td>{{ verta($comment->created_at)->format('Y/m/d H:i') }}</td>
                                     <td>
                                         {{-- Edit--}}
                                         @can('view comments')

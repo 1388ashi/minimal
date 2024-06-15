@@ -26,13 +26,13 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="title" class="control-label">عنوان<span class="text-danger">&starf;</span></label>
+                                    <label for="title" class="control-label">عنوان <span class="text-danger">&starf;</span></label>
                                     <input type="text" class="form-control" name="title" id="title" placeholder="عنوان دسته بندی اینجا وارد کنید" value="{{ old('title') }}" required autofocus>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="label" class="control-label">تصویر<span class="text-danger">&starf;</span></label>
+                                    <label for="label" class="control-label">تصویر <span class="text-danger">&starf;</span></label>
                                     <input  class="form-control" type="file" name="image">
                                 </div>
                             </div>
@@ -62,16 +62,30 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label mr-3">ویژه</label><span class="text-danger">&starf;</span>
+                                    <span class="control-label ">
+                                        ویژه
+                                    </span>
+                                    <label class="custom-control custom-checkbox mr-1 mt-1">
+                                        <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="featured" value="1" >
+                                        <span class="custom-control-label">فعال</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label mr-3">ویژه</label> <span class="text-danger">&starf;</span>
                                     <br>
-                                    <input type="checkbox" class="mt-1 mr-3" name="featured"><span class="mr-2">فعال</span>
+                                    <input style="cursor: pointer" type="checkbox" class="mt-1 mr-3" name="featured"><span class="mr-2">فعال</span>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label mr-3">وضعیت</label><span class="text-danger">&starf;</span>
-                                    <br>
-                                    <input type="checkbox" class="mt-1 mr-3" name="status" value="1" checked><span class="mr-2">فعال</span>
+                                    <span class="control-label ">
+                                        وضعیت
+                                    </span>
+                                    <span class="text-danger">&starf;</span>
+                                    <label class="custom-control custom-checkbox mr-1 mt-1">
+                                        <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="status" value="1" checked>
+                                        <span class="custom-control-label">فعال</span>
+                                    </label>
                                 </div>
                             </div>
                         </div>

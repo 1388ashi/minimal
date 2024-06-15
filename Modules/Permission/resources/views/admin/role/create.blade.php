@@ -2,7 +2,7 @@
 
 @section('content')
     <!--  Page-header opened -->
-    <div class="page-header">
+    <div class="page-header mx-1">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
             <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('admin.roles') }}">لیست نقش ها</a></li>
@@ -14,7 +14,7 @@
     <!--  Page-header closed -->
 
     <!-- row opened -->
-    <div class="row">
+    <div class="row mx-3">
         <div class="col-md">
             <div class="card overflow-hidden">
                 <div class="card-header">
@@ -42,7 +42,7 @@
                             </div>
                         </div>
 
-                        <h4 class="header p-2">مجوزها</h4>
+                        <p class="header ">مجوزها</p>
                         @foreach($permissions->chunk(4) as $chunk)
                             <div class="row">
                                 @foreach($chunk as $permission)

@@ -45,11 +45,14 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label mr-3">وضعیت</label><span class="text-danger">&starf;</span>
-                                    <br>
-                                    <input type="checkbox" class="mt-1 mr-3" name="status" value="1" checked><span class="mr-2">فعال</span>
-                                </div>
+                                <span class="control-label ">
+                                    وضعیت
+                                </span>
+                                <span class="text-danger">&starf;</span>
+                                <label class="custom-control custom-checkbox mr-1 mt-1">
+                                    <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="status" value="1" checked>
+                                    <span class="custom-control-label">فعال</span>
+                                </label>
                             </div>
                         </div>
                         <div class="row">

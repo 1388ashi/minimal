@@ -113,6 +113,13 @@ class SpecificationController extends Controller implements HasMiddleware
      */
     public function destroy(Specification $specification)
     {
+        if ($specification->products->isNotEmpty()) {
+            $data = [
+                'status' => 'danger',
+                'message' => 'مشخصه قابل حذف نمی باشد '
+            ];
+            return redirect()->route('admin.specifications.index')->with($data);
+        }
         $specification->delete();
         
         $data = [

@@ -65,13 +65,15 @@
                                     <input type="password" name="password_confirmation" class="form-control" placeholder="کلمه عبور را دوباره اینجا وارد کنید" >
                                 </div>
                             </div>
+                            @if ($admin->name !== 'مدیر کل')
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label mr-3">وضعیت</label><span class="text-danger">&starf;</span>
                                     <br>
-                                    <input type="checkbox" class="mt-1 mr-3" name="status" value="1" @checked($admin->status)><span class="mr-2">فعال</span>
+                                    <input style="cursor: pointer" type="checkbox" class="mt-1 mr-3" name="status" value="1" @checked($admin->status)><span class="mr-2">فعال</span>
                                 </div>
                             </div>
+                            @endif
                         </div>
                         <div class="row">
                             <div class="col">

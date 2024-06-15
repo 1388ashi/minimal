@@ -76,7 +76,7 @@
                                             @method('DELETE')
                                         </form> --}}
                                         @can('delete admins')
-                                        <button type="button" class="btn btn-danger btn-sm text-white" data-original-title="حذف" onclick="confirmDelete('delete-{{ $admin->id }}')">
+                                        <button type="button" class="btn btn-danger item-delete btn-sm text-white" data-original-title="حذف" >
                                             <i class="fa fa-trash-o"></i>
                                         </button>
                                         @endcan

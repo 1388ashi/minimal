@@ -6,6 +6,7 @@
         <div class="page-header">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.index') }}"><i class="fe fe-life-buoy ml-1"></i>مدیریت نظرات</a></li>
                 <li class="breadcrumb-item active" aria-current="page">نمایش نظر</li>
             </ol>
             <div>
