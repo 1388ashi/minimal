@@ -14,7 +14,7 @@ class PostsController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        $postCategories = BlogCategory::select('id','title')->with('posts:id,title,summary,body,,created_at')->get();
+        $postCategories = BlogCategory::select('id','title')->with('posts')->get();
 
         $featuredPosts = Post::query()
         ->select('id','title','summary','body','featured','created_at')
