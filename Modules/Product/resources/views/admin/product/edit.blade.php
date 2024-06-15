@@ -158,7 +158,7 @@
                                 @endforeach
                             </div>
                         <hr>    
-                        <h6>مشخصه ها</h6>
+                        <p class="ps-20">مشخصه ها</p>
                         <hr>
                         <div v-for="specification in specifications">
                             <div class="row">

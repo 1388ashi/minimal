@@ -70,11 +70,6 @@
                                         <span class="custom-control-label">فعال</span>
                                     </label>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label mr-3">ویژه</label> <span class="text-danger">&starf;</span>
-                                    <br>
-                                    <input style="cursor: pointer" type="checkbox" class="mt-1 mr-3" name="featured"><span class="mr-2">فعال</span>
-                                </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
