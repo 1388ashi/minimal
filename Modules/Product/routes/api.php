@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Product\Http\Controllers\Api\AdvisorController;
-use Modules\Product\Http\Controllers\Api\CommentController;
+use Modules\Product\Http\Controllers\Api\ProductController;
 
 /*
  *--------------------------------------------------------------------------
@@ -16,7 +15,6 @@ use Modules\Product\Http\Controllers\Api\CommentController;
 */
 
 Route::name('api')->group(function() {
-    Route::get('/products', [\Modules\Product\Http\Controllers\Api\ProductController::class,'index']);
-    Route::get('/products/{id}', [\Modules\Product\Http\Controllers\Api\ProductController::class,'show']);
+    Route::resource('products',ProductController::class);
     
 });
