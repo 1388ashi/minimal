@@ -13,5 +13,5 @@ use Illuminate\Support\Facades\Route;
  *
 */
 Route::name('api')->group(function() {
-    Route::post('/comments', [\Modules\Product\Http\Controllers\Api\CommentController::class,'store']);
+    Route::post('/comments', [\Modules\Product\Http\Controllers\api\CommentController::class,'store']);
 });

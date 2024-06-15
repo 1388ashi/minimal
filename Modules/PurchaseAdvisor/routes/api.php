@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Product\Http\Controllers\Api\AdvisorController;
+use Modules\Product\Http\Controllers\api\AdvisorController;
 
 /*
  *--------------------------------------------------------------------------
