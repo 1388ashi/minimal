@@ -79,8 +79,14 @@
                         <div class="row mt-2">
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    <label for="read" >زمان خواندن<span class="text-danger">&starf;</span></label>
+                                    <input type="text" class="form-control" name="read" id="read" placeholder="زمان خواندن مقاله اینجا وارد کنید" value="{{ old('read', $news->read) }}" required autofocus>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
                                     <label for="writer" >نویسنده<span class="text-danger">&starf;</span></label>
-                                    <input type="text" class="form-control" name="writer" id="writer" placeholder="نویسنده مقاله اینجا وارد کنید" value="{{ old('writer', $article->writer) }}" required autofocus>
+                                    <input type="text" class="form-control" name="writer" id="writer" placeholder="نویسنده مقاله اینجا وارد کنید" value="{{ old('writer', $news->writer) }}" required autofocus>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -95,16 +101,18 @@
                                     </label>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <span class="control-label ">
-                                        وضعیت
-                                    </span>
-                                    <span class="text-danger">&starf;</span>
-                                    <label class="custom-control custom-checkbox mr-1 mt-1">
-                                        <input type="checkbox" class="custom-control-input" name="status" value="1" @checked($news->status)>
-                                        <span class="custom-control-label">فعال</span>
-                                    </label>
+                                    وضعیت
+                                </span>
+                                <span class="text-danger">&starf;</span>
+                                <label class="custom-control custom-checkbox mr-1 mt-1">
+                                    <input type="checkbox" class="custom-control-input" name="status" value="1" @checked($article->status)>
+                                    <span class="custom-control-label">فعال</span>
+                                </label>
                                 </div>
                             </div>
                         </div>
