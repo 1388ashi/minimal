@@ -44,20 +44,26 @@ class ProductController extends Controller implements HasMiddleware
 
         $data = [];
         $specifications = $specifications->unique('id');
-        foreach ($specifications as $specification) {
-            $specificationValue = $product->specifications->where('id', $specification->id)->first();
-            
-            if ($specificationValue) {
-                $value = $specificationValue->pivot->value;
-            } else {
+        
+        if ($product) {
+            foreach ($specifications as $specification) {
                 $value = null;
+                if ($product->specifications && $product->specifications->isNotEmpty()) {
+                    $specificationValue = $product->specifications->where('id', $specification->id)->first();
+                    if ($specificationValue) {
+                        $value = $specificationValue->pivot->value;
+                    }
+                }
+        
+                $data[] = [
+                    'id' => $specification->id,
+                    'name' => $specification->name,
+                    'value' => $value
+                ];
             }
-            
-            $data[] = [
-                'id' => $specification->id,
-                'name' => $specification->name,
-                'value' => $value
-            ];
+        } else {
+            // Handle when $product is null
+            // You can log an error, return a specific response, etc.
         }
 
         return response()->json(['specifications' => $data]);
