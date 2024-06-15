@@ -38,14 +38,14 @@
                                     <label class="control-label">دسته بندی ها</label><span class="text-danger">&starf;</span>
                                     <select class="form-control select2-example" name="categories[]" v-model="categories" v-on:change="getSpecifications" multiple>
                                         @foreach($categories as $category)
-                                        <option value="{{$category->id}}"  @selected(in_array($category->id, old('categories', $product->categories->pluck('id')->all())))>{{$category->title}}</option>
+                                        <option value="{{$category->id}}"  @selected(in_array($category->id, $product->categories->pluck('id')->all()))>{{$category->title}}</option>
                                                 <!-- نمایش دادن فرزندان هر والد -->
                                             @if($category->has('recursiveChildren'))
                                                 @foreach($category->recursiveChildren as $item)
-                                                    <option value="{{ $item->id }}"  @selected(in_array($item->id, old('categories', $product->categories->pluck('id')->all())))>-{{ $item->title }} </option>
+                                                    <option value="{{ $item->id }}"  @selected(in_array($item->id,$product->categories->pluck('id')->all()))>-{{ $item->title }} </option>
                                                     @if($item->has('children'))
                                                     @foreach($item->children as $child)
-                                                        <option value="{{ $child->id }}"  @selected(in_array($child->id, old('categories', $product->categories->pluck('id')->all())))>--{{ $child->title }}</option>
+                                                        <option value="{{ $child->id }}"  @selected(in_array($child->id, $product->categories->pluck('id')->all()))>--{{ $child->title }}</option>
                                                     @endforeach
                                                     @endif
                                                 @endforeach
