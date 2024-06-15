@@ -35,6 +35,17 @@ class HomeController extends Controller
         $customerReview = CustomerReview::select('id','name','city','description')->latest('id')->get();
         $posts = Post::select('id','title','writer','summary','created_at')->where('status',1)->latest('id')->get();
         $brands = Brand::select('id','status')->where('status',1)->latest('id')->get();
+
+        $categories = Category::query()
+            ->withWhereHas('products', function ($query) {
+                return $query->withWhereHas('suggest');
+            })
+            ->orWhereHas('products', function($query) {
+                return $query->with('products');
+            })
+            ->get();
+            
+
         // $categories = Category::select('id','title')->with('products.suggest')->get();
         // foreach ($categories as $category) {
         //     if ($category->product->suggest->isEmpty()) {
@@ -77,6 +88,6 @@ class HomeController extends Controller
         //     ->whereIn('id', $productIds)
         //     ->get();
 
-        return response()->success('',compact('sliders','countCategories','customerReview','brands','posts','products'));
+        return response()->success('',compact('categories', 'sliders','countCategories','customerReview','brands','posts','products'));
     }
 }
