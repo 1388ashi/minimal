@@ -24,6 +24,10 @@ class BlogCategory extends Model
     {
         return $this->hasMany(Post::class,'category_id');
     }
+    public function isDeletable(): bool
+    {
+        return $this->posts->isEmpty();
+    }
     public function getActivitylogOptions() : LogOptions
     {
         $modelid = $this->attributes['id'];

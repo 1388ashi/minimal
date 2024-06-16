@@ -51,8 +51,8 @@
                             @forelse($asks as $ask)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{Str::limit($ask->question,60, '...')}}</td>
-                                    <td>{{Str::limit($ask->reply,60, '...')}}</td>
+                                    <td>{{Str::limit($ask->question,40, '...')}}</td>
+                                    <td>{{Str::limit($ask->reply,40, '...')}}</td>
                                     <td class="text-center">@include('includes.status',["status" => $ask->status])</td>
                                     <td>
                                         {{ verta($ask->created_at)->format('Y/m/d H:i') }}

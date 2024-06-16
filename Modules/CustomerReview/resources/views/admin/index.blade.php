@@ -94,7 +94,7 @@
                                             </div>
                                             <div class="modal-body">
                                                     <div class="form-group">
-                                                        <div class="form-control">{{$customerReview->description}}</div>
+                                                        <div class="form-control" style="overflow: scroll">{{$customerReview->description}}</div>
                                                     </div>
                                             </div>
                                             <div class="modal-footer justify-content-center">

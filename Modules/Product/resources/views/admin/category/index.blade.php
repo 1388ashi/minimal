@@ -71,7 +71,7 @@
                                     @endcan
                                     {{-- Delete--}}
                                     @can('delete categories')
-                                    <x-core::delete-btn route="admin.categories.destroy" :model="$category"  />
+                                    <x-core::delete-btn route="admin.categories.destroy" :model="$category" disabled="{{ !$category->isDeletable() }}" />
                                     @endcan
                                     </td>
                             </tr>

@@ -25,6 +25,7 @@ class Role extends SpatieRole
         'label',
         'created_at',
     ];
+    
     public function getActivitylogOptions() : LogOptions
     {
         $modelid = $this->attributes['id'];

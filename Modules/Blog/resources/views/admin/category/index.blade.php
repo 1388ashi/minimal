@@ -65,12 +65,13 @@
                                     @endcan
                                     {{-- Delete--}}
                                     @can('delete categories')
-                                    <x-core::delete-btn route="admin.blog-categories.destroy" :model="$blog_category"  />
+                                    @if ($blog_category->posts)
+                                    <x-core::delete-btn route="admin.blog-categories.destroy" :model="$blog_category" disabled="{{ !$blog_category->isDeletable() }}" />
+                                    @endif
                                     @endcan
                                     </td>
                             </tr>
                                     @empty
-                                        
                                 <tr>
                                     <td colspan="8">
                                         <p class="text-danger"><strong>در حال حاضر هیچ دسته بندی یافت نشد!</strong></p>

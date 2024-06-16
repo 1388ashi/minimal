@@ -9,8 +9,6 @@
                 <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
             </div>
         </div>
-
-
         <div class="card-body">
             <form class=" col-12" action="{{ $action }}" method="get" id="filter-form">
                 <div class="row">

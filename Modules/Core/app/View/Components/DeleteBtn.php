@@ -11,10 +11,12 @@ class DeleteBtn extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $route,public Model $model)
+    public function __construct(
+        public string $route,
+        public Model $model,
+        public bool $disabled = false
+    )
     {
-        $this->route = $route;
-        $this->model = $model;
     }
 
     /**
@@ -22,6 +24,6 @@ class DeleteBtn extends Component
      */
     public function render(): View|string
     {
-        return view('core::components.deletebtn');
+        return view('core::components.delete-btn');
     }
 }

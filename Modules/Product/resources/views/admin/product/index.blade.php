@@ -21,7 +21,7 @@
     </div>
 
     <!-- row opened -->
-    <div class="row mx-2">
+    <div class="row mx-3">
         <div class="col-md-12">
             @include('product::admin.product.filter')
             <div class="card">
@@ -55,7 +55,7 @@
                             @forelse($products as $product)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{ $product->title }}</td>
+                                    <td>{{Str::limit($product->title,40,'...')}}</td>
                                     <td>
                                         @foreach($product->categories as $key => $item)
                                         {{$item->title}}
