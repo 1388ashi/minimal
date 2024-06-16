@@ -139,7 +139,7 @@
     
                                     <div class="col-9">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="مقدار را وارد کنید" :name="'specifications[' + specification.id + ']'" value="{{old('specifications[' + specification.id + ']')}}">
+                                            <input type="text" class="form-control" placeholder="مقدار را وارد کنید" :name="'specifications[' + specification.id + ']'" >
                                         </div>
                                     </div>
                                 </div>

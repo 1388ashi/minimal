@@ -25,7 +25,7 @@ class StoreRequest extends FormRequest
     {
         if(filled($this->featured) && empty($this->image)){
             throw ValidationException::withMessages([
-                'parent_id' => ['دسته بندی ویژه تصویر الزامی رسیده']
+                'parent_id' => ['دسته بندی ویژه تصویر الزامی دارد']
             ])
             ->errorBag('default');
         }elseif (!empty($this->parent_id)) {
