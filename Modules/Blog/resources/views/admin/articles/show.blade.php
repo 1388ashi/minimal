@@ -36,6 +36,7 @@
                             <li class="list-group-item"><b class="bold">عنوان: </b>{{$article->title}}</li>
                             <li class="list-group-item"><b class="bold">نویسنده: </b>{{$article->writer}}</li>
                             <li class="list-group-item"><b class="bold">دسته بندی: </b>{{$article->category->title}}</li>
+                            <li class="list-group-item"><b class="bold">زمان خواندن: </b>{{$article->read}}</li>
                             <li class="list-group-item"><b class="bold">ویژه
                                 : </b>@include('includes.status',["status" => $article->featured])
                             </li>

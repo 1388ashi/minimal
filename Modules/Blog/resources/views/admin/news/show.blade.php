@@ -37,6 +37,7 @@
                             <li class="list-group-item">عنوان:{{$news->title}}</li>
                             <li class="list-group-item"><b class="bold">نویسنده: </b>{{$news->writer}}</li>
                             <li class="list-group-item"><b class="bold">دسته بندی: </b>{{$news->category->title}}</li>
+                            <li class="list-group-item"><b class="bold">زمان خواندن: </b>{{$news->read}}</li>
                                 <li class="list-group-item"><b class="bold">ویژه
                                     : </b>@include('includes.status',["status" => $news->featured])
                                 </li>

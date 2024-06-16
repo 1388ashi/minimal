@@ -5,7 +5,7 @@
     <div class="page-header mx-5">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
-            <li class="breadcrumb-item active" aria-current="page">لیست همه تیکت ها</li>
+            <li class="breadcrumb-item active" aria-current="page">لیست همه پیام ها</li>
         </ol>
     </div>
 
@@ -15,7 +15,7 @@
             <x-core::filter action="{{ route('admin.tickets.index') }}" :inputs="$filterInputs"/>
             <div class="card">
                 <div class="card-header border-0">
-                    <div class="card-title">لیست تیکت ({{ $tickets->total() }})</div>
+                    <div class="card-title">لیست پیام ها ({{ $tickets->total() }})</div>
                     <div class="card-options">
                         <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
                         <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i class="fe fe-maximize"></i></a>
@@ -62,7 +62,7 @@
                                         
                                 <tr>
                                     <td colspan="8">
-                                        <p class="text-danger"><strong>در حال حاضر هیچ تیکتی یافت نشد!</strong></p>
+                                        <p class="text-danger"><strong>در حال حاضر هیچ پیامی یافت نشد!</strong></p>
                                     </td>
                                 </tr>
                             @endforelse

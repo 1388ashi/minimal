@@ -152,7 +152,7 @@
 				<li class="slide">
 					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.tickets.index')}}">
 						<i class="fa fa-ticket sidemenu_icon"></i>
-						<span class="side-menu__label">مدیریت تیکت ها</span>
+						<span class="side-menu__label">مدیریت پیام ها</span>
 					</a>
 				</li>
 				@endcan
