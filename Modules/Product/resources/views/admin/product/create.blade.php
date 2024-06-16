@@ -69,7 +69,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="control-label">ویدیو</label>
-                                        <input class="form-control" type="file" name="video" required>
+                                        <input class="form-control" type="file" name="video" >
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -92,7 +92,7 @@
                                 <label class="control-label">توضیحات</label><span class="text-danger">&starf;</>
                                 <textarea name="description" id="editor2" cols="100" rows="4" required>{{old('description')}}</textarea>
                             </div>
-                        </div>span
+                        </div>
                             <div class="row mt-2">
                                 <div class="col-md-4">
                                     <div class="form-group">
