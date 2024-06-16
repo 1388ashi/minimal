@@ -12,7 +12,7 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|max:200|unique:jobs,title',
+            'title' => 'required|max:200|unique:job_offers,title',
             'times' => 'required|max:244',
             'type' => 'required|in:part-time,full-time'
         ];

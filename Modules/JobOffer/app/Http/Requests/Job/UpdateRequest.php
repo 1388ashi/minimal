@@ -14,7 +14,7 @@ class UpdateRequest extends FormRequest
     {
         $jobId = $this->route()->parameter('job')->id;
         return [
-            'name' => ['required',Rule::unique('jobs')->ignore($jobId)],
+            'name' => ['required',Rule::unique('job_offers')->ignore($jobId)],
             'times' => 'required|max:244',
             'type' => 'required|in:part-time,full-time'
         ];

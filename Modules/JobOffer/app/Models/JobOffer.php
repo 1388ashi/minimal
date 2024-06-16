@@ -15,6 +15,7 @@ class JobOffer extends Model
     /**
      * The attributes that are mass assignable.
      */
+    protected $table = 'job_offers';
     protected $fillable = [
         'title',
         'times',
