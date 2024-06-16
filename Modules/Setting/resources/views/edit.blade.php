@@ -183,8 +183,7 @@
                                             <input type="file" name="{{ $setting->name }}" id="{{ $setting->name }}"
                                             class="form-control">
                                         </div>
-                                        @if($setting->value)
-                                        @if($type == \Modules\Setting\Models\Setting::TYPE_IMAGE)
+                                        @if($setting->value && $type == \Modules\Setting\Models\Setting::TYPE_IMAGE)
                                         <button type="button" style="height: fit-content;" class="btn btn-danger btn-sm"
                                                 onclick="confirmDelete('delete-{{ $setting->id }}')">
                                             <i class="fa fa-times"></i>
@@ -192,7 +191,7 @@
                                         <br>
                                             <figure class="figure d-flex align-items-center">
                                                 <img src="{{ $setting->file['url'] }}" class="img-thumbnail"
-                                                    width="50" height="30" alt="{{ $setting->label }}">
+                                                    width="70" height="50" alt="{{ $setting->label }}">
                                                 <figcaption
                                                     class="figure-caption text-xs-right">{{ $setting->label }}</figcaption>
                                             </figure>
@@ -202,8 +201,7 @@
                                                     Your browser does not support the video tag.
                                                 </video> --}}
                                             @endif
-                                        @endif
-                                    </div>
+                                        </div>
                                 @endforeach
                             @endif
                             @if($type == \Modules\Setting\Models\Setting::TYPE_TEXTAREA)
