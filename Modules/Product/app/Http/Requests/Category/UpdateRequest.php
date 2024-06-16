@@ -19,11 +19,17 @@ class UpdateRequest extends FormRequest
             'title' => ['required',Rule::unique('categories')->ignore($categoryId)],
             'parent_id' => ['nullable', 'numeric'],
             'image' => 'nullable|image|mimes:jpeg,png,jpg',
+            'featured' => 'nullable',
         ];
     }
     protected function passedValidation(): void
     {
-        if (!empty($this->parent_id)) {
+        if(filled($this->featured) && empty($this->image)){
+            throw ValidationException::withMessages([
+                'parent_id' => ['دسته بندی ویژه تصویر الزامی رسیده']
+            ])
+            ->errorBag('default');
+        }elseif  (!empty($this->parent_id)) {
             $category = Category::query()->where('id', $this->parent_id)->exists();
             if ($category == null) {
                 throw ValidationException::withMessages([

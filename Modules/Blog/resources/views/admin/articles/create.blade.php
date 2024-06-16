@@ -60,7 +60,7 @@
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <label >خلاصه توضیحات</label> <span class="text-danger">&starf;</span>
-                                    <textarea class="form-control" name="summary" cols="86" rows="3"></textarea>
+                                    <textarea class="form-control" name="summary" cols="86" rows="3">{{old('summary')}}</textarea>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -72,7 +72,7 @@
                         </div>
                         <div class="row">
                             <label >توضیحات</label><span class="text-danger">&starf;</span>
-                            <textarea name="body" id="example" cols="100" rows="4"></textarea>
+                            <textarea name="body" id="example" cols="100" rows="4">{{old('body')}}</textarea>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-4">

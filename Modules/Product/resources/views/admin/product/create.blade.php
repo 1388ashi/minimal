@@ -89,10 +89,10 @@
                         </div>
                         <div class="row">
                                 <div class="form-group">
-                                <label class="control-label">توضیحات</label><span class="text-danger">&starf;</span>
-                                <textarea name="description" id="editor2" cols="100" rows="4" required></textarea>
+                                <label class="control-label">توضیحات</label><span class="text-danger">&starf;</>
+                                <textarea name="description" id="editor2" cols="100" rows="4" required>{{old('description')}}</textarea>
                             </div>
-                        </div>
+                        </div>span
                             <div class="row mt-2">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -139,7 +139,7 @@
     
                                     <div class="col-9">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="مقدار را وارد کنید" :name="'specifications[' + specification.id + ']'">
+                                            <input type="text" class="form-control" placeholder="مقدار را وارد کنید" :name="'specifications[' + specification.id + ']'" value="{{old('specifications[' + specification.id + ']')}}">
                                         </div>
                                     </div>
                                 </div>

@@ -222,7 +222,7 @@ class Product extends Model implements Viewable,HasMedia
         }
         public function specifications(): BelongsToMany 
         {
-            return $this->belongsToMany(Specification::class)->withPivot('value')->oldest('id');
+            return $this->belongsToMany(Specification::class)->withPivot('value')->latest('id');
         }
         public function categories(): BelongsToMany 
         {

@@ -17,12 +17,18 @@ class StoreRequest extends FormRequest
         return [
             'title' => 'required|unique:categories,title',
             'parent_id' => ['nullable', 'numeric'],
-            'image' => 'required|image|mimes:jpeg,png,jpg',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg',
+            'featured' => 'nullable',
         ];
     }
     protected function passedValidation(): void
     {
-        if (!empty($this->parent_id)) {
+        if(filled($this->featured) && empty($this->image)){
+            throw ValidationException::withMessages([
+                'parent_id' => ['دسته بندی ویژه تصویر الزامی رسیده']
+            ])
+            ->errorBag('default');
+        }elseif (!empty($this->parent_id)) {
             $category = Category::query()->where('id', $this->parent_id)->exists();
             if ($category == null) {
                 throw ValidationException::withMessages([
