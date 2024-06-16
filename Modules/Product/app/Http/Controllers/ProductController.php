@@ -48,7 +48,7 @@ class ProductController extends Controller implements HasMiddleware
             $data[] = [
                 'id' => $specification->id,
                 'name' => $specification->name,
-                'value' => $product && $product->specifications->isNotEmpty() ? $product->specifications->where('id', $specification->id)->first()->pivot->value : null
+                'value' => $product && $product->specifications->isNotEmpty() && $product->specifications->where('id', $specification->id)->first() ? $product->specifications->where('id', $specification->id)->first()->pivot->value : null
             ];
         }
 

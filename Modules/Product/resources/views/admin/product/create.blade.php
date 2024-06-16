@@ -63,13 +63,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="label" class="control-label">تصویر اصلی</label><span class="text-danger">&starf;</span>
-                                        <input  class="form-control" type="file" name="image">
+                                        <input  class="form-control" type="file" name="image" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="control-label">ویدیو</label>
-                                        <input class="form-control" type="file" name="video">
+                                        <input class="form-control" type="file" name="video" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -83,14 +83,14 @@
                             <div class="row">
                                 <div class="form-group">
                                     <label class="control-label">خلاصه توضیحات</label>
-                                    <textarea class="form-control" name="summary" cols="134" rows="3">{{old('summary')}}</textarea>
+                                    <textarea class="form-control" name="summary" cols="134" rows="3" required>{{old('summary')}}</textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                                 <div class="form-group">
                                 <label class="control-label">توضیحات</label><span class="text-danger">&starf;</span>
-                                <textarea name="description" id="editor2" cols="100" rows="4"></textarea>
+                                <textarea name="description" id="editor2" cols="100" rows="4" required></textarea>
                             </div>
                         </div>
                             <div class="row mt-2">
