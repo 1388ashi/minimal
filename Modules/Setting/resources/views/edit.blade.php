@@ -150,7 +150,7 @@
     <div class="col-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h4>ویرایش تنظیمات - {{ $group }}</h4>
+                <p class="ps-50">ویرایش تنظیمات - {{ $group }}</p>
             </div>
             <div class="card-body">
 
