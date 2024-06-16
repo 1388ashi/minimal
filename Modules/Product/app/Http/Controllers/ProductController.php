@@ -114,7 +114,9 @@ class ProductController extends Controller implements HasMiddleware
         
         $specifications = $request->specifications;
         foreach($specifications as $id => $value) {
-            $product->specifications()->attach($id, ['value' => $value]);
+            if(!empty($value)){
+                $product->specifications()->attach($id, ['value' => $value]);
+            }
         }
         
         $categories = $request->categories;
@@ -169,7 +171,9 @@ class ProductController extends Controller implements HasMiddleware
             $syncDataSpec = [];
 
             foreach($request->specifications as $specification) {
-                $syncDataSpec[$specification['id']] = ['value' => $specification['value']];
+                if(!empty($specification['value'])){
+                    $syncDataSpec[$specification['id']] = ['value' => $specification['value']];
+                }
             }
             $product->specifications()->sync($syncDataSpec);
 

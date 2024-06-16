@@ -32,7 +32,7 @@ class StoreRequest extends FormRequest
                 'status' => ['nullable', 'in:1'],
                 
         
-                'image' => 'required|mimes:jpeg,png,jpg',
+                'image' => 'required',
                 'video' => 'nullable',
                 'galleries.*' => 'nullable',
                 'galleries' => 'nullable|array',  

@@ -94,7 +94,6 @@
                                     <span class="control-label ">
                                         ویژه
                                     </span>
-                                    <span class="text-danger">&starf;</span>
                                     <label class="custom-control custom-checkbox mr-1 mt-1">
                                         <input type="checkbox" class="custom-control-input" name="featured" value="1" @checked($news->featured)>
                                         <span class="custom-control-label">فعال</span>
