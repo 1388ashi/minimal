@@ -46,7 +46,7 @@ class AskController extends Controller implements HasMiddleware
     {
         Ask::query()->create([
             'question' => $request->question,
-            'reply' => $request->replyt5thjn,
+            'reply' => $request->reply,
             'status' => filled($request->status) ?: 0
         ]);
         
