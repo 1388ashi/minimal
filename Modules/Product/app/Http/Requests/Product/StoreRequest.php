@@ -33,6 +33,7 @@ class StoreRequest extends FormRequest
                 
         
                 'image' => 'required|mimes:jpeg,png,jpg',
+                'video' => 'nullable',
                 'galleries.*' => 'nullable',
                 'galleries' => 'nullable|array',  
                 
@@ -54,6 +55,7 @@ class StoreRequest extends FormRequest
             $validated['categories'],
             $validated['specifications'],
             $validated['image'],
+            $validated['video'],
             $validated['galleries']
         );
     
