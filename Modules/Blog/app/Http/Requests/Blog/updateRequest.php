@@ -4,7 +4,7 @@ namespace Modules\Blog\Http\Requests\Blog;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateRequest extends FormRequest
+class updateRequest extends FormRequest
 {
     public function rules(): array
     {
