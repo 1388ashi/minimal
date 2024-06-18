@@ -67,7 +67,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="label" >تصویر اصلی</label><span class="text-danger">&starf;</span>
+                                    <label for="label" >تصویر اصلی</label>
                                     <input  class="form-control" type="file" name="image">
                                 </div>
                             </div>

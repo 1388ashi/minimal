@@ -42,7 +42,6 @@
                                 <tr>
                                     <th class="border-top">ردیف</th>
                                     <th class="border-top">عنوان</th>
-                                    <th class="border-top">خلاصه</th>
                                     <th class="border-top">دسته بندی</th>
                                     {{-- <th class="border-top">تصویر</th> --}}
                                     <th class="border-top">ویژه</th>
@@ -55,8 +54,7 @@
                             @forelse($articles as $article)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{Str::limit($article->title,20, '...') }}</td>
-                                    <td>{{Str::limit($article->summary,35, '...')}}</td>
+                                    <td>{{Str::limit($article->title,40, '...') }}</td>
                                     <td>{{$article->category->title}}</td>
                                     <td class="text-center">@include('includes.status',["status" => $article->featured])</td>
                                     <td class="text-center">@include('includes.status',["status" => $article->status])</td>

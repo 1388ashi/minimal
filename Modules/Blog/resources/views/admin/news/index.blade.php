@@ -42,7 +42,6 @@
                                 <tr>
                                     <th class="border-top">ردیف</th>
                                     <th class="border-top">عنوان</th>
-                                    <th class="border-top">خلاصه</th>
                                     <th class="border-top">دسته بندی</th>
                                     {{-- <th class="border-top">تصویر</th> --}}
                                     <th class="border-top">ویژه</th>
@@ -56,7 +55,6 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{ Str::limit($post->title,20, '...') }}</td>
-                                    <td>{{Str::limit($post->summary,40, '...')}}</td>
                                     <td>{{$post->category->title}}</td>
                                     <td class="text-center">@include('includes.status',["status" => $post->featured])</td>
                                     <td class="text-center">@include('includes.status',["status" => $post->status])</td>
