@@ -5,6 +5,7 @@ namespace Modules\JobOffer\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
@@ -33,12 +34,12 @@ class JobOffer extends Model
         ->logOnly($this->fillable)
         ->setDescriptionForEvent(fn(string $eventName) => $description . __('custom.'.$eventName));
     }
+    public function resumes(): HasMany 
+    {
+        return $this->hasMany(Resumes::class,'job_id');
+    }
     public function isDeletable(): bool
     {
         return $this->resumes->isEmpty();
-    }
-    public function resumes(): BelongsToMany 
-    {
-        return $this->belongsToMany(Resumes::class);
     }
 }

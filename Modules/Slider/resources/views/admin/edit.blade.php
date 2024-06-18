@@ -35,7 +35,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="link" class="control-label">لینک<span class="text-danger">&starf;</span></label>
+                                    <label for="link" class="control-label">لینک</label>
                                     <input type="text" class="form-control" name="link" id="link" placeholder="لینک اسلایدر اینجا وارد کنید"  value="{{ old('link', $slider->link) }}" required autofocus>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                                 </span>
                                 <span class="text-danger">&starf;</span>
                                 <label class="custom-control custom-checkbox mr-1 mt-1">
-                                    <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="status" value="1" @checked($slider->status)>
+                                    <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="status" value="1"  @checked(old('status',$slider->status) == '1')>
                                     <span class="custom-control-label">فعال</span>
                                 </label>
                             </div>

@@ -117,7 +117,7 @@
                                 <option value="pending" @selected($resume->status == 'pending')>در حال بررسی</option>
                                 <option value="confirm_interview" @selected($resume->status == 'confirm_interview')>تایید برای مصاحبه</option>
                                 <option value="rejected" @selected($resume->status == 'rejected')>رد</option>
-                                <option value="accepted" @selected($resume->status == 'accepted')>تایید</option>
+                                <option value="accepted" @selected($resume->status == 'accepted')>استخدام</option>
                             </select>
                         </div>
                     </div>

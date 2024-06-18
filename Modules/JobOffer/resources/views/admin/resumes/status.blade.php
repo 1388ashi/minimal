@@ -3,7 +3,7 @@
 @elseif($resume->status == 'rejected')
     <p data-placement="top" data-toggle="tooltip" title="وضعیت" class="badge badge-danger ">رد شده</p>
 @elseif($resume->status == 'accepted')
-    <p data-placement="top" data-toggle="tooltip" title="وضعیت" class="badge badge-success ">تایید شده</p>
+    <p data-placement="top" data-toggle="tooltip" title="وضعیت" class="badge badge-success ">استخدام شده</p>
 @elseif($resume->status == 'new')
     <p data-placement="top" data-toggle="tooltip" title="وضعیت" class="badge badge-info ">جدید</p>
 @elseif($resume->status == 'confirm_interview')

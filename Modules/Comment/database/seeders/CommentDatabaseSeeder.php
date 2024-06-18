@@ -5,6 +5,7 @@ namespace Modules\Comment\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use faker\Factory;
+use Modules\Comment\Models\Comment;
 use Modules\Product\Models\Product;
 
 class CommentDatabaseSeeder extends Seeder
@@ -14,7 +15,7 @@ class CommentDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $status = ['pending','rejected','accepted'];
+        $status = Comment::getAvailableStatues();
         $faker = Factory::create('fa_IR');
         foreach (range(1,90) as $r) { 
             DB::table('comments')->insert([
