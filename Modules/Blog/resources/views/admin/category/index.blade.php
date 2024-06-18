@@ -65,9 +65,7 @@
                                     @endcan
                                     {{-- Delete--}}
                                     @can('delete categories')
-                                    @if ($blog_category->posts)
-                                    <x-core::delete-btn route="admin.blog-categories.destroy" :model="$blog_category" disabled="{{ !$blog_category->isDeletable() }}" />
-                                    @endif
+                                    <x-core::delete-btn route="admin.blog-categories.destroy" :model="$blog_category"  disabled="{{ !$blog_category ->isDeletable() }}" />
                                     @endcan
                                     </td>
                             </tr>

@@ -23,7 +23,7 @@
     <div class="row mx-3">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header  border-0">
                     <div class="card-title">لیست همه رنگ ها ({{ $colors->total() }})</div>
                     <div class="card-options">
                         <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
@@ -34,7 +34,7 @@
                 <div class="card-body">
                     <x-alert-danger></x-alert-danger>
                     <x-alert-success></x-alert-success>
-                    <div class="table-responsive">
+                    <div class="table-responsive ">
                         <table id="example-2" class="table table-striped table-bordered text-nowrap text-center">
                             <thead>
                                 <tr>

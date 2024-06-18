@@ -12,7 +12,7 @@ class Suggest extends Model
     use HasFactory;
 
     protected $table = 'suggestions';
-    protected $fillable = ['product_id'];
+    protected $fillable = ['id','product_id'];
 
     public function product(): BelongsTo 
     {

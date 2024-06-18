@@ -58,9 +58,12 @@ class SettingController extends Controller
                 $setting->update(['value' => $value]);
             }
         }
-
+        $data = [
+            'status' => 'success',
+            'message' => 'کلید با موفقیت ویرایش شد'
+        ];
         return redirect()->back()
-            ->with('success', 'تنظیمات با موفقیت به روزرسانی شد.');
+            ->with($data);
     }
 
     public function destroy(SettingDestroyRequest $request): RedirectResponse

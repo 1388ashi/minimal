@@ -153,7 +153,8 @@
                 <p class="ps-50">ویرایش تنظیمات - {{ $group }}</p>
             </div>
             <div class="card-body">
-
+                <x-alert-danger></x-alert-danger>
+                <x-alert-success></x-alert-success>
                 @include('core::includes.validation-errors')
 
                 <form action="{{ route('admin.settings.update') }}" class="save" method="post"
@@ -210,6 +211,7 @@
                                         <div class="form-group">
                                             <label for="{{ $setting->name }}">{{ $setting->label }}</label>
                                             <textarea
+                                            style="height: auto"
                                                 class="form-control ckeditor"
                                                 name="{{ $setting->name }}"
                                                 id="{{ $setting->name }}">{!! $setting->value !!}</textarea>

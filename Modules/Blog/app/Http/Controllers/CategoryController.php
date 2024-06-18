@@ -99,8 +99,9 @@ class CategoryController extends Controller implements HasMiddleware
                 'message' => 'دسته بندی به پستی وصل هست'
             ];
             return redirect()->route('admin.blog-categories.index')->with($data);
+        }else{
+            $blog_category->delete();
         }
-        $blog_category->delete();
 
         $data = [
             'status' => 'success',

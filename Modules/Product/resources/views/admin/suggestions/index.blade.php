@@ -55,7 +55,7 @@
                                 <td>
                                     {{-- Delete--}}
                                     @can('delete products')
-                                    <x-core::delete-btn route="admin.suggestions.destroy" :model="$suggest" :disabled="false"  />
+                                    <x-core::delete-btn route="admin.suggestions.destroy" :model="$suggest"  />
                                     @endcan
                                 </td>
                             </tr>

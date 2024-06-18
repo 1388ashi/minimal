@@ -56,7 +56,7 @@
                                 @if (!empty($category->parent->title))<td>{{ $category->parent->title}}</td>@else<td>-</td>@endif
                                 <td class="text-center">
                                     <a href="{{ $category->image['url'] }}" target="_blanck">
-                                        <div class="bg-light pb-1 pt-1 img-holder img-show" style="width: 200px;max-height: 50px;border-radius: 4px;">
+                                        <div class="bg-light pb-1 pt-1 img-holder img-show w-100" style="max-height: 50px;border-radius: 4px;">
                                         <img src="{{ $category->image['url'] }}" style="height: 40px;"  alt="{{ $category->image['name'] }}">
                                     </div>
                                     </a>

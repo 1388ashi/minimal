@@ -78,7 +78,7 @@
                                     </span>
                                     <span class="text-danger">&starf;</span>
                                     <label class="custom-control custom-checkbox mr-1 mt-1">
-                                        <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="featured" value="1" @checked($category->featured)>
+                                        <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="featured" value="1" @checked(old('featured',$category->featured) == '1')>
                                         <span class="custom-control-label">فعال</span>
                                     </label>
                                 </div>
@@ -90,7 +90,7 @@
                                     </span>
                                     <span class="text-danger">&starf;</span>
                                     <label class="custom-control custom-checkbox mr-1 mt-1">
-                                        <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="status" value="1" @checked($category->status)>
+                                        <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="status" value="1" @checked(old('status',$category->status) == '1')>
                                         <span class="custom-control-label">فعال</span>
                                     </label>
                                 </div>
