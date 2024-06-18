@@ -43,7 +43,13 @@
                                 {{$item->title}}
                                 @if($key < $product->categories->count() - 1),@endif
                                 @endforeach</li>
-                                <li class="list-group-item"><b class="bold">وضعیت
+                                @if ($product->colors)
+                                <li class="list-group-item"><b class="bold">رنگ ها: </b> 
+                                @foreach($product->colors as $color)
+                                    <div style="background-color:{{$color->code}};width: 25px;height:25px;border-radius: 50%;margin-left: 6px;justify-content: center;"></div>
+                                @endforeach</li>
+                                    @endif
+                                    <li class="list-group-item"><b class="bold">وضعیت
                                     نمایش: </b>@include('includes.status',["status" => $product->status])
                             </li>
                             <li class="list-group-item"><b>تاریخ ثبت: </b>{{$vertaDate->format('Y/n/j')}}</li>
