@@ -14,7 +14,7 @@ class StoreRequest extends FormRequest
         return [
             'title' => 'required',
             'link' => [
-                'required',
+                'nullable',
                 'string',
                 'url',
             ],

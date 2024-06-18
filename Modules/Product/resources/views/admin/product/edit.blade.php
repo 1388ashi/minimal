@@ -22,7 +22,7 @@
 
                     <x-alert-danger></x-alert-danger>
 
-                    <form action="{{ route('admin.products.update',$product) }}" method="post">
+                    <form action="{{ route('admin.products.update',$product) }}" method="post"  enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                     <div id="app">
@@ -62,21 +62,30 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="label" class="control-label">تصویر</label>
                                     <input  class="form-control" type="file" name="image">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">تخفیف(تومان)</label>
+                                    <input type="text" name="discount" class="comma form-control" placeholder="تخفیف را اینجا وارد کنید" value="{{old('discount', number_format($product->discount))}}">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row d-flex">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">ویدیو</label>
                                     <input class="form-control" type="file" name="video">
                                 </div>
                             </div>
                             @if ($product->video['url'])
-                            <div class="col-md-4">
-                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('delete-video-{{ $product->id }}')">
+                            <div class="col-md-6 d-flex" style="margin-top: 2rem">
+                                <button type="button" class="btn btn-danger btn-sm ml-1 d-flex" style="height: fit-content;justify-content: center;align-items: center;" onclick="confirmDelete('delete-video-{{ $product->id }}')">
                                     <i class="fa fa-trash-o"></i>
                                 </button>
                                 <br>
@@ -87,12 +96,6 @@
                                 </figure>
                             </div>
                             @endif
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">تخفیف(تومان)</label>
-                                    <input type="text" name="discount" class="comma form-control" placeholder="تخفیف را اینجا وارد کنید" value="{{old('discount', number_format($product->discount))}}">
-                                </div>
-                            </div>
                         </div>
                         <div class="col-12">
                             <div class="row">
@@ -215,7 +218,7 @@
         var app = new Vue({
             el: "#app",
             data: {
-                categories: [],
+                categories: {!! json_encode($product->categories->pluck('id')) !!},
                 specifications: {!! json_encode($specifications)!!}
 
             },
