@@ -32,8 +32,8 @@ class ColorController extends Controller implements HasMiddleware
                     ->latest('id')
                     ->paginate(10);
                     
-                    return view('product::admin.color.index', compact('colors'));
-                }
+        return view('product::admin.color.index', compact('colors'));
+        }
     
     /**
      * Show the form for creating a new resource.
