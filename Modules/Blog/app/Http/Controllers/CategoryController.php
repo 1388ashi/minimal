@@ -32,7 +32,7 @@ class CategoryController extends Controller implements HasMiddleware
                     ->with('posts:id,title')
                     ->latest('id')
                     ->paginate(15);
-                    
+        dd($blog_categories);            
         return view('blog::admin.category.index', compact('blog_categories'));
     }
     

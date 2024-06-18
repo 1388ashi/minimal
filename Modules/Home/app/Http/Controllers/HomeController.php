@@ -10,7 +10,6 @@ use Modules\Brand\Models\Brand;
 use Modules\CustomerReview\Models\CustomerReview;
 use Modules\Product\Models\Category;
 use Modules\Product\Models\Product;
-use Modules\Product\Models\Suggest;
 use Modules\Slider\Models\Slider;
 
 class HomeController extends Controller
