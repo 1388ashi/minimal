@@ -44,9 +44,9 @@
                                 @if($key < $product->categories->count() - 1),@endif
                                 @endforeach</li>
                                 @if ($product->colors)
-                                <li class="list-group-item"><b class="bold">رنگ ها: </b> 
+                                <li class="list-group-item d-flex"><b class="bold">رنگ ها: </b> 
                                 @foreach($product->colors as $color)
-                                    <div style="background-color:{{$color->code}};width: 25px;height:25px;border-radius: 50%;margin-left: 6px;justify-content: center;"></div>
+                                    <div class="mr-1" style="background-color:{{$color->code}};width: 25px;height:25px;border-radius: 50%;margin-left: 6px;justify-content: center;"></div>
                                 @endforeach</li>
                                     @endif
                                     <li class="list-group-item"><b class="bold">وضعیت

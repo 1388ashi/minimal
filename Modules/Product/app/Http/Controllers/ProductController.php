@@ -127,7 +127,7 @@ class ProductController extends Controller implements HasMiddleware
         }
     
         $colors = $request->colors;
-        if(filled($colors)){
+        if(!is_null($colors)){
             foreach($colors as $color) {
                 $product->colors()->attach($color);
             }
