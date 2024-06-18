@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Product\Database\Factories\SuggestFactory;
 
-class Suggest extends Model
+class Suggestion extends Model
 {
     use HasFactory;
 

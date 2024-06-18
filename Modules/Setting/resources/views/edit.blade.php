@@ -211,7 +211,7 @@
                                         <div class="form-group">
                                             <label for="{{ $setting->name }}">{{ $setting->label }}</label>
                                             <textarea
-                                            style="height: auto"
+                                            style="height: 150px;"
                                                 class="form-control ckeditor"
                                                 name="{{ $setting->name }}"
                                                 id="{{ $setting->name }}">{!! $setting->value !!}</textarea>

@@ -38,7 +38,7 @@ class HomeController extends Controller
 
         $categories = Category::query()
             ->withWhereHas('products', function ($query) {
-                return $query->withWhereHas('suggest');
+                return $query->withWhereHas('suggestion');
             })
             ->orWhereHas('products', function($query) {
                 return $query->with('products');

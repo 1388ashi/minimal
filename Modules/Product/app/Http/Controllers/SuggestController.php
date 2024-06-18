@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Modules\Product\Http\Requests\Suggest\StoreRequest;
 use Modules\Product\Models\Product;
-use Modules\Product\Models\Suggest;
+use Modules\Product\Models\Suggestion;
 
 class SuggestController extends Controller
 {
     public function index()
     {
-        $suggestions = Suggest::select('id','product_id')->with('product:id,title')->paginate();
+        $suggestions = Suggestion::select('id','product_id')->with('product:id,title')->paginate();
         $products = Product::select('id','title')->get();
         
         return view('product::admin.suggestions.index',compact('suggestions','products'));
@@ -23,7 +23,7 @@ class SuggestController extends Controller
      */
     public function store(StoreRequest $request): RedirectResponse
     {
-        Suggest::query()->create([
+        Suggestion::query()->create([
             'product_id' => $request->product_id
         ]);
         $data = [
@@ -38,10 +38,9 @@ class SuggestController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Suggest $suggest)
+    public function destroy(Suggestion $suggestion)
     {
-        dd($suggest->id);
-        $suggest->delete();
+        $suggestion->delete();
         $data = [
             'status' => 'success',
             'message' => 'محصول با موفقیت حذف شد'

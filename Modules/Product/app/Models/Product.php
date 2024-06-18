@@ -240,8 +240,8 @@ class Product extends Model implements Viewable,HasMedia
         {
             return $this->belongsToMany(Color::class);
         }
-        public function suggest(): HasOne 
+        public function suggestion(): HasOne 
         {
-            return $this->hasOne(Suggest::class);
+            return $this->hasOne(Suggestion::class);
         }
 }

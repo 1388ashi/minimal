@@ -45,17 +45,17 @@
                                 </tr>
                         </thead>
                         <tbody>
-                            @forelse($suggestions as $suggest)
+                            @forelse($suggestions as $suggestion)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>
-                                    <a href="{{route('admin.products.show',[$suggest->product_id])}}">{{ $suggest->product->title }}</a>
+                                    <a href="{{route('admin.products.show',[$suggestion->product_id])}}">{{ $suggestion->product->title }}</a>
                                 </td>
-                                <td>{{verta($suggest->created_at)->format('Y/m/d H:i')}}</td>
+                                <td>{{verta($suggestion->created_at)->format('Y/m/d H:i')}}</td>
                                 <td>
                                     {{-- Delete--}}
                                     @can('delete products')
-                                    <x-core::delete-btn route="admin.suggestions.destroy" :model="$suggest"  />
+                                    <x-core::delete-btn route="admin.suggestions.destroy" :model="$suggestion" :disabled="false"  />
                                     @endcan
                                 </td>
                             </tr>
