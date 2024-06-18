@@ -113,10 +113,12 @@ class ProductController extends Controller implements HasMiddleware
         $product->uploadFiles($request);
         
         $specifications = $request->specifications;
+        if(!is_null($specifications)){
         foreach($specifications as $id => $value) {
             if(!empty($value)){
                 $product->specifications()->attach($id, ['value' => $value]);
             }
+        }
         }
         
         $categories = $request->categories;

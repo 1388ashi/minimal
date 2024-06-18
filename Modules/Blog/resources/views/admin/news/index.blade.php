@@ -55,7 +55,7 @@
                             @forelse($news as $post)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{ $post->title }}</td>
+                                    <td>{{ Str::limit($post->title,20, '...') }}</td>
                                     <td>{{Str::limit($post->summary,40, '...')}}</td>
                                     <td>{{$post->category->title}}</td>
                                     <td class="text-center">@include('includes.status',["status" => $post->featured])</td>
@@ -78,7 +78,7 @@
                                             @method('DELETE')
                                         </form> --}}
                                         @can('delete blogs')
-                                        <x-core::delete-btn route="admin.news.destroy" :model="$post"  />
+                                        <x-core::delete-btn route="admin.news.destroy" :model="$post" :disabled="false"  />
                                         @endcan
                                     </td>
                                 </tr>

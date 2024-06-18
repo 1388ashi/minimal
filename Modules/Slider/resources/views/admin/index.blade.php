@@ -69,7 +69,7 @@
                                     @endcan
                                     {{-- Delete--}}
                                     @can('delete sliders')
-                                    <x-core::delete-btn route="admin.sliders.destroy" :model="$slider"  />
+                                    <x-core::delete-btn route="admin.sliders.destroy" :model="$slider" :disabled="false" />
                                     @endcan
                                     </td>
                             </tr>

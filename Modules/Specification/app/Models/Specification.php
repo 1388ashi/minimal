@@ -19,6 +19,10 @@ class Specification extends Model
         'status',
         'category_id',
     ];
+    public function isDeletable(): bool
+    {
+        return $this->products->isEmpty() || $this->categories->isEmpty() ;
+    }
     public function categories() : BelongsToMany{
         return $this->belongsToMany(Category::class);
     }

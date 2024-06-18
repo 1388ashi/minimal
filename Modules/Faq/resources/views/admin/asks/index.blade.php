@@ -72,7 +72,7 @@
                                             @method('DELETE')
                                         </form> --}}
                                         @can('delete faq')
-                                        <x-core::delete-btn route="admin.asks.destroy" :model="$ask"  />
+                                        <x-core::delete-btn route="admin.asks.destroy" :model="$ask" :disabled="false" />
                                         @endcan
                                     </td>
                                 </tr>

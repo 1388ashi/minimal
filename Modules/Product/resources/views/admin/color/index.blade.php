@@ -65,7 +65,7 @@
                                     @endcan
                                     {{-- Delete--}}
                                     @can('delete colors')
-                                    <x-core::delete-btn route="admin.colors.destroy" :model="$color"  />
+                                    <x-core::delete-btn route="admin.colors.destroy" :model="$color" disabled="{{ !$color->isDeletable() }}"  />
                                     @endcan
                                     </td>
                             </tr>

@@ -55,8 +55,8 @@
                             @forelse($articles as $article)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{ $article->title }}</td>
-                                    <td>{{Str::limit($article->summary,40, '...')}}</td>
+                                    <td>{{Str::limit($article->title,20, '...') }}</td>
+                                    <td>{{Str::limit($article->summary,35, '...')}}</td>
                                     <td>{{$article->category->title}}</td>
                                     <td class="text-center">@include('includes.status',["status" => $article->featured])</td>
                                     <td class="text-center">@include('includes.status',["status" => $article->status])</td>
@@ -78,7 +78,7 @@
                                             @method('DELETE')
                                         </form> --}}
                                         @can('delete blogs')
-                                        <x-core::delete-btn route="admin.articles.destroy" :model="$article"  />
+                                        <x-core::delete-btn route="admin.articles.destroy" :model="$article" :disabled="false" />
                                         @endcan
                                     </td>
                                 </tr>

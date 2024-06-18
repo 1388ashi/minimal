@@ -83,7 +83,7 @@
                             <div class="row">
                                 <div class="form-group">
                                     <label class="control-label">خلاصه توضیحات</label>
-                                    <textarea class="form-control" name="summary" cols="134" rows="3" required>{{old('summary')}}</textarea>
+                                    <textarea class="form-control" name="summary" cols="134" rows="3" >{{old('summary')}}</textarea>
                                 </div>
                             </div>
                         </div>

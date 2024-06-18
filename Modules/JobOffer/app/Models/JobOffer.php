@@ -33,6 +33,10 @@ class JobOffer extends Model
         ->logOnly($this->fillable)
         ->setDescriptionForEvent(fn(string $eventName) => $description . __('custom.'.$eventName));
     }
+    public function isDeletable(): bool
+    {
+        return $this->resumes->isEmpty();
+    }
     public function resumes(): BelongsToMany 
     {
         return $this->belongsToMany(Resumes::class);

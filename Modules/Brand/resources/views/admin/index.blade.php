@@ -69,7 +69,7 @@
                                     @endcan
                                     {{-- Delete--}}
                                     @can('delete brands')
-                                    <x-core::delete-btn route="admin.brands.destroy" :model="$brand"  />
+                                    <x-core::delete-btn route="admin.brands.destroy" :model="$brand" :disabled="false" />
                                     @endcan
                                     </td>
                             </tr>

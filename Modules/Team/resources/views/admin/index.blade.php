@@ -71,7 +71,7 @@
                                     @endcan
                                     {{-- Delete--}}
                                     @can('delete teams')
-                                    <x-core::delete-btn route="admin.teams.destroy" :model="$team"  />
+                                    <x-core::delete-btn route="admin.teams.destroy" :model="$team" :disabled="false" />
                                     @endcan
                                     </td>
                             </tr>

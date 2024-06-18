@@ -31,6 +31,10 @@ class Color extends Model
         ->logOnly($this->fillable)
         ->setDescriptionForEvent(fn(string $eventName) => $description . __('custom.'.$eventName));
     }
+    public function isDeletable(): bool
+    {
+        return $this->products->isEmpty();
+    }
     public function products(): BelongsToMany 
     {
         return $this->belongsToMany(Product::class);

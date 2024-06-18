@@ -83,7 +83,7 @@
                                         <a href="{{ route('admin.products.edit', [$product->id]) }}" class="btn btn-warning btn-sm text-white" data-toggle="tooltip" data-original-title="ویرایش"><i class="fa fa-pencil"></i></a>
                                         @endcan
                                         @can('delete products')
-                                        <x-core::delete-btn route="admin.products.destroy" :model="$product"  />
+                                        <x-core::delete-btn route="admin.products.destroy" :model="$product" :disabled="false"  />
                                         @endcan
                                     </td>
                                 </tr>

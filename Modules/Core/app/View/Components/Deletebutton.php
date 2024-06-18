@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
-class DeleteBtn extends Component
+class deletebutton extends Component
 {
     /**
      * Create a new component instance.

@@ -64,7 +64,7 @@
                                     @endcan
                                     {{-- Delete--}}
                                     @can('delete specifications')
-                                    <x-core::delete-btn route="admin.specifications.destroy" :model="$specification"  />
+                                    <x-core::delete-btn route="admin.specifications.destroy" :model="$specification" disabled="{{ !$specification->isDeletable() }}" />
                                     @endcan
                                     </td>
                             </tr>

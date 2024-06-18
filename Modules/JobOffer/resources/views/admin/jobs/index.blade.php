@@ -67,7 +67,7 @@
                                     @endcan
                                     {{-- Delete--}}
                                     @can('delete jobs')
-                                    <x-core::delete-btn route="admin.jobs.destroy" :model="$job"  />
+                                    <x-core::delete-btn route="admin.jobs.destroy" :model="$job"  disabled="{{ !$job->isDeletable() }}" />
                                     @endcan
                                     </td>
                             </tr>
