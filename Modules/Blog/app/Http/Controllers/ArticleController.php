@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Modules\Blog\Http\Requests\Blog\StoreRequest;
-use Modules\Blog\Http\Requests\Blog\UpdateRequest;
+use Modules\Blog\Http\Requests\Blog\updateRequest;
 use Modules\Blog\Models\Post;
 use Modules\Blog\Models\BlogCategory;
 
@@ -103,7 +103,7 @@ class ArticleController extends Controller implements HasMiddleware
     /**
      * Update the specified resource in storage.
      */
-    public function update(Post $article,UpdateRequest $request): RedirectResponse
+    public function update(Post $article,updateRequest $request): RedirectResponse
     {
         $published_at = $request->published_at;
         if (!filled($published_at)) {
