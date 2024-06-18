@@ -31,8 +31,4 @@ class Ask extends Model
         ->logOnly($this->fillable)
         ->setDescriptionForEvent(fn(string $eventName) => $description . __('custom.'.$eventName));
     }
-    public function categories(): BelongsTo 
-    {
-        return $this->belongsTo(AskCategory::class);
-    }
 }
