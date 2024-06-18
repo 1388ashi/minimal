@@ -51,7 +51,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">والد</label>
-                                    <select class="form-control custom-select select2" data-placeholder="Select Package" name="parent_id">
+                                    <select class="form-control custom-select" data-placeholder="انتخاب دسته بندی" name="parent_id">
+                                        <option value="">بدون والد</option>
                                         @foreach($parents as $parent)
                                         <option value="{{$parent->id}}" @selected($parent->id == $category->parent_id)>{{$parent->title}}</option>
                                                 <!-- نمایش دادن فرزندان هر والد -->
@@ -76,7 +77,6 @@
                                     <span class="control-label ">
                                         ویژه
                                     </span>
-                                    <span class="text-danger">&starf;</span>
                                     <label class="custom-control custom-checkbox mr-1 mt-1">
                                         <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="featured" value="1" @checked(old('featured',$category->featured) == '1')>
                                         <span class="custom-control-label">فعال</span>
@@ -88,7 +88,6 @@
                                     <span class="control-label ">
                                         وضعیت
                                     </span>
-                                    <span class="text-danger">&starf;</span>
                                     <label class="custom-control custom-checkbox mr-1 mt-1">
                                         <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="status" value="1" @checked(old('status',$category->status) == '1')>
                                         <span class="custom-control-label">فعال</span>

@@ -105,7 +105,6 @@
                                         <span class="control-label ">
                                             وضعیت
                                         </span>
-                                        <span class="text-danger">&starf;</span>
                                         <label class="custom-control custom-checkbox mr-1 mt-1">
                                             <input type="checkbox" class="custom-control-input" name="status" value="1" @checked(old('status') == 1)>
                                             <span class="custom-control-label">فعال</span>

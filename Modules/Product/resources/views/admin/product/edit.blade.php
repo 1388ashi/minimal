@@ -104,7 +104,7 @@
                             </div>
                         <div class="row">
                             <label class="control-label">توضیحات</label><span class="text-danger">&starf;</span>
-                            <textarea name="body" id="editor2" class="form-control" cols="100"  rows="4">{{$product->description}}</textarea>
+                            <textarea name="description" id="editor2" class="form-control" cols="100"  rows="4">{{$product->description}}</textarea>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-4">
@@ -133,7 +133,6 @@
                                         <span class="control-label ">
                                             وضعیت
                                         </span>
-                                        <span class="text-danger">&starf;</span>
                                         <label class="custom-control custom-checkbox mr-1 mt-1">
                                             <input type="checkbox" class="custom-control-input" name="status" value="1" @checked($product->status)>
                                             <span class="custom-control-label">فعال</span>

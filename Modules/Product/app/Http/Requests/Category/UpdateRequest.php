@@ -17,27 +17,10 @@ class UpdateRequest extends FormRequest
         $categoryId = $this->route()->parameter('category')->id;
         return [
             'title' => ['required',Rule::unique('categories')->ignore($categoryId)],
-            'parent_id' => ['nullable', 'numeric'],
+            'parent_id' => ['nullable'],
             'image' => 'nullable|image|mimes:jpeg,png,jpg',
             'featured' => 'nullable',
         ];
-    }
-    protected function passedValidation(): void
-    {
-        if(filled($this->featured) && empty($this->image)){
-            throw ValidationException::withMessages([
-                'parent_id' => ['دسته بندی ویژه تصویر الزامی دارد']
-            ])
-            ->errorBag('default');
-        }elseif  (!empty($this->parent_id)) {
-            $category = Category::query()->where('id', $this->parent_id)->exists();
-            if ($category == null) {
-                throw ValidationException::withMessages([
-                    'parent_id' => ['دسته بندی با این شناسه وجود ندارد']
-                ])
-                ->errorBag('default');
-            }
-        }
     }
     /**
      * Determine if the user is authorized to make this request.

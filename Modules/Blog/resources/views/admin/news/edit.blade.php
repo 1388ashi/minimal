@@ -95,7 +95,7 @@
                                         ویژه
                                     </span>
                                     <label class="custom-control custom-checkbox mr-1 mt-1">
-                                        <input type="checkbox" class="custom-control-input" name="featured" value="1" @checked($news->featured)>
+                                        <input type="checkbox" class="custom-control-input" name="featured" value="1" @checked(old('featured',$news->featured) == '1')>
                                         <span class="custom-control-label">فعال</span>
                                     </label>
                                 </div>
@@ -107,9 +107,8 @@
                                     <span class="control-label ">
                                     وضعیت
                                 </span>
-                                <span class="text-danger">&starf;</span>
                                 <label class="custom-control custom-checkbox mr-1 mt-1">
-                                    <input type="checkbox" class="custom-control-input" name="status" value="1" @checked($article->status)>
+                                    <input type="checkbox" class="custom-control-input" name="status" value="1"  @checked(old('status',$news->status) == '1')>
                                     <span class="custom-control-label">فعال</span>
                                 </label>
                                 </div>
