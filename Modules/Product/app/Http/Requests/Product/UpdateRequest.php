@@ -34,6 +34,7 @@ class UpdateRequest extends FormRequest
                 'status' => ['nullable', 'in:1'],
 
                 'image' => 'nullable',
+                'video' => 'nullable',
                 'galleries.*' => 'nullable',
                 'galleries' => 'nullable|array',  
                 
@@ -55,6 +56,7 @@ class UpdateRequest extends FormRequest
             $validated['categories'],
             $validated['specifications'],
             $validated['image'],
+            $validated['video'],
             $validated['galleries']
         );
     

@@ -173,8 +173,8 @@ class ProductController extends Controller implements HasMiddleware
 
             $syncDataSpec = [];
 
+            if(filled($request->specifications)){
             foreach($request->specifications as $specification) {
-                if(!empty($specification['value'])){
                     $syncDataSpec[$specification['id']] = ['value' => $specification['value']];
                 }
             }
