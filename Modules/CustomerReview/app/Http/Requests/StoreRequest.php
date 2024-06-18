@@ -12,7 +12,7 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:customer_reviews,name',
+            'name' => 'required',
             'city' => 'required',
             'image' => 'required',
             'description' => 'required'

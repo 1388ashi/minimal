@@ -99,8 +99,9 @@
                     </div>
                 </div>
             </div>
-            @if ($product->specifications)
-                
+            @foreach ($product->specifications as  $specification)
+            @endforeach
+            @if (!is_null($product->specification))
             <div class="col-xl-6 col-md-12">
                 <div class="card">
                     <div class="card-body">

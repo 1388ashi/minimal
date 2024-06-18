@@ -54,7 +54,7 @@
                                 <td>{{ $customerReview->city }}</td>
                                 <td class="text-center">
                                     <a href="{{ $customerReview->image['url'] }}" target="_blanck">
-                                    <div class="bg-light pb-1 pt-1 img-holder img-show" style="max-height: 50px;border-radius: 4px;">
+                                    <div class="bg-light pb-1 pt-1 img-holder img-show w-100" style="max-height: 50px;border-radius: 4px;">
                                         <img src="{{ $customerReview->image['url'] }}" style="height: 40px;"  alt="{{ $customerReview->image['name'] }}">
                                     </div>
                                     </a>
@@ -79,7 +79,7 @@
                                     @endcan
                                     {{-- Delete--}}
                                     @can('delete customerReviews')
-                                    <x-core::delete-btn route="admin.customer-reviews.destroy" :model="$customerReview"  />
+                                    <x-core::delete-btn route="admin.customer-reviews.destroy" :model="$customerReview" :disabled="false " />
                                     @endcan
                                     </td>
                                 </tr>

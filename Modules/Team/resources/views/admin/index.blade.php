@@ -54,7 +54,7 @@
                                 <td>{{ $team->role }}</td>
                                 <td class="text-center">
                                     <a href="{{ $team->image['url'] }}" target="_blanck">
-                                        <div class="bg-light pb-1 pt-1 img-holder img-show" style="max-height: 50px;border-radius: 4px;">
+                                        <div class="bg-light pb-1 pt-1 img-holder img-show w-100" style="max-height: 50px;border-radius: 4px;">
                                         <img src="{{ $team->image['url'] }}" style="height: 40px;"  alt="{{ $team->image['name'] }}">
                                     </div>
                                     </a>

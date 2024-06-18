@@ -91,6 +91,7 @@ class ProductController extends Controller implements HasMiddleware
             'categories:id,title',
             'specifications:id,name'
         ]);
+
         return view('product::admin.product.show', compact('product'));
         
     }
