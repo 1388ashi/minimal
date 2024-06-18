@@ -55,7 +55,7 @@
                             <li class="list-group-item"><b>تاریخ ثبت: </b>{{$vertaDate->format('Y/n/j')}}</li>
                         </ul>
                         <div class="mt-1">
-                            <label class=" form-label">توضیحات محصول:</label><p class="bold">{!!$product->description!!}</p>
+                            <b class="font-weight-bold form-label">توضیحات محصول:</b><p>{!!$product->description!!}</p>
                         </div>
                     </div>
                 </div>
