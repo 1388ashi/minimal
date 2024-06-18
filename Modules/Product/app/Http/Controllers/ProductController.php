@@ -172,10 +172,11 @@ class ProductController extends Controller implements HasMiddleware
             $product->uploadFiles($request);
 
             $syncDataSpec = [];
-
             if(filled($request->specifications)){
-            foreach($request->specifications as $specification) {
-                    $syncDataSpec[$specification['id']] = ['value' => $specification['value']];
+                foreach($request->specifications as $specification) {
+                    if(!empty($specification['value'])){
+                        $syncDataSpec[$specification['id']] = ['value' => $specification['value']];
+                    }
                 }
             }
             $product->specifications()->sync($syncDataSpec);
@@ -192,6 +193,13 @@ class ProductController extends Controller implements HasMiddleware
                     $product->colors()->sync($color);
                 }
             }
+            $data = [
+                'status' => 'success',
+                'message' => 'محصول با موفقیت به روزرسانی شد'
+            ];
+            
+            return redirect()->route('admin.products.index')
+            ->with($data);
 
     }
     public function destroyGalleries(Product $product)

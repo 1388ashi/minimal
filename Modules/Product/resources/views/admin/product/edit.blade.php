@@ -64,7 +64,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="label" class="control-label">تصویر<span class="text-danger">&starf;</span></label>
+                                    <label for="label" class="control-label">تصویر</label>
                                     <input  class="form-control" type="file" name="image">
                                 </div>
                             </div>
