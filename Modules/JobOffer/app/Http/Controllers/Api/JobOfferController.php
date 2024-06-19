@@ -21,6 +21,7 @@ class JobOfferController extends Controller
     public function store(StoreRequest $request): JsonResponse
     {
         $resumes = Resumes::create($request->validated());
+        dd($request->all());
         $resumes->uploadFiles($request);
 
         return response()->success('رزومه با موفقیت به ثبت شد.');

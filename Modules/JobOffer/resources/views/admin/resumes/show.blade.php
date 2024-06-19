@@ -78,12 +78,28 @@
         </div>
     </div>
     @if ($resume->description)
-    <div class="col-xl-12 col-md-12">
+    <div class="col-xl-6 col-md-6">
         <div class="card">
             <div class="card-body">
                 <div class="mt-1 d-flex">
                     <p class="font-weight-bold">
                         توضیحات رزومه :   
+                    </p> 
+                    <p>
+                        {{$resume->description}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+    @if ($resume->file)
+    <div class="col-xl-6 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="mt-1 d-flex">
+                    <p class="font-weight-bold">
+                        فایل رزومه :   
                     </p> 
                     <p>
                         {{$resume->description}}
