@@ -38,9 +38,10 @@
                                             @foreach($categories as $category)
                                             <option  value="{{$category->id}}" @if(is_array(old('categories')) && in_array($category->id, old('categories'))) selected @endif>{{$category->title}}</option>
                                                     <!-- نمایش دادن فرزندان هر والد -->
-                                                @if($category->has('recursiveChildren'))
+                                                    @if($category->has('recursiveChildren'))
                                                     @foreach($category->recursiveChildren as $item)
-                                                        <option value="{{ $item->id }}" @if(is_array(old('categories')) && in_array($item->id, old('categories'))) selected @endif>-{{ $item->title }} </option>
+                                                    <option value="{{ $item->id }}" @if(is_array(old('categories')) && in_array($item->id, old('categories'))) selected @endif>-{{ $item->title }} </option>
+                                                    <!-- نمایش دادن نوه های هر والد -->
                                                         @if($item->has('children'))
                                                         @foreach($item->children as $child)
                                                             <option value="{{ $child->id }}" @if(is_array(old('categories')) && in_array($child->id, old('categories'))) selected @endif> --{{ $child->title }}</option>
@@ -119,7 +120,7 @@
                                     <div class="d-flex ml-5">
                                         <div style="background-color:{{$color->code}};width: 25px;height:25px;border-radius: 50%;margin-left: 6px;justify-content: center; border: 1px solid black;"></div>
                                         <div class="form-group">
-                                            <label class="custom-control custom-checkbox mr-1 mb-5">
+                                            <label style="cursor: pointer" class="custom-control custom-checkbox mr-1 mb-5">
                                                 <input type="checkbox" class="custom-control-input" name="colors[]" value="{{$color->id}}" @checked(old('colors') == $color->id)>
                                                 <span class="custom-control-label">فعال</span>
                                             </label>
