@@ -52,7 +52,15 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{ $slider->title }}</td>
-                                <td>{{ $slider->link }}</td>
+                                <td>
+                                    @if ($slider->link)
+                                    {{ $slider->link }}
+                                    @else
+                                    <b>
+                                        -
+                                    </b>
+                                    @endif
+                                </td>
                                 <td class="text-center">
                                     <a href="{{ $slider->image['url'] }}" target="_blanck">
                                     <div class="bg-light pb-1 pt-1 img-holder img-show w-100" style="max-height: 50px;border-radius: 4px;">
