@@ -93,7 +93,7 @@
         </div>
     </div>
     @endif
-    {{-- @if ($resume->file['url'])
+    @if ($resume->file['url'])
     <div class="col-xl-6 col-md-6">
         <div class="card">
             <div class="card-body">
@@ -108,7 +108,7 @@
             </div>
         </div>
     </div>
-    @endif --}}
+    @endif
         <div class="card-body">
             <div class="icons">
                 <a class="btn btn-danger icons" href="{{route('admin.resumes.index')}}"> برگشت</a>
