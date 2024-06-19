@@ -21,7 +21,7 @@
     </div>
 
     <!-- row opened -->
-    <div class="row mx-3">
+    <div class="row mx-5">
         <div class="col-md-12">
             @include('product::admin.product.filter')
             <div class="card">
@@ -43,7 +43,7 @@
                                     <th class="border-top">ردیف</th>
                                     <th class="border-top">عنوان</th>
                                     {{-- <th class="border-top">تصویر</th> --}}
-                                    <th class="border-top">دسته بندی ها</th>
+                                    <th class="border-top">دسته بندی (ها)</th>
                                     <th class="border-top">قیمت(تومان)</th>
                                     <th class="border-top">تخفیف(تومان)</th>
                                     <th class="border-top">وضعیت</th>

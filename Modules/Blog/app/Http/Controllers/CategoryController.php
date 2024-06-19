@@ -93,15 +93,7 @@ class CategoryController extends Controller implements HasMiddleware
      */
     public function destroy(BlogCategory $blog_category)
     {
-        if ($blog_category->posts) {
-            $data = [
-                'status' => 'danger',
-                'message' => 'دسته بندی به پستی وصل هست'
-            ];
-            return redirect()->route('admin.blog-categories.index')->with($data);
-        }else{
-            $blog_category->delete();
-        }
+        $blog_category->delete();
 
         $data = [
             'status' => 'success',

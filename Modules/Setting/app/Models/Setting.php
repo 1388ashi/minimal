@@ -131,5 +131,4 @@ class Setting extends BaseModel implements HasMedia
     {
         $this->addFile($file);
     }
-
 }

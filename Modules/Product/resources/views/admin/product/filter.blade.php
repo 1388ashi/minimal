@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card w-100">
     <div class="card-header">
         <div class="card-title">فیلتر ها</div>
         <div class="card-options">
@@ -9,8 +9,8 @@
             <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
         </div>
     </div>
-    <div class="card-body">
-            <form class=" col-12" action="{{ route("admin.products.index") }}" class="col-12">
+    <div class="card-body w-100">
+            <form action="{{ route("admin.products.index") }}" class="col-12">
                 <div class="row">
                     <div class="col-3 col-lg-3 form-group">
                         <label class="font-weight-bold">عنوان:</label>
