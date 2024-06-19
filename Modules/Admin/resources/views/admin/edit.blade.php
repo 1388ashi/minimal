@@ -67,11 +67,11 @@
                             </div>
                             @if ($admin->name !== 'مدیر کل')
                             <div class="col-md-4">
-                                <span class="control-label ">
+                                <span class="control-label">
                                     وضعیت
                                 </span>
                                 <label style="cursor: pointer" class="custom-control custom-checkbox mr-1 mt-1">
-                                    <input  type="checkbox" class="custom-control-input" name="status" value="1"  @checked(old('status',$slider->status) == '1')>
+                                    <input  type="checkbox" class="custom-control-input" name="status" value="1"  @checked(old('status',$admin->status) == '1')>
                                     <span class="custom-control-label">فعال</span>
                                 </label>
                             </div>

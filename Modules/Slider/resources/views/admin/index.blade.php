@@ -55,7 +55,7 @@
                                 <td>{{ $slider->link }}</td>
                                 <td class="text-center">
                                     <a href="{{ $slider->image['url'] }}" target="_blanck">
-                                    <div class="bg-light pb-1 pt-1 img-holder img-show" style="width: 200px;max-height: 50px;border-radius: 4px;">
+                                    <div class="bg-light pb-1 pt-1 img-holder img-show w-100" style="max-height: 50px;border-radius: 4px;">
                                         <img src="{{ $slider->image['url'] }}" style="height: 40px;"  alt="{{ $slider->image['name'] }}">
                                     </div>
                                     </a>

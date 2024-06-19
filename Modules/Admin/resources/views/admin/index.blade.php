@@ -70,28 +70,32 @@
                                         <a href="{{ route('admin.admins.edit', [$admin->id]) }}" class="btn btn-warning btn-sm text-white" data-toggle="tooltip" data-original-title="ویرایش"><i class="fa fa-pencil"></i></a>
                                         @endcan
                                         {{-- Delete
-                                            <button class="btn btn-danger btn-sm text-white" onclick="confirmDelete('delete-{{ $role->id }}')" @disabled(!$role->isDeletable())><i class="fa fa-trash-o"></i></button>
-                                            <form action="{{ route('admin.admins.destroy', $role->id) }}" method="post" id="delete-{{ $role->id }}" style="display: none">
+                                        <button class="btn btn-danger btn-sm text-white" onclick="confirmDelete('delete-{{ $role->id }}')" @disabled(!$role->isDeletable())><i class="fa fa-trash-o"></i></button>
+                                        <form action="{{ route('admin.admins.destroy', $role->id) }}" method="post" id="delete-{{ $role->id }}" style="display: none">
                                                 @csrf
-                                            @method('DELETE')
-                                        </form> --}}
+                                                @method('DELETE')
+                                            </form> --}}
                                         @can('delete admins')
-                                        <button type="button" class="btn btn-danger item-delete btn-sm text-white" data-original-title="حذف" >
+                                        @if ($admin->name == 'مدیر کل')
+                                        <button type="button" class="btn btn-danger btn-sm text-white" data-original-title="حذف" @disabled(true)  onclick="confirmDelete('delete-{{ $admin->id }}')" >
                                             <i class="fa fa-trash-o"></i>
                                         </button>
+                                        @else
+                                        <button type="button" class="btn btn-danger btn-sm text-white" data-original-title="حذف" @disabled(false)  onclick="confirmDelete('delete-{{ $admin->id }}')" >
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
+                                        @endif
                                         @endcan
+                                        <form 
+                                        action="{{ route("admin.admins.destroy",$admin)}}" 
+                                        id="delete-{{$admin->id}}" 
+                                        method="POST" 
+                                        style="display: none;">
+                                        @csrf
+                                        @method("DELETE")
+                                        </form>
                                     </td>
                                 </tr>
-                                @if ($admin->name !== 'مدیر کل')
-                                <form 
-                                    action="{{ route('admin.admins.destroy',$admin)}}" 
-                                    id="delete-{{$admin->id}}" 
-                                    method="POST" 
-                                    style="display: none;">
-                                    @csrf
-                                    @method("DELETE")
-                                </form>
-                                @endif
                             @empty
                                 <tr>
                                     <td colspan="5">
