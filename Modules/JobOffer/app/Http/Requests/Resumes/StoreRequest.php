@@ -18,7 +18,7 @@ class StoreRequest extends FormRequest
             'description' => 'required',
             'mobile' => ['required','numeric','digits:11'],
             'file' => 'required|file',
-            'job_id' => 'required|integer|exists:job_offers,id'
+            'job_id' => 'nullable|integer|exists:job_offers,id'
         ];
     }
     protected function passedValidation(): void

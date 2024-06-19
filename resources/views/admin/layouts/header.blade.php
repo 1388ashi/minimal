@@ -119,13 +119,6 @@
 										</div>
 										{{-- <button class="mt-1">خروج</button> --}}
 						
-										<div class="dropdown profile-dropdown">
-											<a href="#" class="nav-link pr-1 pl-0 leading-none" data-toggle="dropdown">
-												<span>
-													<img src="{{asset('images.jfif')}}" alt="img" class="avatar avatar-md bradius">
-												</span>
-											</a>
-										</div>
 									</div>
 								</div>
 							</div>
