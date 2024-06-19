@@ -31,10 +31,10 @@
             <div class="col-xl-12 col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <p class="header font-weight-bold p-3" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">{!!$ask->question!!} </p>
-                        <div class="mt-1">
-                            جواب:
-                            {!!$ask->reply!!}
+                        <p class="header font-weight-bold p-3" style="font-size: 18px" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">{!!$ask->question!!} </p>
+                        <div class="mt-1 d-flex">
+                            <b class="ml-1">  جواب :  </b> 
+                            {!! $ask->reply !!}
                         </div>
                         <div class="row mt-3">
                             <div class="col">
@@ -42,7 +42,7 @@
                             </div>
                             <div class="col col-auto">
                                 <li class="ml-5" style="list-style-type: none;" data-placement="top" data-toggle="tooltip" title="تاریخ ساخت سوال">
-                                    <a class="icons" > <i class="feather feather-calendar"></i>{{$vertaDate->format('Y/n/j')}}</a>
+                                    <a class="icons" > <i class="feather feather-calendar"></i>{{ verta($ask->created_at)->format('Y/m/d H:i') }}</a>
                                 </li>
                             </div>
                         </div>

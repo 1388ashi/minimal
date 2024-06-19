@@ -27,18 +27,18 @@
                         @method('PATCH')
 
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="name" >سوال<span class="text-danger">&starf;</span></label>
-                                    <textarea class="form-control" name="question" cols="100" rows="3">{!!$ask->question!!}</textarea>
+                                    <textarea class="form-control" name="question" cols="600" rows="3">{!!$ask->question!!}</textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="name" >جواب<span class="text-danger">&starf;</span></label>
-                                    <textarea class="form-control" name="reply" cols="100" rows="4">{!!$ask->reply!!}</textarea>
+                                    <textarea class="form-control" name="reply" cols="800" rows="4">{!!$ask->reply!!}</textarea>
                                 </div>
                             </div>
                         </div>
