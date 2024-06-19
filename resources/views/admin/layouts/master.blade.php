@@ -24,6 +24,8 @@
 		<link href="{{asset('assets/css-rtl/dark.css')}}" rel="stylesheet" />
 		<link href="{{asset('assets/css-rtl/skin-modes.css')}}" rel="stylesheet" />
 
+		<link href="{{ asset('assets/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/plugins/sweet-alert/jquery.sweet-modal.min.css')}}" rel="stylesheet" >
 		<!-- Animate css -->
 		<link href="{{asset('assets/css-rtl/animated.css')}}" rel="stylesheet" />
 

@@ -42,13 +42,13 @@ class Setting extends BaseModel implements HasMedia
         return [
             static::GROUP_GENERAL => [
                 'title' => 'تنظیمات عمومی',
-                'summary' => 'تنظیمات عمومی سایت مانند لوگو و تلفن و ... در این بخش قرار می گیرد.',
+                'summary' => 'تنظیمات عمومی سایت این بخش قرار می گیرد.',
                 'bg' => 'primary',
                 'icon' => 'info'
             ],
             static::GROUP_SOCIAL => [
                 'title' => 'شبکه های اجتماعی',
-                'summary' => 'شبکه های اجتماعی مانند اینستاگرام و ... در این بخش قرار می گیرد.',
+                'summary' => 'شبکه های اجتماعی در این بخش قرار می گیرد.',
                 'bg' => 'pink',
                 'icon' => 'instagram'
             ],
