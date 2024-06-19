@@ -1,4 +1,4 @@
-<div class="card w-100">
+<div class="card ">
     <div class="card-header">
         <div class="card-title">فیلتر ها</div>
         <div class="card-options">
