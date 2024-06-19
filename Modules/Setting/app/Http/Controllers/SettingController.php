@@ -4,9 +4,7 @@ namespace Modules\Setting\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Modules\Setting\Http\Requests\SettingDestroyRequest;
 use Modules\Setting\Http\Requests\SettingStoreRequest;
 use Modules\Setting\Http\Requests\SettingUpdateRequest;
