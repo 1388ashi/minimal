@@ -38,6 +38,7 @@ class ResumesController extends Controller implements HasMiddleware
     public function show($id)
     {
         $resume = Resumes::with('job:id,title')->findOrFail($id);
+
         return view('joboffer::admin.resumes.show', compact('resume')); 
     }
     

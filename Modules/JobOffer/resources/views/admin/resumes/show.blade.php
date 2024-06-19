@@ -77,33 +77,37 @@
     
         </div>
     </div>
-    @if ($resume->description)
-    <div class="col-xl-12 col-md-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="mt-1 d-flex">
-                    <p class="font-weight-bold">
-                        توضیحات رزومه :   
-                    </p> 
-                    <p>
-                        {{$resume->description}}
-                    </p>
+    <div class="row">
+
+        @if ($resume->description)
+        <div class="col-xl-6 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="mt-1 d-flex">
+                        <p class="font-weight-bold">
+                            توضیحات رزومه :   
+                        </p> 
+                        <p>
+                            {{$resume->description}}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    @endif
-    @if ($resume->file['url'])
-    <div class="col-xl-6 col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="mt-1 d-flex">
-                    <p class="font-weight-bold">
-                        فایل رزومه :   
-                    </p> 
-                    <p>
-                        {{$resume->file['url']}}
-                    </p>
+        @endif
+        @if ($resume->image['url'])
+        <div class="col-xl-6 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="mt-1 d-flex">
+                        <p class="font-weight-bold">
+                            فایل رزومه :   
+                        </p> 
+                        <p>
+                            <a href="{{$resume->image['url']}}" download>دانلود فایل</a>
+                            {{-- <embed src="{{$resume->image['url']}}" type="application/pdf" width="100%" height="600px" /> --}}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
