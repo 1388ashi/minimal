@@ -30,8 +30,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="name" >سوال<span class="text-danger">&starf;</span></label>
-                                    {{-- <input type="text" class="form-control" name="question" id="question" placeholder="سوال مقاله اینجا وارد کنید" value="{{ old('question') }}" required autofocus> --}}
-                                    <textarea name="question" cols="100" rows="3">{!!$ask->question!!}</textarea>
+                                    <textarea class="form-control" name="question" cols="100" rows="3">{!!$ask->question!!}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -39,8 +38,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="name" >جواب<span class="text-danger">&starf;</span></label>
-                                    {{-- <input type="text" class="form-control" name="question" id="question" placeholder="سوال مقاله اینجا وارد کنید" value="{{ old('question') }}" required autofocus> --}}
-                                    <textarea name="reply" cols="100" rows="4">{!!$ask->reply!!}</textarea>
+                                    <textarea class="form-control" name="reply" cols="100" rows="4">{!!$ask->reply!!}</textarea>
                                 </div>
                             </div>
                         </div>
