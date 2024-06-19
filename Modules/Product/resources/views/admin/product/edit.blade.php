@@ -149,7 +149,7 @@
                             <div class="row">
                                 @foreach ($colors as $color)
                                 <div class="d-flex ml-5">
-                                    <div style="background-color:{{$color->code}};width: 25px;height:25px;border-radius: 50%;margin-left: 6px;justify-content: center;"></div>
+                                    <div style="background-color:{{$color->code}};width: 25px;height:25px;border-radius: 50%;margin-left: 6px;justify-content: center; border: 1px solid black;"></div>
                                     <div class="form-group">
                                         <label class="custom-control custom-checkbox mr-1 mb-5">
                                             <input type="checkbox" class="custom-control-input" name="colors[]" value="{{$color->id}}" @checked(in_array($color->id, old('colors', $product->colors->pluck('id')->all())) == $color->id)>

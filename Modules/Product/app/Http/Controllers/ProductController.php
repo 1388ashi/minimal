@@ -89,7 +89,8 @@ class ProductController extends Controller implements HasMiddleware
     
         $product->load([
             'categories:id,title',
-            'specifications:id,name'
+            'specifications:id,name',
+            'colors:id,title,code'
         ]);
 
         return view('product::admin.product.show', compact('product'));
