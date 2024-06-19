@@ -13,6 +13,7 @@ class StoreRequest extends FormRequest
      */
     public function rules(): array
     {
+        dd($this->all());
         return [
             'name' => 'required|max:240',
             'description' => 'required',
