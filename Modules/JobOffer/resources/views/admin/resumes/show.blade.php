@@ -82,15 +82,13 @@
         @if ($resume->description)
         <div class="col-xl-6 col-md-12">
             <div class="card">
-                <div class="card-body">
-                    <div class="mt-1 d-flex">
-                        <p class="font-weight-bold">
-                            توضیحات رزومه :   
-                        </p> 
-                        <p>
-                            {{$resume->description}}
-                        </p>
-                    </div>
+                <div class="card-body d-flex" >
+                    <p class="font-weight-bold align-items-center mb-0">
+                        توضیحات رزومه :   
+                    </p> 
+                    <p class="align-items-center mb-0">
+                        {{$resume->description}}
+                    </p>
                 </div>
             </div>
         </div>
@@ -98,16 +96,16 @@
         @if ($resume->image['url'])
         <div class="col-xl-6 col-md-12">
             <div class="card">
-                <div class="card-body">
-                    <div class="mt-1 d-flex">
-                        <p class="font-weight-bold">
-                            فایل رزومه :   
-                        </p> 
-                        <p>
-                            <a href="{{$resume->image['url']}}" download>دانلود فایل</a>
-                            {{-- <embed src="{{$resume->image['url']}}" type="application/pdf" width="100%" height="600px" /> --}}
-                        </p>
-                    </div>
+                <div class="card-body d-flex align-items-center">
+                    <p class="font-weight-bold mb-0">
+                        فایل رزومه :   
+                    </p> 
+                    <a href="{{$resume->image['url']}}" download>
+                        <img src="{{asset("download-square-svgrepo-com.svg")}}" style="width: 25px;height: 30px;" alt="">
+                        دانلود فایل
+
+                    </a>
+                    {{-- <embed src="{{$resume->image['url']}}" type="application/pdf" width="100%" height="600px" /> --}}
                 </div>
             </div>
         </div>
