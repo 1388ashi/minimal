@@ -16,14 +16,14 @@ class StoreRequest extends FormRequest
         return [
             'name' => 'required|max:240',
             'description' => 'required',
-            'mobile' => ['required','numeric','digits:11' ],
+            'mobile' => ['required','numeric','digits:11'],
             'file' => 'required|file',
             'job_id' => 'required|integer|exists:job_offers,id'
         ];
     }
     protected function passedValidation(): void
     {
-        $resumes = Resumes::query()->where('job_id', $this->job_id)->where('mobile',$this->mobile && 'name',$this->name)->exists();
+        $resumes = Resumes::query()->where('job_id', $this->job_id && 'mobile',$this->mobile && 'name',$this->name)->exists();
         if (!empty($resumes)) {
             throw Helpers::makeValidationException('!شما یک بار رزومه برای این شغل ارسال کردید');
         }

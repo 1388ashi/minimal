@@ -78,7 +78,7 @@
         </div>
     </div>
     @if ($resume->description)
-    <div class="col-xl-6 col-md-6">
+    <div class="col-xl-12 col-md-12">
         <div class="card">
             <div class="card-body">
                 <div class="mt-1 d-flex">
@@ -93,7 +93,7 @@
         </div>
     </div>
     @endif
-    @if ($resume->file)
+    {{-- @if ($resume->file['url'])
     <div class="col-xl-6 col-md-6">
         <div class="card">
             <div class="card-body">
@@ -102,13 +102,13 @@
                         فایل رزومه :   
                     </p> 
                     <p>
-                        {{$resume->description}}
+                        {{$resume->file['url']}}
                     </p>
                 </div>
             </div>
         </div>
     </div>
-    @endif
+    @endif --}}
         <div class="card-body">
             <div class="icons">
                 <a class="btn btn-danger icons" href="{{route('admin.resumes.index')}}"> برگشت</a>
