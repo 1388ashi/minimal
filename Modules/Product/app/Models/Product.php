@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Modules\Comment\Models\Comment;
+use Modules\Core\Models\BaseModel;
 use Modules\PurchaseAdvisor\Models\PurchaseAdvisor;
 use Modules\Specification\Models\Specification;
 use Spatie\MediaLibrary\HasMedia;
@@ -25,7 +26,7 @@ use Spatie\Activitylog\LogOptions;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Product extends Model implements Viewable,HasMedia
+class Product extends BaseModel implements Viewable,HasMedia
 {
     use HasFactory, InteractsWithMedia, LogsActivity,HasSlug, InteractsWithViews;
     protected $fillable = [

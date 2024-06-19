@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Log;
+use Modules\Core\Models\BaseModel;
 use Modules\Specification\Models\Specification;
 use Spatie\Activitylog\LogOptions;
 use Spatie\MediaLibrary\HasMedia;
@@ -19,7 +20,7 @@ use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class Category extends Model implements HasMedia
+class Category extends BaseModel implements HasMedia
 {
     use HasFactory,LogsActivity, InteractsWithMedia;
 

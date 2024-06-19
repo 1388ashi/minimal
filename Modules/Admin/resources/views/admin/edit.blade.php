@@ -65,7 +65,7 @@
                                     <input type="password" name="password_confirmation" class="form-control" placeholder="کلمه عبور را دوباره اینجا وارد کنید" >
                                 </div>
                             </div>
-                            @if ($admin->name !== 'مدیر کل')
+                            @if ($admin->getRoleName() !== 'super_admin')
                             <div class="col-md-4">
                                 <span class="control-label">
                                     وضعیت

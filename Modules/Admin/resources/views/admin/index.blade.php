@@ -76,7 +76,7 @@
                                                 @method('DELETE')
                                             </form> --}}
                                         @can('delete admins')
-                                        @if ($admin->name == 'مدیر کل')
+                                        @if ($admin->getRoleName() !== 'super_admin')
                                         <button type="button" class="btn btn-danger btn-sm text-white" data-original-title="حذف" @disabled(true)  onclick="confirmDelete('delete-{{ $admin->id }}')" >
                                             <i class="fa fa-trash-o"></i>
                                         </button>

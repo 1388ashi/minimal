@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Log;
+use Modules\Core\Models\BaseModel;
 use Modules\Core\Traits\Filterable;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -23,7 +24,7 @@ use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Post extends Model implements HasMedia, Viewable
+class Post extends BaseModel implements HasMedia, Viewable
 {
     use HasFactory, InteractsWithMedia,LogsActivity, HasSlug, Filterable, InteractsWithViews;
     protected $fillable = [
