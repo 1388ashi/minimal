@@ -84,6 +84,22 @@
 					</ul>
 					@endcan
 				</li>
+				<li class="slide">
+					<a class="side-menu__item" style="cursor: pointer" data-toggle="slide" >
+						<i class="fa fa-briefcase sidemenu_icon"></i>
+						<span class="side-menu__label">مدیریت فرصت شغلی</span><i class="angle fa fa-angle-left"></i>
+					</a>
+					@can('view jobs')
+					<ul class="slide-menu">
+						<li><a href="{{route('admin.jobs.index')}}" class="slide-item">مدیریت شغل ها</a></li>
+					</ul>
+					@endcan
+					@can('view jobs')
+					<ul class="slide-menu">
+						<li><a href="{{route('admin.resumes.index')}}" class="slide-item">مدیریت رزومه ها</a></li>
+					</ul>
+					@endcan
+				</li>
 				@can('view faq')
 				<li class="slide">
 					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.sliders.index')}}">
@@ -124,22 +140,7 @@
 					</a>
 				</li>
 				@endcan
-				<li class="slide">
-					<a class="side-menu__item" style="cursor: pointer" data-toggle="slide" >
-						<i class="fa fa-briefcase sidemenu_icon"></i>
-						<span class="side-menu__label">مدیریت فرصت شغلی</span><i class="angle fa fa-angle-left"></i>
-					</a>
-					@can('view jobs')
-					<ul class="slide-menu">
-						<li><a href="{{route('admin.jobs.index')}}" class="slide-item">مدیریت شغل ها</a></li>
-					</ul>
-					@endcan
-					@can('view jobs')
-					<ul class="slide-menu">
-						<li><a href="{{route('admin.resumes.index')}}" class="slide-item">مدیریت رزومه ها</a></li>
-					</ul>
-					@endcan
-				</li>
+
 				@can('view purchase_advisors')
 				<li class="slide">
 					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.purchase-advisors.index')}}">
