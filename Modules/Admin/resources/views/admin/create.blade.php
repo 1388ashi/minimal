@@ -62,11 +62,13 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label mr-3">وضعیت</label><span class="text-danger">&starf;</span>
-                                    <br>
-                                    <input style="cursor: pointer" type="checkbox" style="cursor: pointer" class="mt-1 mr-3" name="status" value="1" checked><span class="mr-2">فعال</span>
-                                </div>
+                                <span class="control-label ">
+                                    وضعیت
+                                </span>
+                                <label style="cursor: pointer" class="custom-control custom-checkbox mr-1 mt-1">
+                                    <input  type="checkbox" class="custom-control-input" name="status" value="1" @checked(old('status') == 1)>
+                                    <span class="custom-control-label">فعال</span>
+                                </label>
                             </div>
                         </div>
                         <div class="row">

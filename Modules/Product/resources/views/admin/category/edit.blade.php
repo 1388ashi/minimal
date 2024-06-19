@@ -88,8 +88,8 @@
                                     <span class="control-label ">
                                         وضعیت
                                     </span>
-                                    <label class="custom-control custom-checkbox mr-1 mt-1">
-                                        <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="status" value="1" @checked(old('status',$category->status) == '1')>
+                                    <label style="cursor: pointer" class="custom-control custom-checkbox mr-1 mt-1">
+                                        <input type="checkbox" class="custom-control-input" name="status" value="1" @checked(old('status',$category->status) == '1')>
                                         <span class="custom-control-label">فعال</span>
                                     </label>
                                 </div>

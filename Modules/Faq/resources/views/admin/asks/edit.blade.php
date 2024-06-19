@@ -1,5 +1,4 @@
 @extends('admin.layouts.master')
-
 @section('content')
     <!--  Page-header opened -->
     <div class="page-header">

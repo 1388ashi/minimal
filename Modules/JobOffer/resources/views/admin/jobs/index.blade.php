@@ -134,7 +134,7 @@
                                     وضعیت
                                 </span>
                                 <span class="text-danger">&starf;</span>
-                                <label class="custom-control custom-checkbox mr-1 mt-2">
+                                <label  style="cursor: pointer" class="custom-control custom-checkbox mr-1 mt-2">
                                     <input type="checkbox" class="custom-control-input" name="status" value="1" checked>
                                     <span class="custom-control-label">فعال</span>
                                 </label>
