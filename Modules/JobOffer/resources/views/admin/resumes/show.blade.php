@@ -57,7 +57,7 @@
     
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="d-flex align-items-center my-1">
-                        <span class="fs-16 font-weight-bold ml-1">وضعیت :</span>
+                        <span class="fs-16 font-weight-bold ml-1 ">وضعیت :</span>
                             @include('joboffer::admin.resumes.status', ['status' => $resume->status])
                     </div>
                 </div>

@@ -5,10 +5,11 @@ namespace Modules\Ticket\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Core\Models\BaseModel;
 use Modules\Core\Traits\Filterable;
 use Illuminate\Support\Facades\Cache;
 
-class Ticket extends Model
+class Ticket extends BaseModel
 {
     use HasFactory, Filterable;
 

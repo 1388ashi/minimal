@@ -5,10 +5,11 @@ namespace Modules\Faq\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Modules\Core\Models\BaseModel;
 use Modules\Faq\Database\Factories\AskFactory;
 use Spatie\Activitylog\LogOptions;
 
-class Ask extends Model
+class Ask extends BaseModel
 {
     use HasFactory;
 

@@ -45,7 +45,7 @@
                                 <td>{{ $resume->name }}</td>
                                 <td>{{ $resume->job->title }}</td>
                                 <td>{{ $resume->mobile }}</td>
-                                <td>@include('joboffer::admin.resumes.status', ['status' => $resume->status])</td>
+                                <td >@include('joboffer::admin.resumes.status', ['status' => $resume->status])</td>
                                 <td>{{verta($resume->created_at)->format('Y/m/d H:i')}}</td>
                                 <td>
                                     <a href="{{ route('admin.resumes.show',$resume) }}" class="btn btn-info btn-sm text-white" data-toggle="tooltip" data-original-title="نمایش"><i class="fa fa-eye"></i></a>

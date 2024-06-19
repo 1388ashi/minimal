@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Arr;
+use Modules\Core\Models\BaseModel;
 use Modules\Core\Traits\Filterable;
 use Illuminate\Support\Facades\Cache;
 use Modules\Product\Models\Product;
 
-class PurchaseAdvisor extends Model
+class PurchaseAdvisor extends BaseModel
 {
     use HasFactory, Filterable;
     const STATUS_CALLED = 'called';

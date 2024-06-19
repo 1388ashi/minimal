@@ -50,7 +50,9 @@
                                     <td>{{ $comment->mobile }}</td>
                                     {{-- <td>{{ __('custom.statuses.' .  $comment->status) }} --}}
                                     <td>
-                                        @include('comment::admin.comments.status', ['status' => $comment->status])
+                                        <span>
+                                            @include('comment::admin.comments.status', ['status' => $comment->status])
+                                        </span>
                                     </td>
                                     {{-- <td class="text-center">@include('includes.status',["status" => $comment->status])</td> --}}
                                     <td>{{ verta($comment->created_at)->format('Y/m/d H:i') }}</td>

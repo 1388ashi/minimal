@@ -5,6 +5,7 @@ namespace Modules\Comment\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Modules\Core\Models\BaseModel;
 use Modules\Core\Traits\Filterable;
 use Modules\Product\Models\Product;
 use Spatie\Activitylog\LogOptions;
@@ -12,7 +13,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 
-class Comment extends Model
+class Comment extends BaseModel
 {
     use HasFactory, Filterable;
 
