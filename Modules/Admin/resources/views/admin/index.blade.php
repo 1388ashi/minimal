@@ -72,11 +72,11 @@
                                         {{-- Delete
                                         <button class="btn btn-danger btn-sm text-white" onclick="confirmDelete('delete-{{ $role->id }}')" @disabled(!$role->isDeletable())><i class="fa fa-trash-o"></i></button>
                                         <form action="{{ route('admin.admins.destroy', $role->id) }}" method="post" id="delete-{{ $role->id }}" style="display: none">
-                                                @csrf
+                                            @csrf
                                                 @method('DELETE')
                                             </form> --}}
-                                        @can('delete admins')
-                                        @if ($admin->getRoleName() !== 'super_admin')
+                                            @can('delete admins')
+                                        @if ($admin->name == 'مدیر کل')
                                         <button type="button" class="btn btn-danger btn-sm text-white" data-original-title="حذف" @disabled(true)  onclick="confirmDelete('delete-{{ $admin->id }}')" >
                                             <i class="fa fa-trash-o"></i>
                                         </button>
