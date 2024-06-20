@@ -25,7 +25,7 @@ class TicketController extends Controller implements HasMiddleware
     public function index()
     {
         $tickets = Ticket::filters(request()->query())
-        ->select('id','name','mobile','email','description')
+        ->select('id','name','mobile','email','description','status')
         ->latest('id')
         ->paginate(15);
         $filterInputs = Ticket::getFilterInputs();
