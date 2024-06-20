@@ -87,7 +87,8 @@
         </div>
     </div>
     @include('ticket::admin.description')
-@endsection
+    @include('ticket::admin.edit')
+    @endsection
 @section('scripts')
 <script>
     function showDescriptionModal (description) {
