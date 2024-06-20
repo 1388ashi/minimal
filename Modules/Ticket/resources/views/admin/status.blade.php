@@ -1,7 +1,7 @@
 @if($ticket->status == 'pending')
-    <p title="وضعیت" class="badge badge-warning ">در حال بررسی</p>
+    <span title="وضعیت" class="badge badge-warning ">در حال بررسی</span>
 @elseif($ticket->status == 'new')
-    <p title="وضعیت" class="badge badge-primary ">جدید</p>
+    <span title="وضعیت" class="badge badge-primary ">جدید</span>
 @elseif($ticket->status == 'accepted')
-    <p title="وضعیت" class="badge badge-success ">تایید شده</p>
+    <span title="وضعیت" class="badge badge-success ">تایید شده</span>
 @endif

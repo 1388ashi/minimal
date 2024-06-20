@@ -36,17 +36,17 @@ class HomeController extends Controller
         $brands = Brand::select('id','status')->where('status',1)->latest('id')->get();
 
         $categories = Category::query()
-            ->WhereHas('products', function($query) {
-                return $query->with('products');
-            })
-            ->take(8)
-            ->get();
+        ->with('products')
+        ->whereHas('products')
+        ->take(8)
+        ->get();
+
             $lastProducts = Product::query()
             ->WhereHas('suggestion', function($query) {
                 return $query->with('suggestion');
             })
-            ->take(8)
             ->latest('id')
+            ->take(8)
             ->get();
 
         return response()->success('',compact('categories', 'sliders','countCategories','customerReview','brands','posts','products','lastProducts'));

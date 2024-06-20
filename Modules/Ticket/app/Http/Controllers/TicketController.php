@@ -37,7 +37,7 @@ class TicketController extends Controller implements HasMiddleware
         $credentials = $request->validate([
             'status' => ['required','in:pending,accepted'],
         ]);
-        
+
         $ticket->update([
             'status' => $request->status,
         ]);
