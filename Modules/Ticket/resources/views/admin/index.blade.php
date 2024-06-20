@@ -33,6 +33,7 @@
                                     <th class="border-top">نام</th>
                                     <th class="border-top">موبایل</th>
                                     <th class="border-top">ایمیل</th>
+                                    <th class="border-top">وضعیت</th>
                                     <th class="border-top">تاریخ ثبت</th>
                                     <th class="border-top">عملیات</th>
                                 </tr>
@@ -44,6 +45,7 @@
                                 <td>{{ $ticket->name }}</td>
                                 <td>{{ $ticket->mobile }}</td>
                                 <td>{{ $ticket->email }}</td>
+                                <td> @include('ticket::admin.status', ['status' => $ticket->status])</td>
                                 <td>{{verta($ticket->created_at)->format('Y/m/d H:i')}}</td>
                                 <td>
                                     {{-- Edit--}}
@@ -53,20 +55,27 @@
                                     onclick="showDescriptionModal('{{$ticket->description}}')"
                                     data-original-title="توضیحات">
                                     <i class="fa fa-eye"></i>
-                                    </button> 
-                                    @endcan 
+                                    </button>
+                                    @endcan
+                                    @can('view tickets')
+                                    <button type="button" class="btn btn-warning btn-sm ml-1"
+                                        data-toggle="modal"
+                                        data-target="#edit-menu-{{ $ticket->id }}">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </button>
+                                    @endcan
                                     </td>
                                 </tr>
 
                                     @empty
-                                        
+
                                 <tr>
                                     <td colspan="8">
                                         <p class="text-danger"><strong>در حال حاضر هیچ پیامی یافت نشد!</strong></p>
                                     </td>
                                 </tr>
                             @endforelse
-                            
+
                             </tbody>
                         </table>
                         {{$tickets->onEachSide(1)->links("vendor.pagination.bootstrap-4")}}

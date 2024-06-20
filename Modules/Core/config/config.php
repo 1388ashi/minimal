@@ -157,6 +157,18 @@ return [
             'operator' => '=',
             'column_type' => 'string'
         ],
+        'ticket' => [
+            'column' => 'status',
+            'type' => 'select',
+            'placeholder' => 'وضعیت را انتخاب کنید',
+            'options' => [
+                'pending' => 'در حال بررسی',
+                'accepted' => 'تایید شده',
+                'new' => 'جدید',
+            ],
+            'operator' => '=',
+            'column_type' => 'string'
+        ],
         'purchase' => [
             'column' => 'status',
             'type' => 'select',

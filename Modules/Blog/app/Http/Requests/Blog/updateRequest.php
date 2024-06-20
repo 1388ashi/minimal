@@ -14,7 +14,7 @@ class updateRequest extends FormRequest
                 'read' => 'required',
                 'body' => 'required|string',
                 'summary' => 'required|string',
-                'image' => 'nullable|image',
+                'image' => 'nullable',
                 'category_id' => 'required|integer|exists:blog_categories,id',
                 'published_at' => 'nullable|date',
         ];

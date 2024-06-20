@@ -17,10 +17,10 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function home(Request $request): JsonResponse 
+    public function home(Request $request): JsonResponse
     {
         $sliders = Slider::query()->where('status',1)->select('id','title','link','status')->latest('id')->take(4)->get();
-    
+
         $products = Product::query()
         ->select('id','title','price','discount')
         ->when($request->has('title'), function ($query) use ($request) {
@@ -36,14 +36,19 @@ class HomeController extends Controller
         $brands = Brand::select('id','status')->where('status',1)->latest('id')->get();
 
         $categories = Category::query()
-            ->withWhereHas('products', function ($query) {
-                return $query->withWhereHas('suggestion');
-            })
-            ->orWhereHas('products', function($query) {
+            ->WhereHas('products', function($query) {
                 return $query->with('products');
             })
+            ->take(8)
             ->get();
-            
-        return response()->success('',compact('categories', 'sliders','countCategories','customerReview','brands','posts','products'));
+            $lastProducts = Product::query()
+            ->WhereHas('suggestion', function($query) {
+                return $query->with('suggestion');
+            })
+            ->take(8)
+            ->latest('id')
+            ->get();
+
+        return response()->success('',compact('categories', 'sliders','countCategories','customerReview','brands','posts','products','lastProducts'));
     }
 }

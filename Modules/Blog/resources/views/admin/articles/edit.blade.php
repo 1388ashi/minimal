@@ -22,7 +22,7 @@
 
                     <x-alert-danger></x-alert-danger>
 
-                    <form action="{{ route('admin.articles.update',$article) }}" method="post">
+                    <form action="{{ route('admin.articles.update',$article) }}" method="post"  enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
 
