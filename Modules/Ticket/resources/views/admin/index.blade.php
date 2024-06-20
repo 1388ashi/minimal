@@ -45,7 +45,7 @@
                                 <td>{{ $ticket->name }}</td>
                                 <td>{{ $ticket->mobile }}</td>
                                 <td>{{ $ticket->email }}</td>
-                                <td> @include('ticket::admin.status', ['status' => $ticket->status])</td>
+                                <td> {{$ticket->status}}</td>
                                 <td>{{verta($ticket->created_at)->format('Y/m/d H:i')}}</td>
                                 <td>
                                     {{-- Edit--}}
@@ -87,7 +87,8 @@
         </div>
     </div>
     @include('ticket::admin.description')
-@endsection
+    @include('ticket::admin.edit')
+    @endsection
 @section('scripts')
 <script>
     function showDescriptionModal (description) {

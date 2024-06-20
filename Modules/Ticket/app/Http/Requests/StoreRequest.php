@@ -13,6 +13,7 @@ class StoreRequest extends FormRequest
             'description' => 'required',
             'email' => 'required|email',
             'mobile' => ['required','numeric','digits:11' ],
+            'status' => 'nullable',
         ];
     }
     public function validated($key = null, $default = null) {
