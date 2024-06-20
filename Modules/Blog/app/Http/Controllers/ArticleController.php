@@ -121,6 +121,7 @@ class ArticleController extends Controller implements HasMiddleware
             'featured' => filled($request->featured) ?: 0,
             'status' => filled($request->status) ?: 0
         ]);
+        $article->uploadFiles($request);
         
         $data = [
             'status' => 'success',
