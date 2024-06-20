@@ -133,6 +133,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'delete customerReviews' => 'حذف نظر مشتریان ',
             //ticket
             'view tickets' => 'مشاهده تیکت ها ',
+            'edit tickets' => 'مشاهده تیکت ها ',
             //purchaseAdvisor
             'view purchase_advisors' => 'مشاهده مشاوره خرید ها ',
             'edit purchase_advisors' => 'مشاهده مشاوره خرید ها ',

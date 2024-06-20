@@ -32,12 +32,12 @@ class ArticleController extends Controller implements HasMiddleware
                 ->where('type','article')
                 ->with('category:id,title')
                 ->latest('id')
-                ->paginate(15);        
+                ->paginate(15);
         $filterInputs = Post::getFilterInputs();
 
         return view('blog::admin.articles.index', compact('articles','filterInputs'));
     }
-            
+
     /**
      * Show the form for creating a new resource.
      */
@@ -75,7 +75,7 @@ class ArticleController extends Controller implements HasMiddleware
             'status' => 'success',
             'message' => 'مقاله با موفقیت ثبت شد'
         ];
-        
+
         return redirect()->route('admin.articles.index')
         ->with($data);
     }
@@ -96,10 +96,10 @@ class ArticleController extends Controller implements HasMiddleware
     public function edit(Post $article)
     {
         $categories = BlogCategory::select('id','title','type')->where('type','article')->get();
-        
+
         return view('blog::admin.articles.edit', compact('article','categories'));
     }
-    
+
     /**
      * Update the specified resource in storage.
      */
@@ -122,12 +122,12 @@ class ArticleController extends Controller implements HasMiddleware
             'status' => filled($request->status) ?: 0
         ]);
         $article->uploadFiles($request);
-        
+
         $data = [
             'status' => 'success',
             'message' => 'مقاله با موفقیت به روزرسانی شد'
         ];
-        
+
         return redirect()->route('admin.articles.index')
         ->with($data);
     }

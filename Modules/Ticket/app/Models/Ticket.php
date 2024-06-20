@@ -13,6 +13,11 @@ class Ticket extends BaseModel
 {
     use HasFactory, Filterable;
 
+    const STATUS_PENDING = 'pending';
+
+    const STATUS_ACCEPTED = 'accepted';
+
+    const STATUS_NEW = 'new';
     /**
      * The attributes that are mass assignable.
      */
@@ -25,6 +30,7 @@ class Ticket extends BaseModel
     public static array $filterColumns = [
         'name',
         'mobile',
+        'ticket',
     ];
 
     public static function getFilterInputs(): array
@@ -32,5 +38,13 @@ class Ticket extends BaseModel
         $filters = Arr::only(config('core.filters'), self::$filterColumns);
 
         return $filters;
+    }
+    public static function getAvailableStatues(): array
+    {
+        return [
+            static::STATUS_PENDING,
+            static::STATUS_ACCEPTED,
+            static::STATUS_NEW
+        ];
     }
 }
