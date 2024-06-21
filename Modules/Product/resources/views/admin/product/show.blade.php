@@ -46,7 +46,7 @@
                                 @if ($product->colors)
                                 <li class="list-group-item d-flex"><b class="bold">رنگ ها: </b> 
                                 @foreach($product->colors as $color)
-                                    <div class="mr-1" style="background-color:{{$color->code}};width: 25px;height:25px;border-radius: 50%;margin-left: 6px;justify-content: center;"></div>
+                                    <div class="mr-1 mb-0" style="background-color:{{$color->code}};width: 25px;height:25px;border-radius: 50%;margin-left: 6px;justify-content: center;"></div>
                                 @endforeach</li>
                                     @endif
                                     <li class="list-group-item"><b class="bold">وضعیت
@@ -99,9 +99,8 @@
                     </div>
                 </div>
             </div>
-            @foreach ($product->specifications as  $specification)
-            @endforeach
-            @if (!is_null($product->specification))
+            @if (is_null($product->specifications))
+                
             <div class="col-xl-6 col-md-12">
                 <div class="card">
                     <div class="card-body">
