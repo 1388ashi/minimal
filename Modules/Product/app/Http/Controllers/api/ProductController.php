@@ -51,14 +51,20 @@ class ProductController extends Controller
                 ->findOrFail($id);
 
                 $averageStar = Comment::where('product_id', $id)
-                ->with('product')
+                ->where('status', 'accepted')
                 ->avg('star');
+
+                $comments = Comment::where('product_id', $id)
+                ->where('status', 'accepted')
+                ->with('product')
+                ->get();
+
         
         $moreProducts = $product->categories()->get()->flatMap(function ($category) {
             return $category->products;
         });
         views($product)->record();
         
-        return response()->success("مشخصات محصول {$product->id}",compact('product','comments','moreProducts'));
+        return response()->success("مشخصات محصول {$product->id}",compact('product','comments','moreProducts','averageStar'));
     }
 }
