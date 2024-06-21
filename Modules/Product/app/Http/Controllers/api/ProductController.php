@@ -54,10 +54,10 @@ class ProductController extends Controller
                 ->where('status', 'accepted')
                 ->avg('star');
 
-                $comments = Comment::where('product_id', 32)
+                $comments = Comment::where('product_id', 33)
                 ->where('status', 'accepted')
                 ->with('product')
-                ->first();
+                ->get();
 
         
         $moreProducts = $product->categories()->get()->flatMap(function ($category) {
