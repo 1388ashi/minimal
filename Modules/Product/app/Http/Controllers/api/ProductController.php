@@ -50,12 +50,12 @@ class ProductController extends Controller
                 ->selectRaw('*, (price - discount) as final_price')
                 ->findOrFail($id);
 
-                $averageStar = Comment::
-               where('status', 'accepted')
-               ->avg('star');
+                $averageStar = Comment::where('product_id', $id)
+                ->where('status', 'accepted')
+                ->avg('star');
 
-                $comments = Comment::
-               where('status', 'accepted')
+                $comments = Comment::where('product_id',32)
+                ->where('status', 'accepted')
                 ->with('product')
                 ->get();
 
