@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        $categories = Category::select('id','title')->whereNull('parent_id')->with('products:id,title,price,discount,created_at')->get();
+        $categories = Category::select('id','title')->whereNull('parent_id')->with(['parent:id,title','recursiveChildren:id,title,parent_id','products:id,title,price,discount,created_at'])->get();
 
         $searchProducts = Product::query()
         ->when($request->has('title'), function ($query) use ($request) {
