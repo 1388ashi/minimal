@@ -99,8 +99,7 @@
                     </div>
                 </div>
             </div>
-            @if (is_null($product->specifications))
-                
+            @if (!is_null($product->specifications))
             <div class="col-xl-6 col-md-12">
                 <div class="card">
                     <div class="card-body">
