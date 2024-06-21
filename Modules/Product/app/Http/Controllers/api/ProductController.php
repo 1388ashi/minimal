@@ -36,7 +36,7 @@ class ProductController extends Controller
             return $product->setAttribute('price_with_discount', $product->totalPriceWithDiscount());
         });
 
-        $mostViewedProducts  = Product::orderByViews()->take(10)->get();
+        $mostViewedProducts  = Product::orderByViews()->take(20)->get();
         $topPriceProducts = Product::getTopPriceProducts();
         $topCheapProducts = Product::getTopCheapProducts();
         $mostDiscountProducts = Product::getTopDiscountedProducts();
