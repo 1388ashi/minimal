@@ -68,19 +68,19 @@ class Product extends BaseModel implements Viewable,HasMedia
 	}
     public static function getTopDiscountedProducts()
     {
-        $topDiscountedProducts = Product::select('id', 'title', 'price','discount','slug')->where('status',1)->orderByDesc('discount')->take(20)->get();
+        $topDiscountedProducts = Product::select('id', 'title', 'price','discount','slug')->where('status',1)->orderByDesc('discount')->paginate(20);
 
         return $topDiscountedProducts;
     }
     public static function getTopPriceProducts()
     {
-        $topPriceProducts = Product::select('id', 'title', 'price','discount','slug')->where('status',1)->orderByDesc('price')->take(20)->get();
+        $topPriceProducts = Product::select('id', 'title', 'price','discount','slug')->where('status',1)->orderByDesc('price')->paginate(20);
 
         return $topPriceProducts;
     }
     public static function getTopCheapProducts()
     {
-        $topCheapProducts =  Product::select('id', 'title', 'price','discount','slug')->where('status',1)->orderBy('price', 'ASC')->take(20)->get();
+        $topCheapProducts =  Product::select('id', 'title', 'price','discount','slug')->where('status',1)->orderBy('price', 'ASC')->paginate(20);
 
         return $topCheapProducts;
     }

@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        $categories = Category::select('id','title')->whereNull('parent_id')->with(['parent:id,title','recursiveChildren:id,title,parent_id','products:id,title,price,discount,created_at'])->get();
+        $categories = Category::select('id','title','parent_id')->whereNull('parent_id')->with(['children:id,title,parent_id','recursiveChildren:id,title,parent_id','products:id,title,price,discount,created_at'])->get();
 
         $searchProducts = Product::query()
         ->when($request->has('title'), function ($query) use ($request) {
@@ -36,7 +36,7 @@ class ProductController extends Controller
             return $product->setAttribute('price_with_discount', $product->totalPriceWithDiscount());
         });
 
-        $mostViewedProducts  = Product::orderByViews()->take(20)->get();
+        $mostViewedProducts  = Product::orderByViews()->paginate(20);
         $topPriceProducts = Product::getTopPriceProducts();
         $topCheapProducts = Product::getTopCheapProducts();
         $mostDiscountProducts = Product::getTopDiscountedProducts();
