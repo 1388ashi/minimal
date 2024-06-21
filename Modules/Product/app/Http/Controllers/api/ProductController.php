@@ -54,9 +54,8 @@ class ProductController extends Controller
                 ->where('status', 'accepted')
                 ->avg('star');
 
-                $comments = Comment::where('product_id', 33)
+                $comments = Comment::where('product_id',$id)
                 ->where('status', 'accepted')
-                ->with('product')
                 ->get();
 
         
