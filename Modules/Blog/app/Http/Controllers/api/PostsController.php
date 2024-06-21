@@ -57,8 +57,8 @@ class PostsController extends Controller
         views($post)->record();
 
         $viewCount = views($post)->count();
-        $mostViewedPosts  = Post::orderByViews()->take(4)->get();
-        $categories = BlogCategory::select('id','title')->with('posts:id,title,summary,body,featured,created_at')->where('type',$post->type)->teke(5 )->get();
+        $mostViewedPosts = Post::orderByViews()->take(4)->get();
+        $categories = BlogCategory::select('id','title')->with('posts:id,title,summary,body,featured,created_at')->where('type',$post->type)->teke(5)->get();
 
         return response()->success("مشخصات بلاگ {$post->id}",compact('post','searchPost','viewCount','mostViewedPosts','categories'));
     }
