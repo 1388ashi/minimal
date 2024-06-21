@@ -50,7 +50,7 @@ class ProductController extends Controller
                 ->selectRaw('*, (price - discount) as final_price')
                 ->findOrFail($id);
 
-                $comments = Comment::where('product_id',$id)->where('status','accepted')->get();
+                $comments = Comment::with('product')->where('product_id',$id)->where('status','accepted')->get();
         
         $moreProducts = $product->categories()->get()->flatMap(function ($category) {
             return $category->products;
