@@ -57,13 +57,6 @@
                                     <i class="fa fa-eye"></i>
                                     </button>
                                     @endcan
-                                    @can('view tickets')
-                                    <button type="button" class="btn btn-warning btn-sm ml-1"
-                                        data-toggle="modal"
-                                        data-target="#edit-menu-{{ $ticket->id }}">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </button>
-                                    @endcan
                                     </td>
                                 </tr>
 
