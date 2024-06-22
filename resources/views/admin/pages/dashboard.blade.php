@@ -89,7 +89,7 @@
             <div class="col-xl-6 col-lg-6 col-md-12">
                 <div class="card">
                     <div class="card-header border-0">
-                        <p class="card-title">آخرین نظرات محصول</h3>
+                        <p class="card-title">آخرین نظرات محصول</p>
                         <div class="card-options ">
                             <a href="{{ route('admin.comments.index') }}" class="btn btn-outline-light ml-3">مشاهده
                                 همه</a>
@@ -150,7 +150,7 @@
         <div class="col-xl-6 col-lg-6 col-md-12">
                 <div class="card">
                     <div class="card-header border-0">
-                        <h3 class="card-title">تماس با ما</h3>
+                        <p class="card-title">تماس با ما</p>
                         <div class="card-options ">
                             <a href="{{ route('admin.tickets.index') }}" class="btn btn-outline-light ml-3">مشاهده
                                 همه</a>
