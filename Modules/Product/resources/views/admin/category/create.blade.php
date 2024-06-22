@@ -65,7 +65,7 @@
                                     <span class="control-label ">
                                         ویژه
                                     </span>
-                                    <label class="custom-control custom-checkbox mr-1 mt-1">
+                                    <label style="cursor: pointer" class="custom-control custom-checkbox mr-1 mt-1">
                                         <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="featured" value="1" @checked(old('featured') == '1')>
                                         <span class="custom-control-label">فعال</span>
                                     </label>
