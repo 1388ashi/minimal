@@ -85,10 +85,11 @@
 						@include('admin.layouts.header')
 						
 						<!--End Page header-->
-						@include('admin.layouts.home')
+						<div class="container">
+							@yield('content')
+						</div>
 						<!--Row-->
-					</div>
-				</div><!-- end app-content-->
+					</div><!-- end app-content-->
 				@include('admin.layouts.footer')
 			</div>
 			<!--Sidebar-right-->

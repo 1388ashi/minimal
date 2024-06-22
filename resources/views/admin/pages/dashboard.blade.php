@@ -7,7 +7,6 @@
     </ol>
     <div class="mt-3 mt-lg-0">
         <div class="d-flex align-items-center flex-wrap text-nowrap">
-
         </div>
     </div>
 </div>
