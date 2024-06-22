@@ -84,10 +84,10 @@
     </div>
 </div>
 @endcan
-
-<div class="row" style="justify-content: center">
-    <div class="col-xl-9 col-md-12 col-lg-12">
-        @can('view comments')
+<div class="col-xl-12">
+    <div class="row" style="justify-content: center">
+    @can('view comments')
+        <div class="col-xl-3 col-lg-3 col-md-12">
             <div class="card">
                 <div class="card-header border-0">
                     <p class="card-title">آخرین نظرات محصول</h3>
@@ -142,10 +142,10 @@
                     </table>
                 </div>
             </div>
+        </div>
         @endcan
-    </div>
-    <div class="col-xl-6 col-lg-12 col-md-12">
-        @can('view tickets')
+    @can('view tickets')
+    <div class="col-xl-3 col-lg-3 col-md-12">
             <div class="card">
                 <div class="card-header border-0">
                     <h3 class="card-title">تماس با ما</h3>
@@ -199,6 +199,7 @@
             </div>
         @endcan
     </div>
+</div>
 </div>
 
 {{-- <div class="row">
