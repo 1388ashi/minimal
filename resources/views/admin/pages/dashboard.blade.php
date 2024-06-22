@@ -96,7 +96,6 @@
         </div>
     </div>
 @endcan
-<div class="col-xl-12 d-flex justify-content-center">
 <div class="row" >
     @can('view comments')
         <div class="col-xl-6 col-lg-6 col-md-12">
@@ -207,7 +206,6 @@
             </div>
         @endcan
     </div>
-</div>
 </div>
 @can('view resumes')
         <div class="row" >
