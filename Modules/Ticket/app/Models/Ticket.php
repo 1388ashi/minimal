@@ -17,7 +17,6 @@ class Ticket extends BaseModel
 
     const STATUS_ACCEPTED = 'accepted';
 
-    const STATUS_NEW = 'new';
     /**
      * The attributes that are mass assignable.
      */
@@ -45,7 +44,6 @@ class Ticket extends BaseModel
         return [
             static::STATUS_PENDING,
             static::STATUS_ACCEPTED,
-            static::STATUS_NEW
         ];
     }
 }

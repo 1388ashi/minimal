@@ -35,7 +35,7 @@ class TicketController extends Controller implements HasMiddleware
     public function update(Ticket $ticket,Request $request): RedirectResponse
     {
         $credentials = $request->validate([
-            'status' => ['required','in:pending,accepted'],
+            'status' => ['required','in:accepted'],
         ]);
 
         $ticket->update([

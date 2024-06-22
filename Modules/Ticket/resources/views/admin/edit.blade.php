@@ -16,8 +16,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <select class="form-control select2" name="status">
-                            <option value="pending" @selected($ticket->status == 'pending')>در حال بررسی</option>
-                            <option value="accepted" @selected($ticket->status == 'accepted')>تایید شده</option>
+                            <option value="accepted" @selected($ticket->status == 'accepted')>خوانده شده</option>
                         </select>
                     </div>
                 </div>
