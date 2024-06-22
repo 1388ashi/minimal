@@ -214,7 +214,7 @@
  --}}
  @can('view dashboard stats')
     <div class="col-xl-12">
-        <div class="row main_container" >
+        <div class="row" style="width: 80%;margin-right: auto;margin-left: auto;">
             <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
                     <a href="{{ route('admin.products.index') }}">
