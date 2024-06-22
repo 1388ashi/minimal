@@ -1,20 +1,14 @@
 @extends('admin.layouts.master')
 @section('content')
-<div class="page-header">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i>
-                داشبورد</a></li>
-    </ol>
-    <div class="mt-3 mt-lg-0">
-        <div class="d-flex align-items-center flex-wrap text-nowrap">
-
-        </div>
+<div class="page-header d-xl-flex d-block mr-3">
+    <div class="page-leftheader">
+        <h4 class="page-title">داشبورد<span class="font-weight-normal text-muted ml-2"></span></h4>
     </div>
 </div>
 
 @can('view dashboard stats')
     <div class="col-xl-12">
-        <div class="row">
+        <div class="row" style="justify-content: center">
             <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
                     <a href="{{route('admin.products.index')}}">
