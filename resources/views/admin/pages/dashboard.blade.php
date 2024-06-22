@@ -18,11 +18,11 @@
         <div class="row">
             <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
-                    <div class="card-body" style="height: 120px">
+                    <div class="card-body" style="height: 110px">
                         <div class="row">
                             <div class="col-8">
                                 <div class="mt-0 text-right"><span class="fs-16 font-weight-semibold"  style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><a href="{{route('admin.products.index')}}" >تعداد محصولات</a></span>
-                                    <p class="">{{$products}}</p>
+                                    <p class="ps-20">{{$products}}</p>
                                 </div>
                             </div>
                             <div class="col-4">
@@ -34,11 +34,11 @@
             </div>
             <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
-                    <div class="card-body" style="height: 120px">
+                    <div class="card-body" style="height: 110px">
                         <div class="row">
                             <div class="col-8">
                                 <div class="mt-0 text-right"> <span class="fs-16 font-weight-semibold"  style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> <a href="{{route('admin.comments.index')}}" >نظرات محصولات</a></span>
-                                    <p class="">{{$commentsCount}}</p>
+                                    <p class="ps-20">{{$commentsCount}}</p>
                                 </div>
                             </div>
                             <div class="col-4">
@@ -50,11 +50,11 @@
             </div>
             <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
-                    <div class="card-body" style="height: 120px">
+                    <div class="card-body" style="height: 110px">
                         <div class="row">
                             <div class="col-8">
                                 <div class="mt-0 text-right"> <span class="fs-16 font-weight-semibold"  style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><a href="{{route('admin.articles.index')}}" >وبلاگ</a></span>
-                                    <p class="">{{$weblog}}</p>
+                                    <p class="ps-20">{{$weblog}}</p>
                                 </div>
                             </div>
                             <div class="col-4">
@@ -66,11 +66,11 @@
             </div>
             <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
-                    <div class="card-body" style="height: 120px">
+                    <div class="card-body" style="height: 110px">
                         <div class="row">
                             <div class="col-8">
                                 <div class="mt-0 text-right"> <span class="fs-16 font-weight-semibold"  style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><a href="{{route('admin.resumes.index')}}" >رزومه ها</a></span>
-                                    <p class="">{{$resumesCount}}</p>
+                                    <p class="ps-20">{{$resumesCount}}</p>
                                 </div>
                             </div>
                             <div class="col-4">
