@@ -22,11 +22,11 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="mt-0 text-right"><span class="fs-16 font-weight-semibold"  style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><a href="{{route('admin.products.index')}}" >تعداد محصولات</a></span>
-                                    <h3 class="">{{$products}}</h3>
+                                    <p class="">{{$products}}</p>
                                 </div>
                             </div>
                             <div class="col-4">
-                                <div class="icon1 bg-secondary-transparent brround my-auto  float-left"> <i class="fa fa-newspaper-o"></i> </div>
+                                <div class="icon1 bg-secondary-transparent brround my-auto  float-left"> <i class="fa fa-shopping-bag"></i> </div>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="mt-0 text-right"> <span class="fs-16 font-weight-semibold"  style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> <a href="{{route('admin.comments.index')}}" >نظرات محصولات</a></span>
-                                    <h3 class="">{{$commentsCount}}</h3>
+                                    <p class="">{{$commentsCount}}</p>
                                 </div>
                             </div>
                             <div class="col-4">
@@ -54,7 +54,7 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="mt-0 text-right"> <span class="fs-16 font-weight-semibold"  style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><a href="{{route('admin.articles.index')}}" >وبلاگ</a></span>
-                                    <h3 class="">{{$weblog}}</h3>
+                                    <p class="">{{$weblog}}</p>
                                 </div>
                             </div>
                             <div class="col-4">
@@ -70,11 +70,11 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="mt-0 text-right"> <span class="fs-16 font-weight-semibold"  style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><a href="{{route('admin.resumes.index')}}" >رزومه ها</a></span>
-                                    <h3 class="">{{$resumesCount}}</h3>
+                                    <p class="">{{$resumesCount}}</p>
                                 </div>
                             </div>
                             <div class="col-4">
-                                <div class="icon1 bg-warning-transparent my-auto  float-left"> <i class="fa fa-th"></i> </div>
+                                <div class="icon1 bg-warning-transparent my-auto  float-left"> <i class="fa fa-briefcase"></i> </div>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
         @can('view orders')
             <div class="card">
                 <div class="card-header border-0">
-                    <h3 class="card-title">آخرین سفارش های موفق دوره ها</h3>
+                    <p class="card-title">آخرین سفارش های موفق دوره ها</h3>
                     <div class="card-options ">
                         <a href="{{ route('admin.orders.index') }}" class="btn btn-outline-light ml-3">مشاهده
                             همه</a>
