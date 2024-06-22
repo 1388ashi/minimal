@@ -96,7 +96,7 @@
 					@endcan
 					@can('view jobs')
 					<ul class="slide-menu">
-						<li><a href="{{route('admin.resumes.index')}}" class="slide-item">مدیریت رزومه ها</a></li>
+						<li><a href="{{route('admin.resumes.index')}}" class="slide-item">مدیریت رزومه ها ({{$resumes}})</a></li>
 					</ul>
 					@endcan
 				</li>
