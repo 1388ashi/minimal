@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        $sortBy = $request->sort;
+        $sortBy = $request->sortBy;
 
         // $categories = Category::select('id','title','parent_id')->whereNull('parent_id')->with(['children:id,title,parent_id','recursiveChildren:id,title,parent_id','products:id,title,price,discount,created_at'])->get();
 
@@ -31,7 +31,7 @@ class ProductController extends Controller
         })
         ->when($sortBy, function ($query) use ($sortBy) {
             if ($sortBy == 'mostViewed') {
-               return $query->orderByViews();
+                return $query->orderByViews();
             }elseif ($sortBy ==  'topPrice') {
                 return $query->getTopPriceProducts();
             }elseif ($sortBy ==  'topCheap') {
