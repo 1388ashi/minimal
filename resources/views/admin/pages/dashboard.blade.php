@@ -11,7 +11,7 @@
         </div>
     </div>
 </div>
-
+{{-- 
 @can('view dashboard stats')
     <div class="row" style="justify-content: center">
         <div class="col-xl-9 col-md-12 col-lg-12">
@@ -211,7 +211,7 @@
 
 
 
-
+ --}}
 
     <div class="col-xl-12">
         <div class="row">
@@ -248,7 +248,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="icon1 bg-success-transparent my-auto float-left"><i
-                                            class="ri-newspaper-fill"></i></div>
+                                            class="fa fa-comment"></i></div>
                                 </div>
                             </div>
                         </div>
@@ -268,7 +268,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="icon1 bg-danger-transparent my-auto  float-right"><i
-                                            class="fa fa-podcast"></i></div>
+                                            class="fa fa-newspaper-o"></i></div>
                                 </div>
                             </div>
                         </div>
@@ -277,13 +277,13 @@
             </div>
             <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
-                    <a href="{{ route('admin.users.index') }}">
+                    <a href="{{ route('admin.resumes.index') }}">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-8">
                                     <div class="mt-0 text-right">
-                                        <span class="fs-16 font-weight-semibold">کاربران</span>
-                                        <h3 class="mb-0 mt-1 text-warning fs-25">{{ number_format($usersCount) }}</h3>
+                                        <span class="fs-16 font-weight-semibold">رزومه ها</span>
+                                        <h3 class="mb-0 mt-1 text-warning fs-25">{{ number_format($resumesCount) }}</h3>
                                     </div>
                                 </div>
                                 <div class="col-4">
@@ -298,7 +298,7 @@
         </div>
     </div>
 @endcan
-
+{{--
 <div class="row">
 
     <div class="col-xl-6 col-lg-12 col-md-12">
@@ -486,6 +486,6 @@
             </div>
         @endcan
     </div>
-</div>
+</div> --}}
 
     @endsection
