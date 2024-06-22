@@ -212,7 +212,7 @@
 </div>
 @can('view resumes')
 <div class="col-xl-12 d-flex justify-content-center">
-    <div class="row" style="justify-content: center;width: 80%">
+    <div class="row" >
             <div class="col-xl-12 col-lg-12 col-md-12">
                 <div class="card">
                     <div class="card-header border-0">
@@ -275,7 +275,7 @@
 @endcan
 @can('view purchase_advisors')
 <div class="col-xl-12 d-flex justify-content-center">
-    <div class="row" style="justify-content: center;width: 80%">
+    <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12">
                 <div class="card">
                     <div class="card-header border-0">
