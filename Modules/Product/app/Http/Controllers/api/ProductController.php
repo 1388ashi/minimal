@@ -32,13 +32,13 @@ class ProductController extends Controller
         ->when($sortBy, function ($query) use ($sortBy) {
             if ($sortBy == 'mostViewed') {
                 return $query->orderByViews();
-            }elseif ($sortBy ==  'topPrice') {
-                return $query->getTopPriceProducts();
-            }elseif ($sortBy ==  'topCheap') {
-                return $query->getTopCheapProducts();
-            }elseif ($sortBy ==  'mostDiscount') {
-                return $query->getTopDiscountedProducts();
-            }else{
+            } elseif ($sortBy == 'topPrice') {
+                return $query->orderByDesc('price');
+            } elseif ($sortBy == 'topCheap') {
+                return $query->orderBy('price', 'ASC');
+            } elseif ($sortBy == 'mostDiscount') {
+                return $query->where('discount', '!=', 0)->orderByDesc('discount');
+            } elseif ($sortBy == 'lastProducts') {
                 return $query->latest('id');
             }
         })

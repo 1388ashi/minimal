@@ -66,26 +66,19 @@ class Product extends BaseModel implements Viewable,HasMedia
 
         return $price - $discount;
 	}
-    public static function getTopDiscountedProducts()
+    public function scopeTopDiscountedProducts($query)
     {
-        $topDiscountedProducts = Product::select('id', 'title', 'price', 'discount', 'slug')
-                                ->where('status', 1)
-                                ->where('discount', '!=', 0)
-                                ->orderByDesc('discount');
-
-        return $topDiscountedProducts;
+        return $query->where('discount', '!=', 0)->orderByDesc('discount');
     }
-    public static function getTopPriceProducts()
-    {
-        $topPriceProducts = Product::select('id', 'title', 'price','discount','slug')->where('status',1)->orderByDesc('price');
 
-        return $topPriceProducts;
+    public function scopeTopPriceProducts($query)
+    {
+        return $query->orderByDesc('price');
     }
-    public static function getTopCheapProducts()
-    {
-        $topCheapProducts =  Product::select('id', 'title', 'price','discount','slug')->where('status',1)->orderBy('price', 'ASC');
 
-        return $topCheapProducts;
+    public function scopeTopCheapProducts($query)
+    {
+        return $query->orderBy('price', 'ASC');
     }
     /**
      * The attributes that are mass assignable.
