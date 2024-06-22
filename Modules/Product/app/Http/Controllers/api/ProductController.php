@@ -38,10 +38,11 @@ class ProductController extends Controller
                 return $query->getTopCheapProducts();
             }elseif ($sortBy ==  'mostDiscount') {
                 return $query->getTopDiscountedProducts();
+            }else{
+                return $query->latest('id');
             }
         })
         ->where('status',1)
-        ->latest('id')
         ->paginate(20);
 
         // $lastProducts = Product::query()
