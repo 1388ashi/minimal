@@ -13,7 +13,7 @@
 </div>
  @can('view dashboard stats')
     <div class="col-xl-12">
-        <div class="row" style="width: 80%;margin-right: auto;margin-left: auto;">
+        <div class="row" >
             <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
                     <a href="{{ route('admin.products.index') }}">
@@ -98,7 +98,7 @@
     </div>
 @endcan
 <div class="col-xl-12 d-flex justify-content-center">
-<div class="row" style="justify-content: center;width: 80%">
+<div class="row" >
     @can('view comments')
         <div class="col-xl-6 col-lg-6 col-md-12">
             <div class="card">
