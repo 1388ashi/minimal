@@ -214,7 +214,7 @@
  --}}
  @can('view dashboard stats')
     <div class="col-xl-12">
-        <div class="row">
+        <div class="row main_container" >
             <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
                     <a href="{{ route('admin.products.index') }}">
@@ -223,7 +223,7 @@
                                 <div class="col-8">
                                     <div class="mt-0 text-right">
                                         <span class="fs-16 font-weight-semibold">تعداد محصولات</span>
-                                        <h3 class="mb-0 mt-1 text-primary fs-25">{{ number_format($products) }}</h3>
+                                        <p class="mb-0 mt-1 text-primary fs-25">{{ number_format($products) }}</p>
                                     </div>
                                 </div>
                                 <div class="col-4">
@@ -243,7 +243,7 @@
                                 <div class="col-8">
                                     <div class="mt-0 text-right">
                                         <span class="fs-16 font-weight-semibold">نظرات محصولات</span>
-                                        <h3 class="mb-0 mt-1 text-success fs-25">{{ number_format($commentsCount) }}</h3>
+                                        <p class="mb-0 mt-1 text-success fs-25">{{ number_format($commentsCount) }}</p>
                                     </div>
                                 </div>
                                 <div class="col-4">
@@ -263,7 +263,7 @@
                                 <div class="col-8">
                                     <div class="mt-0 text-right">
                                         <span class="fs-16 font-weight-semibold">وبلاگ</span>
-                                        <h3 class="mb-0 mt-1 text-danger fs-25">{{ number_format($weblog) }}</h3>
+                                        <p class="mb-0 mt-1 text-danger fs-25">{{ number_format($weblog) }}</p>
                                     </div>
                                 </div>
                                 <div class="col-4">
@@ -283,7 +283,7 @@
                                 <div class="col-8">
                                     <div class="mt-0 text-right">
                                         <span class="fs-16 font-weight-semibold">رزومه ها</span>
-                                        <h3 class="mb-0 mt-1 text-warning fs-25">{{ number_format($resumesCount) }}</h3>
+                                        <p class="mb-0 mt-1 text-warning fs-25">{{ number_format($resumesCount) }}</p>
                                     </div>
                                 </div>
                                 <div class="col-4">
