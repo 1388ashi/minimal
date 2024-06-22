@@ -1,96 +1,97 @@
 @extends('admin.layouts.master')
 @section('content')
-<div class="page-header d-xl-flex d-block mr-3">
-    <div class="page-leftheader">
-        <h4 class="page-title">داشبورد<span class="font-weight-normal text-muted ml-2"></span></h4>
+<div class="page-header">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i>
+                داشبورد</a></li>
+    </ol>
+    <div class="mt-3 mt-lg-0">
+        <div class="d-flex align-items-center flex-wrap text-nowrap">
+
+        </div>
     </div>
 </div>
 
 @can('view dashboard stats')
-    <div class="col-xl-12">
-        <div class="row" style="justify-content: center">
+<div class="row" style="justify-content: center">
+    <div class="col-xl-9 col-md-12 col-lg-12">
+        <div class="row">
             <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
-                    <a href="{{route('admin.products.index')}}">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-8">
-                                    <div class="mt-0 text-right">
-                                        <span class="fs-16 font-weight-semibold">تعداد محصولات</span>
-                                        <h3 class="mb-0 mt-1 text-primary fs-25">{{ number_format($products) }}</h3>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="icon1 bg-primary-transparent my-auto float-left"><i
-                                            class="las la-video"></i></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="mt-0 text-right"><span class="fs-16 font-weight-semibold"  style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><a href="{{route('admin.products.index')}}" >تعداد محصولات</a></span>
+                                    <h3 class="">{{$products}}</h3>
+                                        <span class="text-success fs-12 mt-2 ml-1"><i class="feather feather-arrow-up-right ml-1 bg-success-transparent p-1 brround"></i></span>
+                                    </span>
                                 </div>
                             </div>
+                            <div class="col-4">
+                                <div class="icon1 bg-secondary-transparent brround my-auto  float-left"> <i class="fa fa-newspaper-o"></i> </div>
+                            </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
-                    <a href="{{route('admin.comments.index')}}">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-8">
-                                    <div class="mt-0 text-right">
-                                        <span class="fs-16 font-weight-semibold">نظرات محصولات</span>
-                                        <h3 class="mb-0 mt-1 text-success fs-25">{{ number_format($commentsCount) }}</h3>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="icon1 bg-success-transparent my-auto float-left"><i
-                                            class="ri-newspaper-fill"></i></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="mt-0 text-right"> <span class="fs-16 font-weight-semibold"  style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> <a href="{{route('admin.comments.index')}}" >نظرات محصولات</a></span>
+                                    <h3 class="">{{$commentsCount}}</h3>
+                                        <span class="text-success fs-12 mt-2 ml-1"><i class="feather feather-arrow-up-right ml-1 bg-success-transparent p-1 brround"></i></span>
+                                    </span>
                                 </div>
                             </div>
+                            <div class="col-4">
+                                <div class="icon1 bg-success-transparent my-auto  float-left"> <i class="fa fa-book"></i> </div>
+                            </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
-                    <a href="{{ route('admin.articles.index') }}">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-8">
-                                    <div class="mt-0 text-right">
-                                        <span class="fs-16 font-weight-semibold">وبلاگ</span>
-                                        <h3 class="mb-0 mt-1 text-danger fs-25">{{ number_format($weblog) }}</h3>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="icon1 bg-danger-transparent my-auto  float-right"><i
-                                            class="fa fa-podcast"></i></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="mt-0 text-right"> <span class="fs-16 font-weight-semibold"  style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><a href="{{route('admin.articles.index')}}" >وبلاگ</a></span>
+                                    <h3 class="">{{$weblog}}</h3>
+                                        <span class="text-info fs-12 mt-2 ml-1"><i class="feather feather-arrow-up-right ml-1 bg-success-transparent p-1 brround"></i></span>
+                                    </span>
                                 </div>
                             </div>
+                            <div class="col-4">
+                                <div class="icon1 bg-primary-transparent my-auto  float-left"> <i class="fa fa-sliders"></i> </div>
+                            </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
-                    <a href="{{ route('admin.resumes.index') }}">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-8">
-                                    <div class="mt-0 text-right">
-                                        <span class="fs-16 font-weight-semibold">رزومه ها</span>
-                                        <h3 class="mb-0 mt-1 text-warning fs-25">{{ number_format($resumesCount) }}</h3>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="icon1 bg-warning-transparent my-auto  float-right"><i
-                                            class="fa fa-users"></i></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="mt-0 text-right"> <span class="fs-16 font-weight-semibold"  style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><a href="{{route('admin.resumes.index')}}" >رزومه ها</a></span>
+                                    <h3 class="">{{$resumesCount}}</h3>
+                                        <span class="text-success fs-12 mt-2 ml-1"><i class="feather feather-arrow-up-right ml-1 bg-success-transparent p-1 brround"></i></span>
+                                    </span>
                                 </div>
                             </div>
+                            <div class="col-4">
+                                <div class="icon1 bg-warning-transparent my-auto  float-left"> <i class="fa fa-th"></i> </div>
+                            </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+</div>
 @endcan
 {{--
 <div class="row">
