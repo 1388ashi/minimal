@@ -8,7 +8,6 @@
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('admin.articles.index') }}">لیست مقاله </a></li>
                 <li class="breadcrumb-item active" aria-current="page">نمایش مقاله</li>
-
             </ol>
             <div>
                 <div class="d-flex align-items-center flex-wrap text-nowrap">
@@ -21,11 +20,6 @@
                 </div>
             </div>
         </div>
-
-        <!--End Page header-->
-        @php
-        $vertaDate = verta($article->created_at);
-        @endphp
         <!-- Row -->
         <div class="row">
             <div class="col-xl-6 col-md-12">
@@ -43,7 +37,7 @@
                             <li class="list-group-item"><b class="bold">وضعیت
                                     نمایش: </b>@include('includes.status',["status" => $article->status])
                             </li>
-                            <li class="list-group-item"><b>تاریخ ثبت: </b>{{$vertaDate->format('Y/n/j')}}</li>
+                            <li class="list-group-item"><b>تاریخ ثبت: </b> {{ verta($article->created_at)->format('Y/m/d H:i') }}</li>
                         </ul>
                             <div class="mt-1">
                                 <b>خلاصه توضیحات:</b><p class="bold">{!!$article->summary!!}</p>
@@ -73,16 +67,16 @@
         </div>
         @if ($article->body)
         <div class="row">
-        <div class="col-xl-12 col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <p class="header p-3 " style="font-size: 20px" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">بدنه ی مقاله:</p>
-                    <div class="mt-1">
-                        {!!$article->body!!}
+            <div class="col-xl-12 col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="header p-3 " style="font-size: 20px" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">بدنه ی مقاله:</p>
+                        <div class="mt-1">
+                            {!!$article->body!!}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
         @endif
         <div class="card-body">
