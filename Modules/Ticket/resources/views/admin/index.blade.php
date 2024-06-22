@@ -5,7 +5,7 @@
     <div class="page-header mx-5">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
-            <li class="breadcrumb-item active" aria-current="page">لیست همه پیام ها</li>
+            <li class="breadcrumb-item active" aria-current="page">لیست همه تماس با ما</li>
         </ol>
     </div>
 
@@ -15,7 +15,7 @@
             <x-core::filter action="{{ route('admin.tickets.index') }}" :inputs="$filterInputs"/>
             <div class="card">
                 <div class="card-header border-0">
-                    <div class="card-title">لیست پیام ها ({{ $tickets->total() }})</div>
+                    <div class="card-title">لیست  تماس با ما ({{ $tickets->total() }})</div>
                     <div class="card-options">
                         <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
                         <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i class="fe fe-maximize"></i></a>
@@ -52,7 +52,7 @@
                                     @can('view tickets')
                                     <button type="button" class="btn btn-primary btn-sm ml-1"
                                     data-toggle="modal"
-                                    onclick="showDescriptionModal('{{$ticket->description}}')"
+                                    onclick="showDescriptionModal({{$ticket}})"
                                     data-original-title="توضیحات">
                                     <i class="fa fa-eye"></i>
                                     </button>
@@ -91,10 +91,23 @@
     @endsection
 @section('scripts')
 <script>
-    function showDescriptionModal (description) {
+
+    function showDescriptionModal (ticket) {
+
+        let ticketId = ticket.id;
+        let token = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '{{ route("admin.tickets.update") }}',
+            type: 'PATCH',
+            data: {ticket_id: ticketId},
+            headers: {'X-CSRF-TOKEN': token},
+        });
+
         let modal = $('#showDescriptionModal');
-        modal.find('#description').text(description ?? '-');
+        modal.find('#description').text(`${ticket.description}` ?? '-');
         modal.modal('show');
+
     }
 </script>
-    @endsection
+@endsection
