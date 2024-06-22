@@ -10,7 +10,7 @@
 <div class="row" style="justify-content: center">
     <div class="col-xl-9 col-md-12 col-lg-12">
         <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-12">
+            <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-12">
+            <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-12">
+            <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-12">
+            <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
