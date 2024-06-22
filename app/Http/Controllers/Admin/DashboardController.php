@@ -19,7 +19,7 @@ class DashboardController extends Controller
         $commentsCount = Comment::count();
         $products =  Product::count();
         $resumesCount =  Resumes::count();
-        $commetns = Comment::take(10)->latest('id')->get();
+        $comments = Comment::take(10)->latest('id')->get();
         $tickets = Ticket::where('status','pending')->take(10)->latest('id')->get();
         $resumes = Resumes::where('status','new')->get();
         $advisor = PurchaseAdvisor::where('status','notcalled')->get();
@@ -29,7 +29,7 @@ class DashboardController extends Controller
             'commentsCount',
             'products',
             'resumesCount',
-            'commetns',
+            'comments',
             'tickets',
             'resumes',
             'advisor'
