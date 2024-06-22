@@ -84,7 +84,6 @@
     </div>
 </div>
 @endcan
-<div class="col-xl-12">
     <div class="row" style="justify-content: center">
     @can('view comments')
         <div class="col-xl-3 col-lg-3 col-md-12">
@@ -199,7 +198,6 @@
             </div>
         @endcan
     </div>
-</div>
 </div>
 
 {{-- <div class="row">
