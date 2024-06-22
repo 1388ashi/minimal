@@ -18,7 +18,7 @@ class StoreRequest extends FormRequest
     }
     public function validated($key = null, $default = null) {
         $validated = parent::validated();
-        $validated['status'] = 'new';
+        $validated['status'] = 'pending';
 
         return $validated;
     }

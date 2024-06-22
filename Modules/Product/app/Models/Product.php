@@ -45,7 +45,7 @@ class Product extends BaseModel implements Viewable,HasMedia
         $modelid = $this->attributes['id'];
         $userid = auth()->user()->id;
         $description =" محصول با شناسه {$modelid} توسط کاربر باشناسه {$userid}";
-        
+
         return LogOptions::defaults()
         ->logOnly($this->fillable)
         ->setDescriptionForEvent(fn(string $eventName) => $description . __('custom.'.$eventName));
@@ -66,46 +66,42 @@ class Product extends BaseModel implements Viewable,HasMedia
 
         return $price - $discount;
 	}
-    public static function getTopDiscountedProducts()
+    public function scopeTopDiscountedProducts($query)
     {
-        $topDiscountedProducts = Product::select('id', 'title', 'price','discount','slug')->where('status',1)->orderByDesc('discount')->paginate(20);
-
-        return $topDiscountedProducts;
+        return $query->where('discount', '!=', 0)->orderByDesc('discount');
     }
-    public static function getTopPriceProducts()
-    {
-        $topPriceProducts = Product::select('id', 'title', 'price','discount','slug')->where('status',1)->orderByDesc('price')->paginate(20);
 
-        return $topPriceProducts;
+    public function scopeTopPriceProducts($query)
+    {
+        return $query->orderByDesc('price');
     }
-    public static function getTopCheapProducts()
-    {
-        $topCheapProducts =  Product::select('id', 'title', 'price','discount','slug')->where('status',1)->orderBy('price', 'ASC')->paginate(20);
 
-        return $topCheapProducts;
+    public function scopeTopCheapProducts($query)
+    {
+        return $query->orderBy('price', 'ASC');
     }
     /**
      * The attributes that are mass assignable.
      */
-    
+
     //start media-library
     protected $with = ['media'];
 
     protected $hidden = ['media'];
-    
+
         protected $appends = ['image', 'galleries','video'];
-        
+
         public function registerMediaCollections() : void
         {
             $this->addMediaCollection('product_images')->singleFile();
             $this->addMediaCollection('product_videos')->singleFile();
             $this->addMediaCollection('product_galleries');
         }
-    
+
         protected function image(): Attribute
         {
             $media = $this->getFirstMedia('product_images');
-    
+
             return Attribute::make(
                 get: fn () => [
                     'id' => $media?->id,
@@ -117,7 +113,7 @@ class Product extends BaseModel implements Viewable,HasMedia
         protected function video(): Attribute
         {
             $media = $this->getFirstMedia('product_videos');
-    
+
             return Attribute::make(
                 get: fn () => [
                     'id' => $media?->id,
@@ -126,11 +122,11 @@ class Product extends BaseModel implements Viewable,HasMedia
                 ],
             );
         }
-    
+
         protected function galleries(): Attribute
         {
             $media = $this->getMedia('product_galleries');
-    
+
             $galleries = [];
             if ($media->count()) {
                 foreach ($media as $mediaItem) {
@@ -141,12 +137,12 @@ class Product extends BaseModel implements Viewable,HasMedia
                     ];
                 }
             }
-    
+
             return Attribute::make(
                 get: fn () => $galleries,
             );
         }
-    
+
         /**
          * @throws FileDoesNotExist
          * @throws FileIsTooBig
@@ -155,12 +151,12 @@ class Product extends BaseModel implements Viewable,HasMedia
         {
             return $this->addMedia($file)->toMediaCollection('product_images');
         }
-    
+
         public function addVideo(UploadedFile $file): bool|\Spatie\MediaLibrary\MediaCollections\Models\Media
         {
             return $this->addMedia($file)->toMediaCollection('product_videos');
         }
-    
+
         /**
          * @throws FileDoesNotExist
          * @throws FileIsTooBig
@@ -170,7 +166,7 @@ class Product extends BaseModel implements Viewable,HasMedia
             return $this->addMedia($file)->toMediaCollection('product_galleries');
         }
         public function uploadFiles(Request $request): void{
-            
+
             $this->uploadImage($request);
             $this->uploadVideo($request);
             $this->uploadGalleries($request);
@@ -187,7 +183,7 @@ class Product extends BaseModel implements Viewable,HasMedia
                 Log::error('Product upload file (FileIsTooBig): ' . $e->getMessage());
             }
         }
-    
+
         public function uploadVideo(Request $request): void
         {
             try {
@@ -210,38 +206,38 @@ class Product extends BaseModel implements Viewable,HasMedia
                         }
                     }
                 }
-    
+
                 if ($request->method() == 'PATCH' && $request->filled('deleted_image_ids')) {
                     $this->deleteImages($request->input('deleted_image_ids'));
                 }
-    
+
             } catch (FileDoesNotExist $e) {
                 Log::error('آپلود فایل برای دسته بندی (فایل وجود ندارد) : ' . $e->getMessage());
             } catch (FileIsTooBig $e) {
                 Log::error('آپلود فایل برای دسته بندی (حجم فایل زیاد است) : ' . $e->getMessage());
             }
         }
-        public function specifications(): BelongsToMany 
+        public function specifications(): BelongsToMany
         {
             return $this->belongsToMany(Specification::class)->withPivot('value')->latest('id');
         }
-        public function categories(): BelongsToMany 
+        public function categories(): BelongsToMany
         {
             return $this->belongsToMany(Category::class);
         }
-        public function advisors(): HasMany 
+        public function advisors(): HasMany
         {
             return $this->hasMany(PurchaseAdvisor::class);
         }
-        public function comments(): HasMany 
+        public function comments(): HasMany
         {
             return $this->hasMany(Comment::class);
         }
-        public function colors(): BelongsToMany 
+        public function colors(): BelongsToMany
         {
             return $this->belongsToMany(Color::class);
         }
-        public function suggestion(): HasOne 
+        public function suggestion(): HasOne
         {
             return $this->hasOne(Suggestion::class);
         }

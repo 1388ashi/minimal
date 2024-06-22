@@ -28,7 +28,7 @@ class JobOfferController extends Controller implements HasMiddleware
     public function index()
     {
         $jobs = JobOffer::select('id','title','times','type','status')->paginate();
-        
+
         return view('joboffer::admin.jobs.index',compact('jobs'));
     }
     /**
@@ -49,7 +49,7 @@ class JobOfferController extends Controller implements HasMiddleware
             'status' => 'success',
             'message' => 'شغل با موفقیت ثبت شد'
         ];
-        
+
         return redirect()->route('admin.jobs.index')
         ->with($data);
     }
@@ -59,6 +59,9 @@ class JobOfferController extends Controller implements HasMiddleware
      */
     public function update(UpdateRequest $request,JobOffer $job): RedirectResponse
     {
+        if (is_null($request->status)) {
+            $request->status = false;
+        }
         $job->update([
             'title' => $request->title,
             'times' => $request->times,
@@ -69,7 +72,7 @@ class JobOfferController extends Controller implements HasMiddleware
             'status' => 'success',
             'message' => 'شغل با موفقیت به روزرسانی شد'
         ];
-        
+
         return redirect()->route('admin.jobs.index')
         ->with($data);
     }

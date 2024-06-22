@@ -7,6 +7,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Support\Facades\Cache;
 use Modules\Blog\Http\Requests\Blog\StoreRequest;
 use Modules\Blog\Http\Requests\Blog\updateRequest;
 use Modules\Blog\Models\Post;
@@ -25,7 +26,7 @@ class ArticleController extends Controller implements HasMiddleware
     /**
      * Display a listing of the resource.
      */
-    public function index(): Renderable
+    public function index()
     {
         $articles = Post::filters(request()->query())
                 ->select('id','title','summary','type','featured','status','created_at','category_id')

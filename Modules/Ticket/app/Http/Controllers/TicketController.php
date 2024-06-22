@@ -14,8 +14,6 @@ class TicketController extends Controller implements HasMiddleware
     public static function middleware(){
         return [
             new Middleware('can:view comments',['index','show']),
-            new Middleware('can:edit comments',['edit','update']),
-            new Middleware('can:delete comments',['destroy']),
         ];
     }
 
@@ -32,22 +30,12 @@ class TicketController extends Controller implements HasMiddleware
 
         return view('ticket::admin.index', compact('tickets','filterInputs'));
     }
-    public function update(Ticket $ticket,Request $request): RedirectResponse
+    public function update(Request $request): void
     {
-        $credentials = $request->validate([
-            'status' => ['required','in:pending,accepted'],
-        ]);
+        $ticketId = $request->input('ticket_id');
+        $ticket = Ticket::findOrFail($ticketId);
 
-        $ticket->update([
-            'status' => $request->status,
-        ]);
-
-        $data = [
-            'status' => 'success',
-            'message' => 'پیام با موفقیت به روزرسانی شد'
-        ];
-
-        return redirect()->route('admin.tickets.index')
-        ->with($data);
+        $ticket->status = 'accepted';
+        $ticket->save();
     }
 }

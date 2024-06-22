@@ -15,5 +15,6 @@ use Modules\Ticket\Http\Controllers\TicketController;
 */
 
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
-    Route::resource('tickets',TicketController::class);
+    Route::resource('tickets',TicketController::class)->only('index');
+    Route::patch('/tickets', [TicketController::class,'update'])->name('tickets.update');
 });
