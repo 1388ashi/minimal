@@ -31,7 +31,7 @@ class ProductController extends Controller
         })
         ->when($sortBy, function ($query) use ($sortBy) {
             if ($sortBy == 'mostViewed') {
-                return $query->orderByViews();
+                return $query->orderByViews()->latest('id');
             } elseif ($sortBy == 'topPrice') {
                 return $query->orderByDesc('price');
             } elseif ($sortBy == 'topCheap') {
