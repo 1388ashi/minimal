@@ -223,7 +223,7 @@
                                 <div class="col-8">
                                     <div class="mt-0 text-right">
                                         <span class="fs-16 font-weight-semibold">تعداد محصولات</span>
-                                        <h3 class="mb-0 mt-1 text-primary fs-25">{{ number_format($product) }}</h3>
+                                        <h3 class="mb-0 mt-1 text-primary fs-25">{{ number_format($products) }}</h3>
                                     </div>
                                 </div>
                                 <div class="col-4">
