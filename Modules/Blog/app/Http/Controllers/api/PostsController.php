@@ -22,10 +22,10 @@ class PostsController extends Controller
         ->take(4)
         ->latest('id')
         ->get();
-        
+
         // حذف 4 پست اول از نتایج
         $postsToSkip = count($featuredPosts);
-        
+
         // گرفتن 12 پست بعدی که از 4 پست اول حذف شده باشند
         $lastPosts = Post::query()
         ->select('id','title','summary','body','created_at')
@@ -39,7 +39,7 @@ class PostsController extends Controller
 
         return response()->success('', compact('featuredPosts','lastPosts','postCategories'));
     }
-    
+
     public function show(Request $request,$id): JsonResponse
     {
         $post = Post::select('id','title','writer','read','type','category_id','body','summary','created_at')
@@ -61,6 +61,6 @@ class PostsController extends Controller
         $categories = BlogCategory::select('id','title')->with('posts:id,title,summary,body,featured,created_at')->where('type',$post->type)->take(5)->get();
         $morePosts = Post::select('id','title','writer','read','type','category_id','body','summary','created_at')->where('category_id',$post->category_id)->take(8)->get();
 
-        return response()->success("مشخصات بلاگ {$post->id}",compact('post','searchPost','viewCount','mostViewedPosts','categories'));
+        return response()->success("مشخصات بلاگ {$post->id}",compact('post','searchPost','viewCount','mostViewedPosts','categories','morePosts'));
     }
 }
