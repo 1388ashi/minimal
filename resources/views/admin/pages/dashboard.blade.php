@@ -104,7 +104,6 @@
                             <th class="text-center">ردیف</th>
                             <th class="text-center">نام</th>
                             <th class="text-center">محصول</th>
-                            <th class="text-center">موبایل</th>
                             <th class="text-center">وضعیت</th>
                             <th class="text-center">تاریخ</th>
                             <th class="text-left">عملیات</th>
@@ -113,18 +112,19 @@
                         <tbody>
                         @forelse($comments as $comment)
                             <tr class="border-bottom">
-                                <td class="text-center"><span
-                                        class="avatar avatar-sm brround">{{ $loop->iteration }}</span></td>
+                                <td class="text-center">
+                                    <span
+                                        class="avatar avatar-sm brround">{{ $loop->iteration }}
+                                    </span>
+                                </td>
                                 <td class="text-center">{{$comment->name}}</td>
                                 <td class="text-center">
                                     <a href="{{route('admin.products.show',[$comment->product_id])}}">{{ $comment->product->title }}</a>
                                 </td>
-                                <td class="text-center">{{$comment->mobile}}</td>
                                 <td class="text-center">
                                     <span>
                                         @include('comment::admin.comments.status', ['status' => $comment->status])
                                     </span>
-                                </td>
                                 </td>
                                 <td class="text-center">{{verta($comment->created_at)->format('Y/m/d H:i')}}</td>
                                 <td class="text-center">
