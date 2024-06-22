@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Sluggable\HasSlug;
@@ -20,7 +21,7 @@ class BlogCategory extends Model
         'type',
         'status',
     ];
-    public function posts(): HasMany 
+    public function posts(): HasMany
     {
         return $this->hasMany(Post::class,'category_id');
     }
@@ -33,7 +34,7 @@ class BlogCategory extends Model
         $modelid = $this->attributes['id'];
         $userid = auth()->user()->id;
         $description =" دسته بندی با شناسه {$modelid} توسط کاربر باشناسه {$userid}";
-        
+
         return LogOptions::defaults()
         ->logOnly($this->fillable)
         ->setDescriptionForEvent(fn(string $eventName) => $description . __('custom.'.$eventName));
@@ -46,5 +47,14 @@ class BlogCategory extends Model
             ->saveSlugsTo('slug')
             ->slugsShouldBeNoLongerThan(191)
             ->doNotGenerateSlugsOnUpdate();
+    }
+    public static function booted()
+    {
+        static::saved(function(){
+            Cache::forget('all_blog_categories');
+        });
+        static::deleted(function(){
+            Cache::forget('all_blog_categories');
+        });
     }
 }

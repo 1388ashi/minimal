@@ -52,14 +52,14 @@ class Post extends BaseModel implements HasMedia, Viewable
         $filters = Arr::only(config('core.filters'), self::$filterColumns);
         $filters['category_id']['options'] = Cache::rememberForever('all_blog_categories', function () {
             return BlogCategory::query()
-                ->latest('title')
-                ->pluck('title', 'id');
+            ->latest('title')
+            ->where('type','article')
+            ->pluck('title', 'id');
         });
-
         return $filters;
     }
 
-    public function category(): BelongsTo 
+    public function category(): BelongsTo
     {
         return $this->belongsTo(BlogCategory::class);
     }
@@ -68,7 +68,7 @@ class Post extends BaseModel implements HasMedia, Viewable
         $modelid = $this->attributes['id'];
         $userid = auth()->user()->id;
         $description =" پست با شناسه {$modelid} توسط کاربر باشناسه {$userid}";
-        
+
         return LogOptions::defaults()
         ->logOnly($this->fillable)
         ->setDescriptionForEvent(fn(string $eventName) => $description . __('custom.'.$eventName));
@@ -86,18 +86,18 @@ class Post extends BaseModel implements HasMedia, Viewable
         protected $with = ['media'];
 
         protected $hidden = ['media'];
-    
+
         protected $appends = ['image'];
-    
+
         public function registerMediaCollections() : void
         {
             $this->addMediaCollection('blog_images')->singleFile();
         }
-    
+
         protected function image(): Attribute
         {
             $media = $this->getFirstMedia('blog_images');
-    
+
             return Attribute::make(
                 get: fn () => [
                     'id' => $media?->id,
