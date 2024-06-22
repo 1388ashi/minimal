@@ -13,7 +13,6 @@
 </div>
 
 @can('view dashboard stats')
-<div class="col-xl-12">
 <div class="row" style="justify-content: center">
     <div class="col-xl-9 col-md-12 col-lg-12">
         <div class="row">
@@ -83,20 +82,18 @@
             </div>
         </div>
     </div>
-    </div>
-
 </div>
 @endcan
-{{--
+
 <div class="row">
 
     <div class="col-xl-6 col-lg-12 col-md-12">
-        @can('view orders')
+        @can('view comments')
             <div class="card">
                 <div class="card-header border-0">
-                    <p class="card-title">آخرین سفارش های موفق دوره ها</h3>
+                    <p class="card-title">آخرین نظرات محصول</h3>
                     <div class="card-options ">
-                        <a href="{{ route('admin.orders.index') }}" class="btn btn-outline-light ml-3">مشاهده
+                        <a href="{{ route('admin.comments.index') }}" class="btn btn-outline-light ml-3">مشاهده
                             همه</a>
                     </div>
                 </div>
@@ -105,31 +102,43 @@
                         <thead>
                         <tr>
                             <th class="text-center">ردیف</th>
-                            <th class="text-center">دوره</th>
-                            <th class="text-center">مبلغ (تومان)</th>
+                            <th class="text-center">نام</th>
+                            <th class="text-center">محصول</th>
+                            <th class="text-center">موبایل</th>
                             <th class="text-center">وضعیت</th>
                             <th class="text-center">تاریخ</th>
                             <th class="text-left">عملیات</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($successOrders as $successOrder)
+                        @forelse($comments as $comment)
                             <tr class="border-bottom">
                                 <td class="text-center"><span
                                         class="avatar avatar-sm brround">{{ $loop->iteration }}</span></td>
-                                <td class="font-weight-semibold fs-14">{{ Str::limit($successOrder->course->title, 30) }}</td>
-                                <td class="text-center">@numberFmt($successOrder->amount)</td>
-                                <td class="text-center"><span class="badge bg-success-transparent">موفق</span>
-                                </td>
-                                <td class="text-center">@jalaliDate($successOrder->created_at)</td>
+                                <td class="text-center">{{$comment->name}}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('admin.orders.show', $successOrder->id) }}"
-                                       class="action-btns" data-toggle="tooltip" data-placement="top" title=""
-                                       data-original-title="مشاهده"><i
-                                            class="feather feather-eye text-azure"></i></a>
+                                    <a href="{{route('admin.products.show',[$comment->product_id])}}">{{ $comment->product->title }}</a>
+                                </td>
+                                <td class="text-center">{{$comment->mobile}}</td>
+                                <td class="text-center">
+                                    <span>
+                                        @include('comment::admin.comments.status', ['status' => $comment->status])
+                                    </span>
+                                </td>
+                                </td>
+                                <td class="text-center">{{verta($comment->created_at)->format('Y/m/d H:i')}}</td>
+                                <td class="text-center">
+                                    <a href="{{ route('admin.comments.show',$comment) }}" class="btn btn-info btn-sm text-white" data-toggle="tooltip" data-original-title="نمایش"><i class="fa fa-eye"></i></a>
                                 </td>
                             </tr>
-                        @endforeach
+                            @empty
+
+                            <tr>
+                                <td colspan="8">
+                                    <p class="text-danger"><strong>در حال حاضر هیچ پیامی یافت نشد!</strong></p>
+                                </td>
+                            </tr>
+                        @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -137,12 +146,12 @@
         @endcan
     </div>
     <div class="col-xl-6 col-lg-12 col-md-12">
-        @can('view consultations')
+        @can('view tickets')
             <div class="card">
                 <div class="card-header border-0">
-                    <h3 class="card-title">آخرین درخواست های مشاوره جدید</h3>
+                    <h3 class="card-title">تماس با ما</h3>
                     <div class="card-options ">
-                        <a href="{{ route('admin.consultations.index') }}" class="btn btn-outline-light ml-3">مشاهده
+                        <a href="{{ route('admin.tickets.index') }}" class="btn btn-outline-light ml-3">مشاهده
                             همه</a>
                     </div>
                 </div>
@@ -151,30 +160,40 @@
                         <thead>
                         <tr>
                             <th class="text-center">ردیف</th>
-                            <th class="text-center">نام و نام خانوادگی</th>
-                            <th class="text-center">شماره تلفن</th>
-                            <th class="text-center">وضعیت</th>
-                            <th class="text-center">وضعیت</th>
+                            <th class="border-top">نام</th>
+                            <th class="border-top">موبایل</th>
+                            <th class="border-top">ایمیل</th>
+                            <th class="border-top">وضعیت</th>
+                            <th class="border-top">تاریخ</th>
                             <th class="text-center">عملیات</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($newConsultations as $newConsultation)
+                        @forelse($tickets as $ticket)
                             <tr class="border-bottom">
-                                <td class="text-center"><span
-                                        class="avatar avatar-sm brround">{{ $loop->iteration }}</span></td>
-                                <td class="font-weight-semibold fs-14">{{ $newConsultation->name }}</td>
-                                <td class="font-weight-semibold fs-14">{{ $newConsultation->phone_number }}</td>
-                                <td class="text-center"><span class="badge bg-primary-transparent">جدید</span>
-                                <td class="text-center">@jalaliDate($newConsultation->created_at)</td>
+                                <td class="text-center">{{$loop->iteration}}</td>
+                                <td class="text-center">{{ $ticket->name }}</td>
+                                <td class="text-center">{{ $ticket->mobile }}</td>
+                                <td class="text-center">{{ $ticket->email }}</td>
+                                <td class="text-center">@include('ticket::admin.status', ['status' => $ticket->status])</td>
+                                <td class="text-center">{{verta($ticket->created_at)->format('Y/m/d H:i')}}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('admin.consultations.index', ['id' => $newConsultation->id]) }}"
-                                       class="action-btns" data-toggle="tooltip" data-placement="top" title=""
-                                       data-original-title="مشاهده"><i
-                                            class="feather feather-eye text-danger"></i></a>
+                                    <button type="button" class="btn btn-primary btn-sm ml-1"
+                                    data-toggle="modal"
+                                    onclick="showDescriptionModal({{$ticket}})"
+                                    data-original-title="توضیحات">
+                                    <i class="fa fa-eye"></i>
+                                    </button>
                                 </td>
                             </tr>
-                        @endforeach
+                            @empty
+
+                            <tr>
+                                <td colspan="8">
+                                    <p class="text-danger"><strong>در حال حاضر هیچ پیامی یافت نشد!</strong></p>
+                                </td>
+                            </tr>
+                        @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -183,7 +202,7 @@
     </div>
 </div>
 
-<div class="row">
+{{-- <div class="row">
     <div class="col-xl-6 col-lg-12 col-md-12">
         @can('view course_comments')
             <div class="card">
@@ -275,7 +294,7 @@
             </div>
         @endcan
     </div>
-</div>
+</div> --}}
 
- --}}
+
 @endsection
