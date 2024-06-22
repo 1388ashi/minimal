@@ -11,7 +11,7 @@
         </div>
     </div>
 </div>
-{{-- 
+{{--
 @can('view dashboard stats')
     <div class="row" style="justify-content: center">
         <div class="col-xl-9 col-md-12 col-lg-12">
@@ -212,7 +212,7 @@
 
 
  --}}
-
+ @can('view dashboard stats')
     <div class="col-xl-12">
         <div class="row">
             <div class="col-xl-3 col-lg-3 col-md-12">
