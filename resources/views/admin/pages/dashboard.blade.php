@@ -13,7 +13,6 @@
 </div>
 
 @can('view dashboard stats')
-<div class="container">
     <div class="row" style="justify-content: center">
         <div class="col-xl-9 col-md-12 col-lg-12">
             <div class="row">
@@ -87,7 +86,7 @@
     @endcan
         <div class="row" style="justify-content: center">
         @can('view comments')
-            <div class="col-xl-3 col-lg-3 col-md-12">
+            <div class="col-xl-6 col-lg-6 col-md-12">
                 <div class="card">
                     <div class="card-header border-0">
                         <p class="card-title">آخرین نظرات محصول</h3>
@@ -145,7 +144,7 @@
             </div>
             @endcan
         @can('view tickets')
-        <div class="col-xl-3 col-lg-3 col-md-12">
+        <div class="col-xl-6 col-lg-6 col-md-12">
                 <div class="card">
                     <div class="card-header border-0">
                         <h3 class="card-title">تماس با ما</h3>
@@ -200,7 +199,6 @@
             @endcan
         </div>
     </div>
-</div>
 
     {{-- <div class="row">
         <div class="col-xl-6 col-lg-12 col-md-12">
