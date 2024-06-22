@@ -126,7 +126,10 @@
                                     </td>
                                     <td class="text-center">{{verta($comment->created_at)->format('Y/m/d H:i')}}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('admin.comments.show',$comment) }}" class="btn btn-info btn-sm text-white" data-toggle="tooltip" data-original-title="نمایش"><i class="fa fa-eye"></i></a>
+                                        <a href="{{ route('admin.comments.show',$comment) }}"
+                                        class="action-btns" data-toggle="tooltip" data-placement="top" title=""
+                                        data-original-title="مشاهده"><i
+                                             class="feather feather-eye text-azure"></i></a>
                                     </td>
                                 </tr>
                                 @empty
@@ -163,7 +166,6 @@
                                 <th class="border-top">ایمیل</th>
                                 <th class="border-top">وضعیت</th>
                                 <th class="border-top">تاریخ</th>
-                                <th class="text-center">عملیات</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -175,14 +177,6 @@
                                     <td class="text-center">{{ $ticket->email }}</td>
                                     <td class="text-center">@include('ticket::admin.status', ['status' => $ticket->status])</td>
                                     <td class="text-center">{{verta($ticket->created_at)->format('Y/m/d H:i')}}</td>
-                                    <td class="text-center">
-                                        <button type="button" class="btn btn-primary btn-sm ml-1"
-                                        data-toggle="modal"
-                                        onclick="showDescriptionModal({{$ticket}})"
-                                        data-original-title="توضیحات">
-                                        <i class="fa fa-eye"></i>
-                                        </button>
-                                    </td>
                                 </tr>
                                 @empty
 
