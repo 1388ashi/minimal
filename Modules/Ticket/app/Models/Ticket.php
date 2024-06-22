@@ -26,6 +26,7 @@ class Ticket extends BaseModel
         'mobile',
         'email',
         'description',
+        'status',
     ];
     public static array $filterColumns = [
         'name',

@@ -109,8 +109,8 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
-    @endif
         <div class="card-body">
             <div class="icons">
                 <a class="btn btn-danger icons" href="{{route('admin.resumes.index')}}"> برگشت</a>

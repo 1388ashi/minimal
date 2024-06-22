@@ -171,28 +171,29 @@ class ProductController extends Controller implements HasMiddleware
     {
             $product->update($request->validated());
             $product->uploadFiles($request);
+            
+            $product->specifications()->detach();
+            $specifications = $request->specifications;
 
-            $syncDataSpec = [];
-            if(filled($request->specifications)){
-                foreach($request->specifications as $specification) {
-                    if(!empty($specification['value'])){
-                        $syncDataSpec[$specification['id']] = ['value' => $specification['value']];
+            if(filled($specifications)){
+                foreach($specifications as $id => $value) {
+                    if(!empty($value)){
+                        $product->specifications()->attach($id, ['value' => $value]);
                     }
                 }
             }
-            $product->specifications()->sync($syncDataSpec);
 
             $categories = $request->categories;
 
+            $product->categories()->detach();
             foreach($categories as $category) {
-                $product->categories()->sync($category);
+                $product->categories()->attach($category);
             }
         
             $colors = $request->colors;
-            if(filled($colors)){
-                foreach($colors as $color) {
-                    $product->colors()->sync($color);
-                }
+            $product->colors()->detach(); // حذف همه اتصالات قبلی
+            foreach($colors as $color) {
+                $product->colors()->attach($color);
             }
             $data = [
                 'status' => 'success',

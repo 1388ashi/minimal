@@ -36,7 +36,7 @@ class HomeController extends Controller
         $brands = Brand::select('id','status')->where('status',1)->latest('id')->get();
 
         $categories = Category::query()
-        ->with('products')
+        ->with(['parent:id,title','children:id,title,parent_id','recursiveChildren:id,title,parent_id','products'])
         ->whereHas('products')
         ->take(8)
         ->get();
