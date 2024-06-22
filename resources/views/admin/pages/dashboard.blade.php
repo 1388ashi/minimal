@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="icon1 bg-warning-transparent my-auto  float-right"><i
-                                            class="fa fa-users"></i></div>
+                                            class="fa fa-briefcase"></i></div>
                                 </div>
                             </div>
                         </div>
@@ -272,7 +272,6 @@
             </div>
         </div>
     </div>
-</div>
 @endcan
 @can('view purchase_advisors')
 <div class="col-xl-12 d-flex justify-content-center">
