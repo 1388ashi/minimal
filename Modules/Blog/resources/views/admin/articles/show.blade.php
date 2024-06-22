@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('admin.articles.index') }}">لیست مقاله </a></li>
                 <li class="breadcrumb-item active" aria-current="page">نمایش مقاله</li>
-                
+
             </ol>
             <div>
                 <div class="d-flex align-items-center flex-wrap text-nowrap">
@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-    
+
         <!--End Page header-->
         @php
         $vertaDate = verta($article->created_at);
@@ -54,7 +54,7 @@
             <div class="col-xl-6 col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="news-slider">
+                        <div class="news-slider" style="display: flex;justify-content: center;align-items: center">
                             <div class="news-carousel">
                                 <div id="carousel" class="carousel slide" data-ride="false">
                                     <div class="carousel-inner">
