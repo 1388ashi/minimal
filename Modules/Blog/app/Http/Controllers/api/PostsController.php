@@ -20,8 +20,8 @@ class PostsController extends Controller
             return $query->where('id', $request->category_id);
         })
         ->when($request->has('title'), function ($query) use ($request) {
-            $query->whereHas('posts', function ($subQuery) use ($request) {
-                $subQuery->where('title', 'like', '%' . $request->input('title') . '%');
+            return $query->whereHas('posts', function ($subQuery) use ($request) {
+                return $subQuery->where('posts.title', 'like', '%' . $request->input('title') . '%');
             });
         })
         ->paginate();
