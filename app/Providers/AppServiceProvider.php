@@ -54,7 +54,7 @@ class AppServiceProvider extends ServiceProvider
             $resumes = Resumes::where('status','new')->count();
             $comments = Resumes::where('status','pending')->count();
             $logo = Helpers::setting('logo', asset('images/logo.png'));
-            // dd($logo);
+            dd($comments);
             $view->with(compact('logo','resumes','comments'));
         });
         $this->responseMacros();
