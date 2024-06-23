@@ -35,7 +35,7 @@ class Setting extends BaseModel implements HasMedia
         'group',
         'label',
         'type',
-        'value', 
+        'value',
     ];
     public static function getAllGroups(): array
     {
@@ -54,7 +54,7 @@ class Setting extends BaseModel implements HasMedia
             ],
             static::GROUP_ABOUT => [
                 'title' => 'گروه درباره ما',
-                'summary' => 'تنظیمات درباره ما در این بخش قرار می گیرد.',
+                'summary' => 'تنظیمات  درباره ما سایت در این بخش قرار می گیرد.',
                 'bg' => 'success',
                 'icon' => 'paperclip'
             ],
