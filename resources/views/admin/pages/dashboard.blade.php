@@ -351,7 +351,7 @@
 
                             <tr>
                                 <td colspan="8">
-                                    <p class="text-danger"><strong>در حال حاضر هیچ پیامی یافت نشد!</strong></p>
+                                    <p class="text-danger" style="display: flex;justify-content: center"><strong>در حال حاضر هیچ پیامی یافت نشد!</strong></p>
                                 </td>
                             </tr>
                         @endforelse
