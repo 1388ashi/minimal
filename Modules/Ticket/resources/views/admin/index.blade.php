@@ -80,7 +80,6 @@
         </div>
     </div>
     @include('ticket::admin.description')
-    @include('ticket::admin.edit')
     @endsection
 @section('scripts')
 <script>

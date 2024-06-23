@@ -378,7 +378,6 @@
                             <th class="text-center">ردیف</th>
                             <th class="border-top">نام</th>
                             <th class="border-top">موبایل</th>
-                            <th class="border-top">ایمیل</th>
                             <th class="border-top">وضعیت</th>
                             <th class="border-top">تاریخ</th>
                         </tr>
@@ -389,7 +388,6 @@
                                 <td class="text-center">{{$loop->iteration}}</td>
                                 <td class="text-center">{{ $ticket->name }}</td>
                                 <td class="text-center">{{ $ticket->mobile }}</td>
-                                <td class="text-center">{{ $ticket->email }}</td>
                                 <td class="text-center">@include('ticket::admin.status', ['status' => $ticket->status])</td>
                                 <td class="text-center">{{verta($ticket->created_at)->format('Y/m/d H:i')}}</td>
                             </tr>
