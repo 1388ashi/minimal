@@ -298,6 +298,7 @@
         </div>
     </div>
 @endcan
+<div class="col-xl-12">
 <div class="row" style="justify-content: center;width: 80%">
     @can('view comments')
         <div class="col-xl-6 col-lg-6 col-md-12">
@@ -407,7 +408,8 @@
         @endcan
     </div>
 </div>
-{{-- 
+</div>
+{{--
 <div class="row">
     <div class="col-xl-6 col-lg-12 col-md-12">
         @can('view course_comments')
