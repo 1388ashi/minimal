@@ -52,6 +52,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Facades\View::composer('admin.layouts.master', function (View $view) {
             $resumes = Resumes::where('status','new')->count();
+            $commetns = Resumes::where('status','pending')->count();
             $logo = Helpers::setting('logo', asset('images/logo.png'));
             // dd($logo);
             $view->with(compact('logo','resumes'));
