@@ -298,7 +298,7 @@
         </div>
     </div>
 @endcan
-<div class="col-xl-12">
+<div class="col-xl-12 d-flex justify-content-center">
 <div class="row" style="justify-content: center;width: 80%">
     @can('view comments')
         <div class="col-xl-6 col-lg-6 col-md-12">
