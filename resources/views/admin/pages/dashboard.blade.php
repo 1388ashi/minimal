@@ -474,6 +474,7 @@
         </div>
     </div>
 </div>
+@endcan
 @can('view purchase_advisors')
 <div class="col-xl-12 d-flex justify-content-center">
     <div class="row" style="justify-content: center;width: 80%">
