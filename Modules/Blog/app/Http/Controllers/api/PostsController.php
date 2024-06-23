@@ -15,18 +15,19 @@ class PostsController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
+        $categoryId = $request->query("category_id");
+
         $postCategories = BlogCategory::select('id', 'title')
         ->with('posts')
-        ->when($request->has('category_id'), function ($query) use ($request) {
-            return $query->where('id', $request->category_id);
+        ->when($request->has('category_id'), function ($query) use ($categoryId) {
+            return $query->where('category_id', $categoryId);
         })
         ->when($request->has('title'), function ($query) use ($request) {
-            // Correctly using whereHas to filter categories that have posts matching the title
-            return $query->whereHas('posts', function ($subQuery) use ($request) {
-                $subQuery->with('posts', fn (Builder $query) => $query->where('title', 'like', '%'. $request->input('title'). '%'));
-            });
+            return $query->where('title', 'like', '%'. $request->input('title'). '%');
         })
         ->paginate();
+
+        $categories  = BlogCategory::select('id','title')->with('posts')->where('status',1)->get();
 
         $featuredPosts = Post::query()
         ->select('id','title','summary','body','featured','created_at')
@@ -46,7 +47,7 @@ class PostsController extends Controller
         ->latest('id')
         ->paginate(12);
 
-        return response()->success('', compact('featuredPosts','lastPosts','postCategories'));
+        return response()->success('', compact('featuredPosts','lastPosts','postCategories','categories'));
     }
 
     public function show(Request $request,$id): JsonResponse
