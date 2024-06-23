@@ -59,7 +59,7 @@
 					@endcan
 					@can('view comments')
 					<ul class="slide-menu">
-						<li><a href="{{route('admin.comments.index')}}"  class="slide-item" >مدیریت نظرات {{ $comments > 0 ? '('.$comments.')' : null}}</a></li>
+						<li><a href="{{route('admin.comments.index')}}"  class="slide-item" >مدیریت نظرات {{ $commetns > 0 ? '('.$commetns.')' : null}}</a></li>
 					</ul>
 					@endcan
 				</li>
