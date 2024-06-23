@@ -39,9 +39,6 @@ class PostsController extends Controller
         // گرفتن 12 پست بعدی که از 4 پست اول حذف شده باشند
         $lastPosts = Post::query()
         ->select('id','title','summary','body','created_at')
-        ->when($request->has('title'), function ($query) use ($request) {
-            $query->where('title', 'like', '%' . $request->input('title') . '%');
-        })
         ->where('status',1)
         ->skip($postsToSkip)
         ->latest('id')
