@@ -55,7 +55,7 @@
             </div>
             <div class="col-xl-3 col-lg-3 col-md-12">
                 <div class="card">
-                    <a href="{{ route('admin.articles.iSndex') }}">
+                    <a href="{{ route('admin.articles.index') }}">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-8">
