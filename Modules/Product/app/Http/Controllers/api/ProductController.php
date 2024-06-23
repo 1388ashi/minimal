@@ -15,17 +15,17 @@ class ProductController extends Controller
     {
         $sortBy = $request->sortBy;
 
-        $categories = Category::select('id','title','parent_id')->where('id',$request->category_id)->whereNull('parent_id')->with(['children:id,title,parent_id','recursiveChildren:id,title,parent_id','products:id,title,price,discount,created_at'])->get();
+        $categories = Category::select('id','title','parent_id')
+        ->when($request->has('category_id'), function ($query) use ($request) {
+        return $query->where('id', $request->category_id);
+        })->whereNull('parent_id')
+        ->with(['children:id,title,parent_id','recursiveChildren:id,title,parent_id','products:id,title,price,discount,created_at'])
+        ->get();
 
         $products = Product::query()
         ->when($request->has('title'), function ($query) use ($request) {
             $query->where('title', 'like', '%' . $request->input('title') . '%');
         })
-        // ->when($request->has('category_id'), function ($query) use ($request) {
-        //     $query->whereHas('categories', function ($q) use ($request) {
-        //         $q->where('category_id', $request->input('category_id'))->with(['children:id,title,parent_id','recursiveChildren:id,title,parent_id','products:id,title,price,discount,created_at']);
-        //     });
-        // })
         ->when($request->has('min_price') && $request->has('max_price'), function ($query) use ($request) {
             $query->whereBetween('price', [$request->input('min_price'), $request->input('max_price')]);
         })
@@ -45,21 +45,6 @@ class ProductController extends Controller
         ->withCount('views')
         ->where('status',1)
         ->paginate(20);
-
-        // $lastProducts = Product::query()
-        // ->select('id', 'title', 'price','discount','slug','created_at')
-        // ->where('status',1)
-        // ->latest('id')
-        // ->paginate(20);
-
-        // $lastProducts->map(function ($product) {
-        //     return $product->setAttribute('price_with_discount', $product->totalPriceWithDiscount());
-        // });
-
-        // $mostViewedProducts  = Product::orderByViews()->paginate(20);
-        // $topPriceProducts = Product::getTopPriceProducts();
-        // $topCheapProducts = Product::getTopCheapProducts();
-        // $mostDiscountProducts = Product::getTopDiscountedProducts();
 
         return response()->success('', compact('products','categories'));
     }
