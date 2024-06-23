@@ -448,7 +448,70 @@
                                     <td class="text-center">{{ $resume->job->title }}</td>
                                     <td class="text-center">{{ $resume->mobile }}</td>
                                     <td class="text-center">
-                                        <span class="badge bg-primary-transparent">جدید</span>
+                                        <span class="badge bg-primary-transparent">در حال بررسی</span>
+                                    </td>
+                                    <td class="text-center">{{verta($resume->created_at)->format('Y/m/d H:i')}}</td>
+                                    <td class="text-center">
+                                        <a  href="{{ route('admin.resumes.show',$resume) }}"
+                                        class="action-btns" data-toggle="tooltip" data-placement="top" title=""
+                                        data-original-title="مشاهده"><i
+                                             class="feather feather-eye text-azure"></i></a>
+                                    </td>
+                                </tr>
+                                @empty
+
+                                <tr>
+                                    <td colspan="8">
+                                        <p class="text-danger" style="display: flex;justify-content: center !important"><strong>در حال حاضر هیچ رزومه ای یافت نشد!</strong></p>
+                                    </td>
+                                </tr>
+                            @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@can('view purchase_advisors')
+<div class="col-xl-12 d-flex justify-content-center">
+    <div class="row" style="justify-content: center;width: 80%">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-header border-0">
+                        <p class="card-title">مشاوره های خرید (تماس گرفته نشده) </p>
+                        <div class="card-options ">
+                            <a href="{{ route('admin.resumes.index') }}" class="btn btn-outline-light ml-3">مشاهده
+                                همه</a>
+                        </div>
+                    </div>
+                    <div class="table-responsive attendance_table mt-4 border-top">
+                        <table class="table mb-0 text-nowrap">
+                            <thead>
+                            <tr>
+                                <th class="text-center">ردیف</th>
+                                <th class="text-center">نام و نام خوانوادگی</th>
+                                <th class="text-center">شغل</th>
+                                <th class="text-center">موبایل</th>
+                                <th class="text-center">وضعیت</th>
+                                <th class="text-center">تاریخ ارسال</th>
+                                <th class="text-center">عملیات</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @forelse($resumes as $resume)
+                                <tr class="border-bottom">
+                                    <td class="text-center">
+                                        <span
+                                            class="avatar avatar-sm brround">{{ $loop->iteration }}
+                                        </span>
+                                    </td>
+                                    <td class="text-center">{{ $resume->name }}</td>
+                                    <td class="text-center">{{ $resume->job->title }}</td>
+                                    <td class="text-center">{{ $resume->mobile }}</td>
+                                    <td class="text-center">
+                                        <span class="badge bg-primary-transparent">در حال بررسی</span>
                                     </td>
                                     <td class="text-center">{{verta($resume->created_at)->format('Y/m/d H:i')}}</td>
                                     <td class="text-center">

@@ -12,7 +12,9 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|max:200',
+            'times' => 'required|max:244',
+            'type' => 'required|in:part-time,full-time'
         ];
     }
 
