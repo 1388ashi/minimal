@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades;
 use Illuminate\View\View;
+use Modules\Comment\Models\Comment;
 use Modules\Core\Helpers\Helpers;
 use Modules\JobOffer\Models\Resumes;
 class AppServiceProvider extends ServiceProvider
@@ -52,9 +53,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Facades\View::composer('admin.layouts.master', function (View $view) {
             $resumes = Resumes::where('status','new')->count();
-            $comments = Resumes::where('status','pending')->count();
+            $comments = Comment::where('status','pending')->count();
             $logo = Helpers::setting('logo', asset('images/logo.png'));
-            dd($comments);
+
             $view->with(compact('logo','resumes','comments'));
         });
         $this->responseMacros();
