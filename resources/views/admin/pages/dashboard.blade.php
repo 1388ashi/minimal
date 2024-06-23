@@ -376,10 +376,10 @@
                         <thead>
                         <tr>
                             <th class="text-center">ردیف</th>
-                            <th class="border-top">نام</th>
-                            <th class="border-top">موبایل</th>
-                            <th class="border-top">وضعیت</th>
-                            <th class="border-top">تاریخ</th>
+                            <th class="text-center">نام</th>
+                            <th class="text-center">موبایل</th>
+                            <th class="text-center">وضعیت</th>
+                            <th class="text-center">تاریخ</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -423,7 +423,7 @@
                             همه</a>
                     </div>
                 </div>
-                <div class="table-responsive attendance_table mt-4 border-top">
+                <div class="table-responsive attendance_table mt-4 text-center">
                     <table class="table mb-0 text-nowrap">
                         <thead>
                         <tr>
