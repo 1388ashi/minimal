@@ -19,8 +19,13 @@ class PostsController extends Controller
         ->when($request->has('category_id'), function ($query) use ($request) {
             return $query->where('id', $request->category_id);
         })
+        ->when($request->has('title'), function ($query) use ($request) {
+            return $query->whereHas('posts', function ($subQuery) use ($request) {
+                $subQuery->where('title', 'like', '%' . $request->input('title') . '%');
+            });
+        })
         ->paginate();
-        
+
         $featuredPosts = Post::query()
         ->select('id','title','summary','body','featured','created_at')
         ->where('featured',1 && 'status',1)
