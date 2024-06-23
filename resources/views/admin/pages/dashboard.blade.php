@@ -319,7 +319,7 @@
                             <th class="text-center">محصول</th>
                             <th class="text-center">وضعیت</th>
                             <th class="text-center">تاریخ</th>
-                            <th class="text-left">عملیات</th>
+                            <th class="text-center">عملیات</th>
                         </tr>
                         </thead>
                         <tbody>
