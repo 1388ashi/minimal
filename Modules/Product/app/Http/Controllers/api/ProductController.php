@@ -15,7 +15,7 @@ class ProductController extends Controller
     {
         $sortBy = $request->sortBy;
 
-        $categories = Category::select('id','title','parent_id')->whereNull('parent_id')->with(['children:id,title,parent_id','recursiveChildren:id,title,parent_id','products:id,title,price,discount,created_at'])->get();
+        $categories = Category::select('id','title','parent_id')->where('id',$request->category_id)->whereNull('parent_id')->with(['children:id,title,parent_id','recursiveChildren:id,title,parent_id','products:id,title,price,discount,created_at'])->get();
 
         $products = Product::query()
         ->when($request->has('title'), function ($query) use ($request) {
