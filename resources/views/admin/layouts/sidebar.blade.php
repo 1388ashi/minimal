@@ -144,7 +144,7 @@
 				<li class="slide">
 					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.purchase-advisors.index')}}">
 						<i class="fa fa-shopping-basket sidemenu_icon"></i>
-						<span class="side-menu__label">مشاوره خرید</span>
+						<span class="side-menu__label">مشاوره خرید {{ $advisors > 0 ? '('.$advisors.')' : null}}</span>
 					</a>
 				</li>
 				@endcan
