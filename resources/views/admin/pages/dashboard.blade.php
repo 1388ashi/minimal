@@ -390,7 +390,6 @@
                                         class="avatar avatar-sm brround">{{ $loop->iteration }}
                                     </span>
                                 </td>
-                                <td class="text-center">{{$loop->iteration}}</td>
                                 <td class="text-center">{{ $ticket->name }}</td>
                                 <td class="text-center">{{ $ticket->mobile }}</td>
                                 <td class="text-center">@include('ticket::admin.status', ['status' => $ticket->status])</td>
