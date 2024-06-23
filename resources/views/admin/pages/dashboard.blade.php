@@ -132,7 +132,7 @@
                                     <a href="{{route('admin.products.show',[$comment->product_id])}}">{{Str::limit($comment->product->title,18,'...')}}</a>
                                 </td>
                                 <td class="text-center">
-                                        <span class="badge bg-primary-transparent">جدید</span>
+                                        <span class="badge bg-primary-transparent">در حال بررسی</span>
                                 </td>
                                 <td class="text-center">{{verta($comment->created_at)->format('Y/m/d H:i')}}</td>
                                 <td class="text-center">
@@ -188,7 +188,7 @@
                                 <td class="text-center">{{ $ticket->name }}</td>
                                 <td class="text-center">{{ $ticket->mobile }}</td>
                                 <td class="text-center">
-                                    <span class="badge bg-primary-transparent">جدید</span>
+                                    <span class="badge bg-info-transparent">جدید</span>
                                 </td>
                                 <td class="text-center">{{verta($ticket->created_at)->format('Y/m/d H:i')}}</td>
                             </tr>
