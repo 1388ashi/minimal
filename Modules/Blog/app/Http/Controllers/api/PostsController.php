@@ -17,8 +17,8 @@ class PostsController extends Controller
     {
         $categoryId = $request->query("category_id");
 
-        $postCategories = BlogCategory::select('id', 'title')
-        ->with('posts')
+        $postCategories = Post::select('id','title','summary','body','featured','created_at')
+        ->with('category:id,title')
         ->when($request->has('category_id'), function ($query) use ($categoryId) {
             return $query->where('category_id', $categoryId);
         })
