@@ -57,7 +57,7 @@ class PostsController extends Controller
         views($post)->record();
 
         $viewCount = views($post)->count();
-        $mostViewedPosts = Post::orderByViews()->take(4)->get();
+        $mostViewedPosts = Post::orderByViews()->with('category:id,title')->take(4)->get();
         $categories = BlogCategory::select('id','title')->with('posts:id,title,summary,body,featured,created_at')->where('type',$post->type)->take(5)->get();
         $morePosts = Post::select('id','title','writer','read','type','category_id','body','summary','created_at')->where('category_id',$post->category_id)->take(10)->get();
 
