@@ -18,7 +18,7 @@ class ProductController extends Controller
         $categories = Category::select('id','title','parent_id')
         ->when($request->has('category_id'), function ($query) use ($request) {
         return $query->where('id', $request->category_id);
-        })->whereNull('parent_id')
+        })
         ->with(['children:id,title,parent_id','recursiveChildren:id,title,parent_id','products:id,title,price,discount,created_at'])
         ->get();
 
