@@ -21,7 +21,7 @@ class PostsController extends Controller
         })
         ->when($request->has('title'), function ($query) use ($request) {
             // Correctly using whereHas to filter categories that have posts matching the title
-            return $query->whereHas('posts', function ($subQuery) use ($request) {
+            return $query->whereHasWith('posts', function ($subQuery) use ($request) {
                 $subQuery->where('title', 'like', '%'. $request->input('title'). '%');
             });
         })
