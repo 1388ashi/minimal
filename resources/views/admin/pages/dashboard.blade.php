@@ -332,7 +332,7 @@
                                 </td>
                                 <td class="text-center">{{$comment->name}}</td>
                                 <td class="text-center">
-                                    <a href="{{route('admin.products.show',[$comment->product_id])}}">{{Str::limit($comment->product->title,30,'...')}}</a>
+                                    <a href="{{route('admin.products.show',[$comment->product_id])}}">{{Str::limit($comment->product->title,18,'...')}}</a>
                                 </td>
                                 <td class="text-center">
                                     <span>
