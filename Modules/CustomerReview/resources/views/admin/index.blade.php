@@ -65,7 +65,8 @@
                                     @can('view customerReviews')
                                     <button type="button" class="btn btn-primary btn-sm ml-1"
                                     data-toggle="modal"
-                                    data-target="#showspecialtie">
+                                    onclick="showDescriptionModal({{$customerReview}})"
+                                    data-original-title="توضیحات">
                                     <i class="fa fa-eye"></i>
                                     </button>
                                         {{-- <a href="{{ route('admin.articles.show',$article) }}" class="btn btn-info btn-sm text-white" data-toggle="tooltip" data-original-title="نمایش"><i class="fa fa-eye"></i></a> --}}
@@ -83,36 +84,15 @@
                                     @endcan
                                     </td>
                                 </tr>
-                                <div class="modal fade"  id="showspecialtie">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <p class="modal-title font-weight-bolder">نمایش توضیحات</p>
-                                                <button  class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">×</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                    <div class="form-group">
-                                                        <div class="form-control" style="overflow: scroll">{{$customerReview->description}}</div>
-                                                    </div>
-                                            </div>
-                                            <div class="modal-footer justify-content-center">
-                                                <button class="btn btn-outline-danger  text-right item-right" data-dismiss="modal">برگشت</button>
-                                            </div>
-                                        </form>
-                                        </div>
-                                    </div>
-                                </div>
                                     @empty
-                                        
+
                                 <tr>
                                     <td colspan="8">
                                         <p class="text-danger"><strong>در حال حاضر هیچ نظری یافت نشد!</strong></p>
                                     </td>
                                 </tr>
                             @endforelse
-                            
+
                             </tbody>
                         </table>
                         {{$customerReviews->onEachSide(1)->links("vendor.pagination.bootstrap-4")}}
@@ -162,5 +142,18 @@
         </div>
     </div>
     @include('customerreview::admin.edit')
+    @include('customerreview::admin.description')
 @endsection
+@section('scripts')
+<script>
+
+    function showDescriptionModal (customerReview) {
+        let modal = $('#showDescriptionModal');
+        modal.find('#description').text(`${customerReview.description}` ?? '-');
+        modal.modal('show');
+    }
+</script>
+@endsection
+
+
 
