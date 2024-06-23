@@ -15,7 +15,8 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'required',
             'city' => 'required',
-            'image' => 'nullable',
+            'image' => 'nullable|image',
+            'video' => 'nullable|file|mimetypes:video/mp4,video/avi',
             'description' => 'required'
         ];
     }

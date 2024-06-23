@@ -14,10 +14,11 @@ class StoreRequest extends FormRequest
         return [
             'name' => 'required',
             'city' => 'required',
-            'image' => 'required',
+            'image' => 'required|image',
+            'video' => 'nullable|file|mimetypes:video/mp4,video/avi',
             'description' => 'required'
         ];
-    
+
     }
 
     /**

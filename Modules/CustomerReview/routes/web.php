@@ -15,4 +15,5 @@ use Modules\CustomerReview\Http\Controllers\CustomerReviewController;
 */
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
     Route::resource('customer-reviews',CustomerReviewController::class);
+    Route::delete('customer-reviews/deleteVideo/{product}', [CustomerReviewController::class, 'destroyVideo'])->name('customer-reviews.video.destroy');
 });
