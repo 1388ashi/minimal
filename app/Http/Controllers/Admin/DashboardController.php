@@ -22,7 +22,7 @@ class DashboardController extends Controller
         $comments = Comment::where('status','pending')->take(10)->latest('id')->get();
         $tickets = Ticket::where('status','pending')->take(10)->latest('id')->get();
         $resumes = Resumes::where('status','new')->get();
-        $advisor = PurchaseAdvisor::where('status','notcalled')->get();
+        $advisors = PurchaseAdvisor::where('status','notcalled')->with('product:id,title')->get();
 
         return view('admin.pages.dashboard',compact(
             'weblog',
@@ -32,7 +32,7 @@ class DashboardController extends Controller
             'comments',
             'tickets',
             'resumes',
-            'advisor'
+            'advisors'
         ));
     }
 }
