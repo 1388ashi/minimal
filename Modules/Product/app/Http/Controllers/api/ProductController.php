@@ -44,7 +44,7 @@ class ProductController extends Controller
             } elseif ($sortBy == 'topCheap') {
                 return $query->orderBy('price', 'ASC');
             } elseif ($sortBy == 'mostDiscount') {
-                return $query->where('discount', '!=', 0)->orderByDesc('discount');
+                return $query->where('discount','!=','0')->orderByDesc('discount');
             } elseif ($sortBy == 'lastProducts') {
                 return $query->latest('id');
             }
