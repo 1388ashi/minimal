@@ -13,6 +13,7 @@ use Modules\Product\Models\Category;
 use Modules\Product\Models\Product;
 use Modules\Product\Models\Color;
 use Modules\Specification\Models\Specification;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ProductController extends Controller implements HasMiddleware
 {
@@ -38,7 +39,7 @@ class ProductController extends Controller implements HasMiddleware
         }
         $product = null;
         if ($productId) {
-            $product = Product::find($productId); 
+            $product = Product::find($productId);
             $product->load('specifications');
         }
 
@@ -57,7 +58,7 @@ class ProductController extends Controller implements HasMiddleware
     public function index(): Renderable
     {
         $categories = Category::select(["id","title"])->get();
-    
+
         $title = request('title');
         $categoryId = request('category_id');
         $discount = request('discount');
@@ -86,7 +87,7 @@ class ProductController extends Controller implements HasMiddleware
         return view('product::admin.product.index', compact('products','categories'));
     }
     public function show(Product $product) {
-    
+
         $product->load([
             'categories:id,title',
             'specifications:id,name',
@@ -94,26 +95,26 @@ class ProductController extends Controller implements HasMiddleware
         ]);
 
         return view('product::admin.product.show', compact('product'));
-        
+
     }
     public function create(): Renderable
     {
         $colors = Color::select('id','title','code')->latest('id')->get();
-        
+
         $categories = Category::query()
         ->latest('id')
         ->whereNull('parent_id')
         ->select('id','title')
         ->with('children:id,title,parent_id','recursiveChildren:id,title,parent_id')
         ->get();
-        
+
         return view('product::admin.product.create', compact('categories','colors'));
     }
     public function store(StoreRequest $request)
     {
         $product = Product::create($request->validated());
         $product->uploadFiles($request);
-        
+
         $specifications = $request->specifications;
         if(!is_null($specifications)){
         foreach($specifications as $id => $value) {
@@ -122,32 +123,32 @@ class ProductController extends Controller implements HasMiddleware
             }
         }
         }
-        
+
         $categories = $request->categories;
         foreach($categories as $category) {
             $product->categories()->attach($category);
         }
-    
+
         $colors = $request->colors;
         if(!is_null($colors)){
             foreach($colors as $color) {
                 $product->colors()->attach($color);
             }
         }
-            
+
         $data = [
             'status' => 'success',
             'message' => 'محصول با موفقیت ثبت شد'
         ];
-        
+
         return redirect()->route('admin.products.index')
         ->with($data);
     }
-    
+
     public function edit(Product $product): Renderable
     {
         $product = $product->load('specifications');
-        
+
         $colors = Color::select('id','title','code')->latest('id')->get();
         $categories = Category::query()
         ->latest('id')
@@ -155,7 +156,7 @@ class ProductController extends Controller implements HasMiddleware
         ->select('id','title')
         ->with('children:id,title,parent_id','recursiveChildren:id,title,parent_id')
         ->get();
-        
+
         $specifications = [];
         foreach ($product->specifications as $specification) {
             $specifications[] = collect([
@@ -164,14 +165,14 @@ class ProductController extends Controller implements HasMiddleware
                 'value' => $product? $product->specifications->where('id', $specification->id)->first()->pivot->value : null
             ]);
         }
-        
+
         return view('product::admin.product.edit', compact('categories','product', 'specifications','colors'));
     }
     public function update(UpdateRequest $request, Product $product)
     {
             $product->update($request->validated());
             $product->uploadFiles($request);
-            
+
             $product->specifications()->detach();
             $specifications = $request->specifications;
 
@@ -189,25 +190,27 @@ class ProductController extends Controller implements HasMiddleware
             foreach($categories as $category) {
                 $product->categories()->attach($category);
             }
-        
+
             $colors = $request->colors;
             $product->colors()->detach(); // حذف همه اتصالات قبلی
-            foreach($colors as $color) {
-                $product->colors()->attach($color);
+            if(!is_null($colors)){
+                foreach($colors as $color) {
+                    $product->colors()->attach($color);
+                }
             }
             $data = [
                 'status' => 'success',
                 'message' => 'محصول با موفقیت به روزرسانی شد'
             ];
-            
+
             return redirect()->route('admin.products.index')
             ->with($data);
 
     }
-    public function destroyGalleries(Product $product)
+    public function destroyGalleries($id)
     {
-        $mediaId = $product->media->first()->delete();
-        $product->save();
+        $media = Media::findOrFail($id);
+        $media->delete();
 
         $data = [
             'status' => 'success',
@@ -219,7 +222,8 @@ class ProductController extends Controller implements HasMiddleware
     }
     public function destroyVideo(Product $product)
     {
-        $mediaId = $product->media->first()->delete();
+        $mediaId = $product->video['id'];
+        $product->media->find($mediaId)->delete();
         $product->save();
 
         $data = [

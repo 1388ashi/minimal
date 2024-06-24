@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\CustomerReview\Http\Controllers\CustomerReviewController;
+use Modules\WorkSample\Http\Controllers\WorkSampleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +13,8 @@ use Modules\CustomerReview\Http\Controllers\CustomerReviewController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
-    Route::resource('customer-reviews',CustomerReviewController::class);
-    Route::delete('customer-reviews/deleteVideo/{customerReview}', [CustomerReviewController::class, 'destroyVideo'])->name('customer-reviews.video.destroy');
+    Route::resource('work-samples',WorkSampleController::class);
+    Route::delete('work-samples/deleteGalleries/{id}', [WorkSampleController::class, 'destroyGalleries'])->name('work-samples.galleries.destroy');
 });

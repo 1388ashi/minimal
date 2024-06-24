@@ -84,7 +84,8 @@ class CustomerReviewController extends Controller implements HasMiddleware
     }
     public function destroyVideo(CustomerReview $customerReview)
     {
-        $mediaId = $customerReview->media->first()->delete();
+        $mediaId = $customerReview->video['id'];
+        $customerReview->media->find($mediaId)->delete();
         $customerReview->save();
 
         $data = [

@@ -16,5 +16,6 @@
     "PurchaseAdvisor": true,
     "JobOffer": true,
     "Brand": true,
-    "Home": true
+    "Home": true,
+    "WorkSample": true
 }

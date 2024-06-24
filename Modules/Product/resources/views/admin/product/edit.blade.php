@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="row d-flex">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -118,17 +118,16 @@
                             </div>
                             @if ($product->galleries)
                             @foreach($product->galleries as $item)
-                            <button type="button" style="height: fit-content;" class="btn btn-danger btn-sm"
-                            onclick="confirmDelete('delete-galleries-{{ $product->id }}')">
-                                <i class="fa fa-times"></i>
-                            </button>
+                                <button type="button" style="height: fit-content;" class="btn btn-danger btn-sm" onclick="confirmDelete('delete-galleries-{{$item['id'] }}')">
+                                    <i class="fa fa-times"></i>
+                                </button>
                                 <br>
                                 <figure class="figure">
-                                    <a target="blank" href="{{ $item['url'] }}">
-                                    <img src="{{ $item['url'] }}" class="img-thumbnail" style="width: 70px;height: 70px;" />
+                                    <a target="_blank" href="{{ $item['url'] }}">
+                                        <img src="{{ $item['url'] }}" class="img-thumbnail" style="width: 70px;height: 70px;" />
                                     </a>
                                 </figure>
-                                @endforeach
+                            @endforeach
                             @endif
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -159,7 +158,7 @@
                                 </div>
                                 @endforeach
                             </div>
-                        <hr>    
+                        <hr>
                         <p class="ps-20">مشخصه ها</p>
                         <hr>
                         <div v-for="specification in specifications">
@@ -191,24 +190,26 @@
     </div>
     <!-- row closed -->
     @if ($product->video['url'])
-        <form 
-            action="{{ route('admin.products.video.destroy', $product) }}" 
-            id="delete-video-{{$product->id}}" 
-            method="POST" 
+        <form
+            action="{{ route('admin.products.video.destroy', $product) }}"
+            id="delete-video-{{$product->id}}"
+            method="POST"
             style="display: none;">
             @csrf
             @method("DELETE")
         </form>
     @endif
     @if ($product->galleries)
-        <form 
-            action="{{ route('admin.products.galleries.destroy', $product) }}" 
-            id="delete-galleries-{{$product->id}}" 
-            method="POST" 
-            style="display: none;">
-            @csrf
-            @method("DELETE")
+    @foreach ($product->galleries as $media)
+        <form
+        action="{{ route('admin.products.galleries.destroy', $media) }}"
+        id="delete-galleries-{{$media['id']}}"
+        method="POST"
+        style="display: none;">
+        @csrf
+        @method("DELETE")
         </form>
+    @endforeach
     @endif
 @endsection
 @section('scripts')
