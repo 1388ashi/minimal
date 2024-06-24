@@ -16,14 +16,20 @@ class ProductController extends Controller
         $sortBy = $request->sortBy;
 
         $categories = Category::select('id','title','parent_id')
-        ->whereNull('parent_id')
-        ->when($request->has('category_id'), function ($query) use ($request) {
-        return $query->where('id', $request->category_id);
+        ->where(function ($query) use ($request) {
+            if (!$request->has('category_id')) {
+                $query->whereNull('parent_id');
+            }
         })
         ->with(['children:id,title,parent_id','products:id,title,price,discount,created_at'])
         ->get();
 
         $products = Product::query()
+        ->when($request->has('category_id'), function ($query) use ($request) {
+            $query->whereHas('categories', function ($q) use ($request) {
+                $q->where('category_id', $request->input('category_id'))->with(['children:id,title,parent_id']);
+            });
+        })
         ->when($request->has('title'), function ($query) use ($request) {
             $query->where('title', 'like', '%' . $request->input('title') . '%');
         })

@@ -41,8 +41,8 @@
                                         <img src="{{ $item['url'] }}" class="img-thumbnail" style="width: 70px;height: 70px;" />
                                     </a>
                                 </figure>
-                                @endforeach
-                                @endif
+                            @endforeach
+                            @endif
                             </div>
                         </div>
                     </div>
