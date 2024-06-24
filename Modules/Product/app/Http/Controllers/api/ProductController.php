@@ -16,6 +16,7 @@ class ProductController extends Controller
         $sortBy = $request->sortBy;
 
         $categories = Category::select('id','title','parent_id')
+        ->whereNotNull('parent_id')
         ->when($request->has('category_id'), function ($query) use ($request) {
         return $query->where('id', $request->category_id);
         })
