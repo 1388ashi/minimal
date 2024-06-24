@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('admin.products.index') }}">لیست محصول ها</a></li>
                 <li class="breadcrumb-item active" aria-current="page">نمایش محصول</li>
-                
+
             </ol>
             <div>
                 <div class="d-flex align-items-center flex-wrap text-nowrap">
@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-    
+
         <!--End Page header-->
         @php
         $vertaDate = verta($product->created_at);
@@ -35,16 +35,16 @@
                         <ul class="list-group">
                             <li class="list-group-item"><b class="bold">عنوان: </b>{{$product->title}}</li>
                             <li class="list-group-item"><b class="bold">قیمت: </b>{{ number_format($product->price) }}</li>
-                            <li class="list-group-item"><b class="bold">تخفیف : </b>  
+                            <li class="list-group-item"><b class="bold">تخفیف : </b>
                                 @if ($product->discount){{ number_format($product->discount) }}@else-@endif</li>
                             <li class="list-group-item"><b class="bold">قیمت نهایی: </b>{{number_format($product->totalPriceWithDiscount())}}</li>
-                            <li class="list-group-item"><b class="bold">دسته بندی: </b> 
+                            <li class="list-group-item"><b class="bold">دسته بندی: </b>
                                 @foreach($product->categories as $key => $item)
                                 {{$item->title}}
                                 @if($key < $product->categories->count() - 1),@endif
                                 @endforeach</li>
                                 @if ($product->colors)
-                                <li class="list-group-item d-flex"><b class="bold">رنگ ها: </b> 
+                                <li class="list-group-item d-flex"><b class="bold">رنگ ها: </b>
                                 @foreach($product->colors as $color)
                                     <div class="mr-1 mb-0" style="background-color:{{$color->code}};width: 25px;height:25px;border-radius: 50%;margin-left: 6px;justify-content: center;"></div>
                                 @endforeach</li>

@@ -14,31 +14,37 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group col-lg-6">
-                            <label  class="control-label">عنوان<span class="text-danger">&starf;</span></label>
-                            <input type="text" class="form-control" name="title"  placeholder="عنوان را اینجا وارد کنید" value="{{ old('title', $workSample->title) }}" required autofocus>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label class="control-label" for="label" >تصویر</label>
-                            <input  class="form-control" type="file" name="image" >
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label  class="control-label">عنوان<span class="text-danger">&starf;</span></label>
+                                <input type="text" class="form-control" name="title"  placeholder="عنوان را اینجا وارد کنید" value="{{ old('title', $workSample->title) }}" required autofocus>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label class="control-label" for="label" >تصویر</label>
+                                <input  class="form-control" type="file" name="image" >
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label">گالری تصویر</label>
                             <input type="file" name="galleries[]" class="form-control" multiple="multiple">
                         </div>
-                        @if ($workSample->galleries)
-                        @foreach($workSample->galleries as $item)
-                            <button type="button" style="height: fit-content;" class="btn btn-danger btn-sm" onclick="confirmDelete('delete-galleries-{{$item['id'] }}')">
-                                <i class="fa fa-times"></i>
-                            </button>
-                            <br>
-                            <figure class="figure">
-                                <a target="_blank" href="{{ $item['url'] }}">
-                                    <img src="{{ $item['url'] }}" class="img-thumbnail" style="width: 70px;height: 70px;" />
-                                </a>
-                            </figure>
-                        @endforeach
-                        @endif
+                        <div class="row">
+                            <div class="form-group d-flex">
+                            @if ($workSample->galleries)
+                            @foreach($workSample->galleries as $item)
+                                <button type="button" style="height: fit-content;" class="btn btn-danger btn-sm" onclick="confirmDelete('delete-galleries-{{$item['id'] }}')">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                                <br>
+                                <figure class="figure">
+                                    <a target="_blank" href="{{ $item['url'] }}">
+                                        <img src="{{ $item['url'] }}" class="img-thumbnail" style="width: 70px;height: 70px;" />
+                                    </a>
+                                </figure>
+                                @endforeach
+                                @endif
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer justify-content-center">
                         <button  class="btn btn-warning text-right item-right">به روزرسانی</button>

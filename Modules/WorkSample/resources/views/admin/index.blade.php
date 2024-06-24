@@ -10,7 +10,7 @@
         <div class="mt-3">
             <div class="d-flex align-items-center flex-wrap text-nowrap">
                 @can('create workSample')
-                <a data-toggle="modal" data-target="#addspecialtie" class="btn btn-indigo">
+                <a href="{{route('admin.work-samples.index')}}" data-toggle="modal" data-target="#addspecialtie" class="btn btn-indigo">
                     ثبت نمونه کار جدید
                     <i class="fa fa-plus"></i>
                 </a>
@@ -59,12 +59,15 @@
                                 </td>
                                 <td>{{verta($workSample->created_at)->format('Y/m/d H:i')}}</td>
                                 <td>
+                                    <a href="{{ route('admin.work-samples.show', [$workSample->id]) }}" class="btn btn-info btn-sm text-white" data-toggle="tooltip" data-original-title="نمایش">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
                                     @can('edit workSample')
-                                        {{-- <button type="button" class="btn btn-warning btn-sm ml-1"
+                                        <button type="button" class="btn btn-warning btn-sm ml-1"
                                         data-toggle="modal"
-                                        data-target="#edit-menu-{{ $customerReview->id }}">
+                                        data-target="#edit-menu-{{ $workSample->id }}">
                                             <i class="fa fa-pencil" aria-hidden="true"></i>
-                                        </button> --}}
+                                        </button>
                                     @endcan
                                     {{-- Delete--}}
                                     @can('delete workSample')
@@ -83,7 +86,7 @@
 
                             </tbody>
                         </table>
-                        {{$workSample->onEachSide(1)->links("vendor.pagination.bootstrap-4")}}
+                        {{$workSamples->onEachSide(1)->links("vendor.pagination.bootstrap-4")}}
                     </div>
                 </div>
                 <!-- table-wrapper -->
@@ -95,7 +98,7 @@
     <div class="modal fade"  id="addspecialtie">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="{{route('admin.work-sample.store')}}" class="save" enctype="multipart/form-data" method="post">
+                <form action="{{route('admin.work-samples.store')}}" class="save" enctype="multipart/form-data" method="post">
                     @csrf
                     <div class="modal-header">
                         <p class="modal-title font-weight-bolder">ثبت نمونه کار جدید</p>
@@ -114,7 +117,7 @@
                     </div>
                     <div class="form-group">
                         <label for="label" class="control-label">گالری</label>
-                        <input class="form-control" name="galleries[]" class="form-control" multiple="multiple">
+                        <input class="form-control"  type="file" name="galleries[]" class="form-control" multiple="multiple">
                     </div>
                 </div>
                 <div class="modal-footer justify-content-center">
@@ -125,8 +128,7 @@
             </div>
         </div>
     </div>
-    @include('customerreview::admin.edit')
-    @include('customerreview::admin.description')
+    @include('worksample::admin.edit')
 @endsection
 @section('scripts')
 <script>
