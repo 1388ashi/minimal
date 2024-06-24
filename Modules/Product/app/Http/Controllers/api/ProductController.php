@@ -23,7 +23,7 @@ class ProductController extends Controller
         })
         ->with(['children:id,title,parent_id','products:id,title,price,discount,created_at'])
         ->get();
-        
+
         $products = Product::query()
         ->when($request->has('category_id'), function ($query) use ($request) {
             $query->whereHas('categories', function ($q) use ($request) {
@@ -44,7 +44,7 @@ class ProductController extends Controller
             } elseif ($sortBy == 'topCheap') {
                 return $query->orderBy('price', 'ASC');
             } elseif ($sortBy == 'mostDiscount') {
-                return $query->where('discount', '!=', 0)->orderByDesc('discount');
+                return $query->where('discount', '!==', 0)->orderByDesc('discount');
             } elseif ($sortBy == 'lastProducts') {
                 return $query->latest('id');
             }
@@ -70,7 +70,6 @@ class ProductController extends Controller
         $comments = Comment::where('product_id',$id)
         ->where('status', 'accepted')
         ->get();
-
 
         $moreProducts = $product->categories()->get()->flatMap(function ($category) {
             return $category->products;

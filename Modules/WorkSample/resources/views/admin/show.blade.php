@@ -27,14 +27,9 @@
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
                                             <a href="{{ $workSample->image['url'] }}" target="_blanck">
-                                            <img src="{{ $workSample->image['url'] }}" class="img-fluid"  alt="{{ $workSample->image['name'] }}">
+                                                <img src="{{ $workSample->image['url'] }}" class="img-fluid"  alt="{{ $workSample->image['name'] }}">
                                             </a>
-                                            {{-- <img src="../../assets/images/products/item1.png" alt="img" class="img-fluid"> --}}
                                         </div>
-                                        {{-- <div class="carousel-item"><img src="../../assets/images/products/item2.png" alt="img" class="img-fluid"></div>
-                                        <div class="carousel-item"><img src="../../assets/images/products/item3.png" alt="img" class="img-fluid"></div>
-                                        <div class="carousel-item"><img src="../../assets/images/products/item4.png" alt="img" class="img-fluid"></div>
-                                        <div class="carousel-item"><img src="../../assets/images/products/item5.png" alt="img" class="img-fluid"></div> --}}
                                     </div>
                                 </div>
                             </div>
