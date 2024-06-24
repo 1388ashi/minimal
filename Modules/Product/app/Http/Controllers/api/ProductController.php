@@ -49,6 +49,7 @@ class ProductController extends Controller
                 return $query->latest('id');
             }
         })
+        ->with('categories:id,title')
         ->withCount('views')
         ->where('status',1)
         ->paginate(20);
