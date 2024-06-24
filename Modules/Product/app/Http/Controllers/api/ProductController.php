@@ -19,7 +19,7 @@ class ProductController extends Controller
         ->when($request->has('category_id'), function ($query) use ($request) {
         return $query->where('id', $request->category_id);
         })
-        ->with(['children:id,title,parent_id','recursiveChildren:id,title,parent_id','products:id,title,price,discount,created_at'])
+        ->with(['children:id,title,parent_id','products:id,title,price,discount,created_at'])
         ->get();
 
         $products = Product::query()
