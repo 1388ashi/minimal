@@ -21,7 +21,7 @@ class ProductController extends Controller
                return $query->whereNull('parent_id');
             }
         })
-        ->with(['children:id,title,parent_id','products:id,title,price,discount,created_at'])
+        ->with(['children:id,title,parent_id'])
         ->get();
 
         $products = Product::query()
