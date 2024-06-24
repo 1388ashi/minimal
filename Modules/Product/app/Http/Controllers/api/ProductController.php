@@ -18,7 +18,7 @@ class ProductController extends Controller
         $categories = Category::select('id','title','parent_id')
         ->where(function ($query) use ($request) {
             if (!$request->has('category_id')) {
-                $query->whereNull('parent_id');
+               return $query->whereNull('parent_id');
             }
         })
         ->with(['children:id,title,parent_id','products:id,title,price,discount,created_at'])
@@ -30,6 +30,7 @@ class ProductController extends Controller
                 $q->where('category_id', $request->input('category_id'))->with(['children:id,title,parent_id']);
             });
         })
+        ->when($request)
         ->when($request->has('title'), function ($query) use ($request) {
             $query->where('title', 'like', '%' . $request->input('title') . '%');
         })
@@ -49,7 +50,7 @@ class ProductController extends Controller
                 return $query->latest('id');
             }
         })
-        ->with('categories:id,title')
+        ->with('categories:id,title,parent_id')
         ->withCount('views')
         ->where('status',1)
         ->paginate(20);

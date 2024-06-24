@@ -9,16 +9,6 @@
                 <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('admin.work-samples.index') }}">لیست نمونه کار ها</a></li>
                 <li class="breadcrumb-item active" aria-current="page">نمایش محصول</li>
             </ol>
-            <div>
-                <div class="d-flex align-items-center flex-wrap text-nowrap">
-                    @can('edit workSample')
-                    <a href="{{ route('admin.work-samples.edit',$workSample) }}" class="btn btn-warning">
-                        ویرایش نمونه کار {{$workSample->title}}
-                        <i class="fa fa-pencil"></i>
-                    </a>
-                    @endcan
-                </div>
-            </div>
         </div>
 
         <!--End Page header-->
