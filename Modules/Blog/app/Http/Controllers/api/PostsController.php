@@ -3,6 +3,7 @@
 namespace Modules\Blog\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,7 +15,19 @@ class PostsController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        $postCategories = BlogCategory::select('id','title')->with('posts')->get();
+        $categoryId = $request->query("category_id");
+
+        $postCategories = Post::select('id','title','summary','body','featured','category_id','created_at')
+        ->with('category:id,title')
+        ->when($request->has('category_id'), function ($query) use ($categoryId) {
+            return $query->where('category_id', $categoryId);
+        })
+        ->when($request->has('title'), function ($query) use ($request) {
+            return $query->where('title', 'like', '%'. $request->input('title'). '%');
+        })
+        ->paginate();
+
+        $categories  = BlogCategory::select('id','title')->with('posts')->where('status',1)->get();
 
         $featuredPosts = Post::query()
         ->select('id','title','summary','body','featured','created_at')
@@ -29,15 +42,12 @@ class PostsController extends Controller
         // گرفتن 12 پست بعدی که از 4 پست اول حذف شده باشند
         $lastPosts = Post::query()
         ->select('id','title','summary','body','created_at')
-        ->when($request->has('title'), function ($query) use ($request) {
-            $query->where('title', 'like', '%' . $request->input('title') . '%');
-        })
         ->where('status',1)
         ->skip($postsToSkip)
         ->latest('id')
         ->paginate(12);
 
-        return response()->success('', compact('featuredPosts','lastPosts','postCategories'));
+        return response()->success('', compact('featuredPosts','lastPosts','postCategories','categories'));
     }
 
     public function show(Request $request,$id): JsonResponse

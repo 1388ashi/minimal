@@ -31,14 +31,14 @@ class CustomerReviewController extends Controller implements HasMiddleware
 
         return view('customerreview::admin.index',compact('customerReviews'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         $customerReviews = CustomerReview::select('id','name','city','description')->paginate();
-    
+
         return view('customerreview::admin.index',compact('customerReviews'));
     }
 
@@ -57,7 +57,7 @@ class CustomerReviewController extends Controller implements HasMiddleware
             'status' => 'success',
             'message' => 'نظر با موفقیت ثبت شد'
         ];
-        
+
         return redirect()->route('admin.customer-reviews.index')
         ->with($data);
     }
@@ -73,16 +73,29 @@ class CustomerReviewController extends Controller implements HasMiddleware
             'description' => $request->description,
         ]);
         $customerReview->uploadFiles($request);
-        
+
         $data = [
             'status' => 'success',
             'message' => 'نظر با موفقیت به روزرسانی شد'
         ];
-        
+
         return redirect()->route('admin.customer-reviews.index')
         ->with($data);
     }
+    public function destroyVideo(CustomerReview $customerReview)
+    {
+        $mediaId = $customerReview->video['id'];
+        $customerReview->media->find($mediaId)->delete();
+        $customerReview->save();
 
+        $data = [
+            'status' => 'success',
+            'message' => 'ویدیو نظر با موفقیت حذف شد '
+        ];
+
+        return redirect()->route('admin.customer-reviews.index')
+            ->with($data);
+    }
     /**
      * Remove the specified resource from storage.
      */

@@ -13,9 +13,10 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required'],
+            'name' => 'required',
             'city' => 'required',
-            'image' => 'nullable',
+            'image' => 'nullable|image',
+            'video' => 'nullable|file|mimetypes:video/mp4,video/avi',
             'description' => 'required'
         ];
     }

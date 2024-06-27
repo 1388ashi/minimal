@@ -59,7 +59,7 @@
 					@endcan
 					@can('view comments')
 					<ul class="slide-menu">
-						<li><a href="{{route('admin.comments.index')}}"  class="slide-item" >مدیریت نظرات</a></li>
+						<li><a href="{{route('admin.comments.index')}}"  class="slide-item" >مدیریت نظرات {{ $comments > 0 ? '('.$comments.')' : null}}</a></li>
 					</ul>
 					@endcan
 				</li>
@@ -132,6 +132,14 @@
 					</a>
 				</li>
 				@endcan
+				@can('view workSample')
+				<li class="slide">
+					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.work-samples.index')}}">
+						<i class="fa fa-tasks sidemenu_icon"></i>
+						<span class="side-menu__label">نمونه کار ها</span>
+					</a>
+				</li>
+				@endcan
 				@can('view faq')
 				<li class="slide">
 					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.asks.index')}}">
@@ -144,7 +152,7 @@
 				<li class="slide">
 					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.purchase-advisors.index')}}">
 						<i class="fa fa-shopping-basket sidemenu_icon"></i>
-						<span class="side-menu__label">مشاوره خرید</span>
+						<span class="side-menu__label">مشاوره خرید {{ $advisors > 0 ? '('.$advisors.')' : null}}</span>
 					</a>
 				</li>
 				@endcan

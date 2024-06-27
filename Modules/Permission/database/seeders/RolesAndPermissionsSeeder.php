@@ -28,56 +28,7 @@ class RolesAndPermissionsSeeder extends Seeder
         //create permissions
         $permissions = [
             'view dashboard stats' => 'مشاهده آمارهای داشبورد',
-            //users
-            // 'view users' => 'مشاهده کاربران',
-            // 'create users' => 'ایجاد کاربران',
-            // 'edit users' => 'ویرایش کاربران',
-            // 'delete users' => 'حذف کاربران',
-            // //settings
-            // 'view settings' => 'مشاهده تنظیمات',
-            // 'create settings' => 'ایجاد تنظیمات',
-            // 'edit settings' => 'ویرایش تنظیمات',
-            // //faq_groups
-            // 'view faq_groups' => 'مشاهده گروه پرسش های متداول',
-            // 'create faq_groups' => 'ایجاد گروه پرسش های متداول',
-            // 'edit faq_groups' => 'ویرایش گروه پرسش های متداول',
-            // 'delete faq_groups' => 'حذف گروه پرسش های متداول',
-            // //faqs
-            // 'view faqs' => 'مشاهده پرسش های متداول',
-            // 'create faqs' => 'ایجاد پرسش های متداول',
-            // 'edit faqs' => 'ویرایش پرسش های متداول',
-            // 'delete faqs' => 'حذف پرسش های متداول',
-            // //teachers
-            // 'view teachers' => 'مشاهده مدرس ها',
-            // 'create teachers' => 'ایجاد مدرس ها',
-            // 'edit teachers' => 'ویرایش مدرس ها',
-            // 'delete teachers' => 'حذف مدرس ها',
-            // //courses
-            // 'view courses' => 'مشاهده دوره ها',
-            // 'create courses' => 'ایجاد دوره ها',
-            // 'edit courses' => 'ویرایش دوره ها',
-            // 'delete courses' => 'حذف دوره ها',
-            // //suitable for courses
-            // 'view suitable_courses' => 'مشاهده مناسب دوره ها',
-            // 'create suitable_courses' => 'ایجاد مناسب دوره ها',
-            // 'edit suitable_courses' => 'ویرایش مناسب دوره ها',
-            // 'delete suitable_courses' => 'حذف مناسب دوره ها',
-            // //headlines
-            // 'view headlines' => 'مشاهده سرفصل ها',
-            // 'create headlines' => 'ایجاد سرفصل ها',
-            // 'edit headlines' => 'ویرایش سرفصل ها',
-            // 'delete headlines' => 'حذف سرفصل ها',
-            // //episodes
-            // 'view episodes' => 'مشاهده اپیزود ها',
-            // 'create episodes' => 'ایجاد اپیزود ها',
-            // 'edit episodes' => 'ویرایش اپیزود ها',
-            // 'delete episodes' => 'حذف اپیزود ها',
-            // //podcasts
-            // 'view podcasts' => 'مشاهده پادکست ها',
-            // 'create podcasts' => 'ایجاد پادکست ها',
-            // 'edit podcasts' => 'ویرایش پادکست ها',
-            // 'delete podcasts' => 'حذف پادکست ها',
-            // //categories
+
             'view categories' => 'مشاهده دسته بندی ها',
             'create categories' => 'ایجاد دسته بندی ها',
             'edit categories' => 'ویرایش دسته بندی ها',
@@ -146,11 +97,16 @@ class RolesAndPermissionsSeeder extends Seeder
             'create resumes' => 'ایجاد رزومه',
             'edit resumes' => 'ویرایش رزومه ',
             'delete resumes' => 'حذف رزومه ',
-            //resumes
+            //brands
             'view brands' => 'مشاهده برند ها ',
             'create brands' => 'ایجاد برند',
             'edit brands' => 'ویرایش برند ',
             'delete brands' => 'حذف برند ',
+            //workSample
+            'view workSample' => 'مشاهده نمونه کار ها ',
+            'create workSample' => 'ایجاد نمونه کار',
+            'edit workSample' => 'ویرایش نمونه کار ',
+            'delete workSample' => 'حذف نمونه کار ',
         ];
 
         foreach ($permissions as $name => $label) {
