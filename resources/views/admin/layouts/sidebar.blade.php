@@ -60,7 +60,7 @@
 					@can('view comments')
 					<ul class="slide-menu">
 						<li><a href="{{route('admin.comments.index')}}"  class="slide-item" >مدیریت نظرات @if($comments > 0)
-                            <span class="badge badge-danger">{{ $comments }}</span> </a></li>
+                            <span class="badge badge-danger">{{ $comments }}</span> @endif</a></li>
 					</ul>
 					@endcan
 				</li>
@@ -98,7 +98,7 @@
 					@can('view jobs')
 					<ul class="slide-menu">
 						<li><a href="{{route('admin.resumes.index')}}" class="slide-item">مدیریت رزومه ها @if($resumes > 0)
-                            <span class="badge badge-danger">{{ $resumes }}</span>
+                            <span class="badge badge-danger">{{ $resumes }}</span>@endif
                         </a></li>
 					</ul>
 					@endcan
