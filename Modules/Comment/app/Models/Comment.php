@@ -51,7 +51,7 @@ class Comment extends BaseModel
         return $filters;
     }
 
-    public static function getAvailableStatues(): array 
+    public static function getAvailableStatues(): array
     {
         return [
             static::STATUS_PENDING,
@@ -59,7 +59,7 @@ class Comment extends BaseModel
             static::STATUS_REJECTED
         ];
     }
-    public function product(): BelongsTo 
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
