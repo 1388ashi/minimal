@@ -11,6 +11,7 @@ use Modules\CustomerReview\Models\CustomerReview;
 use Modules\Product\Models\Category;
 use Modules\Product\Models\Product;
 use Modules\Slider\Models\Slider;
+use Modules\WorkSample\Models\WorkSample;
 
 class HomeController extends Controller
 {
@@ -40,7 +41,7 @@ class HomeController extends Controller
         ->whereHas('products')
         ->take(8)
         ->get();
-
+        $workSamples = WorkSample::select('id','title')->take(5)->latest('id')->get();
             $lastProducts = Product::query()
             ->WhereHas('suggestion', function($query) {
                 return $query->with('suggestion');
@@ -49,6 +50,6 @@ class HomeController extends Controller
             ->take(8)
             ->get();
 
-        return response()->success('',compact('categories', 'sliders','countCategories','customerReview','brands','posts','products','lastProducts'));
+        return response()->success('',compact('categories', 'sliders','countCategories','customerReview','brands','posts','products','lastProducts','workSamples'));
     }
 }

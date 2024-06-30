@@ -14,6 +14,6 @@ use Modules\WorkSample\Http\Controllers\WorkSampleController;
  *
 */
 
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('worksample', WorkSampleController::class)->names('worksample');
+Route::name('api')->group(function() {
+    Route::post('/work-samples', [WorkSampleController::class,'index']);
 });
