@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\WorkSample\Http\Controllers\WorkSampleController;
+use Modules\WorkSample\Http\Controllers\Api\WorkSampleController;
 
 /*
  *--------------------------------------------------------------------------
@@ -15,5 +15,5 @@ use Modules\WorkSample\Http\Controllers\WorkSampleController;
 */
 
 Route::name('api')->group(function() {
-    Route::get('/work-samples', [WorkSampleController::class,'index']);
+    Route::post('/work-samples', [WorkSampleController::class,'index']);
 });
