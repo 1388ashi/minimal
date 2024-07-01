@@ -16,4 +16,5 @@ use Modules\WorkSample\Http\Controllers\Api\WorkSampleController;
 
 Route::name('api')->group(function() {
     Route::get('/work-samples', [WorkSampleController::class,'index']);
+    Route::get('/work-samples/{workSample}', [WorkSampleController::class,'show']);
 });

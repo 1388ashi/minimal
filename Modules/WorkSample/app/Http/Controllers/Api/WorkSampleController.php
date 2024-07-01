@@ -17,4 +17,8 @@ class WorkSampleController extends Controller
 
         return response()->success('',compact('workSamples'));
     }
+    public function show(WorkSample $workSample): JsonResponse
+    {
+        return response()->success('',compact('workSample'));
+    }
 }
