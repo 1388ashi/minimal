@@ -30,7 +30,7 @@ class SliderController extends Controller implements HasMiddleware
 
         return view('slider::admin.index', compact('sliders'));
     }
-    
+
     public function create(): Renderable
     {
         return view('slider::admin.create');
@@ -51,11 +51,11 @@ class SliderController extends Controller implements HasMiddleware
             'status' => 'success',
             'message' => 'اسلایدر با موفقیت ثبت شد'
         ];
-        
+
         return redirect()->route('admin.sliders.index')
         ->with($data);
     }
-    
+
     public function edit(Slider $slider): Renderable
     {
         return view('slider::admin.edit', compact('slider'));
@@ -69,6 +69,7 @@ class SliderController extends Controller implements HasMiddleware
             'title' => $request->title,
             'parent_id' => $request->input('parent_id'),
             'featured' => $request->input('featured'),
+            'link' => $request->link,
             'status' => $request->status,
         ]);
         $slider->uploadFiles($request);
