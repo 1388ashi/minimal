@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Modules\Admin\Http\Requests\storeRequest;
-use Modules\Admin\Http\Requests\updateRequest;
+use Modules\Admin\Http\Requests\StoreRequest;
+use Modules\Admin\Http\Requests\UpdateRequest;
 use Modules\Admin\Models\Admin;
 use Modules\Permission\Models\Role;
 use Spatie\Activitylog\Models\Activity;
@@ -33,7 +33,7 @@ class AdminController extends Controller
         return view('admin::admin.show', compact('adminRolesName','admin','logActivitys'));
 
     }
-    public function store(storeRequest $request)
+    public function store(StoreRequest $request)
     {
         if (is_null($request->status)) {
             $request->status = false;
@@ -68,7 +68,7 @@ class AdminController extends Controller
             }
         return view('admin::admin.edit', compact('roles','adminRolesName','admin'));
     }
-    public function update(updateRequest $request, Admin $admin)
+    public function update(UpdateRequest $request, Admin $admin)
     {
         if (is_null($request->status)) {
             $request->status = false;

@@ -8,7 +8,7 @@ use Illuminate\Validation\ValidationException;
 use Modules\Core\Helpers\Helpers;
 use Modules\Permission\Models\Role;
 
-class updateRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
