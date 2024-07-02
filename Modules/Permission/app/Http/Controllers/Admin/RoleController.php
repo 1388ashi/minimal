@@ -7,6 +7,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Modules\Permission\Http\Requests\Admin\RoleStoreRequest;
 use Modules\Permission\Http\Requests\Admin\RoleUpdateRequest;
 use Modules\Permission\Models\Role;
@@ -62,8 +63,12 @@ class RoleController extends Controller
         ->with($data);
     }
 
-    public function edit(Role $role): Renderable
+    public function edit(Role $role)
     {
+        if ($role->name !== 'super_admin') {
+            Auth::logout();
+            return redirect('/login');
+        }
         $permissions = $this->permissions();
 
         return view('permission::admin.role.edit', compact('permissions', 'role'));
