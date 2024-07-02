@@ -61,21 +61,21 @@ class RoleController extends Controller
         return redirect()->route('admin.roles')
         ->with($data);
     }
-    
+
     public function edit(Role $role): Renderable
     {
         $permissions = $this->permissions();
-        
+
         return view('permission::admin.role.edit', compact('permissions', 'role'));
     }
 
     public function update(RoleUpdateRequest $request, Role $role): RedirectResponse
     {
         $role->update($request->only(['name', 'label']));
-        
+
         $permissions = $request->input('permissions');
         $role->syncPermissions($permissions);
-        
+
         $data = [
             'status' => 'success',
             'message' => 'نقش با موفقیت به روزرسانی شد'
@@ -83,7 +83,7 @@ class RoleController extends Controller
         return redirect()->route('admin.roles')
         ->with($data);
     }
-    
+
     public function destroy(Role $role)
     {
         if ($role->admins) {
@@ -94,7 +94,7 @@ class RoleController extends Controller
             return redirect()->route('admin.roles')->with($data);
         }
         $permissions = $role->permissions;
-        
+
         if ($role->delete()) {
             foreach ($permissions as $permission) {
                 $role->revokePermissionTo($permission);

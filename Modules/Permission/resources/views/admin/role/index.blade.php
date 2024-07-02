@@ -59,7 +59,7 @@
                                         @can('edit roles')
                                         <a href="{{ route('admin.roles.edit', [$role->id]) }}" style="pointer-events: {{$role->name == 'super_admin' ?'none':null;}}" class="btn btn-warning btn-sm text-white" data-toggle="tooltip" data-original-title="ویرایش"><i class="fa fa-pencil"></i></a>
                                         @endcan
-                                        
+
                                         @can('delete roles')
                                         <button type="button" class="btn btn-danger btn-sm text-white" data-original-title="حذف" onclick="confirmDelete('delete-{{ $role->id }}')"  @disabled(!$role->isDeletable())>
                                             <i class="fa fa-trash-o"></i>
@@ -68,10 +68,10 @@
                                     </td>
                                 </tr>
                                 @if ($role->name !== 'super_admin')
-                                <form 
-                                    action="{{ route('admin.roles.destroy',$role)}}" 
-                                    id="delete-{{$role->id}}" 
-                                    method="POST" 
+                                <form
+                                    action="{{ route('admin.roles.destroy',$role)}}"
+                                    id="delete-{{$role->id}}"
+                                    method="POST"
                                     style="display: none;">
                                     @csrf
                                     @method("DELETE")
@@ -103,20 +103,20 @@
         $(".item-delete").click(function (){
             $("#item_id").val($(this).data('id'));
             $("#delete_title").html($(this).data('title'));
-            
+
             $("#delete-form").slideDown();
         });
-        
-        
+
+
         $("#delete-cancel").click(function (e){
             e.preventDefault();
             $("#item_id").val('');
             $("#delete_title").html('');
-            
+
             $("#delete-form").slideUp();
             return false;
         });
-        
+
     });
 </script>
 @endsection
