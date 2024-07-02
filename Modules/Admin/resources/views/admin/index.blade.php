@@ -77,10 +77,12 @@
                                             </form> --}}
                                         <button class="btn btn-danger btn-sm text-white" onclick="confirmDelete('delete-{{ $admin->id }}')" @disabled(!$admin->isDeletable())><i class="fa fa-trash-o"></i></button>
                                         @can('delete admins')
+                                        @if ($admin->isDeletable() == false)
                                         <form action="{{ route('admin.admins.destroy', $admin->id) }}" method="post" id="delete-{{ $admin->id }}" style="display: none">
                                             @csrf
                                             @method('DELETE')
                                         </form>
+                                        @endif
                                         @endcan
                                     </td>
                                 </tr>

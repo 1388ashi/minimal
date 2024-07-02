@@ -21,10 +21,14 @@ class ProductController extends Controller
                return $query->whereNull('parent_id');
             }
         })
+        ->where('status',1)
         ->with(['children:id,title,parent_id'])
         ->get();
 
         $products = Product::query()
+        ->whereHas('categories', function($query) {
+            $query->where('status', 1);
+        })
         ->when($request->has('category_id'), function ($query) use ($request) {
             $query->whereHas('categories', function ($q) use ($request) {
                 $q->where('category_id', $request->input('category_id'))->with(['children:id,title,parent_id']);
@@ -53,8 +57,8 @@ class ProductController extends Controller
         ->withCount('views')
         ->where('status',1)
         ->paginate(20);
-
-        return response()->success('', compact('products','categories'));
+        $topPrice = Product::orderByDesc('price')->take(1)->get();
+        return response()->success('', compact('products','categories','topPrice'));
     }
 
     public function show($id): JsonResponse
