@@ -4,6 +4,7 @@ namespace Modules\Admin\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Modules\Admin\Http\Requests\storeRequest;
 use Modules\Admin\Http\Requests\updateRequest;
@@ -22,7 +23,7 @@ class AdminController extends Controller
     public function create(): Renderable
     {
         $roles = Role::select('id','name','label')->whereNot('name','super_admin')->get();
-        
+
         return view('admin::admin.create', compact('roles'));
     }
     public function show(Admin $admin) {
@@ -30,7 +31,7 @@ class AdminController extends Controller
         $adminRolesName = $admin->getRoleNames()->first();
 
         return view('admin::admin.show', compact('adminRolesName','admin','logActivitys'));
-        
+
     }
     public function store(storeRequest $request)
     {
@@ -43,22 +44,22 @@ class AdminController extends Controller
             'password' => bcrypt($request->password),
             'status' => $request->status
         ]);
-        
+
         $admin->assignRole($request->role);
-        
+
         $data = [
             'status' => 'success',
             'message' => 'ادمین با موفقیت ثبت شد'
         ];
-        
+
         return redirect()->route('admin.admins.index')
         ->with($data);
     }
-    
+
     public function edit(Admin $admin): Renderable
     {
             $adminRolesName = $admin->getRoleNames()->first();
-            
+
             if ($adminRolesName == 'super_admin') {
                 $roles = Role::select('id','name','label')->where('name','super_admin')->get();
             }else{
@@ -72,23 +73,19 @@ class AdminController extends Controller
         if (is_null($request->status)) {
             $request->status = false;
         }
-        
+
         $password = filled($request->password) ? $request->password : $admin->password;
-        
+
         $admin->update([
             'name' => $request->name,
             'mobile' => $request->mobile,
             'password' => Hash::make($password),
-            'status' => $request->status 
+            'status' => $request->status
         ]);
         $admin->assignRole($request->role);
-        
-        $data = [
-            'status' => 'success',
-            'message' => 'ادمین با موفقیت به روزرسانی شد'
-        ];
-        return redirect()->route('admin.admins.index')
-        ->with($data);
+
+        Auth::logout();
+        return redirect('/login');
     }
 
     /**

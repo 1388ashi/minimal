@@ -6,7 +6,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
             <li class="breadcrumb-item active" aria-current="page">لیست همه ادمین ها</li>
-            
+
         </ol>
         <div class="mt-3">
             <div class="d-flex align-items-center flex-wrap text-nowrap">
@@ -75,25 +75,13 @@
                                             @csrf
                                                 @method('DELETE')
                                             </form> --}}
-                                            @can('delete admins')
-                                        @if ($admin->name == 'مدیر کل')
-                                        <button type="button" class="btn btn-danger btn-sm text-white" data-original-title="حذف" @disabled(true)  onclick="confirmDelete('delete-{{ $admin->id }}')" >
-                                            <i class="fa fa-trash-o"></i>
-                                        </button>
-                                        @else
-                                        <button type="button" class="btn btn-danger btn-sm text-white" data-original-title="حذف" @disabled(false)  onclick="confirmDelete('delete-{{ $admin->id }}')" >
-                                            <i class="fa fa-trash-o"></i>
-                                        </button>
-                                        @endif
-                                        @endcan
-                                        <form 
-                                        action="{{ route("admin.admins.destroy",$admin)}}" 
-                                        id="delete-{{$admin->id}}" 
-                                        method="POST" 
-                                        style="display: none;">
-                                        @csrf
-                                        @method("DELETE")
+                                        <button class="btn btn-danger btn-sm text-white" onclick="confirmDelete('delete-{{ $admin->id }}')" @disabled(!$admin->isDeletable())><i class="fa fa-trash-o"></i></button>
+                                        @can('delete admins')
+                                        <form action="{{ route('admin.admins.destroy', $admin->id) }}" method="post" id="delete-{{ $admin->id }}" style="display: none">
+                                            @csrf
+                                            @method('DELETE')
                                         </form>
+                                        @endcan
                                     </td>
                                 </tr>
                             @empty
@@ -121,20 +109,20 @@
         $(".item-delete").click(function (){
             $("#item_id").val($(this).data('id'));
             $("#delete_title").html($(this).data('title'));
-            
+
             $("#delete-form").slideDown();
         });
-        
-        
+
+
         $("#delete-cancel").click(function (e){
             e.preventDefault();
             $("#item_id").val('');
             $("#delete_title").html('');
-            
+
             $("#delete-form").slideUp();
             return false;
         });
-        
+
     });
 </script>
 @endsection
