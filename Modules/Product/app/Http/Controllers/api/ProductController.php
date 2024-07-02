@@ -57,7 +57,7 @@ class ProductController extends Controller
         ->withCount('views')
         ->where('status',1)
         ->paginate(20);
-        $topPrice = Product::orderByDesc('price')->take(1)->get();
+        $topPrice = Product::orderByDesc('price')->value('price');
         return response()->success('', compact('products','categories','topPrice'));
     }
 
