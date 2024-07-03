@@ -55,6 +55,7 @@ class ProductController extends Controller
         })
         ->with('categories:id,title,parent_id')
         ->withCount('views')
+        ->selectRaw('*, (price - discount) as final_price')
         ->where('status',1)
         ->paginate(20);
         $topPrice = Product::orderByDesc('price')->value('price');

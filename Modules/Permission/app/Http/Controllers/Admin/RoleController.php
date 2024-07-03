@@ -65,7 +65,7 @@ class RoleController extends Controller
 
     public function edit(Role $role)
     {
-        if ($role->name !== 'super_admin') {
+        if ($role->name == 'super_admin') {
             Auth::logout();
             return redirect('/login');
         }
