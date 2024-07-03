@@ -58,7 +58,7 @@ class ProductController extends Controller
         ->where('status',1)
         ->paginate(20);
         $products->map(function ($product) {
-            return $product->setAttribute('price_with_discount', $product->totalPriceWithDiscount());
+            return $product->setAttribute('final_price', $product->totalPriceWithDiscount());
         });
         $topPrice = Product::orderByDesc('price')->value('price');
 
