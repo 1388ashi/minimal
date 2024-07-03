@@ -113,8 +113,8 @@
                                                         <span class="text-danger">&starf;</span>
                                                         <select class="form-control" name="type" id="type" required>
                                                             <option class="text-muted">-- نوع کلید مورد نظر را انتخاب کنید --</option>
-                                                            @foreach($types as $key => $value)
-                                                                <option value="{{ $key }}" @selected($key == old('type'))>{{ $value }}</option>
+                                                            @foreach($types as $key => $text)
+                                                                <option value="{{ $key }}" @selected($key == old('type'))>{{ $text }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -171,7 +171,7 @@
                                             <label for="{{ $setting->name }}">{{ $setting->label }}</label>
                                             <input style="width: 50%"  type="{{ $type }}" name="{{ $setting->name }}"
                                                 id="{{ $setting->name }}" @if($type == 'number') min="0"
-                                                @endif value="{{ $setting->value }}" class="form-control">
+                                                @endif value="{{ $setting->text }}" class="form-control">
                                         </div>
                                     </div>
                                 @endforeach
@@ -184,7 +184,7 @@
                                             <input type="file" name="{{ $setting->name }}" id="{{ $setting->name }}"
                                             class="form-control">
                                         </div>
-                                        @if($setting->value && $type == \Modules\Setting\Models\Setting::TYPE_IMAGE)
+                                        @if($setting->text && $type == \Modules\Setting\Models\Setting::TYPE_IMAGE)
                                         <button type="button" style="height: fit-content;" class="btn btn-danger btn-sm"
                                                 onclick="confirmDelete('delete-{{ $setting->id }}')">
                                             <i class="fa fa-times"></i>
@@ -214,7 +214,7 @@
                                             style="height: 150px;"
                                                 class="form-control ckeditor"
                                                 name="{{ $setting->name }}"
-                                                id="{{ $setting->name }}">{!! $setting->value !!}</textarea>
+                                                id="{{ $setting->name }}">{!! $setting->text !!}</textarea>
                                         </div>
                                     </div>
                                 @endforeach

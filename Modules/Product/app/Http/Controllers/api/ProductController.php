@@ -59,6 +59,7 @@ class ProductController extends Controller
         ->where('status',1)
         ->paginate(20);
         $topPrice = Product::orderByDesc('price')->value('price');
+
         return response()->success('', compact('products','categories','topPrice'));
     }
 

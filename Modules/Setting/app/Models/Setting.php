@@ -35,7 +35,7 @@ class Setting extends BaseModel implements HasMedia
         'group',
         'label',
         'type',
-        'value',
+        'text',
     ];
     public static function getAllGroups(): array
     {
