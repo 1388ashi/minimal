@@ -61,22 +61,10 @@
                                         @endcan
 
                                         @can('delete roles')
-                                        <button type="button" class="btn btn-danger btn-sm text-white" data-original-title="حذف" onclick="confirmDelete('delete-{{ $role->id }}')"  @disabled(!$role->isDeletable())>
-                                            <i class="fa fa-trash-o"></i>
-                                        </button>
+                                        <x-core::delete-btn route="admin.blog-categories.destroy" :model="$blog_category"  disabled="{{ !$role->isDeletable() }}" />
                                         @endcan
                                     </td>
                                 </tr>
-                                @if ($role->name !== 'super_admin')
-                                <form
-                                    action="{{ route('admin.roles.destroy',$role)}}"
-                                    id="delete-{{$role->id}}"
-                                    method="POST"
-                                    style="display: none;">
-                                    @csrf
-                                    @method("DELETE")
-                                </form>
-                                @endif
                             @empty
                                 <tr>
                                     <td colspan="5">
