@@ -61,7 +61,7 @@
                                         @endcan
 
                                         @can('delete roles')
-                                        <x-core::delete-btn route="admin.blog-categories.destroy" :model="$blog_category"  disabled="{{ !$role->isDeletable() }}" />
+                                        <x-core::delete-btn route="admin.blog-categories.destroy" :model="$role"  disabled="{{ !$role->isDeletable() }}" />
                                         @endcan
                                     </td>
                                 </tr>
