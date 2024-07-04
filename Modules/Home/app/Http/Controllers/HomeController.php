@@ -42,13 +42,16 @@ class HomeController extends Controller
         ->take(8)
         ->get();
         $workSamples = WorkSample::select('id','title')->take(5)->latest('id')->get();
-            $lastProducts = Product::query()
+        $lastProducts = Product::query()
             ->WhereHas('suggestion', function($query) {
                 return $query->with('suggestion');
             })
             ->latest('id')
             ->take(8)
             ->get();
+        $lastProducts->map(function ($lastProducts) {
+            return $lastProducts->setAttribute('final_price', $lastProducts->totalPriceWithDiscount());
+        });
 
         return response()->success('',compact('categories', 'sliders','countCategories','customerReview','brands','posts','products','lastProducts','workSamples'));
     }

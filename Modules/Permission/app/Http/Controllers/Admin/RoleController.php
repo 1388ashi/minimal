@@ -62,7 +62,6 @@ class RoleController extends Controller
         return redirect()->route('admin.roles')
         ->with($data);
     }
-
     public function edit(Role $role)
     {
         if ($role->name == 'super_admin') {
@@ -73,7 +72,6 @@ class RoleController extends Controller
 
         return view('permission::admin.role.edit', compact('permissions', 'role'));
     }
-
     public function update(RoleUpdateRequest $request, Role $role): RedirectResponse
     {
         $role->update($request->only(['name', 'label']));
