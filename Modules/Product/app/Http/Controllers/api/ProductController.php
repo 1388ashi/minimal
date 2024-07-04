@@ -17,7 +17,6 @@ class ProductController extends Controller
 
         $categories = Category::select('id','title','parent_id')
         ->where('status',1)
-        ->with(['children:id,title'])
         ->get();
 
         $products = Product::query()
