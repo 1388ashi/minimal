@@ -30,8 +30,7 @@
 				<li class="slide">
 					<a class="side-menu__item" style="cursor: pointer" data-toggle="slide" >
 						<i class="fa fa-shopping-bag sidemenu_icon"></i>
-						<span class="side-menu__label">مدیریت محصولات @if($comments > 0)
-                            <span class="badge badge-danger">{{ $comments }}</span> @endif</span><i class="angle fa fa-angle-left"></i>
+						<span class="side-menu__label">مدیریت محصولات</span><i class="angle fa fa-angle-left"></i>
 					</a>
 					@can('view categories')
 					<ul class="slide-menu">
@@ -89,8 +88,7 @@
 				<li class="slide">
 					<a class="side-menu__item" style="cursor: pointer" data-toggle="slide" >
 						<i class="fa fa-briefcase sidemenu_icon"></i>
-						<span class="side-menu__label">مدیریت فرصت شغلی @if($resumes > 0)
-                            <span class="badge badge-danger">{{ $resumes }}</span>@endif</span><i class="angle fa fa-angle-left"></i>
+						<span class="side-menu__label">مدیریت فرصت شغلی</span><i class="angle fa fa-angle-left"></i>
 					</a>
 					@can('view jobs')
 					<ul class="slide-menu">
