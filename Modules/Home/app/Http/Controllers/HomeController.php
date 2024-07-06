@@ -5,6 +5,7 @@ namespace Modules\Home\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Modules\Blog\Models\BlogCategory;
 use Modules\Blog\Models\Post;
 use Modules\Brand\Models\Brand;
 use Modules\CustomerReview\Models\CustomerReview;
@@ -54,5 +55,19 @@ class HomeController extends Controller
         });
 
         return response()->success('',compact('categories', 'sliders','countCategories','customerReview','brands','posts','products','lastProducts','workSamples'));
+    }
+    public function heder(): JsonResponse
+    {
+        $productCategories = Category::select('id','title','parent_id')
+        ->where('status',1)
+        ->whereNull('parent_id')
+        ->with(['children:id,title,parent_id'])
+        ->get();
+
+        $postCategories = BlogCategory::select('id','title')
+        ->where('status',1)
+        ->get();
+
+        return response()->success('',compact('productCategories', 'postCategories'));
     }
 }
