@@ -56,7 +56,7 @@ class HomeController extends Controller
 
         return response()->success('',compact('categories', 'sliders','countCategories','customerReview','brands','posts','products','lastProducts','workSamples'));
     }
-    public function heder(): JsonResponse
+    public function header(): JsonResponse
     {
         $productCategories = Category::select('id','title','parent_id')
         ->where('status',1)
