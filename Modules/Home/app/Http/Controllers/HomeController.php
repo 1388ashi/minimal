@@ -31,7 +31,7 @@ class HomeController extends Controller
         ->where('status',1)
         ->latest('id')
         ->paginate();
-        $products->map(function ($lastProducts) {
+        $products->map(function ($products) {
             return $products->setAttribute('final_price', $products->totalPriceWithDiscount());
         });
         $countCategories = Category::whereNull('parent_id')->select('id','title')->where('status',1)->withCount('products')->get();
