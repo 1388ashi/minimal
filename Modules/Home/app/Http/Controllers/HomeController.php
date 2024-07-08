@@ -61,11 +61,12 @@ class HomeController extends Controller
         $productCategories = Category::select('id','title','parent_id')
         ->where('status',1)
         ->whereNull('parent_id')
-        ->with(['children:id,title,parent_id'])
+        ->with(['children:id,title,parent_id','products:id,category_id'])
         ->get();
 
         $postCategories = BlogCategory::select('id','title')
         ->where('status',1)
+        ->with(['posts:id,category_id'])
         ->get();
 
         return response()->success('',compact('productCategories', 'postCategories'));
