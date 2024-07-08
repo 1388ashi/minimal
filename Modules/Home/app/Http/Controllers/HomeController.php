@@ -60,17 +60,14 @@ class HomeController extends Controller
     }
     public function header(): JsonResponse
     {
-        $productCategories = Category::where('status', 1)
+        $productCategories = Category::select('id','title','parent_id')
+        ->where('status',1)
         ->whereNull('parent_id')
-        ->with(['children','products' => function ($query) {
-            $query->select('products.id', 'products.title')
-                ->withPivot('category_id', 'product_id'); // Pivot fields
-        }])
+        ->with(['children:id,title,parent_id'])
         ->get();
 
         $postCategories = BlogCategory::select('id','title')
         ->where('status',1)
-        ->with(['posts:id,category_id'])
         ->get();
 
         return response()->success('',compact('productCategories', 'postCategories'));
