@@ -63,7 +63,7 @@ class HomeController extends Controller
         $productCategories = Category::select('id','title','parent_id')
         ->where('status',1)
         ->whereNull('parent_id')
-        ->with(['children:id,title,parent_id','products:id,category_id'])
+        ->with(['children:id,title,parent_id','products:id,products.categories'])
         ->get();
 
         $postCategories = BlogCategory::select('id','title')
