@@ -62,9 +62,9 @@ class HomeController extends Controller
     {
         $productCategories = Category::where('status', 1)
         ->whereNull('parent_id')
-        ->with(['children.products' => function ($query) {
+        ->with(['children','products' => function ($query) {
             $query->select('products.id', 'products.title')
-                ->withPivot('additional_field1', 'additional_field2'); // Pivot fields
+                ->withPivot('category_id', 'product_id'); // Pivot fields
         }])
         ->get();
 
