@@ -267,7 +267,7 @@
         </div>
 @endcan
 @can('view purchase_advisors')
-        <div class="col-12">
+   <div class="row col-12">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header border-0">
