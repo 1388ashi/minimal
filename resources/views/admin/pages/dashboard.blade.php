@@ -11,9 +11,8 @@
     </div>
 </div>
  @can('view dashboard stats')
-    <div class="col-xl-12">
-        <div class="row" >
-            <div class="col-xl-3 col-lg-3 col-md-12">
+    <div class="row col-12">
+        <div class="col-3">
                 <div class="card">
                     <a href="{{ route('admin.products.index') }}">
                         <div class="card-body">
@@ -33,7 +32,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-12">
+            <div class="col-3">
                 <div class="card">
                     <a href="{{ route('admin.comments.index') }}">
                         <div class="card-body">
@@ -53,7 +52,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-12">
+            <div class="col-3">
                 <div class="card">
                     <a href="{{ route('admin.articles.index') }}">
                         <div class="card-body">
@@ -73,7 +72,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-12">
+            <div class="col-3">
                 <div class="card">
                     <a href="{{ route('admin.resumes.index') }}">
                         <div class="card-body">
@@ -93,12 +92,11 @@
                     </a>
                 </div>
             </div>
-        </div>
     </div>
 @endcan
-<div class="row" >
+<div class="row col-12">
     @can('view comments')
-        <div class="col-xl-6 col-lg-6 col-md-12">
+        <div class="col-6">
             <div class="card">
                 <div class="card-header border-0">
                     <p class="card-title">آخرین نظرات محصول</p>
@@ -157,7 +155,7 @@
         </div>
         @endcan
     @can('view tickets')
-    <div class="col-xl-6 col-lg-6 col-md-12">
+    <div class="col-6">
             <div class="card">
                 <div class="card-header border-0">
                     <p class="card-title">تماس با ما</p>
@@ -209,7 +207,7 @@
 </div>
 @can('view resumes')
         <div class="row" >
-            <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="col-12">
                 <div class="card">
                     <div class="card-header border-0">
                         <p class="card-title">رزومه ها (جدید) </p>
@@ -270,7 +268,7 @@
 @endcan
 @can('view purchase_advisors')
         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="col-12">
                 <div class="card">
                     <div class="card-header border-0">
                         <p class="card-title">مشاوره های خرید (تماس گرفته نشده) </p>
