@@ -206,7 +206,7 @@
     </div>
 </div>
 @can('view resumes')
-        <div class="row" >
+        <div class="row col-12">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header border-0">
@@ -267,7 +267,7 @@
         </div>
 @endcan
 @can('view purchase_advisors')
-        <div class="row">
+        <div class="col-12">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header border-0">
