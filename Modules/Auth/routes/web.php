@@ -16,7 +16,7 @@ use Modules\Auth\Http\Controllers\Admin\AuthController;
 
     //auth
     Route::get('/', [AuthController::class, 'showLoginForm'])->name('login.form');
-    Route::post('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/', [AuthController::class, 'login'])->name('login');
 
     Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
         //auth
