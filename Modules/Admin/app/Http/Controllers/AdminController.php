@@ -85,7 +85,7 @@ class AdminController extends Controller
         $admin->assignRole($request->role);
 
         Auth::logout();
-        return redirect('/login');
+        return redirect('/');
     }
 
     /**
