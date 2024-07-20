@@ -50,6 +50,7 @@ class HomeController extends Controller
                 return $query->with('suggestion');
             })
             ->latest('id')
+            ->where('status',1)
             ->take(8)
             ->get();
         $lastProducts->map(function ($lastProducts) {
