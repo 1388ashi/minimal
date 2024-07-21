@@ -39,7 +39,7 @@ class Product extends BaseModel implements Viewable,HasMedia
         'created_at',
         'updated_at',
     ];
-
+protected $appends = ['total_price_with_discount'];
     public function getActivitylogOptions() : LogOptions
     {
         $modelid = $this->attributes['id'];
@@ -60,6 +60,13 @@ class Product extends BaseModel implements Viewable,HasMedia
             ->doNotGenerateSlugsOnUpdate();
     }
     public function totalPriceWithDiscount(): int
+	{
+		$price = $this->attributes['price'];
+		$discount = $this->attributes['discount'];
+
+        return $price - $discount;
+	}
+       public function getTotalPriceWithDiscountAttribute(): int
 	{
 		$price = $this->attributes['price'];
 		$discount = $this->attributes['discount'];
