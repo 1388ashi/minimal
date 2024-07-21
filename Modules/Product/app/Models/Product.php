@@ -89,7 +89,7 @@ class Product extends BaseModel implements Viewable,HasMedia
 
     protected $hidden = ['media'];
 
-        protected $appends = ['image', 'galleries','video','final_price'];
+        protected $appends = ['image', 'galleries','video','total_price_with_discount'];
 
         public function registerMediaCollections() : void
         {
