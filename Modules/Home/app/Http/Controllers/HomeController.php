@@ -44,6 +44,12 @@ class HomeController extends Controller
         ->whereHas('products')
         ->take(8)
         ->get();
+        $categories->each(function ($category) {
+            $category->products->transform(function ($product) {
+                $product->setAttribute('final_price', $product->totalPriceWithDiscount());
+                return $product;
+            });
+        });
         $workSamples = WorkSample::select('id','title')->take(5)->latest('id')->get();
         $lastProducts = Product::query()
             ->WhereHas('suggestion', function($query) {
