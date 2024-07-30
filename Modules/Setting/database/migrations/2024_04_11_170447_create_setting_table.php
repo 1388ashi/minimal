@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('label');
             $table->string('name')->unique();
             $table->string('type')->default(Setting::TYPE_TEXT);
-            $table->longText('text')->nullable();
+            $table->longText('value')->nullable();
             $table->timestamps();
         });
     }

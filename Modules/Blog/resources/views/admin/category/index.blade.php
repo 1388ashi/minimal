@@ -76,7 +76,7 @@
                                     </td>
                                 </tr>
                             @endforelse
-                            
+
                             </tbody>
                         </table>
                         {{$blog_categories->onEachSide(1)->links("vendor.pagination.bootstrap-4")}}
@@ -117,7 +117,7 @@
                                 وضعیت
                             </span>
                             <label class="custom-control custom-checkbox mr-1 mt-1">
-                                <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="status" value="1"  @checked(old('status') == '1')>
+                                <input style="cursor: pointer" type="checkbox" class="custom-control-input" name="status" value="1"  {{ old('status', 1) == 1 ? 'checked' : null }}>
                                 <span class="custom-control-label">فعال</span>
                             </label>
                         </div>

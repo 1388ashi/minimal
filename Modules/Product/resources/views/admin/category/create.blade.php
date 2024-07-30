@@ -77,7 +77,7 @@
                                         وضعیت
                                     </span>
                                     <label  style="cursor: pointer" class="custom-control custom-checkbox mr-1 mt-1">
-                                        <input type="checkbox" class="custom-control-input" name="status" value="1" @checked(old('status') == '1')>
+                                        <input type="checkbox" class="custom-control-input" name="status" value="1"  {{ old('status', 1) == 1 ? 'checked' : null }}>
                                         <span class="custom-control-label">فعال</span>
                                     </label>
                                 </div>

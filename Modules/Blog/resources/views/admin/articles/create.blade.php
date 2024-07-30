@@ -22,7 +22,7 @@
                     <x-alert-danger></x-alert-danger>
                     <form action="{{ route('admin.articles.store') }}" method="post" class="save" enctype="multipart/form-data">
                         @csrf
-                        
+
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -34,7 +34,7 @@
                                 <div class="form-group">
                                     <label >دسته بندی ها</label><span class="text-danger">&starf;</span>
                                     <select class="form-control select2" name="category_id">
-                                        <option selected disabled>- انتخاب کنید  -</option>             
+                                        <option selected disabled>- انتخاب کنید  -</option>
                                         @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->title}}</option>
                                         @endforeach
@@ -106,7 +106,7 @@
                                         وضعیت
                                     </span>
                                     <label style="cursor: pointer" class="custom-control custom-checkbox mr-1 mt-1">
-                                        <input type="checkbox" class="custom-control-input" name="status" value="1" @checked(old('status') == '1')>
+                                        <input type="checkbox" class="custom-control-input" name="status" value="1"  {{ old('status', 1) == 1 ? 'checked' : null }}>
                                         <span class="custom-control-label">فعال</span>
                                     </label>
                                 </div>

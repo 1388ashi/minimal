@@ -30,21 +30,21 @@ class StoreRequest extends FormRequest
                 'price' => 'integer|required',
                 'discount' => 'nullable|integer',
                 'status' => ['nullable', 'in:1'],
-                
-        
+
+
                 'image' => 'required',
                 'video' => 'nullable',
                 'galleries.*' => 'nullable',
-                'galleries' => 'nullable|array',  
-                
+                'galleries' => 'nullable|array',
+
                 'categories.*' => 'required',
-                'categories' => 'required|array',  
-                'categories.id' => 'integer|exists:categories,id',  
+                'categories' => 'required|array',
+                'categories.id' => 'integer|exists:categories,id',
 
                 'specifications.*' => 'nullable',
-                'specifications' => 'nullable|array',  
-                'specifications.id' => 'integer|exists:specifications,id',  
-                'specifications.value' => 'string',  
+                'specifications' => 'nullable|array',
+                'specifications.id' => 'integer|exists:specifications,id',
+                'specifications.value' => 'string',
         ];
     }
 
@@ -58,7 +58,7 @@ class StoreRequest extends FormRequest
             $validated['video'],
             $validated['galleries']
         );
-    
+
         return $validated;
     }
 

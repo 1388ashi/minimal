@@ -39,7 +39,6 @@ class Product extends BaseModel implements Viewable,HasMedia
         'created_at',
         'updated_at',
     ];
-
     public function getActivitylogOptions() : LogOptions
     {
         $modelid = $this->attributes['id'];
@@ -66,6 +65,7 @@ class Product extends BaseModel implements Viewable,HasMedia
 
         return $price - $discount;
 	}
+   
     public function scopeTopDiscountedProducts($query)
     {
         return $query->where('discount', '!=', 0)->orderByDesc('discount');
@@ -89,7 +89,7 @@ class Product extends BaseModel implements Viewable,HasMedia
 
     protected $hidden = ['media'];
 
-        protected $appends = ['image', 'galleries','video'];
+        protected $appends = ['image', 'galleries','video','total_price_with_discount'];
 
         public function registerMediaCollections() : void
         {
@@ -240,5 +240,12 @@ class Product extends BaseModel implements Viewable,HasMedia
         public function suggestion(): HasOne
         {
             return $this->hasOne(Suggestion::class);
+        }
+    public function getTotalPriceWithDiscountAttribute(): int
+        {
+            $price = $this->attributes['price'];
+            $discount = $this->attributes['discount'];
+
+            return $price - $discount;
         }
 }

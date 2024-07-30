@@ -21,7 +21,7 @@
                     <x-alert-danger></x-alert-danger>
                     <form action="{{ route('admin.asks.store') }}" method="post" class="save">
                         @csrf
-                        
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -46,7 +46,7 @@
                                     </span>
                                     <span class="text-danger">&starf;</span>
                                     <label class="custom-control custom-checkbox mr-1 mt-1">
-                                        <input type="checkbox" class="custom-control-input" name="status" value="1" checked>
+                                        <input type="checkbox" class="custom-control-input" name="status" value="1" {{ old('status', 1) == 1 ? 'checked' : null }}>
                                         <span class="custom-control-label">فعال</span>
                                     </label>
                                 </div>
