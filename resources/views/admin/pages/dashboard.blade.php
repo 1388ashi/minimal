@@ -2,97 +2,137 @@
 @section('content')
 <div class="page-header">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i>
+        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-home ml-1"></i>
                 داشبورد</a></li>
     </ol>
-    <div class="mt-3 mt-lg-0">
-        <div class="d-flex align-items-center flex-wrap text-nowrap">
+</div>
+@can('view dashboard stats')
+<div class="row">
+    <div class="col-xl-9 col-md-12 col-lg-12">
+        <div class="row">
+            <div class="col-xl-4 col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <a href="{{route('admin.orders.index')}}">
+                                    <div class="mt-0 text-right">
+                                        <span class="fs-16 font-weight-semibold"> تعداد کل سفارشات : </span>
+                                        <p class="mb-0 mt-1 text-primary fs-20"> {{ number_format($ordersCount) }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-3">
+                            <div class="icon1 bg-primary-transparent my-auto float-left">
+                                <i class="fe fe-users"></i>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <a href="{{route('admin.orders.index')}}">
+                                    <div class="mt-0 text-right">
+                                        <span class="fs-16 font-weight-semibold"> تعداد سفارشات امروز :</span>
+                                        <p class="mb-0 mt-1 text-pink  fs-20">{{ number_format($orderCountToday) }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon1 bg-pink -transparent my-auto float-left">
+                                    <i class="feather feather-box"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                <div class="row">
+                    <div class="col-9">
+                        <a href="{{route('admin.orders.index')}}">
+                            <div class="mt-0 text-right">
+                            <span class="fs-16 font-weight-semibold"> میزان فروش امروز :</span>
+                                <p class="mb-0 mt-1 text-success fs-20"> {{ number_format($totalSalesToday) == 0 ? number_format($totalSalesToday) : number_format($totalSalesToday) . 'تومان'  }} </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-3">
+                    <div class="icon1 bg-success-transparent my-auto float-left">
+                        <i class="feather feather-dollar-sign"></i>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-header border-0">
+                        <div class="card-title">آمار فروش</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <canvas id="barChart" width="400" height="200"></canvas>
+                            <select id="dataSelect">
+                                <option value="totalSales">فروش این ماه</option>
+                                <option value="month">ماه</option>
+                                <option value="year">فروش سال</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
- @can('view dashboard stats')
-    <div class="row col-12">
-        <div class="col-3">
-                <div class="card">
-                    <a href="{{ route('admin.products.index') }}">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-8">
-                                    <div class="mt-0 text-right">
-                                        <span class="fs-16 font-weight-semibold">تعداد محصولات</span>
-                                        <p class="mb-0 mt-1 text-primary fs-25">{{ number_format($products) }}</p>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="icon1 bg-primary-transparent my-auto float-left"><i
-                                            class="fa fa-shopping-bag"></i></div>
-                                </div>
-                            </div>
+    <div class="col-xl-3 col-lg-6 col-md-12">
+      <div class="card">
+        <div class="card-header  border-0">
+            <a href="">
+                <div class="card-title">آخرین فعالیت ها</div>
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="list-group">
+                @php($i = null)
+                @foreach ($activityLogs as $activityLog)
+                @php($i++)
+                @if ($i % 2 == 0)
+                <div class="list-group-item d-flex pt-3 pb-3 align-items-center border-0 p-0 m-0">
+                    <div class="ml-3 ml-xs-0">
+                        <div class="calendar-icon icons" style="line-height:0;">
+                            <div class="date_time bg-pink-transparent"> <span class="date" style="line-height: normal;">{{verta($activityLog->created_at)->format('m/d H:i')}}</span></div>
                         </div>
-                    </a>
+                    </div>
+                    <div class="ml-1">
+                        <div class=" mb-1"><span class="font-weight-normal">{{$activityLog->description}}</span></div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-3">
-                <div class="card">
-                    <a href="{{ route('admin.comments.index') }}">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-8">
-                                    <div class="mt-0 text-right">
-                                        <span class="fs-16 font-weight-semibold">نظرات محصولات</span>
-                                        <p class="mb-0 mt-1 text-success fs-25">{{ number_format($commentsCount) }}</p>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="icon1 bg-success-transparent my-auto float-left"><i
-                                            class="fa fa-comment"></i></div>
-                                </div>
-                            </div>
+                @else
+                <div class="list-group-item d-flex pt-3 pb-3 align-items-center border-0 p-0 m-0">
+                    <div class="ml-3 ml-xs-0">
+                        <div class="calendar-icon icons" style="line-height:0;">
+                            <div class="date_time bg-info-transparent "><span class="date" style="line-height: normal;">{{verta($activityLog->created_at)->format('m/d H:i')}}</span></div>
                         </div>
-                    </a>
+                    </div>
+                    <div class="ml-1">
+                        <div class=" mb-1"><span class="font-weight-normal">{{$activityLog->description}}</span></div>
+                    </div>
                 </div>
+                @endif
+                @endforeach
             </div>
-            <div class="col-3">
-                <div class="card">
-                    <a href="{{ route('admin.articles.index') }}">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-8">
-                                    <div class="mt-0 text-right">
-                                        <span class="fs-16 font-weight-semibold">وبلاگ</span>
-                                        <p class="mb-0 mt-1 text-danger fs-25">{{ number_format($weblog) }}</p>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="icon1 bg-danger-transparent my-auto  float-right"><i
-                                            class="fa fa-newspaper-o"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card">
-                    <a href="{{ route('admin.resumes.index') }}">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-8">
-                                    <div class="mt-0 text-right">
-                                        <span class="fs-16 font-weight-semibold">رزومه ها</span>
-                                        <p class="mb-0 mt-1 text-warning fs-25">{{ number_format($resumesCount) }}</p>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="icon1 bg-warning-transparent my-auto  float-right"><i
-                                            class="fa fa-briefcase"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+        </div>
+       </div>
     </div>
+</div>
 @endcan
 <div class="row col-12">
     @can('view comments')
@@ -266,8 +306,8 @@
             </div>
         </div>
 @endcan
-@can('view purchase_advisors')
-   <div class="row col-12">
+    @can('view purchase_advisors')
+        <div class="row col-12">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header border-0">
@@ -319,5 +359,6 @@
                 </div>
             </div>
         </div>
+
 @endcan
 @endsection

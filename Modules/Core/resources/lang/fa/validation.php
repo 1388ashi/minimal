@@ -176,6 +176,7 @@ return [
         "subtitle" => "رو تیتر",
         "summary" => "خلاصه توضیحات",
         "body" => "بدنه",
+        "galleries " => "گالری تصاویر",
         "image" => "تصویر",
         "second" => "ثانیه",
         "title" => "عنوان",
@@ -201,6 +202,6 @@ return [
         "current_password" => "کلمه عبور فعلی",
         "new_password" => "کلمه عبور جدید"
 
-        
+
     ],
 ];
