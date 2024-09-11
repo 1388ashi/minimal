@@ -69,26 +69,14 @@
     <img src="{{asset('assets/images/svgs/loader.svg')}}" alt="loader">
 </div>
 
-<div class="page">
-    <div class="page-main">
-
-        <!--aside open-->
-        <aside class="app-sidebar">
-            @include('admin.layouts.sidebar')
-        </aside>
-        <!--aside closed-->
-        <div class="app-content main-content">
-            <div class="side-app">
-
+        <div class="page">
+            <div class="page-main">
+                @include('admin.layouts.sidebar')
                 @include('admin.layouts.header')
-
-                <!--End Page header-->
-                <div class="container">
+				<div class="app-content" style="padding-left: 50px; padding-right: 50px;">
                     @yield('content')
                 </div>
-                <!--Row-->
-            </div><!-- end app-content-->
-            @include('admin.layouts.footer')
+            </div>
         </div>
         <!--Sidebar-right-->
         <!-- Back to top -->

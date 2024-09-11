@@ -1,3 +1,4 @@
+<div class="col-md-12">
 <div class="card ">
     <div class="card-header">
         <div class="card-title">فیلتر ها</div>
@@ -9,7 +10,7 @@
             <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
         </div>
     </div>
-    <div class="card-body w-100">
+    <div class="card-body">
             <form action="{{ route("admin.products.index") }}" class="col-12">
                 <div class="row">
                     <div class="col-3 col-lg-3 form-group">
@@ -60,6 +61,7 @@
                 </div>
             </form>
     </div>
+</div>
 </div>
 @section('scripts')
 <script>
