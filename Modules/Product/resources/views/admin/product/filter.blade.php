@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="card-body">
-            <form action="{{ route("admin.products.index") }}" class="col-12">
+            <form action="{{ route("admin.products.index") }}">
                 <div class="row">
                     <div class="col-3 col-lg-3 form-group">
                         <label class="font-weight-bold">عنوان:</label>
