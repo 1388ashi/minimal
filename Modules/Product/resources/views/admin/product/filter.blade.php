@@ -27,14 +27,12 @@
                         </select>
                     </div>
                     <div class="col-3 col-lg-3 form-group">
-                        <div class="form-group">
                             <label class="font-weight-bold">تخفیف :</label>
                             <select name="discount" class="form-control">
                                 <option value="">همه</option>
                                 <option value="1" @selected(request("discount") == "1")>دارد</option>
                                 <option value="0" @selected(request("discount") == "0")>ندارد</option>
                             </select>
-                        </div>
                     </div>
                     <div class="col-3 col-lg-3 form-group">
                         <div class="form-group">
