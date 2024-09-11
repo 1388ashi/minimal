@@ -23,7 +23,7 @@
     <!-- row opened -->
     <div class="row">
         @include('product::admin.product.filter')
-        <div class="col-md-12 ">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header border-0">
                     <div class="card-title">لیست همه محصول ها ({{ $products->total() }})</div>
