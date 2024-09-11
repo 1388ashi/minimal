@@ -21,7 +21,7 @@
     </div>
 
     <!-- row opened -->
-    <div class="row mx-5">
+    <div class="row">
         @include('product::admin.product.filter')
         <div class="col-md-12 ">
             <div class="card">
