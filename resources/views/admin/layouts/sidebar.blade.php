@@ -1,7 +1,7 @@
 <aside class="app-sidebar">
     <div class="app-sidebar__user">
 		<div class="dropdown user-pro-body text-center">
-			<div class="user-pic">
+			<div>
 				<img src="{{asset('02.png')}}" style="width: 60%;height: 40%;" alt="user-img" class="border-0 avatar-xxl">
 			</div>
 		</div>
