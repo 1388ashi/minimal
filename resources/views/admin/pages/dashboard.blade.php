@@ -110,7 +110,7 @@
                             </div>
                         </div>
                         <div class="table-responsive attendance_table mt-4 border-top">
-                            <table class="table mb-0 text-nowrap">
+                            <table class="table table-striped mb-0 text-nowrap">
                                 <thead>
                                     <tr>
                                         <th class="text-center">ردیف</th>
@@ -170,7 +170,7 @@
                             </div>
                         </div>
                         <div class="table-responsive attendance_table mt-4 border-top">
-                            <table class="table table-striped mb-0 table-striped text-nowrap">
+                            <table class="table mb-0 table-striped text-nowrap">
                                 <thead>
                                     <tr>
                                         <th class="text-center">ردیف</th>
