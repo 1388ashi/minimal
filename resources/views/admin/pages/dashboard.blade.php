@@ -110,55 +110,53 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <div class="table-responsive attendance_table mt-4 border-top">
-                                    <div class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                        <table class="table mb-0 text-nowrap">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center">ردیف</th>
-                                                    <th class="text-center">نام</th>
-                                                    <th class="text-center">محصول</th>
-                                                    <th class="text-center">وضعیت</th>
-                                                    <th class="text-center">تاریخ</th>
-                                                    <th class="text-center">عملیات</th>
+                            <div class="table-responsive attendance_table mt-4 border-top">
+                                <div class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                    <table class="table mb-0 text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">ردیف</th>
+                                                <th class="text-center">نام</th>
+                                                <th class="text-center">محصول</th>
+                                                <th class="text-center">وضعیت</th>
+                                                <th class="text-center">تاریخ</th>
+                                                <th class="text-center">عملیات</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse($comments as $comment)
+                                                <tr class="border-bottom">
+                                                    <td class="text-center">
+                                                        <span class="avatar avatar-sm brround">{{ $loop->iteration }}
+                                                        </span>
+                                                    </td>
+                                                    <td class="text-center">{{ $comment->name }}</td>
+                                                    <td class="text-center">
+                                                        <a
+                                                            href="{{ route('admin.products.show', [$comment->product_id]) }}">{{ Str::limit($comment->product->title, 18, '...') }}</a>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <span class="badge bg-primary-transparent">در حال بررسی</span>
+                                                    </td>
+                                                    <td class="text-center">{{ verta($comment->created_at)->format('Y/m/d H:i') }}</td>
+                                                    <td class="text-center">
+                                                        <a href="{{ route('admin.comments.show', $comment) }}" class="action-btns"
+                                                            data-toggle="tooltip" data-placement="top" title=""
+                                                            data-original-title="مشاهده"><i
+                                                                class="feather feather-eye text-azure"></i></a>
+                                                    </td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                @forelse($comments as $comment)
-                                                    <tr class="border-bottom">
-                                                        <td class="text-center">
-                                                            <span class="avatar avatar-sm brround">{{ $loop->iteration }}
-                                                            </span>
-                                                        </td>
-                                                        <td class="text-center">{{ $comment->name }}</td>
-                                                        <td class="text-center">
-                                                            <a
-                                                                href="{{ route('admin.products.show', [$comment->product_id]) }}">{{ Str::limit($comment->product->title, 18, '...') }}</a>
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <span class="badge bg-primary-transparent">در حال بررسی</span>
-                                                        </td>
-                                                        <td class="text-center">{{ verta($comment->created_at)->format('Y/m/d H:i') }}</td>
-                                                        <td class="text-center">
-                                                            <a href="{{ route('admin.comments.show', $comment) }}" class="action-btns"
-                                                                data-toggle="tooltip" data-placement="top" title=""
-                                                                data-original-title="مشاهده"><i
-                                                                    class="feather feather-eye text-azure"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                @empty
+                                            @empty
 
-                                                    <tr>
-                                                        <td colspan="8">
-                                                            <p class="text-danger" style="display: flex;justify-content: center !important">
-                                                                <strong>در حال حاضر هیچ نظری یافت نشد!</strong></p>
-                                                        </td>
-                                                    </tr>
-                                                @endforelse
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                                <tr>
+                                                    <td colspan="8">
+                                                        <p class="text-danger" style="display: flex;justify-content: center !important">
+                                                            <strong>در حال حاضر هیچ نظری یافت نشد!</strong></p>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -176,46 +174,44 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <div class="table-responsive attendance_table mt-4 border-top">
-                                    <div class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                        <table class="table mb-0 text-nowrap">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center">ردیف</th>
-                                                    <th class="text-center">نام</th>
-                                                    <th class="text-center">موبایل</th>
-                                                    <th class="text-center">وضعیت</th>
-                                                    <th class="text-center">تاریخ</th>
+                            <div class="table-responsive attendance_table mt-4 border-top">
+                                <div class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                    <table class="table mb-0 text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">ردیف</th>
+                                                <th class="text-center">نام</th>
+                                                <th class="text-center">موبایل</th>
+                                                <th class="text-center">وضعیت</th>
+                                                <th class="text-center">تاریخ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse($tickets as $ticket)
+                                                <tr class="border-bottom">
+                                                    <td class="text-center">
+                                                        <span class="avatar avatar-sm brround">{{ $loop->iteration }}
+                                                        </span>
+                                                    </td>
+                                                    <td class="text-center">{{ $ticket->name }}</td>
+                                                    <td class="text-center">{{ $ticket->mobile }}</td>
+                                                    <td class="text-center">
+                                                        <span class="badge bg-info-transparent">جدید</span>
+                                                    </td>
+                                                    <td class="text-center">{{ verta($ticket->created_at)->format('Y/m/d H:i') }}</td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                @forelse($tickets as $ticket)
-                                                    <tr class="border-bottom">
-                                                        <td class="text-center">
-                                                            <span class="avatar avatar-sm brround">{{ $loop->iteration }}
-                                                            </span>
-                                                        </td>
-                                                        <td class="text-center">{{ $ticket->name }}</td>
-                                                        <td class="text-center">{{ $ticket->mobile }}</td>
-                                                        <td class="text-center">
-                                                            <span class="badge bg-info-transparent">جدید</span>
-                                                        </td>
-                                                        <td class="text-center">{{ verta($ticket->created_at)->format('Y/m/d H:i') }}</td>
-                                                    </tr>
-                                                @empty
+                                            @empty
 
-                                                    <tr>
-                                                        <td colspan="8">
-                                                            <p class="text-danger"
-                                                                style="display: flex;justify-content: center !important"><strong>در حال
-                                                                    حاضر هیچ پیامی یافت نشد!</strong></p>
-                                                        </td>
-                                                    </tr>
-                                                @endforelse
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                                <tr>
+                                                    <td colspan="8">
+                                                        <p class="text-danger"
+                                                            style="display: flex;justify-content: center !important"><strong>در حال
+                                                                حاضر هیچ پیامی یافت نشد!</strong></p>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -235,54 +231,52 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <div class="table-responsive attendance_table mt-4 border-top">
-                                <div class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                    <table class="table mb-0 text-nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-center">ردیف</th>
-                                                <th class="text-center">نام و نام خوانوادگی</th>
-                                                <th class="text-center">شغل</th>
-                                                <th class="text-center">موبایل</th>
-                                                <th class="text-center">وضعیت</th>
-                                                <th class="text-center">تاریخ ارسال</th>
-                                                <th class="text-center">عملیات</th>
+                        <div class="table-responsive attendance_table mt-4 border-top">
+                            <div class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                <table class="table mb-0 text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">ردیف</th>
+                                            <th class="text-center">نام و نام خوانوادگی</th>
+                                            <th class="text-center">شغل</th>
+                                            <th class="text-center">موبایل</th>
+                                            <th class="text-center">وضعیت</th>
+                                            <th class="text-center">تاریخ ارسال</th>
+                                            <th class="text-center">عملیات</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($resumes as $resume)
+                                            <tr class="border-bottom">
+                                                <td class="text-center">
+                                                    <span class="avatar avatar-sm brround">{{ $loop->iteration }}
+                                                    </span>
+                                                </td>
+                                                <td class="text-center">{{ $resume->name }}</td>
+                                                <td class="text-center">{{ $resume->job->title }}</td>
+                                                <td class="text-center">{{ $resume->mobile }}</td>
+                                                <td class="text-center">
+                                                    <span class="badge bg-primary-transparent">در حال بررسی</span>
+                                                </td>
+                                                <td class="text-center">{{ verta($resume->created_at)->format('Y/m/d H:i') }}</td>
+                                                <td class="text-center">
+                                                    <a href="{{ route('admin.resumes.show', $resume) }}" class="action-btns"
+                                                        data-toggle="tooltip" data-placement="top" title=""
+                                                        data-original-title="مشاهده"><i
+                                                            class="feather feather-eye text-azure"></i></a>
+                                                </td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            @forelse($resumes as $resume)
-                                                <tr class="border-bottom">
-                                                    <td class="text-center">
-                                                        <span class="avatar avatar-sm brround">{{ $loop->iteration }}
-                                                        </span>
-                                                    </td>
-                                                    <td class="text-center">{{ $resume->name }}</td>
-                                                    <td class="text-center">{{ $resume->job->title }}</td>
-                                                    <td class="text-center">{{ $resume->mobile }}</td>
-                                                    <td class="text-center">
-                                                        <span class="badge bg-primary-transparent">در حال بررسی</span>
-                                                    </td>
-                                                    <td class="text-center">{{ verta($resume->created_at)->format('Y/m/d H:i') }}</td>
-                                                    <td class="text-center">
-                                                        <a href="{{ route('admin.resumes.show', $resume) }}" class="action-btns"
-                                                            data-toggle="tooltip" data-placement="top" title=""
-                                                            data-original-title="مشاهده"><i
-                                                                class="feather feather-eye text-azure"></i></a>
-                                                    </td>
-                                                </tr>
-                                            @empty
+                                        @empty
 
-                                                <tr>
-                                                    <td colspan="8">
-                                                        <p class="text-danger" style="display: flex;justify-content: center !important">
-                                                            <strong>در حال حاضر هیچ رزومه ای یافت نشد!</strong></p>
-                                                    </td>
-                                                </tr>
-                                            @endforelse
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            <tr>
+                                                <td colspan="8">
+                                                    <p class="text-danger" style="display: flex;justify-content: center !important">
+                                                        <strong>در حال حاضر هیچ رزومه ای یافت نشد!</strong></p>
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -302,46 +296,44 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <div class="table-responsive attendance_table mt-4 border-top">
-                                <div class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                    <table class="table mb-0 text-nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-center">ردیف</th>
-                                                <th class="text-center">نام</th>
-                                                <th class="text-center">موبایل</th>
-                                                <th class="text-center">محصول</th>
-                                                <th class="text-center">وضعیت</th>
-                                                <th class="text-center">تاریخ</th>
+                        <div class="table-responsive attendance_table mt-4 border-top">
+                            <div class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                <table class="table mb-0 text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">ردیف</th>
+                                            <th class="text-center">نام</th>
+                                            <th class="text-center">موبایل</th>
+                                            <th class="text-center">محصول</th>
+                                            <th class="text-center">وضعیت</th>
+                                            <th class="text-center">تاریخ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($advisors as $advisor)
+                                            <tr class="border-bottom">
+                                                <td class="text-center">
+                                                    <span class="avatar avatar-sm brround">{{ $loop->iteration }}
+                                                    </span>
+                                                </td>
+                                                <td class="text-center">{{ $advisor->name }}</td>
+                                                <td class="text-center">{{ $advisor->mobile }}</td>
+                                                <td class="text-center">{{ $advisor->product->title }}</td>
+                                                <td class="text-center">
+                                                    <span class="badge bg-danger-transparent">تماس گرفته نشده</span>
+                                                </td>
+                                                <td class="text-center">{{ verta($advisor->created_at)->format('Y/m/d H:i') }}</td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            @forelse($advisors as $advisor)
-                                                <tr class="border-bottom">
-                                                    <td class="text-center">
-                                                        <span class="avatar avatar-sm brround">{{ $loop->iteration }}
-                                                        </span>
-                                                    </td>
-                                                    <td class="text-center">{{ $advisor->name }}</td>
-                                                    <td class="text-center">{{ $advisor->mobile }}</td>
-                                                    <td class="text-center">{{ $advisor->product->title }}</td>
-                                                    <td class="text-center">
-                                                        <span class="badge bg-danger-transparent">تماس گرفته نشده</span>
-                                                    </td>
-                                                    <td class="text-center">{{ verta($advisor->created_at)->format('Y/m/d H:i') }}</td>
-                                                </tr>
-                                            @empty
-                                                <tr>
-                                                    <td colspan="8">
-                                                        <p class="text-danger" style="display: flex;justify-content: center !important">
-                                                            <strong>در حال حاضر هیچ مشاوره ای یافت نشد!</strong></p>
-                                                    </td>
-                                                </tr>
-                                            @endforelse
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        @empty
+                                            <tr>
+                                                <td colspan="8">
+                                                    <p class="text-danger" style="display: flex;justify-content: center !important">
+                                                        <strong>در حال حاضر هیچ مشاوره ای یافت نشد!</strong></p>
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
