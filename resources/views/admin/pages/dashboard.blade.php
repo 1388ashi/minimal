@@ -311,7 +311,6 @@
                         <div class="table-responsive">
                             <div class="table-responsive attendance_table mt-4 border-top">
                                 <div class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                    <div class="row">
                                         <table class="table mb-0 text-nowrap">
                                             <thead>
                                                 <tr>
@@ -348,7 +347,6 @@
                                                 @endforelse
                                             </tbody>
                                         </table>
-                                    </div>
                                 </div>
                             </div>
                         </div>
