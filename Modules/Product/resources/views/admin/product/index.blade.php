@@ -6,7 +6,6 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
             <li class="breadcrumb-item active" aria-current="page">لیست همه محصول ها</li>
-
         </ol>
         <div class="mt-3">
             <div class="d-flex align-items-center flex-wrap text-nowrap">
