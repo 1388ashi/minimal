@@ -109,52 +109,56 @@
                                 همه</a>
                             </div>
                         </div>
-                        <div class="table-responsive attendance_table mt-4 border-top">
-                            <table class="table table-striped table-bordered mb-0 text-nowrap">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">ردیف</th>
-                                        <th class="text-center">نام</th>
-                                        <th class="text-center">محصول</th>
-                                        <th class="text-center">وضعیت</th>
-                                        <th class="text-center">تاریخ</th>
-                                        <th class="text-center">عملیات</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse($comments as $comment)
-                                        <tr class="border-bottom">
-                                            <td class="text-center">
-                                                <span class="avatar avatar-sm brround">{{ $loop->iteration }}
-                                                </span>
-                                            </td>
-                                            <td class="text-center">{{ $comment->name }}</td>
-                                            <td class="text-center">
-                                                <a
-                                                    href="{{ route('admin.products.show', [$comment->product_id]) }}">{{ Str::limit($comment->product->title, 18, '...') }}</a>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="badge bg-primary-transparent">در حال بررسی</span>
-                                            </td>
-                                            <td class="text-center">{{ verta($comment->created_at)->format('Y/m/d H:i') }}</td>
-                                            <td class="text-center">
-                                                <a href="{{ route('admin.comments.show', $comment) }}" class="action-btns"
-                                                    data-toggle="tooltip" data-placement="top" title=""
-                                                    data-original-title="مشاهده"><i
-                                                        class="feather feather-eye text-azure"></i></a>
-                                            </td>
-                                        </tr>
-                                    @empty
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div class="table-responsive attendance_table mt-4 border-top">
+                                    <table class="table mb-0 text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">ردیف</th>
+                                                <th class="text-center">نام</th>
+                                                <th class="text-center">محصول</th>
+                                                <th class="text-center">وضعیت</th>
+                                                <th class="text-center">تاریخ</th>
+                                                <th class="text-center">عملیات</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse($comments as $comment)
+                                                <tr class="border-bottom">
+                                                    <td class="text-center">
+                                                        <span class="avatar avatar-sm brround">{{ $loop->iteration }}
+                                                        </span>
+                                                    </td>
+                                                    <td class="text-center">{{ $comment->name }}</td>
+                                                    <td class="text-center">
+                                                        <a
+                                                            href="{{ route('admin.products.show', [$comment->product_id]) }}">{{ Str::limit($comment->product->title, 18, '...') }}</a>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <span class="badge bg-primary-transparent">در حال بررسی</span>
+                                                    </td>
+                                                    <td class="text-center">{{ verta($comment->created_at)->format('Y/m/d H:i') }}</td>
+                                                    <td class="text-center">
+                                                        <a href="{{ route('admin.comments.show', $comment) }}" class="action-btns"
+                                                            data-toggle="tooltip" data-placement="top" title=""
+                                                            data-original-title="مشاهده"><i
+                                                                class="feather feather-eye text-azure"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @empty
 
-                                        <tr>
-                                            <td colspan="8">
-                                                <p class="text-danger" style="display: flex;justify-content: center !important">
-                                                    <strong>در حال حاضر هیچ نظری یافت نشد!</strong></p>
-                                            </td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
+                                                <tr>
+                                                    <td colspan="8">
+                                                        <p class="text-danger" style="display: flex;justify-content: center !important">
+                                                            <strong>در حال حاضر هیچ نظری یافت نشد!</strong></p>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -170,7 +174,7 @@
                             </div>
                         </div>
                         <div class="table-responsive attendance_table mt-4 border-top">
-                            <table class="table mb-0 table-striped text-nowrap">
+                            <table class="table mb-0 text-nowrap">
                                 <thead>
                                     <tr>
                                         <th class="text-center">ردیف</th>
@@ -223,7 +227,7 @@
                         </div>
                     </div>
                     <div class="table-responsive attendance_table mt-4 border-top">
-                        <table class="table table-striped  mb-0 text-nowrap">
+                        <table class="table mb-0 text-nowrap">
                             <thead>
                                 <tr>
                                     <th class="text-center">ردیف</th>
@@ -284,7 +288,7 @@
                         </div>
                     </div>
                     <div class="table-responsive attendance_table mt-4 border-top">
-                        <table class="table table-striped  mb-0 text-nowrap">
+                        <table class="table mb-0 text-nowrap">
                             <thead>
                                 <tr>
                                     <th class="text-center">ردیف</th>

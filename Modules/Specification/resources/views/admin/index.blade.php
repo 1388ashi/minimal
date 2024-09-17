@@ -24,7 +24,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header border-0">
-                    <div class="card-title">لیست همه مشخصات ها ({{ $specifications->total() }})</div>
+                    <div class="card-title">لیست همه مشخصات ({{ $specifications->total() }})</div>
                     <div class="card-options">
                         <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
                         <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i class="fe fe-maximize"></i></a>
@@ -69,14 +69,14 @@
                                     </td>
                             </tr>
                                     @empty
-                                        
+
                                 <tr>
                                     <td colspan="8">
                                         <p class="text-danger"><strong>در حال حاضر هیچ مشخصه ای یافت نشد!</strong></p>
                                     </td>
                                 </tr>
                             @endforelse
-                            
+
                             </tbody>
                         </table>
                         {{$specifications->onEachSide(1)->links("vendor.pagination.bootstrap-4")}}
