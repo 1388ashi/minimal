@@ -110,7 +110,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive attendance_table mt-4 border-top">
+                            <div class="table-responsive attendance_table border-top">
                                 <div class="dataTables_wrapper dt-bootstrap4 no-footer">
                                     <table class="table mb-0 text-nowrap">
                                         <thead>
@@ -174,7 +174,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive attendance_table mt-4 border-top">
+                            <div class="table-responsive attendance_table border-top">
                                 <div class="dataTables_wrapper dt-bootstrap4 no-footer">
                                     <table class="table mb-0 text-nowrap">
                                         <thead>
@@ -231,7 +231,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive attendance_table mt-4 border-top">
+                        <div class="table-responsive attendance_table border-top">
                             <div class="dataTables_wrapper dt-bootstrap4 no-footer">
                                 <table class="table mb-0 text-nowrap">
                                     <thead>
@@ -296,7 +296,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive attendance_table mt-4 border-top">
+                        <div class="table-responsive attendance_table border-top">
                             <div class="dataTables_wrapper dt-bootstrap4 no-footer">
                                 <table class="table mb-0 text-nowrap">
                                     <thead>
