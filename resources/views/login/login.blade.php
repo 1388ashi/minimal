@@ -57,11 +57,11 @@
 											@csrf
 											<div class="form-group">
 												<label class="form-label">شماره موبایل</label>
-												<input class="form-control" placeholder="phone" name="phone" type="text"  value="{{old('phone')}}">
+												<input class="form-control" placeholder="شماره همراه خود را وارد کنید" name="phone" type="text"  value="{{old('phone')}}">
 											</div>
 											<div class="form-group">
 												<label class="form-label">رمز عبور</label>
-												<input class="form-control" placeholder="password" name="password" type="password"  value="{{old('password')}}">
+												<input class="form-control" placeholder="رمز عبر را وارد کنید را وارد کنید" name="password" type="password"  value="{{old('password')}}">
 											</div>
 											<div class="submit">
 												<button class="btn btn-primary btn-block">ورود</button>
