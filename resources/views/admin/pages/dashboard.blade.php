@@ -1,5 +1,11 @@
 @extends('admin.layouts.master')
 @section('content')
+<style>
+    .page-header{
+        margin: 0;
+        margin-top: 20px;
+    }
+</style>
     <div class="page-header">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-home ml-1"></i>
