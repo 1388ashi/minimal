@@ -52,10 +52,10 @@
 
         <div class="card-footer">
             <div class="row">
-                <div class="col-9">
+                <div class="col-12 col-md-9 mb-2 mb-md-0">  
                     <button type="submit" class="col-12 btn btn-primary" form="filter-form">جستجو</button>
                 </div>
-                <div class="col-3">
+                <div class="col-12 col-md-3">  
                     <a href="{{ $action }}" class="col-12 btn btn-danger align-self-center">حذف فیلترها <i
                                 class="fa fa-close"
                                 aria-hidden="true"></i></a>
