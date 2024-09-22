@@ -25,7 +25,7 @@
                     <div class="col-xl-3 col-lg-6 col-12">   
                         <div class="form-group ">
                             <select
-                                class="form-control @if($value['type'] == 'select-multiple') select2-show-search @endif"
+                                class="form-control select2 @if($value['type'] == 'select-multiple') select2-show-search @endif"
                                 name="{{ $input }}" @if($value['type'] == 'select-multiple') multiple @endif>
                                 <option class="text-muted" value="">{{ $value['placeholder'] }}</option>
                                 @foreach($value['options'] as $option => $label)
