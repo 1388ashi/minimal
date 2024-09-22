@@ -54,11 +54,11 @@
 
                 <div class="row">
 
-                    <div class="col-12 col-md-6 col-xl-9">
+                    <div class="col-12 col-md-9 mb-2 mb-md-0">  
                       <button class="btn btn-primary btn-block" type="submit">جستجو <i class="fa fa-search"></i></button>
                     </div>
 
-                    <div class="col-12 col-md-6 col-xl-3">
+                <div class="col-12 col-md-3">  
                       <a href="{{ route('admin.products.index') }}"
                          class="btn btn-danger btn-block">حذف همه فیلتر ها <i class="fa fa-close"></i></a>
                     </div>
