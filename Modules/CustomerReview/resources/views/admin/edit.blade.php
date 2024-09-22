@@ -33,17 +33,17 @@
                         </div>
                     </div>
                         @if ($customerReview->video['url'])
-                        <div class="col-lg-6 d-flex" style="margin-top: 2rem">
-                            <button type="button" class="btn btn-danger btn-sm ml-1 d-flex" style="height: fit-content;justify-content: center;align-items: center;" onclick="confirmDelete('delete-video-{{ $customerReview->id }}')">
-                                <i class="fa fa-trash-o"></i>
-                            </button>
-                            <br>
-                            <figure class="figure">
-                                <a target="blank" href="{{ $customerReview->video['url'] }}">
-                                    {{$customerReview->video['name']}}
-                                </a>
-                            </figure>
-                        </div>
+                       <div class="col-lg-6 d-flex" style="margin-top: 2rem">  
+                            <button type="button" class="btn btn-danger btn-sm ml-1 d-flex" style="height: fit-content; justify-content: center; align-items: center;" onclick="confirmDelete('delete-video-{{ $customerReview->id }}')">  
+                                <i class="fa fa-trash-o"></i>  
+                            </button>  
+                            <br>  
+                            <figure class="figure">  
+                                <a target="blank" href="{{ $customerReview->video['url'] }}">  
+                                    {{ $customerReview->video['name'] }}  
+                                </a>  
+                            </figure>  
+                        </div>  
                         @endif
                         <div class="form-group">
                             <label  class="control-label col-12">توضیحات<span class="text-danger">&starf;</span></label>
@@ -59,13 +59,13 @@
         </div>
     </div>
     @if ($customerReview->video['url'])
-        <form
-        action="{{ route('admin.customer-reviews.video.destroy', $customerReview) }}"
-        id="delete-video-{{$customerReview->id}}"
-            method="POST"
-            style="display: none;">
-            @csrf
-            @method("DELETE")
+         <form  
+            action="{{ route('admin.customer-reviews.video.destroy', $customerReview) }}"  
+            id="delete-video-{{$customerReview->id}}"  
+            method="POST"  
+            style="display: none;">  
+            @csrf  
+            @method("DELETE")  
         </form>
     @endif
 @endforeach
