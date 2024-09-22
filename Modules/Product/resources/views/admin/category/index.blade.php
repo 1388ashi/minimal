@@ -62,7 +62,7 @@
                                     </div>
                                 </a>
                                 @else
-                                ندارد
+                                -
                                 @endif
                                 </td>
                                 <td class="text-center">@include('includes.status',["status" => $category->featured])</td>
