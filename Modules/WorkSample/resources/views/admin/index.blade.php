@@ -63,7 +63,7 @@
                                         <i class="fa fa-eye"></i>
                                     </a>
                                     @can('edit workSample')
-                                        <button type="button" class="btn btn-warning btn-sm ml-1"
+                                        <button type="button" class="btn btn-warning  btn-sm "
                                         data-toggle="modal"
                                         data-target="#edit-menu-{{ $workSample->id }}">
                                             <i class="fa fa-pencil" aria-hidden="true"></i>

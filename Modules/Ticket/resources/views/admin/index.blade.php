@@ -50,7 +50,7 @@
                                 <td>
                                     {{-- Edit--}}
                                     @can('view tickets')
-                                    <button type="button" class="btn btn-primary btn-sm ml-1"
+                                    <button type="button" class="btn btn-primary btn-sm "
                                     data-toggle="modal"
                                     onclick="showDescriptionModal({{$ticket}})"
                                     data-original-title="توضیحات">

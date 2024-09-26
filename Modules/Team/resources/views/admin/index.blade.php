@@ -63,7 +63,7 @@
                                 <td>
                                     {{-- Edit--}}
                                     @can('edit teams')
-                                    <button type="button" class="btn btn-warning btn-sm ml-1"
+                                    <button type="button" class="btn btn-warning btn-sm "
                                     data-toggle="modal"
                                     data-target="#edit-menu-{{ $team->id }}">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>

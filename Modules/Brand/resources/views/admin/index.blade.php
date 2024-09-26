@@ -61,7 +61,7 @@
                                 <td>
                                     {{-- Edit--}}
                                     @can('edit brands')
-                                    <button type="button" class="btn btn-warning btn-sm ml-1"
+                                    <button type="button" class="btn btn-warning btn-sm "
                                     data-toggle="modal"
                                     data-target="#edit-menu-{{ $brand->id }}">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>

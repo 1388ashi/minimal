@@ -73,7 +73,7 @@
                                 <td>
                                     {{-- Edit--}}
                                     @can('view customerReviews')
-                                    <button type="button" class="btn btn-primary btn-sm ml-1"
+                                    <button type="button" class="btn btn-primary btn-sm "
                                     data-toggle="modal"
                                     onclick="showDescriptionModal({{$customerReview}})"
                                     data-original-title="توضیحات">
@@ -82,7 +82,7 @@
                                         {{-- <a href="{{ route('admin.articles.show',$article) }}" class="btn btn-info btn-sm text-white" data-toggle="tooltip" data-original-title="نمایش"><i class="fa fa-eye"></i></a> --}}
                                     @endcan
                                     @can('edit customerReviews')
-                                    <button type="button" class="btn btn-warning btn-sm ml-1"
+                                    <button type="button" class="btn btn-warning btn-sm "
                                     data-toggle="modal"
                                     data-target="#edit-menu-{{ $customerReview->id }}">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
