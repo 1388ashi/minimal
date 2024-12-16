@@ -248,7 +248,7 @@ class ProductController extends Controller implements HasMiddleware
             'status' => 'success',
             'message' => 'محصول با موفقیت به روزرسانی شد'
         ];
-
+        
         return redirect()->route('admin.products.index')
             ->with($data);
 

@@ -106,6 +106,17 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
+                                        <label class="control-label">برند</label><span class="text-danger">&starf;</span>
+                                        <select class="form-control select2" name="brand_id">
+                                            <option selected disabled>- انتخاب کنید  -</option>
+                                            @foreach($brands as $brand)
+                                                <option value="{{$brand->id}}">{{$brand->title}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
                                         <span class="control-label ">
                                             وضعیت
                                         </span>

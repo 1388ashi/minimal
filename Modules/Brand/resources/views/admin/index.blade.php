@@ -105,18 +105,40 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="label" >تصویر</label><span class="text-danger">&starf;</span>
-                        <input  class="form-control" type="file" name="image">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="label" >تصویر</label><span class="text-danger">&starf;</span>
+                                <input  class="form-control" type="file" name="image">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="control-label" for="label" >عنوان</label> 
+                                <input class="form-control" type="text" name="title" value="{{old('title')}}">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <span class="control-label ">
-                            وضعیت
-                        </span>
-                        <label class="custom-control custom-checkbox mr-1 mt-1">
-                            <input type="checkbox" class="custom-control-input" name="status" value="1" checked>
-                            <span class="custom-control-label">فعال</span>
-                        </label>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="label" >توضیحات</label><span class="text-danger">&starf;</span>
+                                <textarea name="description" class="form-control" cols="30" rows="3">{{old('description')}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <span class="control-label ">
+                                    وضعیت
+                                </span>
+                                <label class="custom-control custom-checkbox mr-1 mt-1">
+                                    <input type="checkbox" class="custom-control-input" name="status" value="1" checked>
+                                    <span class="custom-control-label">فعال</span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-center">

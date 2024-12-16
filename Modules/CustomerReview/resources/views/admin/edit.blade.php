@@ -33,7 +33,7 @@
                         </div>
                     </div>
                         @if ($customerReview->video['url'])
-                       <div class="col-lg-6 d-flex" style="margin-top: 2rem">  
+                        <div class="col-lg-6 d-flex" style="margin-top: 2rem">  
                             <button type="button" class="btn btn-danger btn-sm ml-1 d-flex" style="height: fit-content; justify-content: center; align-items: center;" onclick="confirmDelete('delete-video-{{ $customerReview->id }}')">  
                                 <i class="fa fa-trash-o"></i>  
                             </button>  

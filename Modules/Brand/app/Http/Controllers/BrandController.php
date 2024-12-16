@@ -27,7 +27,7 @@ class BrandController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        $brands = Brand::select('id','status')->paginate();
+        $brands = Brand::select('id','title','status')->paginate();
         
         return view('brand::admin.index',compact('brands'));
     }
@@ -38,7 +38,9 @@ class BrandController extends Controller implements HasMiddleware
     public function store(StoreRequest $request): RedirectResponse
     {
         $brand = Brand::query()->create([
-            'status' => filled($request->status) ?: 0
+            'status' => filled($request->status) ?: 0,
+            'title' => $request->title,
+            'description' => $request->description,
         ]);
         $brand->uploadFiles($request);
         $data = [
@@ -56,7 +58,9 @@ class BrandController extends Controller implements HasMiddleware
     public function update(Request $request,Brand $brand): RedirectResponse
     {
         $brand->update([
-            'status' => filled($request->status) ?: 0
+            'title' => $request->title,
+            'status' => filled($request->status) ?: 0,
+            'description' => $request->description,
         ]);
         $brand->uploadFiles($request);
         

@@ -5,9 +5,11 @@ namespace Modules\Brand\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Log;
+use Modules\Product\Models\Product;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\HasMedia;
@@ -20,7 +22,7 @@ class Brand extends Model implements HasMedia
     use HasFactory, LogsActivity,InteractsWithMedia;
 
     protected $fillable = [
-        'status',
+        'title','status','description'
     ];
     protected $with = ['media'];
     protected $hidden = ['media'];
@@ -28,6 +30,10 @@ class Brand extends Model implements HasMedia
     
     public function registerMediaCollections(): void {
         $this->addMediaCollection('brand_images')->singleFile();
+    }
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
     }
     public function getActivitylogOptions() : LogOptions
     {

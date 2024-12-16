@@ -30,6 +30,7 @@ class StoreRequest extends FormRequest
                 'price' => 'integer|required',
                 'discount' => 'nullable|integer',
                 'status' => ['nullable', 'in:1'],
+                'brand_id' => 'nullable|exists:brands,id',
 
 
                 'image' => 'required',

@@ -12,7 +12,9 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => 'nullable|image|mimes:jpeg,png,jpg'
+            'image' => 'nullable|image|mimes:jpeg,png,jpg',
+            'title' => 'required',
+            'description' => 'required',
         ];
     }
 

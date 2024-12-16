@@ -17,7 +17,7 @@ class PostsController extends Controller
     {
         $categoryId = $request->query("category_id");
 
-        $postCategories = Post::select('id','title','summary','body','featured','category_id','created_at')
+        $postCategories = Post::select('id','title','summary','body','type','featured','category_id','created_at')
         ->with('category:id,title')
         ->when($request->has('category_id'), function ($query) use ($categoryId) {
             return $query->where('category_id', $categoryId);
@@ -27,7 +27,7 @@ class PostsController extends Controller
         })
         ->paginate();
 
-        $categories  = BlogCategory::select('id','title')->with('posts')->where('status',1)->get();
+        $categories  = BlogCategory::select('id','title','type')->with('posts')->where('status',1)->get();
 
         $featuredPosts = Post::query()
         ->select('id','title','summary','body','featured','created_at')

@@ -6,9 +6,11 @@ use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Modules\Brand\Models\Brand;
 use Modules\Comment\Models\Comment;
 use Modules\Core\Models\BaseModel;
 use Modules\PurchaseAdvisor\Models\PurchaseAdvisor;
@@ -35,6 +37,7 @@ class Product extends BaseModel implements Viewable,HasMedia
         'description',
         'price',
         'discount',
+        'brand_id',
         'status',
         'created_at',
         'updated_at',
@@ -232,6 +235,10 @@ class Product extends BaseModel implements Viewable,HasMedia
         public function comments(): HasMany
         {
             return $this->hasMany(Comment::class);
+        }
+        public function brand(): BelongsTo
+        {
+            return $this->belongsTo(Brand::class);
         }
         public function colors(): BelongsToMany
         {
