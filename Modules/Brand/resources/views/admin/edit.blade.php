@@ -31,8 +31,8 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="label" >توضیحات</label><span class="text-danger">&starf;</span>
-                                <textarea name="description" class="form-control" cols="30" rows="3">{{$brand->description}}</textarea>
+                                <label>توضیحات</label><span class="text-danger">&starf;</span>
+                                <textarea name="description" id="example" cols="100" rows="4">{{old('description',$brand->description)}}</textarea>
                             </div>
                         </div>
                     </div>

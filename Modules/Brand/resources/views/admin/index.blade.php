@@ -123,10 +123,8 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="form-group">
-                                <label for="label" >توضیحات</label><span class="text-danger">&starf;</span>
-                                <textarea name="description" class="form-control" cols="30" rows="3">{{old('description')}}</textarea>
-                            </div>
+                            <label >توضیحات</label><span class="text-danger">&starf;</span>
+                            <textarea name="description" id="example" cols="100" rows="4">{{old('description')}}</textarea>
                         </div>
                     </div>
                     <div class="row">
