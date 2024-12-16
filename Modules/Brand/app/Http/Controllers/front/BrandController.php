@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Modules\Brand\Models\Brand;
 
-class BrandController extends Controller implements HasMiddleware
+class BrandController extends Controller 
 {
     public function index()
     {
