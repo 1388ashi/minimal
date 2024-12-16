@@ -5,6 +5,7 @@ namespace Modules\Product\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Modules\Brand\Models\Brand;
 use Modules\Comment\Models\Comment;
 use Modules\Product\Models\Category;
 use Modules\Product\Models\Product;
@@ -15,6 +16,7 @@ class ProductController extends Controller
     {
         $sortBy = $request->sortBy;
 
+        $brands = Brand::select('id','title')->latest('id')->get();
         $categories = Category::select('id','title','parent_id')
         ->where('status',1)
         ->whereNull('parent_id')
@@ -29,6 +31,9 @@ class ProductController extends Controller
             $query->whereHas('categories', function ($q) use ($request) {
                 $q->where('category_id', $request->input('category_id'))->with(['children:id,title,parent_id']);
             });
+        })
+        ->when($request->has('brand_id'), function ($query) use ($request) {
+            $query->where('brand_id', $request->input('brand_id'));
         })
         ->when($request->has('title'), function ($query) use ($request) {
             $query->where('title', 'like', '%' . $request->input('title') . '%');
@@ -58,7 +63,7 @@ class ProductController extends Controller
         });
         $topPrice = Product::orderByDesc('price')->value('price');
 
-        return response()->success('', compact('products','categories','topPrice'));
+        return response()->success('', compact('products','categories','topPrice','brands'));
     }
 
    public function show($id): JsonResponse

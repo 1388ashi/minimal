@@ -14,8 +14,9 @@ class BrandController extends Controller implements HasMiddleware
         
         return response()->success('',compact('brands'));
     }
-    public function show(Brand $brand)
-    {
-        return response()->success('',compact('brand'));
-    }
+    public function show(Brand $brand)  
+    {  
+        $moreBrands = Brand::where('id', '!=', $brand->id)->get();  
+        return response()->success('', compact('brand', 'moreBrands'));  
+    }  
 }
