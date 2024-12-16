@@ -27,7 +27,7 @@ class BrandController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        $brands = Brand::select('id','title','description','status')->paginate();
+        $brands = Brand::select('id','title','description','status')->latest('id')->paginate();
         
         return view('brand::admin.index',compact('brands'));
     }

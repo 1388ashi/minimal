@@ -11,6 +11,7 @@ use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Js;
+use Modules\Brand\Models\Brand;
 use Modules\Product\Http\Requests\Product\StoreRequest;
 use Modules\Product\Http\Requests\Product\UpdateRequest;
 use Modules\Product\Models\Category;
@@ -139,8 +140,9 @@ class ProductController extends Controller implements HasMiddleware
                 $allCategories = $this->getChildren($category->recursiveChildren, $allCategories, $i);
             }
         }
+        $brands = Brand::select('id','title')->latest('id')->get();
 
-        return view('product::admin.product.create', compact('allCategories', 'colors'));
+        return view('product::admin.product.create', compact('allCategories', 'colors','brands'));
     }
 
     public function store(StoreRequest $request)
@@ -197,6 +199,7 @@ class ProductController extends Controller implements HasMiddleware
                 $allCategories = $this->getChildren($category->recursiveChildren, $allCategories, $i);
             }
         }
+        $brands = Brand::select('id','title')->latest('id')->get();
 
         $specifications = Specification::query()
             ->with('products')
@@ -210,6 +213,7 @@ class ProductController extends Controller implements HasMiddleware
             'allCategories',
             'specifications',
             'product',
+            'brands',
             'colors'
         ));
     }

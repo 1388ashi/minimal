@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label class="control-label" for="label" >تصویر</label> 
+                                <label for="label" >تصویر</label> 
                                 <input  class="form-control" type="file" name="image">
                             </div>
                         </div>
