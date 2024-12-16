@@ -150,7 +150,6 @@
                                             @foreach($brands as $brand)
                                             <option value="{{$brand->id}}" 
                                                 @selected($brand->id == $product->category_id)>{{$brand->title}}</option>
-                                                <option value="{{$brand->id}}">{{$brand->title}}</option>
                                             @endforeach
                                         </select>
                                     </div>
