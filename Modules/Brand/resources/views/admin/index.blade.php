@@ -39,6 +39,7 @@
                             <thead>
                                 <tr>
                                     <th class="border-top">ردیف</th>
+                                    <th class="border-top">عنوان</th>
                                     <th class="border-top">تصویر</th>
                                     <th class="border-top">وضعیت</th>
                                     <th class="border-top">تاریخ ثبت</th>
@@ -49,6 +50,7 @@
                             @forelse($brands as $brand)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
+                                <td>{{$brand->title}}</td>
                                 <td class="text-center">
                                     <a href="{{ $brand->image['url'] }}" target="_blanck">
                                     <div class="bg-light pb-1 pt-1 img-holder img-show" style="max-height: 50px;border-radius: 4px;">
@@ -114,7 +116,7 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label class="control-label" for="label" >عنوان</label> 
+                                <label for="label" >عنوان</label><span class="text-danger">&starf;</span>
                                 <input class="form-control" type="text" name="title" value="{{old('title')}}">
                             </div>
                         </div>

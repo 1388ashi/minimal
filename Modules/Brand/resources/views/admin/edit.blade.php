@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label class="control-label" for="label" >عنوان</label> 
+                                <label for="label">عنوان</label><span class="text-danger">&starf;</span>
                                 <input class="form-control" type="text" name="title" value="{{old('title',$brand->title)}}">
                             </div>
                         </div>
