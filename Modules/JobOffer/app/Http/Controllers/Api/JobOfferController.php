@@ -4,8 +4,6 @@ namespace Modules\JobOffer\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Modules\JobOffer\Http\Requests\Resumes\StoreRequest;
 use Modules\JobOffer\Models\JobOffer;
 use Modules\JobOffer\Models\Resumes;
