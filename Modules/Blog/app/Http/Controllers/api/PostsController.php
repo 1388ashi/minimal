@@ -38,7 +38,7 @@ class PostsController extends Controller
         ->get(); 
 
         $postsToSkip = count($featuredPosts);
-    dd(1);
+    
         $lastPosts = Post::query()
         ->select('id','title','summary','body','type','created_at')
         ->where('status',1)
