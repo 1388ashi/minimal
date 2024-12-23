@@ -42,7 +42,6 @@ class PostsController extends Controller
         $lastPosts = Post::query()
         ->select('id','title','summary','body','type','created_at')
         ->where('status',1)
-        ->skip($postsToSkip)
         ->latest('id')
         ->get();
 
