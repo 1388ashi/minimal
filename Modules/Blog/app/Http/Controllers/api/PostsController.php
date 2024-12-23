@@ -40,12 +40,12 @@ class PostsController extends Controller
         $postsToSkip = count($featuredPosts);
         dd($postsToSkip);  
 
-        $lastPosts = Post::query()
-        ->select('id','title','summary','body','type','created_at')
-        ->where('status',1)
-        ->skip($postsToSkip)
-        ->latest('id')
-        ->get();
+        $lastPosts = Post::query()  
+        ->select('id', 'title', 'summary', 'body', 'type', 'created_at')  
+        ->where('status', 1)  
+        ->latest('id')  
+        ->skip($postsToSkip)  
+        ->toSql();  
 
         return response()->success('', compact('featuredPosts','lastPosts','postCategories','categories'));
     }
