@@ -29,12 +29,13 @@ class PostsController extends Controller
 
         $categories  = BlogCategory::select('id','title','type')->with('posts')->where('status',1)->get();
 
-        $featuredPosts = Post::query()
-        ->select('id','title','summary','type','body','featured','created_at')
-        ->where('featured',1 && 'status',1)
-        ->take(4)
-        ->latest('id')
-        ->get();
+        $featuredPosts = Post::query()  
+        ->select('id', 'title', 'summary', 'type', 'body', 'featured', 'created_at')  
+        ->where('featured', 1)  
+        ->where('status', 1)  
+        ->take(4)  
+        ->latest('id')  
+        ->get(); 
 
         $postsToSkip = count($featuredPosts);
 
