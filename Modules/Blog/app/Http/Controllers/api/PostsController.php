@@ -44,7 +44,7 @@ class PostsController extends Controller
         ->where('status', 1)  
         ->latest('id')  
         ->skip($postsToSkip)  
-        ->toSql();  
+        ->paginate();  
 
         return response()->success('', compact('featuredPosts','lastPosts','postCategories','categories'));
     }
