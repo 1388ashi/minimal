@@ -30,22 +30,20 @@ class PostsController extends Controller
         $categories  = BlogCategory::select('id','title','type')->with('posts')->where('status',1)->get();
 
         $featuredPosts = Post::query()
-        ->select('id','title','summary','body','featured','created_at')
+        ->select('id','title','summary','type','body','featured','created_at')
         ->where('featured',1 && 'status',1)
         ->take(4)
         ->latest('id')
         ->get();
 
-        // حذف 4 پست اول از نتایج
         $postsToSkip = count($featuredPosts);
 
-        // گرفتن 12 پست بعدی که از 4 پست اول حذف شده باشند
         $lastPosts = Post::query()
-        ->select('id','title','summary','body','created_at')
+        ->select('id','title','summary','body','type','created_at')
         ->where('status',1)
         ->skip($postsToSkip)
         ->latest('id')
-        ->paginate(12);
+        ->get();
 
         return response()->success('', compact('featuredPosts','lastPosts','postCategories','categories'));
     }
