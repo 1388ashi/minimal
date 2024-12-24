@@ -26,10 +26,11 @@ class Brand extends Model implements HasMedia
     ];
     protected $with = ['media'];
     protected $hidden = ['media'];
-    protected $appends = ['image'];
+    protected $appends = ['image','brand_background'];
     
     public function registerMediaCollections(): void {
         $this->addMediaCollection('brand_images')->singleFile();
+        $this->addMediaCollection('brand_background')->singleFile();
     }
     public function products(): HasMany
     {
@@ -57,15 +58,34 @@ class Brand extends Model implements HasMedia
             ],
         );
     }
+    protected function background() : Attribute 
+    {
+        $media = $this->getFirstMedia('brand_background');
+
+        return Attribute::make(
+            get: fn () => [
+                'id' => $media?->id,
+                'url' => $media?->getFullUrl(),
+                'name' => $media?->file_name
+            ],
+        );
+    }
     public function addImage(UploadedFile $file): bool|\Spatie\MediaLibrary\MediaCollections\Models\Media
     {
         return $this->addMedia($file)->toMediaCollection('brand_images');
+    }
+    public function addBackground(UploadedFile $file): bool|\Spatie\MediaLibrary\MediaCollections\Models\Media
+    {
+        return $this->addMedia($file)->toMediaCollection('brand_background');
     }
     public function uploadFiles(Request $request): void
     {
         try {
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
                 $this->addImage($request->file('image'));
+            }
+            if ($request->hasFile('background_image') && $request->file('background_image')->isValid()) {
+                $this->addBackground($request->file('background_image'));
             }
         } catch (FileDoesNotExist $e) {
             Log::error('Brand upload file (FileDoesNotExist): ' . $e->getMessage());

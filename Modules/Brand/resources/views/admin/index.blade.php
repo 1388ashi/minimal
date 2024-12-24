@@ -108,6 +108,14 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="label" >عنوان</label><span class="text-danger">&starf;</span>
+                                <input class="form-control" type="text" name="title" value="{{old('title')}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="label" >تصویر</label><span class="text-danger">&starf;</span>
@@ -116,8 +124,8 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="label" >عنوان</label><span class="text-danger">&starf;</span>
-                                <input class="form-control" type="text" name="title" value="{{old('title')}}">
+                                <label for="label" >تصویر بک گراند</label><span class="text-danger">&starf;</span>
+                                <input  class="form-control" type="file" name="background_image">
                             </div>
                         </div>
                     </div>

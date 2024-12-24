@@ -19,7 +19,7 @@ class BrandController extends Controller
     public function show(Brand $brand): mixed  
     {  
         $moreBrands = Brand::where('id', '!=', $brand->id)->get();  
-        $products = Product::where('brand_id',$brand->id)->take(4)->get();
+        $products = Product::where('brand_id',operator: $brand->id)->take(4)->get();
         if (!$products) {
             $products = Product::latest('id')->take(5)->get();
         }  

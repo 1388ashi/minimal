@@ -13,6 +13,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'image' => 'nullable|image|mimes:jpeg,png,jpg',
+            'background_image' => 'nullable|image|mimes:jpeg,png,jpg',
             'title' => 'required',
             'description' => 'required',
         ];

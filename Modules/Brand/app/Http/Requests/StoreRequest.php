@@ -13,6 +13,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'image' => 'required|image|mimes:jpeg,png,jpg',
+            'background_image' => 'required|image|mimes:jpeg,png,jpg',
             'description' => 'required',
             'title' => 'required'
         ];
