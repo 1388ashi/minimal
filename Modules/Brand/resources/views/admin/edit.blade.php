@@ -32,7 +32,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="label" >تصویر بک گراند</label> 
-                                <input  class="form-control" type="file" name="background_image">
+                                <input  class="form-control" type="file" name="background">
                             </div>
                         </div>
                     </div>

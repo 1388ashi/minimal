@@ -125,7 +125,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="label" >تصویر بک گراند</label><span class="text-danger">&starf;</span>
-                                <input  class="form-control" type="file" name="background_image">
+                                <input  class="form-control" type="file" name="background">
                             </div>
                         </div>
                     </div>
