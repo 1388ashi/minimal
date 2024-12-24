@@ -3,7 +3,7 @@
         aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="{{route('admin.brands.update', $brand->id)}}" method="POST">
+                <form action="{{route('admin.brands.update', $brand->id)}}" enctype="multipart/form-data" method="POST">
                     @csrf
                     @method('PATCH')
                 

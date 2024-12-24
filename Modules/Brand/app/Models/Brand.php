@@ -70,7 +70,6 @@ class Brand extends Model implements HasMedia
 
     public function uploadFiles(Request $request): void{
 
-        dd($request->all());
         $this->uploadImage($request);
         $this->uploadBackground($request);
     }
