@@ -15,6 +15,14 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="label">عنوان</label><span class="text-danger">&starf;</span>
+                                <input class="form-control" type="text" name="title" value="{{old('title',$brand->title)}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="label" >تصویر</label> 
@@ -23,8 +31,8 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="label">عنوان</label><span class="text-danger">&starf;</span>
-                                <input class="form-control" type="text" name="title" value="{{old('title',$brand->title)}}">
+                                <label for="label" >تصویر بک گراند</label> 
+                                <input  class="form-control" type="file" name="background_image">
                             </div>
                         </div>
                     </div>
@@ -32,7 +40,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label>توضیحات</label><span class="text-danger">&starf;</span>
-                                <textarea name="description" id="example" cols="100" rows="4">{{old('description',$brand->description)}}</textarea>
+                                <textarea name="description" class="form-control ckeditor" cols="100" rows="4">{{old('description',$brand->description)}}</textarea>
                             </div>
                         </div>
                     </div>

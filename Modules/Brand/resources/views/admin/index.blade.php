@@ -132,7 +132,7 @@
                     <div class="row">
                         <div class="col-12">
                             <label >توضیحات</label><span class="text-danger">&starf;</span>
-                            <textarea name="description" id="example" cols="100" rows="4">{{old('description')}}</textarea>
+                            <textarea name="description" class="form-control ckeditor" cols="100" rows="4">{{old('description')}}</textarea>
                         </div>
                     </div>
                     <div class="row">
