@@ -70,6 +70,7 @@ class Brand extends Model implements HasMedia
 
     public function uploadFiles(Request $request): void{
 
+        dd($request->all());
         $this->uploadImage($request);
         $this->uploadBackground($request);
     }
@@ -89,7 +90,6 @@ class Brand extends Model implements HasMedia
     {
         try {
             if ($request->hasFile('background') && $request->file('background')->isValid()) {
-                dd(1);
                 $this->addBackground($request->file('background'));
             }
         } catch (FileDoesNotExist $e) {
