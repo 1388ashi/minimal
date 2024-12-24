@@ -26,7 +26,7 @@ class Brand extends Model implements HasMedia
     ];
     protected $with = ['media'];
     protected $hidden = ['media'];
-    protected $appends = ['image','brand_background'];
+    protected $appends = ['image','background'];
     
     public function registerMediaCollections(): void {
         $this->addMediaCollection('brand_images')->singleFile();
