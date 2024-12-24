@@ -5,6 +5,8 @@ namespace Modules\Brand\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Modules\Brand\Models\Brand;
+use Modules\Product\Models\Category;
+use Modules\Product\Models\Product;
 
 class BrandController extends Controller 
 {
@@ -14,9 +16,16 @@ class BrandController extends Controller
         
         return response()->success('',compact('brands'));
     }
-    public function show(Brand $brand)  
+    public function show(Brand $brand): mixed  
     {  
         $moreBrands = Brand::where('id', '!=', $brand->id)->get();  
-        return response()->success('', compact('brand', 'moreBrands'));  
+        $products = Product::where('brand_id',$brand->id)->take(4)->get();
+        if (!$products) {
+            $products = Product::latest('id')->take(5)->get();
+        }  
+        $categories = Category::whereNull('parent_id')->take(4)->get();  
+
+        return response()->success('', 
+        compact('brand','products', 'moreBrands','categories'));  
     }  
 }
