@@ -89,6 +89,7 @@ class Brand extends Model implements HasMedia
     {
         try {
             if ($request->hasFile('background') && $request->file('background')->isValid()) {
+                dd(1);
                 $this->addBackground($request->file('background'));
             }
         } catch (FileDoesNotExist $e) {
