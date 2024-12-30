@@ -178,7 +178,6 @@
                             @endif
                             @if($type == \Modules\Setting\Models\Setting::TYPE_IMAGE)
                                 @foreach($settings as $setting)
-                                @dd($settings)
                                     <div class="col-12 d-flex ">
                                         <div class="form-group">
                                             <label for="{{ $setting->name }}">{{ $setting->label }}</label>
