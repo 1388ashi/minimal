@@ -50,7 +50,6 @@ class SettingController extends Controller
                 if (in_array($setting->type, ['image', 'video']) && $text->isValid()) {
                     $setting->uploadFile($text);
                     $setting->refresh();
-                    dd($setting->file['url']);
                     $text = $setting->file['url'];
                 }
                 $setting->update(['text' => $text]);
