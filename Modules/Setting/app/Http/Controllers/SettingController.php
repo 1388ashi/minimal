@@ -47,10 +47,10 @@ class SettingController extends Controller
         $inputs = $request->except(['_token', '_method']);
         foreach ($inputs as $name => $text) {
             if ($setting = Setting::where('name', $name)->first()) {
-                if (in_array($setting->text, ['image']) && $text->isValid()) {
-                    dd($setting->file['url']);
+                if (in_array($setting->type, ['image', 'video']) && $text->isValid()) {
                     $setting->uploadFile($text);
                     $setting->refresh();
+                    dd($setting->file['url']);
                     $text = $setting->file['url'];
                 }
                 $setting->update(['text' => $text]);
