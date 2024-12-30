@@ -45,10 +45,10 @@ class SettingController extends Controller
     public function update(SettingUpdateRequest $request): RedirectResponse
     {
         $inputs = $request->except(['_token', '_method']);
-        dd($request->all());
         foreach ($inputs as $name => $text) {
             if ($setting = Setting::where('name', $name)->first()) {
                 if (in_array($setting->text, ['image']) && $text->isValid()) {
+                    dd($setting->file['url']);
                     $setting->uploadFile($text);
                     $setting->refresh();
                     $text = $setting->file['url'];
