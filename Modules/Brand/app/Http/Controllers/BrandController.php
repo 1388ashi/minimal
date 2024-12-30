@@ -37,7 +37,6 @@ class BrandController extends Controller implements HasMiddleware
      */
     public function store(StoreRequest $request): RedirectResponse
     {
-        dd($request->all());
         $brand = Brand::query()->create([
             'status' => filled($request->status) ?: 0,
             'title' => $request->title,
