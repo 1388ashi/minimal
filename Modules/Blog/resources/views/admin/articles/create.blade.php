@@ -73,7 +73,6 @@
                         <div class="row">
                             <label >توضیحات</label><span class="text-danger">&starf;</span>
                             <textarea name="description" class="form-control ckeditor" cols="100" rows="4">{{old('description')}}</textarea>
-                            <textarea name="body"  class="form-control ckeditor cols="100" rows="4">{{old('body')}}</textarea>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-4">
