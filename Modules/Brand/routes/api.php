@@ -16,5 +16,5 @@ use Modules\Brand\Http\Controllers\Front\BrandController;
 
 Route::name('api')->group(function() {
     Route::get('/brands', [BrandController::class,'index']);
-    Route::get('/brands/{brand}', [BrandController::class,'show']);
+    Route::get('/brands/{brand}', action: [BrandController::class,'show']);
 });
