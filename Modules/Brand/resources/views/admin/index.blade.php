@@ -60,7 +60,7 @@
                                     </a>
                                 </td>
                                 <td class="text-center">
-                                    @if (!$brand->darkImage['url'])
+                                    @if ($brand->darkImage['url'])
                                         
                                     <a href="{{ $brand->darkImage['url'] }}" target="_blanck">
                                         <div class="bg-light pb-1 pt-1 img-holder img-show" style="max-height: 50px;border-radius: 4px;">
