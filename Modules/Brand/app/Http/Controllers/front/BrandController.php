@@ -15,7 +15,7 @@ class BrandController extends Controller
         $brands = Brand::select('id','title','status','description','category_id')->get();
         $categories = Category::whereIn('id', Brand::pluck('category_id'))->get();  
         
-        return response()->success('',compact('brands'));
+        return response()->success('',compact('brands','categories'));
     }
     public function show(Brand $brand): mixed  
     {  
