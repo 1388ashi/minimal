@@ -49,9 +49,11 @@ class PostsController extends Controller
         $trendPosts = Post::query()  
         ->select('id', 'title', 'summary', 'body', 'type', 'created_at')  
         ->where('status', 1)  
-        ->where('type', 'trend')  
+        ->where('type', 'trend')
+        ->take(6)  
         ->latest('id')  
         ->get();  
+        dd($trendPosts);
 
         return response()->success('', compact('featuredPosts','lastPosts','postCategories','categories','trendPosts'));
     }

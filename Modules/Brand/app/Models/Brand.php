@@ -26,17 +26,30 @@ class Brand extends Model implements HasMedia
     ];
     protected $with = ['media'];
     protected $hidden = ['media'];
-    protected $appends = ['image', 'background'];
+    protected $appends = ['whiteImage','darkImage', 'background'];
 
     public function registerMediaCollections() : void
     {
-        $this->addMediaCollection('brand_images')->singleFile();
+        $this->addMediaCollection('brand_white')->singleFile();
+        $this->addMediaCollection('brand_black')->singleFile();
         $this->addMediaCollection('brand_background')->singleFile();
     }
 
-    protected function image(): Attribute
+    protected function whiteImage(): Attribute
     {
-        $media = $this->getFirstMedia('brand_images');
+        $media = $this->getFirstMedia('brand_white');
+
+        return Attribute::make(
+            get: fn () => [
+                'id' => $media?->id,
+                'url' => $media?->getFullUrl(),
+                'name' => $media?->file_name
+            ],
+        );
+    }
+    protected function darkImage(): Attribute
+    {
+        $media = $this->getFirstMedia('brand_black');
 
         return Attribute::make(
             get: fn () => [
@@ -59,9 +72,13 @@ class Brand extends Model implements HasMedia
         );
     }
 
-    public function addImage(UploadedFile $file): bool|\Spatie\MediaLibrary\MediaCollections\Models\Media
+    public function addWhiteImage(UploadedFile $file): bool|\Spatie\MediaLibrary\MediaCollections\Models\Media
     {
-        return $this->addMedia($file)->toMediaCollection('brand_images');
+        return $this->addMedia($file)->toMediaCollection('brand_white');
+    }
+    public function addDarkImage(UploadedFile $file): bool|\Spatie\MediaLibrary\MediaCollections\Models\Media
+    {
+        return $this->addMedia($file)->toMediaCollection('brand_dark');
     }
     public function addBackground(UploadedFile $file): bool|\Spatie\MediaLibrary\MediaCollections\Models\Media
     {
@@ -70,14 +87,27 @@ class Brand extends Model implements HasMedia
 
     public function uploadFiles(Request $request): void{
 
-        $this->uploadImage($request);
+        $this->uploadWhiteImage($request);
+        $this->uploadDarkImage($request);
         $this->uploadBackground($request);
     }
-    public function uploadImage(Request $request): void
+    public function uploadDarkImage(Request $request): void
     {
         try {
-            if ($request->hasFile('image') && $request->file('image')->isValid()) {
-                $this->addImage($request->file('image'));
+            if ($request->hasFile('dark_image') && $request->file('dark_image')->isValid()) {
+                $this->addDarkImage($request->file('dark_image'));
+            }
+        } catch (FileDoesNotExist $e) {
+            Log::error('Product upload file (FileDoesNotExist): ' . $e->getMessage());
+        }catch (FileIsTooBig $e) {
+            Log::error('Product upload file (FileIsTooBig): ' . $e->getMessage());
+        }
+    }
+    public function uploadWhiteImage(Request $request): void
+    {
+        try {
+            if ($request->hasFile('white_image') && $request->file('white_image')->isValid()) {
+                $this->addWhiteImage($request->file('white_image'));
             }
         } catch (FileDoesNotExist $e) {
             Log::error('Product upload file (FileDoesNotExist): ' . $e->getMessage());

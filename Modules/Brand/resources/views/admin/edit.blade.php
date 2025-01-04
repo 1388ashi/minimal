@@ -15,18 +15,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label for="label">عنوان</label><span class="text-danger">&starf;</span>
                                 <input class="form-control" type="text" name="title" value="{{old('title',$brand->title)}}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="label" >تصویر</label> 
-                                <input  class="form-control" type="file" name="image">
                             </div>
                         </div>
                         <div class="col-6">
@@ -35,6 +27,20 @@
                                 <input  class="form-control" type="file" name="background">
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="label" >لوگو سفید</label><span class="text-danger">&starf;</span>
+                                <input  class="form-control" type="file" name="white_image">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="label" >لوگو مشکی</label><span class="text-danger">&starf;</span>
+                                <input  class="form-control" type="file" name="dark_image">
+                            </div>
+                        </div>                       
                     </div>
                     <div class="row">
                         <div class="col-12">
