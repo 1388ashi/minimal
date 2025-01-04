@@ -31,7 +31,7 @@ class Brand extends Model implements HasMedia
     public function registerMediaCollections() : void
     {
         $this->addMediaCollection('brand_white')->singleFile();
-        $this->addMediaCollection('brand_black')->singleFile();
+        $this->addMediaCollection('brand_dark')->singleFile();
         $this->addMediaCollection('brand_background')->singleFile();
     }
 
@@ -49,7 +49,7 @@ class Brand extends Model implements HasMedia
     }
     protected function darkImage(): Attribute
     {
-        $media = $this->getFirstMedia('brand_black');
+        $media = $this->getFirstMedia('brand_dark');
 
         return Attribute::make(
             get: fn () => [
