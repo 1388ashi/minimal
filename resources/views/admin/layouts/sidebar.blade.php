@@ -77,14 +77,14 @@
 					@endcan
 					@can('view blogs')
 					<ul class="slide-menu">
-						<li><a href="{{route('admin.articles.index')}}" class="slide-item">مدیریت مقالات</a></li>
+						<li><a href="{{route('admin.articles.index')}}" class="slide-item">مدیریت محتوا</a></li>
 					</ul>
 					@endcan
-					@can('view blogs')
+					{{-- @can('view blogs')
 					<ul class="slide-menu">
 						<li><a href="{{route('admin.news.index')}}" class="slide-item">مدیریت خبر ها</a></li>
 					</ul>
-					@endcan
+					@endcan --}}
 				</li>
 				<li class="slide">
 					<a class="side-menu__item" style="cursor: pointer" data-toggle="slide" >
