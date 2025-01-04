@@ -6,8 +6,8 @@
         <div class="page-header mx-2">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('admin.articles.index') }}">لیست مقاله </a></li>
-                <li class="breadcrumb-item active" aria-current="page">نمایش مقاله</li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('admin.articles.index') }}">لیست محتوا </a></li>
+                <li class="breadcrumb-item active" aria-current="page">نمایش محتوا</li>
             </ol>
             <div>
                 <div class="d-flex align-items-center flex-wrap text-nowrap">
@@ -70,7 +70,7 @@
             <div class="col-xl-12 col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <p class="header p-3 " style="font-size: 20px" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">بدنه ی مقاله:</p>
+                        <p class="header p-3 " style="font-size: 20px" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">بدنه ی محتوا:</p>
                         <div class="mt-1">
                             {!!$article->body!!}
                         </div>
