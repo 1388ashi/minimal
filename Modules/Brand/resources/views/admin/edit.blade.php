@@ -54,7 +54,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label class="control-label">دسته بندی</label><span class="text-danger">&starf;</span>
-                                <select class="form-control select2" id="categories" name="category_id" required multiple>
+                                <select class="form-control select2" name="category_id" required>
                                     @foreach($allCategories as $id => $category)
                                     <option
                                         value="{{ $id }}" @selected($brand->category_id == $id)>{{ $category }}</option>

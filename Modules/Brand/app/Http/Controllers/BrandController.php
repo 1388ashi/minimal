@@ -68,6 +68,7 @@ class BrandController extends Controller implements HasMiddleware
             'status' => filled($request->status) ?: 0,
             'title' => $request->title,
             'description' => $request->description,
+            'category_id' => $request->category_id,
         ]);
         $brand->uploadFiles($request);
         $data = [
@@ -88,6 +89,7 @@ class BrandController extends Controller implements HasMiddleware
             'title' => $request->title,
             'status' => filled($request->status) ?: 0,
             'description' => $request->description,
+            'category_id' => $request->category_id,
         ]);
         $brand->uploadFiles($request);
         

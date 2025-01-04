@@ -156,12 +156,15 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <select name="category_id" class="form-control select2">
-                                <option value="">-- انتخاب کنید --</option>
-                                @foreach($allCategories as $id => $category)
-                                    <option value="{{ $id }}">{{ $category }}</option>
-                                @endforeach
-                            </select>
+                            <div class="form-group">
+                                <label >دسته بندی</label><span class="text-danger">&starf;</span>
+                                <select name="category_id" class="form-control select2">
+                                    <option selected disabled>- انتخاب کنید  -</option>   
+                                    @foreach($allCategories as $id => $category)
+                                        <option value="{{ $id }}">{{ $category }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
