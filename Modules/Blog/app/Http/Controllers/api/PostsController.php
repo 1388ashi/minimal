@@ -53,7 +53,6 @@ class PostsController extends Controller
         ->take(6)  
         ->latest('id')  
         ->get();  
-        dd($trendPosts);
 
         return response()->success('', compact('featuredPosts','lastPosts','postCategories','categories','trendPosts'));
     }
