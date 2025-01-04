@@ -18,7 +18,6 @@ class BlogCategory extends Model
     protected $fillable = [
         'title',
         'slug',
-        'type',
         'status',
     ];
     public function posts(): HasMany

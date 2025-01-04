@@ -40,7 +40,6 @@
                                 <tr>
                                     <th class="border-top">ردیف</th>
                                     <th class="border-top">عنوان</th>
-                                    <th class="border-top">نوع</th>
                                     <th class="border-top">وضعیت</th>
                                     <th class="border-top">تاریخ ثبت</th>
                                     <th class="border-top">عملیات</th>
@@ -51,7 +50,6 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{ $blog_category->title }}</td>
-                                <td class="text-center"><span>@if($blog_category->type == 'news'){{'خبری'}}@else {{'مقاله'}} @endif</span></td>
                                 <td class="text-center">@include('includes.status',["status" => $blog_category->status])</td>
                                 <td>{{verta($blog_category->created_at)->format('Y/m/d H:i')}}</td>
                                 <td>
@@ -103,14 +101,6 @@
                         <div class="form-group">
                             <label >عنوان<span class="text-danger">&starf;</span></label>
                             <input type="text" class="form-control" name="title"  placeholder="عنوان را اینجا وارد کنید" value="{{ old('title') }}" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>نوع<span class="text-danger">&starf;</span></label>
-                            <select class="form-control select2" name="type">
-                                <option selected disabled>- انتخاب کنید  -</option>
-                                <option value="news">خبری</option>
-                                <option value="article">مقاله</option>
-                            </select>
                         </div>
                         <div class="form-group">
                             <span class="control-label ">

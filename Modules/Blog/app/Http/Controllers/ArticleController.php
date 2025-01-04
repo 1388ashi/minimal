@@ -43,7 +43,7 @@ class ArticleController extends Controller implements HasMiddleware
      */
     public function create()
     {
-        $categories = BlogCategory::select('id','title','type')->where('type','article')->get();
+        $categories = BlogCategory::select('id','title')->get();
 
         return view('blog::admin.articles.create', compact('categories'));
     }
@@ -95,7 +95,7 @@ class ArticleController extends Controller implements HasMiddleware
      */
     public function edit(Post $article)
     {
-        $categories = BlogCategory::select('id','title','type')->where('type','article')->get();
+        $categories = BlogCategory::select('id','title','type')->get();
 
         return view('blog::admin.articles.edit', compact('article','categories'));
     }

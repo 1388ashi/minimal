@@ -19,13 +19,6 @@
                         <input type="text" class="form-control" name="title"  placeholder="عنوان را اینجا وارد کنید" value="{{ old('title', $blog_category->title) }}" required autofocus>
                     </div>
                     <div class="form-group">
-                        <label >نوع<span class="text-danger">&starf;</span></label>
-                        <select class="form-control select2" name="type">
-                            <option value="news" @selected($blog_category->type == 'news')>خبری</option>
-                            <option value="article" @selected($blog_category->type == 'article') >مقاله</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <span class="control-label ">
                             وضعیت
                         </span>

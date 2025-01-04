@@ -28,7 +28,7 @@ class CategoryController extends Controller implements HasMiddleware
     public function index(): Renderable
     {
         $blog_categories = BlogCategory::query()
-                    ->select('id','title','type','status','created_at')
+                    ->select('id','title','status','created_at')
                     ->with('posts')
                     ->latest('id')
                     ->paginate(15);
@@ -42,7 +42,7 @@ class CategoryController extends Controller implements HasMiddleware
     public function create()
     {
         $blog_categories = BlogCategory::query()
-                    ->select('id','title','type','status','created_at')
+                    ->select('id','title','status','created_at')
                     ->paginate();
                     
         return view('blog::admin.category.index', compact('blog_categories'));
@@ -55,7 +55,6 @@ class CategoryController extends Controller implements HasMiddleware
     {
         BlogCategory::query()->create([
             'title' => $request->title,
-            'type' => $request->type,
             'status' => filled($request->status) ?: 0
         ]);
         
@@ -75,7 +74,6 @@ class CategoryController extends Controller implements HasMiddleware
     {
         $blog_category->update([
             'title' => $request->title,
-            'type' => $request->type,
             'status' => filled($request->status) ?: 0
         ]);
         

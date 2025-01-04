@@ -13,7 +13,6 @@ class StoreRequest extends FormRequest
     {
         return [
             'title' => 'required|max:150',
-            'type' => 'required|in:article,news'
         ];
     }
 
