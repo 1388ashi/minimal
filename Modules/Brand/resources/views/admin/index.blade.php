@@ -60,11 +60,16 @@
                                     </a>
                                 </td>
                                 <td class="text-center">
+                                    @if (!$brand->darkImage['url'])
+                                        
                                     <a href="{{ $brand->darkImage['url'] }}" target="_blanck">
                                         <div class="bg-light pb-1 pt-1 img-holder img-show" style="max-height: 50px;border-radius: 4px;">
                                             <img src="{{ $brand->darkImage['url'] }}" style="height: 40px;"  alt="{{ $brand->darkImage['name'] }}">
                                         </div>
                                     </a>
+                                    @else
+                                    -
+                                    @endif
                                 </td>
                                 <td class="text-center">@include('includes.status',["status" => $brand->status])</td>
                                 <td>{{verta($brand->created_at)->format('Y/m/d H:i')}}</td>
