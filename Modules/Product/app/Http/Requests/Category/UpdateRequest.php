@@ -19,6 +19,7 @@ class UpdateRequest extends FormRequest
             'title' => ['required',Rule::unique('categories')->ignore($categoryId)],
             'parent_id' => ['nullable'],
             'image' => 'nullable|image|mimes:jpeg,png,jpg',
+            'dark_image' => 'nullable|image',
             'featured' => 'nullable',
         ];
     }

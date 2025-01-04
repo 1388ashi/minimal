@@ -32,14 +32,14 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="label" class="control-label">تصویر </label>
+                                    <label for="label" class="control-label">تصویر</label>
                                     <input  class="form-control" type="file" name="image">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="label" class="control-label">تصویر </label>
-                                    <input  class="form-control" type="file" name="image">
+                                    <label for="label" class="control-label">تصویر مشکی</label>
+                                    <input class="form-control" type="file" name="dark_image">
                                 </div>
                             </div>
                         </div>

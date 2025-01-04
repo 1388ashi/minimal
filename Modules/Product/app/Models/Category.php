@@ -73,12 +73,25 @@ class Category extends BaseModel implements HasMedia
     //mediaLibrary
     protected $with = ['media'];
     protected $hidden = ['media'];
-    protected $appends = ['image'];
+    protected $appends = ['image','dark_image'];
     
     public function registerMediaCollections(): void {
         $this->addMediaCollection('category_images')->singleFile();
+        $this->addMediaCollection('category_dark_image')->singleFile();
     }
     
+    protected function darkImage() : Attribute 
+    {
+        $media = $this->getFirstMedia('category_dark_image');
+
+        return Attribute::make(
+            get: fn () => [
+                'id' => $media?->id,
+                'url' => $media?->getFullUrl(),
+                'name' => $media?->file_name
+            ],
+        );
+    }
     protected function image() : Attribute 
     {
         $media = $this->getFirstMedia('category_images');
@@ -95,11 +108,18 @@ class Category extends BaseModel implements HasMedia
     {
         return $this->addMedia($file)->toMediaCollection('category_images');
     }
+    public function addDarkImage(UploadedFile $file): bool|\Spatie\MediaLibrary\MediaCollections\Models\Media
+    {
+        return $this->addMedia($file)->toMediaCollection('category_dark_image');
+    }
     public function uploadFiles(Request $request): void
     {
         try {
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
                 $this->addImage($request->file('image'));
+            }
+            if ($request->hasFile('dark_image') && $request->file('dark_image')->isValid()) {
+                $this->addDarkImage($request->file('dark_image'));
             }
         } catch (FileDoesNotExist $e) {
             Log::error('Category upload file (FileDoesNotExist): ' . $e->getMessage());

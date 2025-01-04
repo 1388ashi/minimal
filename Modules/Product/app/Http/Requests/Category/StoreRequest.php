@@ -18,6 +18,7 @@ class StoreRequest extends FormRequest
             'title' => 'required|unique:categories,title',
             'parent_id' => ['nullable', 'numeric'],
             'image' => 'nullable|image',
+            'dark_image' => 'nullable|image',
             'featured' => 'nullable',
         ];
     }

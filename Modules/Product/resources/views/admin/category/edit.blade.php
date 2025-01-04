@@ -74,6 +74,12 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    <label for="label" class="control-label">تصویر مشکی</label>
+                                    <input class="form-control" type="file" name="dark_image">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
                                     <span class="control-label ">
                                         ویژه
                                     </span>
