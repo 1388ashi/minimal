@@ -74,7 +74,7 @@
                         </div>
                         <div class="row">
                             <label >توضیحات</label><span class="text-danger">&starf;</span>
-                            <textarea name="body" id="example" cols="100" rows="4">{{$article->body}}</textarea>
+                            <textarea name="body ckeditor" cols="100" rows="4">{{$article->body}}</textarea>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-4">
