@@ -12,7 +12,7 @@ class BrandController extends Controller
 {
     public function index()
     {
-        $brands = Brand::select('id','title','status','description')->get();
+        $brands = Brand::select('id','title','status','description','category_id')->get();
         
         return response()->success('',compact('brands'));
     }
