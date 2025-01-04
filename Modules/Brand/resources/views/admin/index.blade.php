@@ -59,6 +59,7 @@
                                         </div>
                                     </a>
                                 </td>
+                                <td class="text-center">
                                     <a href="{{ $brand->darkImage['url'] }}" target="_blanck">
                                         <div class="bg-light pb-1 pt-1 img-holder img-show" style="max-height: 50px;border-radius: 4px;">
                                             <img src="{{ $brand->darkImage['url'] }}" style="height: 40px;"  alt="{{ $brand->darkImage['name'] }}">
