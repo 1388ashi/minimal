@@ -56,7 +56,7 @@ class BrandController extends Controller implements HasMiddleware
             }
         }
         
-        return view('brand::admin.index',compact('brands'));
+        return view('brand::admin.index',compact('brands','allCategories'));
     }
     
     /**
