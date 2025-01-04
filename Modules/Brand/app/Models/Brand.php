@@ -26,7 +26,7 @@ class Brand extends Model implements HasMedia
     ];
     protected $with = ['media'];
     protected $hidden = ['media'];
-    protected $appends = ['whiteImage','darkImage', 'background'];
+    protected $appends = ['white_image','dark_image', 'background'];
 
     public function registerMediaCollections() : void
     {
