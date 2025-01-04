@@ -5,8 +5,8 @@
     <div class="page-header">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('admin.articles.index') }}">لیست مقالات</a></li>
-            <li class="breadcrumb-item active" aria-current="page">ثبت مقاله جدید</li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('admin.articles.index') }}">لیست محتوا</a></li>
+            <li class="breadcrumb-item active" aria-current="page">ثبت محتوا جدید</li>
         </ol>
     </div>
     <!--  Page-header closed -->
@@ -16,7 +16,7 @@
         <div class="col-md">
             <div class="card overflow-hidden">
                 <div class="card-header">
-                    <p class="card-title" style="font-size: 15px;">ثبت مقاله جدید</p>
+                    <p class="card-title" style="font-size: 15px;">ثبت محتوا جدید</p>
                 </div>
                 <div class="card-body">
                     <x-alert-danger></x-alert-danger>
@@ -27,7 +27,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="name" >عنوان<span class="text-danger">&starf;</span></label>
-                                    <input type="text" class="form-control" name="title" id="title" placeholder="عنوان مقاله اینجا وارد کنید" value="{{ old('title') }}" required autofocus>
+                                    <input type="text" class="form-control" name="title" id="title" placeholder="عنوان محتوا اینجا وارد کنید" value="{{ old('title') }}" required autofocus>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -77,16 +77,29 @@
                         <div class="row mt-2">
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    <label>نوع محتوا</label><span class="text-danger">&starf;</span>
+                                    <select class="form-control select2" name="type">
+                                        <option selected disabled>- انتخاب کنید  -</option>
+                                        <option value="article">مقاله</option>
+                                        <option value="news">خبر</option>
+                                        <option value="trend">ترند</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
                                     <label for="read" >زمان خواندن<span class="text-danger">&starf;</span></label>
-                                    <input type="text" class="form-control" name="read" id="read" placeholder="زمان خواندن مقاله اینجا وارد کنید" value="{{ old('read') }}" required autofocus>
+                                    <input type="text" class="form-control" name="read" id="read" placeholder="زمان خواندن محتوا اینجا وارد کنید" value="{{ old('read') }}" required autofocus>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="writer" >نویسنده<span class="text-danger">&starf;</span></label>
-                                    <input type="text" class="form-control" name="writer" id="writer" placeholder="نویسنده مقاله اینجا وارد کنید" value="{{ old('writer') }}" required autofocus>
+                                    <input type="text" class="form-control" name="writer" id="writer" placeholder="نویسنده محتوا اینجا وارد کنید" value="{{ old('writer') }}" required autofocus>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <span class="control-label ">
@@ -98,8 +111,6 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <span class="control-label ">

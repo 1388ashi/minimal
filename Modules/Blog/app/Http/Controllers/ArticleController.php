@@ -30,7 +30,6 @@ class ArticleController extends Controller implements HasMiddleware
     {
         $articles = Post::filters(request()->query())
                 ->select('id','title','summary','type','featured','status','created_at','category_id')
-                ->where('type','article')
                 ->with('category:id,title')
                 ->latest('id')
                 ->paginate(15);
@@ -62,7 +61,7 @@ class ArticleController extends Controller implements HasMiddleware
             'title' => $request->title,
             'writer' => $request->writer,
             'read' => $request->read,
-            'type' => 'article',
+            'type' => $request->type,
             'category_id' => $request->category_id,
             'summary' => $request->summary,
             'body' => $request->body,
@@ -112,7 +111,7 @@ class ArticleController extends Controller implements HasMiddleware
         }
         $article->update([
             'title' => $request->title,
-            'type' => 'article',
+            'type' => $request->type,
             'writer' => $request->writer,
             'category_id' => $request->category_id,
             'summary' => $request->summary,

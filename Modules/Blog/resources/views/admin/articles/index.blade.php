@@ -5,14 +5,14 @@
     <div class="page-header mx-5">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fe fe-life-buoy ml-1"></i> داشبورد</a></li>
-            <li class="breadcrumb-item active" aria-current="page">لیست همه مقالات</li>
+            <li class="breadcrumb-item active" aria-current="page">لیست همه محتوا</li>
             
         </ol>
         <div class="mt-3">
             <div class="d-flex align-items-center flex-wrap text-nowrap">
                 @can('create blogs')
                 <a href="{{ route('admin.articles.create') }}" class="btn btn-indigo">
-                    ثبت مقاله جدید
+                    ثبت محتوا جدید
                     <i class="fa fa-plus"></i>
                 </a>
                 @endcan
@@ -26,7 +26,7 @@
             <x-core::filter action="{{ route('admin.articles.index') }}" :inputs="$filterInputs"/>
             <div class="card">
                 <div class="card-header border-0">
-                    <div class="card-title">لیست همه مقالات ({{ $articles->total() }})</div>
+                    <div class="card-title">لیست همه محتوا ({{ $articles->total() }})</div>
                     <div class="card-options">
                         <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
                         <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i class="fe fe-maximize"></i></a>
@@ -83,7 +83,7 @@
                             @empty
                                 <tr>
                                     <td colspan="8">
-                                        <p class="text-danger"><strong>در حال حاضر هیچ مقاله ای یافت نشد!</strong></p>
+                                        <p class="text-danger"><strong>در حال حاضر هیچ محتوا ای یافت نشد!</strong></p>
                                     </td>
                                 </tr>
                             @endforelse

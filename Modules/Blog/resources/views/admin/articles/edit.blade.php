@@ -79,6 +79,16 @@
                         <div class="row mt-2">
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    <label>نوع محتوا</label><span class="text-danger">&starf;</span>
+                                    <select class="form-control select2" name="type">
+                                        <option @selected($article->type == "article") value="article">مقاله</option>
+                                        <option @selected($article->type == "news") value="news">خبر</option>
+                                        <option @selected($article->type == "trend") value="trend">ترند</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
                                     <label for="read" >زمان خواندن<span class="text-danger">&starf;</span></label>
                                     <input type="text" class="form-control" name="read" id="read" placeholder="زمان خواندن مقاله اینجا وارد کنید" value="{{ old('read', $article->read) }}" required autofocus>
                                 </div>

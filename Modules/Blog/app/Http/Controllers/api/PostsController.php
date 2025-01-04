@@ -45,8 +45,15 @@ class PostsController extends Controller
         ->latest('id')  
         ->skip($postsToSkip)  
         ->paginate();  
+        
+        $trendPosts = Post::query()  
+        ->select('id', 'title', 'summary', 'body', 'type', 'created_at')  
+        ->where('status', 1)  
+        ->where('type', 'trend')  
+        ->latest('id')  
+        ->get();  
 
-        return response()->success('', compact('featuredPosts','lastPosts','postCategories','categories'));
+        return response()->success('', compact('featuredPosts','lastPosts','postCategories','categories','trendPosts'));
     }
 
     public function show(Request $request,$id): JsonResponse
