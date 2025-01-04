@@ -71,11 +71,9 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label >توضیحات</label><span class="text-danger">&starf;</span>
-                                    <textarea name="form-control body ckeditor"rows="4">{{old('body')}}</textarea>
-                            </div>
+                            <label >توضیحات</label><span class="text-danger">&starf;</span>
+                            <textarea name="description" class="form-control ckeditor" cols="100" rows="4">{{old('description')}}</textarea>
+                            <textarea name="body"  class="form-control ckeditor cols="100" rows="4">{{old('body')}}</textarea>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-4">
