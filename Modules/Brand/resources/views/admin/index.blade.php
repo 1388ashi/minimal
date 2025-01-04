@@ -156,6 +156,16 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
+                            <select name="category_id" class="form-control select2">
+                                <option value="">-- انتخاب کنید --</option>
+                                @foreach($allCategories as $id => $category)
+                                    <option value="{{ $id }}">{{ $category }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
                             <div class="form-group">
                                 <span class="control-label ">
                                     وضعیت

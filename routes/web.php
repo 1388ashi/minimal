@@ -13,8 +13,8 @@ use Illuminate\Database\Schema\Blueprint;
     });
 
     Route::get('test', function () {
-        Schema::table('products', function (Blueprint $table) {
-            $table->foreignId('brand_id')->constrained('brands')->cascadeOnDelete();
+        Schema::table('brands', function (Blueprint $table) {
+            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
         });
             // $categoryIds = [1,2,3];
         // $specificationIds = DB::table('category_specification')

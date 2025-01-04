@@ -53,6 +53,19 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
+                                <label class="control-label">دسته بندی</label><span class="text-danger">&starf;</span>
+                                <select class="form-control select2" id="categories" name="category_id" required multiple>
+                                    @foreach($allCategories as $id => $category)
+                                    <option
+                                        value="{{ $id }}" @selected($brand->category_id == $id)>{{ $category }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
                                 <span class="control-label ">
                                     وضعیت
                                 </span>

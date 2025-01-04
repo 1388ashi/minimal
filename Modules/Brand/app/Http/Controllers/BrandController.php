@@ -10,6 +10,7 @@ use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Modules\Brand\Http\Requests\StoreRequest;
 use Modules\Brand\Models\Brand;
+use Modules\Product\Models\Category;
 
 class BrandController extends Controller implements HasMiddleware
 {
@@ -25,9 +26,35 @@ class BrandController extends Controller implements HasMiddleware
     /**
      * Display a listing of the resource.
      */
+    private function getChildren($categories, array $allCategories, $i)
+    {
+        foreach ($categories as $category) {
+            $i++;
+            $allCategories[$category->id] = str_repeat('-', $i) . $category->title;
+            if ($category->recursiveChildren->isNotEmpty()) {
+                $allCategories = $this->getChildren($category->recursiveChildren, $allCategories, $i);
+            }
+        }
+
+        return $allCategories;
+    }
     public function index()
     {
-        $brands = Brand::select('id','title','description','status')->latest('id')->paginate();
+        $brands = Brand::select('id','title','category_id','description','status')->latest('id')->paginate();
+        $categories = Category::query()
+        ->latest('id')
+        ->whereNull('parent_id')
+        ->select('id', 'title')
+        ->with('recursiveChildren:id,title,parent_id')
+        ->get();
+        $allCategories = [];
+        $i = 0;
+        foreach ($categories as $category) {
+            $allCategories[$category->id] = $category->title;
+            if ($category->recursiveChildren->isNotEmpty()) {
+                $allCategories = $this->getChildren($category->recursiveChildren, $allCategories, $i);
+            }
+        }
         
         return view('brand::admin.index',compact('brands'));
     }

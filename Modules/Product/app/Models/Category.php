@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Log;
+use Modules\Brand\Models\Brand;
 use Modules\Core\Models\BaseModel;
 use Modules\Specification\Models\Specification;
 use Spatie\Activitylog\LogOptions;
@@ -48,6 +49,10 @@ class Category extends BaseModel implements HasMedia
     public function products(): BelongsToMany 
     {
         return $this->belongsToMany(Product::class);
+    }
+    public function brands(): HasMany
+    {
+        return $this->hasMany(Brand::class);
     }
     public function parent(): BelongsTo
     {

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Log;
+use Modules\Product\Models\Category;
 use Modules\Product\Models\Product;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -22,7 +23,7 @@ class Brand extends Model implements HasMedia
     use HasFactory, LogsActivity,InteractsWithMedia;
 
     protected $fillable = [
-        'title','status','description'
+        'title','status','description','category_id'
     ];
     protected $with = ['media'];
     protected $hidden = ['media'];
@@ -131,6 +132,10 @@ class Brand extends Model implements HasMedia
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
+    }
+    public function category(): HasMany
+    {
+        return $this->belongsTo(Category::class);
     }
     public function getActivitylogOptions() : LogOptions
     {
