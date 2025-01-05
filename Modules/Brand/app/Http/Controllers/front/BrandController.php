@@ -15,9 +15,8 @@ class BrandController extends Controller
         $brands = Brand::select('brands.id', 'brands.title', 'brands.status', 'brands.description')  
             ->with('categories:id,title')->get();  
 
-            $categories = Category::select('categories.id')  
-            ->join('brand_category', 'categories.id', '=', 'brand_category.category_id')  
-            ->get();  
+        $categoryIds = $brands->pluck('categories.*.id')->flatten()->unique();
+        $categories = Category::whereIn('id', $categoryIds)->get();
         
         return response()->success('',compact('brands','categories'));
     }
@@ -32,10 +31,6 @@ class BrandController extends Controller
         
         $categoryIds = $brand->categories()->pluck('id'); 
         $categories = Category::whereIn('id', $categoryIds)->get();  
-    
-        if ($categories->isEmpty()) {  
-            $categories = Category::whereNull('parent_id')->take(4)->get();  
-        }  
 
         return response()->success('', 
         compact('brand','products', 'moreBrands','categories'));  
