@@ -12,8 +12,10 @@ class BrandController extends Controller
 {
     public function index()
     {
-        $brands = Brand::select('id','title','status','description')->with('categories:id,title')->get();  
-        $categoryIds = $brands->pluck('categories.*.id')->flatten()->unique();  
+        $brands = Brand::select('brands.id', 'brands.title', 'brands.status', 'brands.description')  
+            ->with('categories:id,title')->get();  
+
+        $categoryIds = $brands->pluck('categories.*.id')->flatten()->unique();
         $categories = Category::whereIn('id', $categoryIds)->get();
         
         return response()->success('',compact('brands','categories'));
