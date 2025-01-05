@@ -55,7 +55,7 @@ class PostsController extends Controller
         ->latest('id')  
         ->get();  
 
-        return response()->success('', compact('articlePosts','lastPosts','postCategories','categories','trendPosts'));
+        return response()->success('', compact('articlePosts','newsPosts','postCategories','categories','trendPosts'));
     }
 
     public function show(Request $request,$id): JsonResponse
