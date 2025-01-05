@@ -15,8 +15,9 @@ class BrandController extends Controller
         $brands = Brand::select('brands.id', 'brands.title', 'brands.status', 'brands.description')  
             ->with('categories:id,title')->get();  
 
-        $categoryIds = $brands->pluck('categories.*.id')->flatten()->unique();
-        $categories = Category::whereIn('id', $categoryIds)->get();
+            $categories = Category::select('categories.id')  
+            ->join('brand_category', 'categories.id', '=', 'brand_category.category_id')  
+            ->get();  
         
         return response()->success('',compact('brands','categories'));
     }
