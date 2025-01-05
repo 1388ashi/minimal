@@ -58,7 +58,7 @@
                                         required multiple>
                                     @foreach($allCategories as $id => $category)
                                         <option
-                                            value="{{ $id }}" @selected($product->categories->contains($id))>{{ $category }}</option>
+                                            value="{{ $id }}" @selected($brand->categories->contains($id))>{{ $category }}</option>
                                     @endforeach
                                 </select>
                             </div>
