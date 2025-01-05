@@ -50,9 +50,9 @@ class Category extends BaseModel implements HasMedia
     {
         return $this->belongsToMany(Product::class);
     }
-    public function brands(): HasMany
+    public function brands(): BelongsToMany 
     {
-        return $this->hasMany(Brand::class);
+        return $this->belongsToMany(Brand::class);
     }
     public function parent(): BelongsTo
     {

@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Database\Schema\Blueprint;
+use Modules\Brand\Models\Brand;
+use Modules\Product\Models\Category;
 
 
 
@@ -13,8 +15,11 @@ use Illuminate\Database\Schema\Blueprint;
     });
 
     Route::get('test', function () {
-        Schema::table('brands', function (Blueprint $table) {
-            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
+        Schema::create('brand_category', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Brand::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
+            $table->timestamps();
         });
             // $categoryIds = [1,2,3];
         // $specificationIds = DB::table('category_specification')

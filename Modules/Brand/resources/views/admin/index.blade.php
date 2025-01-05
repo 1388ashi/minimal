@@ -157,9 +157,8 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label >دسته بندی</label><span class="text-danger">&starf;</span>
-                                <select name="category_id" class="form-control select2">
-                                    <option selected disabled>- انتخاب کنید  -</option>   
+                                <label class="control-label">دسته بندی ها</label><span class="text-danger">&starf;</span>
+                                <select class="form-control select2" id="categories" name="categories[]" required multiple>
                                     @foreach($allCategories as $id => $category)
                                         <option value="{{ $id }}">{{ $category }}</option>
                                     @endforeach

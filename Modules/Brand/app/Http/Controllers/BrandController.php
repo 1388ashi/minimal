@@ -40,7 +40,7 @@ class BrandController extends Controller implements HasMiddleware
     }
     public function index()
     {
-        $brands = Brand::select('id','title','category_id','description','status')->latest('id')->paginate();
+        $brands = Brand::select('id','title','description','status')->with('categories:id,title')->latest('id')->paginate();
         $categories = Category::query()
         ->latest('id')
         ->whereNull('parent_id')
@@ -68,9 +68,13 @@ class BrandController extends Controller implements HasMiddleware
             'status' => filled($request->status) ?: 0,
             'title' => $request->title,
             'description' => $request->description,
-            'category_id' => $request->category_id,
         ]);
         $brand->uploadFiles($request);
+        $categories = $request->categories;
+        foreach ($categories as $category) {
+            $brand->categories()->attach($category);
+        }
+
         $data = [
             'status' => 'success',
             'message' => 'برند با موفقیت ثبت شد'
@@ -92,7 +96,13 @@ class BrandController extends Controller implements HasMiddleware
             'category_id' => $request->category_id,
         ]);
         $brand->uploadFiles($request);
-        
+
+        $categories = $request->categories;
+
+        $brand->categories()->detach();
+        foreach ($categories as $category) {
+            $brand->categories()->attach($category);
+        }
         $data = [
             'status' => 'success',
             'message' => 'برند با موفقیت به روزرسانی شد'

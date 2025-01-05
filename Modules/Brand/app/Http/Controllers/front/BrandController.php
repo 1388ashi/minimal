@@ -12,20 +12,27 @@ class BrandController extends Controller
 {
     public function index()
     {
-        dd(1);
-        $brands = Brand::select('id','title','status','description','category_id')->get();
-        $categories = Category::whereIn('id', Brand::pluck('category_id'))->get();
+        $brands = Brand::select('id','title','status','description')->with('categories:id,title')->get();  
+        $categoryIds = $brands->pluck('categories.*.id')->flatten()->unique();  
+        $categories = Category::whereIn('id', $categoryIds)->get();
         
         return response()->success('',compact('brands','categories'));
     }
     public function show(Brand $brand): mixed  
     {  
-        $moreBrands = Brand::where('id', '!=', $brand->id)->get();  
-        $products = Product::where('brand_id',operator: $brand->id)->take(4)->get();
-        if (!$products) {
-            $products = Product::latest('id')->take(5)->get();
+        $moreBrands = Brand::all();  
+        $products = Product::where('brand_id', $brand->id)->take(4)->get();  
+    
+        if ($products->isEmpty()) {  
+            $products = Product::latest('id')->take(5)->get();  
         }  
-        $categories = Category::whereNull('parent_id')->take(4)->get();  
+        
+        $categoryIds = $brand->categories()->pluck('id'); 
+        $categories = Category::whereIn('id', $categoryIds)->get();  
+    
+        if ($categories->isEmpty()) {  
+            $categories = Category::whereNull('parent_id')->take(4)->get();  
+        }  
 
         return response()->success('', 
         compact('brand','products', 'moreBrands','categories'));  

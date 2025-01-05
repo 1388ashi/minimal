@@ -53,11 +53,12 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label class="control-label">دسته بندی</label><span class="text-danger">&starf;</span>
-                                <select class="form-control select2" name="category_id" required>
+                                <label class="control-label">دسته بندی ها</label><span class="text-danger">&starf;</span>
+                                <select class="form-control select2" id="categories" name="categories[]"
+                                        required multiple>
                                     @foreach($allCategories as $id => $category)
-                                    <option
-                                        value="{{ $id }}" @selected($brand->category_id == $id)>{{ $category }}</option>
+                                        <option
+                                            value="{{ $id }}" @selected($product->categories->contains($id))>{{ $category }}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -5,6 +5,7 @@ namespace Modules\Brand\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -23,7 +24,7 @@ class Brand extends Model implements HasMedia
     use HasFactory, LogsActivity,InteractsWithMedia;
 
     protected $fillable = [
-        'title','status','description','category_id'
+        'title','status','description'
     ];
     protected $with = ['media'];
     protected $hidden = ['media'];
@@ -133,9 +134,9 @@ class Brand extends Model implements HasMedia
     {
         return $this->hasMany(Product::class);
     }
-    public function category(): HasMany
+    public function categories(): BelongsToMany 
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class);
     }
     public function getActivitylogOptions() : LogOptions
     {

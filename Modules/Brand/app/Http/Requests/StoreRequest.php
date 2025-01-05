@@ -17,7 +17,6 @@ class StoreRequest extends FormRequest
             'background' => 'required|image|mimes:jpeg,png,jpg',
             'description' => 'required',
             'title' => 'required',
-            'category_id' => 'nullable'
         ];
     }
 
