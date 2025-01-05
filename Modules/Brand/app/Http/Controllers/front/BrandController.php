@@ -22,17 +22,24 @@ class BrandController extends Controller
     }
     public function show(Brand $brand): mixed  
     {  
+        // دریافت تمامی برندها  
         $moreBrands = Brand::all();  
+        
+        // دریافت ۴ محصول مربوط به برند انتخاب شده  
         $products = Product::where('brand_id', $brand->id)->take(4)->get();  
-    
+        
+        // اگر محصولات خالی بودند، ۵ محصول اخیر را دریافت کن  
         if ($products->isEmpty()) {  
             $products = Product::latest('id')->take(5)->get();  
         }  
         
-        $categoryIds = $brand->categories()->pluck('id'); 
+        // دریافت ID های دسته‌بندی‌های مربوط به برند  
+        $categoryIds = $brand->categories()->pluck('categories.id'); // مشخص کردن جدول به منظور جلوگیری از ابهام  
+        
+        // دریافت دسته‌بندی‌ها بر اساس ID  
         $categories = Category::whereIn('id', $categoryIds)->get();  
-
-        return response()->success('', 
-        compact('brand','products', 'moreBrands','categories'));  
-    }  
+    
+        // بازگشت پاسخ  
+        return response()->success('', compact('brand', 'products', 'moreBrands', 'categories'));  
+    }
 }
