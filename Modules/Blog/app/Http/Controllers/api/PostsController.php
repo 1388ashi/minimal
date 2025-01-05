@@ -29,20 +29,21 @@ class PostsController extends Controller
 
         $categories  = BlogCategory::select('id','title')->with('posts')->where('status',1)->get();
 
-        $featuredPosts = Post::query()  
+        $articlePosts = Post::query()  
         ->select('id', 'title', 'summary', 'type', 'body', 'featured', 'created_at')  
-        ->where('featured', 1)  
+        ->where('type', 'article')  
         ->where('status', 1)  
-        ->take(4)  
+        ->take(7)  
         ->latest('id')  
         ->get(); 
 
-        $postsToSkip = count($featuredPosts);
+        $postsToSkip = count($articlePosts);
 
-        $lastPosts = Post::query()  
+        $newsPosts = Post::query()  
         ->select('id', 'title', 'summary', 'body', 'type', 'created_at')  
         ->where('status', 1)  
         ->latest('id')  
+        ->where('type','news')  
         ->skip($postsToSkip)  
         ->paginate();  
         
@@ -54,7 +55,7 @@ class PostsController extends Controller
         ->latest('id')  
         ->get();  
 
-        return response()->success('', compact('featuredPosts','lastPosts','postCategories','categories','trendPosts'));
+        return response()->success('', compact('articlePosts','lastPosts','postCategories','categories','trendPosts'));
     }
 
     public function show(Request $request,$id): JsonResponse
