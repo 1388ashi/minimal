@@ -197,6 +197,10 @@
             tags: true, 
             minimumResultsForSearch: Infinity 
         });  
+        $('#select2ForEdit').select2({  
+            tags: true, 
+            minimumResultsForSearch: Infinity 
+        });  
     });  
 </script>
 @endsection

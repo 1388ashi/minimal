@@ -54,7 +54,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label class="control-label">دسته بندی ها</label><span class="text-danger">&starf;</span>
-                                <select class="form-control select2" id="select2" name="categories[]"
+                                <select class="form-control select2" id="select2ForEdit" name="categories[]"
                                         required multiple>
                                     @foreach($allCategories as $id => $category)
                                         <option
