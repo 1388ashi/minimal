@@ -138,10 +138,10 @@
 				@endcan
 				@can('view workSample')
 				<li class="slide">
-					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.work-samples.index')}}">
+					{{-- <a class="side-menu__item" data-toggle="slide" href="{{route('admin.work-samples.index')}}">
 						<i class="fa fa-tasks sidemenu_icon"></i>
 						<span class="side-menu__label">نمونه کار ها</span>
-					</a>
+					</a> --}}
 				</li>
 				@endcan
 				@can('view faq')

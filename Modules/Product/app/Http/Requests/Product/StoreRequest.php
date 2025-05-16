@@ -24,10 +24,10 @@ class StoreRequest extends FormRequest
     {
         return [
                 'title' => 'required|unique:products,title',
-                'description' => 'required',
+                'description' => 'nullable',
                 'summary' => 'nullable',
 
-                'price' => 'integer|required',
+                'price' => 'nullable|integer',
                 'discount' => 'nullable|integer',
                 'status' => ['nullable', 'in:1'],
                 'brand_id' => 'nullable|exists:brands,id',
