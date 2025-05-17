@@ -12,9 +12,11 @@ class UpdateRequest extends FormRequest
      * Get the validation rules that apply to the request.
      */
     public function prepareForValidation(){
-        $this->merge([
-            'price' => str_replace(',', '', $this->input('price')),
-        ]);
+        if (filled($this->price)) {
+            $this->merge([
+                'price' => str_replace(',', '', $this->input('price')),
+            ]);
+        }
         if (filled($this->discount)) {
             $this->merge([
                 'discount' => str_replace(',', '', $this->input('discount')),
