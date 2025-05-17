@@ -49,9 +49,9 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">قیمت(تومان)</label><span class="text-danger">&starf;</span>
+                                        <label class="control-label">قیمت(تومان)</label>
                                         <input type="text" class="comma form-control" placeholder="مبلغ را وارد کنید"
-                                               name="price" value="{{old('price')}}" required>
+                                               name="price" value="{{old('price')}}">
                                     </div>
                                 </div>
                             </div>
@@ -91,9 +91,8 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label class="control-label">توضیحات</label><span class="text-danger">&starf;</span>
-                                        <textarea name="description" class="form-control ckeditor" rows="4"
-                                                  required>{{old('description')}}</textarea>
+                                        <label class="control-label">توضیحات</label>
+                                        <textarea name="description" class="form-control ckeditor" rows="4">{{old('description')}}</textarea>
                                     </div>
                                 </div>
                             </div>
