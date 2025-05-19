@@ -34,7 +34,7 @@ class UpdateRequest extends FormRequest
                 'price' => 'nullable|integer',
                 'discount' => 'nullable|integer ',
                 'status' => ['nullable', 'in:1'],
-                'brand_id' => 'nullable|exists:brands,id',
+                'brand_id' => 'required|exists:brands,id',
 
                 'image' => 'nullable',
                 'video' => 'nullable',
