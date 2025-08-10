@@ -211,16 +211,14 @@ class Product extends BaseModel implements Viewable,HasMedia
         protected function uploadGalleries(Request $request): void
         {
             try {
-                if ($request->hasFile('galleries')) {
-                    foreach ($request->file('galleries') as $image) {
-                        if ($image->isValid()) {
-                            $this->addGallery($image);
+                if ($request->method() == 'POST') {
+                    if ($request->hasFile('galleries')) {
+                        foreach ($request->file('galleries') as $image) {
+                            if ($image->isValid()) {
+                                $this->addGallery($image);
+                            }
                         }
                     }
-                }
-
-                if ($request->method() == 'PATCH' && $request->filled('deleted_image_ids')) {
-                    $this->deleteImages($request->input('deleted_image_ids'));
                 }
 
             } catch (FileDoesNotExist $e) {

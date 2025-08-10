@@ -224,6 +224,25 @@ class ProductController extends Controller implements HasMiddleware
         $product->update($request->validated());
         $product->uploadFiles($request);
 
+        if ($request->filled('deleted_image_ids')) {
+            $ids = explode(',', $request->input('deleted_image_ids'));
+            foreach ($ids as $mediaId) {
+                $media = $product->getMedia('product_galleries')->where('id', $mediaId)->first();
+                if ($media) {
+                    $media->delete();
+                }
+            }
+        }
+
+        if ($request->hasFile('galleries')) {
+            foreach ($request->file('galleries') as $image) {
+                if ($image->isValid()) {
+                    $product->addMedia($image)
+                            ->toMediaCollection('product_galleries');
+                }
+            }
+        }
+
         $product->specifications()->detach();
         $specifications = $request->specifications;
 

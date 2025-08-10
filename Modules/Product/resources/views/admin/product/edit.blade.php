@@ -124,22 +124,38 @@
                                     <div class="form-group">
                                         <label class="control-label">گالری تصویر</label>
                                         <input type="file" name="galleries[]" class="form-control" multiple="multiple">
+                                        <input type="hidden" name="deleted_image_ids" id="deleted_image_ids" value="">
                                     </div>
                                 </div>
-                                @if ($product->galleries)
-                                    @foreach($product->galleries as $item)
-                                        <button type="button" style="height: fit-content;" class="btn btn-danger btn-sm"
-                                                onclick="confirmDelete('delete-galleries-{{$item['id'] }}')">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                        <br>
-                                        <figure class="figure">
-                                            <a target="_blank" href="{{ $item['url'] }}">
-                                                <img src="{{ $item['url'] }}" class="img-thumbnail"
-                                                     style="width: 70px;height: 70px;"/>
-                                            </a>
-                                        </figure>
-                                    @endforeach
+                                @if($product->galleries)
+                                    <div class="row">
+                                        @foreach($product->galleries as $item)
+                                            <div
+                                                class="col-md-2 mb-2"
+                                                id="gallery-item-{{ $item['id'] }}"
+                                            >
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-danger btn-sm position-absolute"
+                                                    style="top:0; right:0;"
+                                                    onclick="markImageForDeletion({{ $item['id'] }})"
+                                                >
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+
+                                                <a
+                                                    target="_blank"
+                                                    href="{{ $item['url'] }}"
+                                                >
+                                                    <img
+                                                        src="{{ $item['url'] }}"
+                                                        class="img-thumbnail"
+                                                        style="width: 70px; height: 70px;"
+                                                    />
+                                                </a>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 @endif
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -285,5 +301,17 @@
 
         });
 
+        let deletedGalleries = [];
+        function markImageForDeletion(id) {
+            if (!confirm('آیا مطمئنید این تصویر حذف بشه؟')) {
+                return;
+            }
+
+            deletedGalleries.push(id);
+            document.getElementById('deleted_image_ids').value = deletedGalleries.join(',');
+
+            const el = document.getElementById('gallery-item-' + id);
+            if (el) el.remove();
+        }
     </script>
 @endsection
