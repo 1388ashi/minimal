@@ -44,6 +44,7 @@
                                     <th class="border-top">دسته بندی (ها)</th>
                                     <th class="border-top">قیمت(تومان)</th>
                                     <th class="border-top">تخفیف(تومان)</th>
+                                    <th class="border-top">برند</th>
                                     <th class="border-top">وضعیت</th>
                                     <th class="border-top">تاریخ ثبت</th>
                                     <th class="border-top">عملیات</th>
@@ -68,6 +69,7 @@
                                         -
                                         @endif
                                     </td>
+                                    <td class="text-center">{{ $product->brand->title }}</td>
                                     <td class="text-center">@include('includes.status',["status" => $product->status])</td>
                                     <td>
                                         {{ verta($product->created_at)->format('Y/m/d H:i') }}

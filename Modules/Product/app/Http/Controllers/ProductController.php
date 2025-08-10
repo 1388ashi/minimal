@@ -74,7 +74,7 @@ class ProductController extends Controller implements HasMiddleware
         $status = request('status');
 
         $products = Product::query()
-            ->select('id', 'title', 'price', 'discount', 'status')
+            ->select('id', 'title', 'price', 'discount', 'status','brand_id')
             ->when($title, fn($query) => $query->where('title', 'like', "%$title%"))
             ->when($categoryId, function ($query) use ($categoryId) {
                 return $query->whereHas('categories', function ($q) use ($categoryId) {
@@ -89,7 +89,7 @@ class ProductController extends Controller implements HasMiddleware
                 }
             })
             ->when(isset($status), fn($query) => $query->where("status", $status))
-            ->with('categories:id,title')
+            ->with('categories:id,title','brand:id,title')
             ->latest('id')
             ->paginate(15);
 

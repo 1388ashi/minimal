@@ -154,7 +154,7 @@
                                         @else
                                             @foreach($brands as $brand)
                                             <option value="{{$brand->id}}" 
-                                                @selected($brand->id == $product->category_id)>{{$brand->title}}</option>
+                                                @selected($brand->id == $product->brand_id)>{{$brand->title}}</option>
                                             @endforeach
                                         @endif
                                         </select>
