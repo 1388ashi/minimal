@@ -23,11 +23,7 @@ class TeamController extends Controller implements HasMiddleware
     }
     public function sort(Request $request)
     {
-      if (request()->header('Accept') == 'application/json') {
-          Team::sort($request);
-
-          return response()->success('مرتب سازی با موفقیت انجام شد');
-        }
+        dd($request->teams);
         Team::setNewOrder($request->teams);
 
         return redirect()->route('admin.teams.index')
