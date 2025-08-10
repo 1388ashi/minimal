@@ -16,11 +16,20 @@ use Illuminate\Support\Facades\Log;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 
-class Team extends BaseModel implements HasMedia
+class Team extends BaseModel implements HasMedia,Sortable
 {
-    use HasFactory, LogsActivity, InteractsWithMedia;
+    use HasFactory, LogsActivity, InteractsWithMedia, SortableTrait;
 
+    protected $defaults = [
+        'order' => 1
+    ];
+     public $sortable = [
+      'order_column_name' => 'order',
+      'sort_when_creating' => true,
+    ];
     protected $fillable = [
         'name',
         'role',

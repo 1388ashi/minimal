@@ -21,12 +21,24 @@ class TeamController extends Controller implements HasMiddleware
 
         ];
     }
+    public function sort(Request $request)
+    {
+      if (request()->header('Accept') == 'application/json') {
+          Team::sort($request);
+
+          return response()->success('مرتب سازی با موفقیت انجام شد');
+        }
+        Team::setNewOrder($request->teams);
+
+        return redirect()->route('admin.teams.index')
+        ->with('success', 'ایتم ها با موفقیت مرتب شد.');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $teams = Team::select('id','name','role')->latest('id')->paginate();
+        $teams = Team::select('id','name','role','order')->orderBy('order', 'asc')->paginate();
         
         return view('team::admin.index',compact('teams'));
     }

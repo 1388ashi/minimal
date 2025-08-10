@@ -15,6 +15,6 @@ use Modules\Team\Http\Controllers\TeamController;
 */
 
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
-
+    Route::patch('/teams/sort', [TeamController::class, 'sort'])->name('teams.sort');
     Route::resource('teams',TeamController::class);
 });

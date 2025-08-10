@@ -34,60 +34,67 @@
                 <div class="card-body">
                     <x-alert-danger></x-alert-danger>
                     <x-alert-success></x-alert-success>
-                    <div class="table-responsive">
-                        <table id="example-2" class="table table-striped table-bordered text-nowrap text-center">
-                            <thead>
-                                <tr>
-                                    <th class="border-top">ردیف</th>
-                                    <th class="border-top">نام</th>
-                                    <th class="border-top">سمت</th>
-                                    <th class="border-top">عکس</th>
-                                    <th class="border-top">تاریخ ثبت</th>
-                                    <th class="border-top">عملیات</th>
-                                </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($teams as $team)
-                            <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{ $team->name }}</td>
-                                <td>{{ $team->role }}</td>
-                                <td class="text-center">
-                                    <a href="{{ $team->image['url'] }}" target="_blanck">
-                                        <div class="bg-light pb-1 pt-1 img-holder img-show w-100" style="max-height: 50px;border-radius: 4px;">
-                                        <img src="{{ $team->image['url'] }}" style="height: 40px;"  alt="{{ $team->image['name'] }}">
-                                    </div>
-                                    </a>
-                                </td>
-                                <td>{{verta($team->created_at)->format('Y/m/d H:i')}}</td>
-                                <td>
-                                    {{-- Edit--}}
-                                    @can('edit teams')
-                                    <button type="button" class="btn btn-warning btn-sm "
-                                    data-toggle="modal"
-                                    data-target="#edit-menu-{{ $team->id }}">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </button>
-                                    @endcan
-                                    {{-- Delete--}}
-                                    @can('delete teams')
-                                    <x-core::delete-btn route="admin.teams.destroy" :model="$team" :disabled="false" />
-                                    @endcan
-                                    </td>
-                            </tr>
-                                    @empty
-                                        
-                                <tr>
-                                    <td colspan="8">
-                                        <p class="text-danger"><strong>در حال حاضر هیچ عضوی یافت نشد!</strong></p>
-                                    </td>
-                                </tr>
-                            @endforelse
-                            
-                            </tbody>
-                        </table>
-                        {{$teams->onEachSide(1)->links("vendor.pagination.bootstrap-4")}}
-                    </div>
+                    <form id="myForm" action="{{ route('admin.teams.sort') }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <div class="table-responsive">
+                            <table id="example-2" class="table table-striped table-bordered text-nowrap text-center">
+                                <thead>
+                                    <tr>
+                                        <th class="border-top">ردیف</th>
+                                        <th class="border-top">نام</th>
+                                        <th class="border-top">سمت</th>
+                                        <th class="border-top">عکس</th>
+                                        <th class="border-top">تاریخ ثبت</th>
+                                        <th class="border-top">عملیات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="items">
+                                    @forelse($teams as $team)
+                                    <tr>
+                                        <td class="text-center"><i class="fe fe-move glyphicon-move text-dark"></i></td>
+                                        <td class="font-weight-bold">{{ $loop->iteration }}</td>
+                                        <input type="hidden" value="{{ $team->id }}" name="teams[]">
+                                        <td>{{ $team->name }}</td>
+                                        <td>{{ $team->role }}</td>
+                                        <td class="text-center">
+                                            <a href="{{ $team->image['url'] }}" target="_blanck">
+                                                <div class="bg-light pb-1 pt-1 img-holder img-show w-100" style="max-height: 50px;border-radius: 4px;">
+                                                <img src="{{ $team->image['url'] }}" style="height: 40px;"  alt="{{ $team->image['name'] }}">
+                                            </div>
+                                            </a>
+                                        </td>
+                                        <td>{{verta($team->created_at)->format('Y/m/d H:i')}}</td>
+                                        <td>
+                                            {{-- Edit--}}
+                                            @can('edit teams')
+                                            <button type="button" class="btn btn-warning btn-sm "
+                                            data-toggle="modal"
+                                            data-target="#edit-menu-{{ $team->id }}">
+                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                            </button>
+                                            @endcan
+                                            {{-- Delete--}}
+                                            @can('delete teams')
+                                            <x-core::delete-btn route="admin.teams.destroy" :model="$team" :disabled="false" />
+                                            @endcan
+                                            </td>
+                                    </tr>
+                                            @empty
+                                                
+                                        <tr>
+                                            <td colspan="8">
+                                                <p class="text-danger"><strong>در حال حاضر هیچ عضوی یافت نشد!</strong></p>
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                
+                                </tbody>
+                            </table>
+                            {{$teams->onEachSide(1)->links("vendor.pagination.bootstrap-4")}}
+                        </div>
+                        <button class="btn btn-teal mt-5" type="submit">ذخیره مرتب سازی</button>
+                    </form>
                 </div>
                 <!-- table-wrapper -->
             </div>
@@ -130,4 +137,15 @@
     </div>
     @include('team::admin.edit')
 @endsection
-
+@section('scripts')
+    <script>
+        var items = document.getElementById('items');
+        var sortable = Sortable.create(items, {
+            handle: '.glyphicon-move',
+            animation: 150
+        });
+        document.getElementById('submitButton').addEventListener('click', function() {
+            document.getElementById('myForm').submit();
+        });
+    </script>
+@endsection
