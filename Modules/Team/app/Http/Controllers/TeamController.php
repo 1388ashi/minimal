@@ -38,7 +38,7 @@ class TeamController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        $teams = Team::select('id','name','role','order')->orderBy('order', 'asc')->paginate();
+        $teams = Team::select('id','name','role','order')->orderBy('order', 'asc')->get();
         
         return view('team::admin.index',compact('teams'));
     }
