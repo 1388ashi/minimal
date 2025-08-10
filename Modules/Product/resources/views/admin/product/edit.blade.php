@@ -150,7 +150,7 @@
                                                     <img
                                                         src="{{ $item['url'] }}"
                                                         class="img-thumbnail"
-                                                        style="width: 70px; height: 70px;"
+                                                        style="width: 120px; height: 70px;"
                                                     />
                                                 </a>
                                             </div>
