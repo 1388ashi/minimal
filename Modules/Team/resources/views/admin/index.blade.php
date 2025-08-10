@@ -24,7 +24,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header border-0">
-                    <div class="card-title">لیست همه تیم ها ({{ $teams->total() }})</div>
+                    <div class="card-title">لیست همه تیم ها ({{ count($teams) }})</div>
                     <div class="card-options">
                         <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
                         <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i class="fe fe-maximize"></i></a>
