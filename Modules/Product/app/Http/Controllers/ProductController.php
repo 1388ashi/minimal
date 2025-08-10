@@ -91,7 +91,8 @@ class ProductController extends Controller implements HasMiddleware
             ->when(isset($status), fn($query) => $query->where("status", $status))
             ->with('categories:id,title','brand:id,title')
             ->latest('id')
-            ->paginate(15);
+            ->paginate(15)
+            ->withQueryString();
 
         return view('product::admin.product.index', compact('products', 'categories'));
     }
