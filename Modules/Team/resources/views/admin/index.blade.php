@@ -92,7 +92,6 @@
                                 
                                 </tbody>
                             </table>
-                            {{$teams->onEachSide(1)->links("vendor.pagination.bootstrap-4")}}
                         </div>
                         <button class="btn btn-teal mt-5" type="submit">ذخیره مرتب سازی</button>
                     </form>
