@@ -69,7 +69,7 @@
                                         -
                                         @endif
                                     </td>
-                                    <td class="text-center">{{ $product->brand->title }}</td>
+                                    <td class="text-center">{{ $product->brand ? $product->brand->title : '-' }}</td>
                                     <td class="text-center">@include('includes.status',["status" => $product->status])</td>
                                     <td>
                                         {{ verta($product->created_at)->format('Y/m/d H:i') }}
