@@ -115,7 +115,7 @@
 {{--        <script src="{{asset('assets/js/index1.js')}}"></script>--}}
         <!-- Custom js-->
         <script src="{{asset('assets/js/delete-items.js')}}"></script>
-{{--        <script src="{{asset('assets/sortable-js/Sortable.js')}}"></script>--}}
+       <script src="{{asset('assets/sortable-js/Sortable.js')}}"></script>
 
         <!-- Ckeditor  -->
         <script src="{{ asset('assets/editor/ckeditor/ckeditor.js') }}"></script>

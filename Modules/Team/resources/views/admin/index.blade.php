@@ -41,6 +41,7 @@
                             <table id="example-2" class="table table-striped table-bordered text-nowrap text-center">
                                 <thead>
                                     <tr>
+                                        <th class="border-top">انتخاب</th>
                                         <th class="border-top">ردیف</th>
                                         <th class="border-top">نام</th>
                                         <th class="border-top">سمت</th>
