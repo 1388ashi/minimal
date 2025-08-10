@@ -10,7 +10,7 @@
         <div class="mt-3">
             <div class="d-flex align-items-center flex-wrap text-nowrap">
                  <button id="submitButton" type="submit" class="btn btn-teal align-items-center"><span>ذخیره مرتب سازی</span><i
-                    class="fe fe-code mr-1 font-weight-bold"></i></button>
+                    class="fe fe-code ml-1 font-weight-bold"></i></button>
                 @can('create teams')
                 <a href="{{ route('admin.teams.create') }}" data-toggle="modal" data-target="#addspecialtie" class="btn btn-indigo">
                     ثبت تیم جدید
