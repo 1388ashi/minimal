@@ -65,6 +65,7 @@ class ProductController extends Controller
         ->withCount('views')
         ->where('status',1)
         ->paginate(20);
+        
         $products->map(function ($product) {
             return $product->setAttribute('final_price', $product->totalPriceWithDiscount());
         });

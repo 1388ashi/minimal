@@ -126,26 +126,35 @@ class Product extends BaseModel implements Viewable,HasMedia
             );
         }
 
-        protected function galleries(): Attribute
+       protected function galleries(): Attribute
         {
-            $media = $this->getMedia('product_galleries');
+            $galleryMedia = $this->getMedia('product_galleries');
+            $mainImage = $this->getFirstMedia('product_images');
 
             $galleries = [];
-            if ($media->count()) {
-                foreach ($media as $mediaItem) {
-                    $galleries[] = [
-                        'id' => $mediaItem?->id,
-                        'url' => $mediaItem?->getFullUrl(),
-                        'name' => $mediaItem?->file_name
-                    ];
-                }
+
+            if ($mainImage) {
+                $galleries[] = [
+                    'id' => $mainImage->id,
+                    'url' => $mainImage->getFullUrl(),
+                    'name' => $mainImage->file_name,
+                    'is_main' => true 
+                ];
+            }
+
+            foreach ($galleryMedia as $mediaItem) {
+                $galleries[] = [
+                    'id' => $mediaItem->id,
+                    'url' => $mediaItem->getFullUrl(),
+                    'name' => $mediaItem->file_name,
+                    'is_main' => false
+                ];
             }
 
             return Attribute::make(
                 get: fn () => $galleries,
             );
         }
-
         /**
          * @throws FileDoesNotExist
          * @throws FileIsTooBig

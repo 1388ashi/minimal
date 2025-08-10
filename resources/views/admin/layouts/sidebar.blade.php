@@ -2,7 +2,7 @@
     <div class="app-sidebar__user">
 		<div class="dropdown user-pro-body text-center">
 			<div>
-				<img src="{{asset('download.svg')}}" style="width: 50%;height: 10%;" alt="user-img" class="border-0 avatar-xxl">
+				<img src="{{asset('download.svg')}}" style="width: 40%;height: 5%;" alt="user-img" class="border-0 avatar-xxl">
 			</div>
 		</div>
 	</div>
