@@ -21,14 +21,6 @@ class TeamController extends Controller implements HasMiddleware
 
         ];
     }
-    public function sort(Request $request)
-    {
-        dd($request->teams);
-        Team::setNewOrder($request->teams);
-
-        return redirect()->route('admin.teams.index')
-        ->with('success', 'ایتم ها با موفقیت مرتب شد.');
-    }
     /**
      * Display a listing of the resource.
      */
@@ -68,6 +60,14 @@ class TeamController extends Controller implements HasMiddleware
         ->with($data);
     }
 
+    public function sort(Request $request): RedirectResponse
+    {
+        dd($request->teams);
+        Team::setNewOrder($request->teams);
+
+        return redirect()->back()
+        ->with('success', 'ایتم ها با موفقیت مرتب شد.');
+    }
     /**
      * Update the specified resource in storage.
      */

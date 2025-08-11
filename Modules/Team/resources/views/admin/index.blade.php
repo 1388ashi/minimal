@@ -38,7 +38,7 @@
                     <x-alert-success></x-alert-success>
                     <form id="myForm" action="{{ route('admin.teams.sort') }}" method="POST">
                         @csrf
-                        @method('PATCH')
+                        @method('PUT')
                         <div class="table-responsive">
                             <table id="example-2" class="table table-striped table-bordered text-nowrap text-center">
                                 <thead>
