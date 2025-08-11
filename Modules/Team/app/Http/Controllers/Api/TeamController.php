@@ -10,7 +10,7 @@ class TeamController extends Controller
 {
     public function index(): JsonResponse
     {
-        $teams = Team::select('id','name','role')->orderBy('order', 'asc')->get();
+        $teams = Team::select('id','name','role','order')->orderBy('order', 'asc')->get();
 
         return response()->success('',compact('teams'));
     }
