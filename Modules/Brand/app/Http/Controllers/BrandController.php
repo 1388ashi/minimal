@@ -47,9 +47,9 @@ class BrandController extends Controller implements HasMiddleware
     }
     public function index()
     {
-        $brands = Brand::select('id','title','description','status','order')->with('categories:id,title')->latest('id')->paginate();
+        $brands = Brand::select('id','title','description','status','order')->with('categories:id,title')->orderBy('order', 'asc')->paginate();
         $categories = Category::query()
-        ->orderBy('order', 'asc')
+        ->latest('id')
         ->whereNull('parent_id')
         ->select('id', 'title')
         ->with('recursiveChildren:id,title,parent_id')
