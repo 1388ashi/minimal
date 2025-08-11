@@ -15,6 +15,6 @@ use Modules\Brand\Http\Controllers\BrandController;
 */
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
     Route::resource('brands',BrandController::class);
-    Route::put('/brands/sort', [BrandController::class, 'sort'])->name('brands.sort');
+    Route::put('/brands-sort', [BrandController::class, 'sort'])->name('sort-brands');
 
 });
