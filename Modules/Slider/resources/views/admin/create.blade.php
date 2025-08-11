@@ -45,6 +45,14 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="label" class="control-label">لوگو<span class="text-danger">&starf;</span></label>
+                                    <input  class="form-control" type="file" name="logo" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
                                 <span class="control-label ">
                                     وضعیت
                                 </span>

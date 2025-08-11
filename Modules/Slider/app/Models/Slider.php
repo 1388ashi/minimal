@@ -30,10 +30,11 @@ class Slider extends Model implements HasMedia
     
     protected $with = ['media'];
     protected $hidden = ['media'];
-    protected $appends = ['image'];
+    protected $appends = ['image','logo'];
     
     public function registerMediaCollections(): void {
         $this->addMediaCollection('slider_images')->singleFile();
+        $this->addMediaCollection('slider_logos')->singleFile();
     }
     public function getActivitylogOptions() : LogOptions
     {
@@ -44,6 +45,18 @@ class Slider extends Model implements HasMedia
         return LogOptions::defaults()
         ->logOnly($this->fillable)
         ->setDescriptionForEvent(fn(string $eventName) => $description . __('custom.'.$eventName));
+    }
+    protected function logo() : Attribute 
+    {
+        $media = $this->getFirstMedia('slider_logos');
+
+        return Attribute::make(
+            get: fn () => [
+                'id' => $media?->id,
+                'url' => $media?->getFullUrl(),
+                'name' => $media?->file_name
+            ],
+        );
     }
     protected function image() : Attribute 
     {
@@ -61,11 +74,18 @@ class Slider extends Model implements HasMedia
     {
         return $this->addMedia($file)->toMediaCollection('slider_images');
     }
+    public function addLogo(UploadedFile $file): bool|\Spatie\MediaLibrary\MediaCollections\Models\Media
+    {
+        return $this->addMedia($file)->toMediaCollection('slider_logos');
+    }
     public function uploadFiles(Request $request): void
     {
         try {
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
                 $this->addImage($request->file('image'));
+            }
+            if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
+                $this->addLogo($request->file('logo'));
             }
         } catch (FileDoesNotExist $e) {
             Log::error('Slider upload file (FileDoesNotExist): ' . $e->getMessage());

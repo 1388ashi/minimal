@@ -19,6 +19,7 @@ class UpdateRequest extends FormRequest
                 'url',
             ],
             'image' => 'nullable|image|mimes:jpeg,png,jpg',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg',
         ];
     }
 
