@@ -13,7 +13,7 @@ class BrandController extends Controller
     public function index()
     {
         $brands = Brand::select('brands.id', 'brands.title', 'brands.status', 'brands.description')  
-            ->with('categories:id,title')->get();  
+            ->with('categories:id,title')->orderBy('order', 'asc')->get();  
 
         $categoryIds = $brands->pluck('categories.*.id')->flatten()->unique();
         $categories = Category::whereIn('id', $categoryIds)->get();

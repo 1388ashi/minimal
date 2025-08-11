@@ -38,11 +38,18 @@ class BrandController extends Controller implements HasMiddleware
 
         return $allCategories;
     }
+    public function sort(Request $request): RedirectResponse
+    {
+        Brand::setNewOrder($request->brands);
+
+        return redirect()->back()
+        ->with('success', 'ایتم ها با موفقیت مرتب شد.');
+    }
     public function index()
     {
         $brands = Brand::select('id','title','description','status')->with('categories:id,title')->latest('id')->paginate();
         $categories = Category::query()
-        ->latest('id')
+        ->orderBy('order', 'asc')
         ->whereNull('parent_id')
         ->select('id', 'title')
         ->with('recursiveChildren:id,title,parent_id')

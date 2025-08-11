@@ -18,11 +18,20 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 
-class Brand extends Model implements HasMedia
+class Brand extends Model implements HasMedia, Sortable
 {
-    use HasFactory, LogsActivity,InteractsWithMedia;
+    use HasFactory, LogsActivity,InteractsWithMedia, SortableTrait;
 
+    protected $defaults = [
+        'order' => 1
+    ];
+     public $sortable = [
+      'order_column_name' => 'order',
+      'sort_when_creating' => true,
+    ];
     protected $fillable = [
         'title','status','description'
     ];

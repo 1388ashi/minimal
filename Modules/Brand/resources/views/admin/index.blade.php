@@ -9,6 +9,9 @@
         </ol>
         <div class="mt-3">
             <div class="d-flex align-items-center flex-wrap text-nowrap">
+                <button id="submitButton" type="submit" class="btn btn-teal align-items-center"><span>ذخیره مرتب سازی</span>
+                    <i class="fe fe-code ml-1 font-weight-bold"></i>
+                </button>
                 @can('create brands')
                 <a href="{{ route('admin.brands.create') }}" data-toggle="modal" data-target="#addspecialtie" class="btn btn-indigo">
                     ثبت برند جدید
@@ -34,73 +37,81 @@
                 <div class="card-body">
                     <x-alert-danger></x-alert-danger>
                     <x-alert-success></x-alert-success>
-                    <div class="table-responsive">
-                        <table id="example-2" class="table table-striped table-bordered text-nowrap text-center">
-                            <thead>
-                                <tr>
-                                    <th class="border-top">ردیف</th>
-                                    <th class="border-top">عنوان</th>
-                                    <th class="border-top">لوگو سفید</th>
-                                    <th class="border-top">لوگو مشکی</th>
-                                    <th class="border-top">وضعیت</th>
-                                    <th class="border-top">تاریخ ثبت</th>
-                                    <th class="border-top">عملیات</th>
-                                </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($brands as $brand)
-                            <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{$brand->title}}</td>
-                                <td class="text-center">
-                                    <a href="{{ $brand->whiteImage['url'] }}" target="_blanck">
-                                        <div class="bg-light pb-1 pt-1 img-holder img-show" style="max-height: 50px;border-radius: 4px;">
-                                            <img src="{{ $brand->whiteImage['url'] }}" style="height: 40px;"  alt="{{ $brand->whiteImage['name'] }}">
-                                        </div>
-                                    </a>
-                                </td>
-                                <td class="text-center">
-                                    @if ($brand->darkImage['url'])
-                                        
-                                    <a href="{{ $brand->darkImage['url'] }}" target="_blanck">
-                                        <div class="bg-light pb-1 pt-1 img-holder img-show" style="max-height: 50px;border-radius: 4px;">
-                                            <img src="{{ $brand->darkImage['url'] }}" style="height: 40px;"  alt="{{ $brand->darkImage['name'] }}">
-                                        </div>
-                                    </a>
-                                    @else
-                                    -
-                                    @endif
-                                </td>
-                                <td class="text-center">@include('includes.status',["status" => $brand->status])</td>
-                                <td>{{verta($brand->created_at)->format('Y/m/d H:i')}}</td>
-                                <td>
-                                    {{-- Edit--}}
-                                    @can('edit brands')
-                                    <button type="button" class="btn btn-warning btn-sm "
-                                    data-toggle="modal"
-                                    data-target="#edit-menu-{{ $brand->id }}">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </button>
-                                    @endcan
-                                    {{-- Delete--}}
-                                    @can('delete brands')
-                                    <x-core::delete-btn route="admin.brands.destroy" :model="$brand" :disabled="false" />
-                                    @endcan
-                                    </td>
-                            </tr>
-                                    @empty
-                                        
-                                <tr>
-                                    <td colspan="8">
-                                        <p class="text-danger"><strong>در حال حاضر هیچ برندی یافت نشد!</strong></p>
-                                    </td>
-                                </tr>
-                            @endforelse
-                            
-                            </tbody>
-                        </table>
-                        {{$brands->onEachSide(1)->links("vendor.pagination.bootstrap-4")}}
-                    </div>
+                    <form id="myForm" action="{{ route('admin.brands.sort') }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                            <div class="table-responsive">
+                                <table id="example-2" class="table table-striped table-bordered text-nowrap text-center">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-top">ردیف</th>
+                                            <th class="border-top">ردیف</th>
+                                            <th class="border-top">عنوان</th>
+                                            <th class="border-top">لوگو سفید</th>
+                                            <th class="border-top">لوگو مشکی</th>
+                                            <th class="border-top">وضعیت</th>
+                                            <th class="border-top">تاریخ ثبت</th>
+                                            <th class="border-top">عملیات</th>
+                                        </tr>
+                                </thead>
+                                <tbody id="items">
+                                    @forelse($brands as $brand)
+                                    <tr>
+                                         <td class="text-center"><i class="fe fe-move glyphicon-move text-dark"></i></td>
+                                        <td class="font-weight-bold">{{ $loop->iteration }}</td>
+                                        <input type="hidden" value="{{ $brand->id }}" name="brands[]">
+                                        <td>{{$brand->title}}</td>
+                                        <td class="text-center">
+                                            <a href="{{ $brand->whiteImage['url'] }}" target="_blanck">
+                                                <div class="bg-light pb-1 pt-1 img-holder img-show" style="max-height: 50px;border-radius: 4px;">
+                                                    <img src="{{ $brand->whiteImage['url'] }}" style="height: 40px;"  alt="{{ $brand->whiteImage['name'] }}">
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td class="text-center">
+                                            @if ($brand->darkImage['url'])
+                                                
+                                            <a href="{{ $brand->darkImage['url'] }}" target="_blanck">
+                                                <div class="bg-light pb-1 pt-1 img-holder img-show" style="max-height: 50px;border-radius: 4px;">
+                                                    <img src="{{ $brand->darkImage['url'] }}" style="height: 40px;"  alt="{{ $brand->darkImage['name'] }}">
+                                                </div>
+                                            </a>
+                                            @else
+                                            -
+                                            @endif
+                                        </td>
+                                        <td class="text-center">@include('includes.status',["status" => $brand->status])</td>
+                                        <td>{{verta($brand->created_at)->format('Y/m/d H:i')}}</td>
+                                        <td>
+                                            {{-- Edit--}}
+                                            @can('edit brands')
+                                            <button type="button" class="btn btn-warning btn-sm "
+                                            data-toggle="modal"
+                                            data-target="#edit-menu-{{ $brand->id }}">
+                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                            </button>
+                                            @endcan
+                                            {{-- Delete--}}
+                                            @can('delete brands')
+                                               <button type="button" class="btn btn-danger btn-sm text-white" data-original-title="حذف" onclick="confirmDelete('delete-{{ $brand->id }}')" >
+                                                    <i class="fa fa-trash-o"></i>
+                                                </button>
+                                            @endcan
+                                            </td>
+                                    </tr>
+                                            @empty
+                                                w
+                                        <tr>
+                                            <td colspan="8">
+                                                <p class="text-danger"><strong>در حال حاضر هیچ برندی یافت نشد!</strong></p>
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                    
+                                    </tbody>
+                                </table>
+                                {{$brands->onEachSide(1)->links("vendor.pagination.bootstrap-4")}}
+                            </div>
                 </div>
                 <!-- table-wrapper -->
             </div>
@@ -189,6 +200,16 @@
         </div>
     </div>
     @include('brand::admin.edit')
+        @foreach ($brands as $brand)
+        <form 
+            action="{{ route('admin.brands.destroy',$brand->id)}}" 
+            id="delete-{{$brand->id}}" 
+            method="POST" 
+            style="display: none;">
+            @csrf
+            @method("DELETE")
+        </form>
+    @endforeach
 @endsection
 @section('scripts')
 <script>
@@ -198,6 +219,14 @@
             minimumResultsForSearch: Infinity 
         });  
     });  
+    var items = document.getElementById('items');
+    var sortable = Sortable.create(items, {
+        handle: '.glyphicon-move',
+        animation: 150
+    });
+    document.getElementById('submitButton').addEventListener('click', function() {
+        document.getElementById('myForm').submit();
+    });
 </script>
 @endsection
 
