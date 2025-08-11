@@ -79,7 +79,9 @@
                                             @endcan
                                             {{-- Delete--}}
                                             @can('delete teams')
-                                            <x-core::delete-btn route="admin.teams.destroy" :model="$team" :disabled="false" />
+                                                <button type="button" class="btn btn-danger btn-sm text-white" data-original-title="حذف" onclick="confirmDelete('delete-{{ $team->id }}')" >
+                                                    <i class="fa fa-trash-o"></i>
+                                                </button>
                                             @endcan
                                             </td>
                                     </tr>
@@ -103,6 +105,16 @@
             <!-- section-wrapper -->
         </div>
     </div>
+    @foreach ($teams as $team)
+        <form 
+            action="{{ route('admin.teams.destroy',$team->id)}}" 
+            id="delete-{{$team->id}}" 
+            method="POST" 
+            style="display: none;">
+            @csrf
+            @method("DELETE")
+        </form>
+    @endforeach
     <!-- row closed -->
     <div class="modal fade"  id="addspecialtie">
         <div class="modal-dialog" role="document">
