@@ -17,11 +17,11 @@ use Modules\Team\Models\Team;
 
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
     Route::resource('teams',TeamController::class);
-    Route::put('/teams/sort',function () {
+    Route::put('/sorts',action: function () {
         dd(request('teams'));
         Team::setNewOrder(request('teams'));
 
         return redirect()->back()
         ->with('success', 'ایتم ها با موفقیت مرتب شد.');
-    })->name('teams.sort');
+    })->name('sort-items');
 });

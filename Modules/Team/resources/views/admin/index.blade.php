@@ -36,7 +36,7 @@
                 <div class="card-body">
                     <x-alert-danger></x-alert-danger>
                     <x-alert-success></x-alert-success>
-                    <form id="myForm" action="{{ route('admin.teams.sort') }}" method="POST">
+                    <form id="myForm" action="{{ route('admin.sort-items') }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="table-responsive">
