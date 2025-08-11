@@ -62,7 +62,6 @@ class TeamController extends Controller implements HasMiddleware
 
     public function sort(Request $request): RedirectResponse
     {
-        dd($request->teams);
         Team::setNewOrder($request->teams);
 
         return redirect()->back()
