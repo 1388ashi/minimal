@@ -67,23 +67,21 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="label" class="control-label">لوگو</label>
-                                        <input class="form-control" type="file" name="logo" >
-                                    </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="label" class="control-label">لوگو</label>
+                                    <input class="form-control" type="file" name="logo" >
                                 </div>
-                                 @if ($slider->logo['url'])
-                                    <div class="col-md-4">
-                                        <figure class="figure">
-                                            <a target="blank" href="{{ $slider->logo['url'] }}">
-                                            <img src="{{ $slider->logo['url'] }}"  width="100" height="60" />
-                                            </a>
-                                        </figure>
-                                    </div>
-                                @endif
                             </div>
+                                @if ($slider->logo['url'])
+                                <div class="col-md-4">
+                                    <figure class="figure">
+                                        <a target="blank" href="{{ $slider->logo['url'] }}">
+                                        <img src="{{ $slider->logo['url'] }}"  width="100" height="60" />
+                                        </a>
+                                    </figure>
+                                </div>
+                            @endif
                         </div>
                         <div class="row">
                             <div class="col">
