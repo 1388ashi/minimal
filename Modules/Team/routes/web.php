@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Team\Http\Controllers\TeamController;
+use Modules\Team\Models\Team;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,5 +17,11 @@ use Modules\Team\Http\Controllers\TeamController;
 
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
     Route::resource('teams',TeamController::class);
-    Route::put('/teams/sort', [TeamController::class, 'sort'])->name('teams.sort');
+    Route::put('/teams/sort',function () {
+        dd(request('teams'));
+        Team::setNewOrder(request('teams'));
+
+        return redirect()->back()
+        ->with('success', 'ایتم ها با موفقیت مرتب شد.');
+    })->name('teams.sort');
 });
