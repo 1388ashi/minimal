@@ -17,6 +17,5 @@
     "JobOffer": true,
     "Brand": true,
     "Home": true,
-    "WorkSample": true,
-    "Menu": true
+    "WorkSample": true
 }
