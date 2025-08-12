@@ -76,7 +76,7 @@ class HomeController extends Controller
     public function menus(){
         $brands = Brand::select('id', 'title', 'status', 'description')->orderBy('order', 'asc')->get();
         foreach ($brands as $brand) {
-            $brand['link']  = 'https://minimalzee.ir/brands/' . $brand->id; 
+            $brand['link']  = '/brands/' . $brand->id; 
         }
         $productCategories = Category::select('id','title','parent_id')
             ->where('status',1)
@@ -84,9 +84,9 @@ class HomeController extends Controller
             ->with(['children:id,title,parent_id'])
             ->get();
         foreach ($productCategories as $item) {
-            $item['link']  = 'https://minimalzee.ir/products?category_id=' . $item->id; 
+            $item['link'] = '/products?category_id=' . $item->id; 
             foreach ($item->children as $child) {
-                $child['link']  = 'https://minimalzee.ir/products?category_id=' . $child->id; 
+                $child['link'] = '/products?category_id=' . $child->id; 
             }
         }
 
@@ -94,25 +94,25 @@ class HomeController extends Controller
         
         $menus = [
             [
-                'link' => 'https://minimalzee.ir/',
+                'link' => '/',
                 'title' => 'مینیمال زی'
             ],
             [
-                'link' => 'https://minimalzee.ir/brands/',
+                'link' => '/brands/',
                 'title' => 'برند ها',
                 'children' => $brands 
             ],
             [
-                'link' => 'https://minimalzee.ir/categories/',
+                'link' => '/categories/',
                 'title' => 'محصولات',
                 'children' => $productCategories 
             ],
             [
-                'link' => 'https://minimalzee.ir/weblog/',
+                'link' => '/weblog/',
                 'title' => 'بلاگ'
             ],
             [
-                'link' => 'https://minimalzee.ir/about-us/',
+                'link' => '/about-us/',
                 'title' => 'درباره ما'
             ],
         ];
