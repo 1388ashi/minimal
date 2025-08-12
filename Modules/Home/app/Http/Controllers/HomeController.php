@@ -85,15 +85,20 @@ class HomeController extends Controller
             ->get();
         foreach ($productCategories as $item) {
             $item['link']  = 'https://minimalzee.ir/products?category_id=' . $item->id; 
+            foreach ($item->children as $child) {
+                $child['link']  = 'https://minimalzee.ir/products?category_id=' . $child->id; 
+            }
         }
+
+
         
         $menus = [
-        [
-            'link' => 'https://minimalzee.ir/',
-            'title' => 'مینیمال زی'
-        ],
-        [
-            'link' => 'https://minimalzee.ir/brands/',
+            [
+                'link' => 'https://minimalzee.ir/',
+                'title' => 'مینیمال زی'
+            ],
+            [
+                'link' => 'https://minimalzee.ir/brands/',
                 'title' => 'برند ها',
                 'children' => $brands 
             ],
