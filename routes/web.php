@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Brand\Models\Brand;
 use Modules\Product\Models\Category;
+use Illuminate\Support\Facades\Schema;
 
 
 
@@ -21,12 +22,5 @@ use Modules\Product\Models\Category;
             $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
-            // $categoryIds = [1,2,3];
-        // $specificationIds = DB::table('category_specification')
-        //     ->whereIn('category_id', $categoryIds)
-        //     ->distinct()
-        //     ->pluck('specification_id')
-        //     ->toArray();
-        // $specifications = \Modules\Specification\Models\Specification::query()->whereIn('id', $specificationIds)->get();
-        // dd($specifications);
+        
     });
