@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Schema;
     });
 
     Route::get('test', function () {
-        Schema::create('brand_category', function (Blueprint $table) {
-            $table->id();
-            $table->foreignIdFor(Brand::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
-            $table->timestamps();
-        });
+        // Schema::create('brand_category', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->foreignIdFor(Brand::class)->constrained()->cascadeOnDelete();
+        //     $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
+        //     $table->timestamps();
+        // });
         
     });

@@ -95,25 +95,30 @@ class HomeController extends Controller
         $menus = [
             [
                 'link' => '/',
-                'title' => 'مینیمال زی'
+                'title' => 'مینیمال زی',
+                'group' => 'general'
             ],
             [
                 'link' => '/brands/',
                 'title' => 'برند ها',
-                'children' => $brands 
+                'children' => $brands,
+                'group' => 'brands'
             ],
             [
                 'link' => '/categories/',
                 'title' => 'محصولات',
-                'children' => $productCategories 
+                'children' => $productCategories,
+                'group' => 'products'
             ],
             [
                 'link' => '/weblog/',
-                'title' => 'بلاگ'
+                'title' => 'بلاگ',
+                'group' => 'general'
             ],
             [
                 'link' => '/about-us/',
-                'title' => 'درباره ما'
+                'title' => 'درباره ما',
+                'group' => 'general'
             ],
         ];
 
