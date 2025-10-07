@@ -166,7 +166,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label class="control-label">دسته بندی ها</label><span class="text-danger">&starf;</span>
                                 <select class="form-control selectMultiple" name="categories[]" required multiple>
@@ -178,7 +178,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="label" >اسلاگ</label><span class="text-danger">&starf;</span>
+                                <input class="form-control" type="text" name="slug" value="{{old('slug')}}">
+                            </div>
+                        </div>
+                        <div class="col-6">
                             <div class="form-group">
                                 <span class="control-label ">
                                     وضعیت

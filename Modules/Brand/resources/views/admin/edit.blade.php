@@ -65,7 +65,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="label" >اسلاگ</label><span class="text-danger">&starf;</span>
+                                <input class="form-control" type="text" name="slug" value="{{old('slug',$brand->slug)}}">
+                            </div>
+                        </div>
+                        <div class="col-6">
                             <div class="form-group">
                                 <span class="control-label ">
                                     وضعیت
