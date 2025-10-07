@@ -19,6 +19,7 @@ class BrandController extends Controller
     }
     public function show($slug): mixed  
     {  
+        dd(Brand::where('slug',$slug)->first());
         $brand = Brand::where('slug',$slug)->firstOrFail();
         $moreBrands = Brand::where('id', '!=', $brand->id)->get();  
         $products = Product::where('brand_id',$brand->id)->with('categories:id,title')->take(4)->get();
