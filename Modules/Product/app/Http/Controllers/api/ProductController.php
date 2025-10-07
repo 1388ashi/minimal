@@ -74,11 +74,11 @@ class ProductController extends Controller
         return response()->success('', compact('products','categories','colors','topPrice','brands'));
     }
 
-   public function show($id): JsonResponse
+   public function show($slug): JsonResponse
     {
         $product = Product::with('categories:id,title', 'specifications:id,name','colors:id,title,code')
                 ->selectRaw('*, (price - discount) as final_price')
-                ->findOrFail($id);
+                ->where('slug',$slug)->firstOrFail();
 
         $averageStar = Comment::where('product_id', $id)
         ->where('status', 'accepted')
@@ -89,7 +89,6 @@ class ProductController extends Controller
         ->get();
 
         $moreProducts = $product->categories()->get()->flatMap(function ($category) use ($product) {
-            // اینجا شما می‌توانید قیمت نهایی را برای هر محصول مشخص کنید
             $categoryProducts = $category->products->map(function ($product) {
                 $product->setAttribute('final_price', $product->totalPriceWithDiscount());
                 return $product;

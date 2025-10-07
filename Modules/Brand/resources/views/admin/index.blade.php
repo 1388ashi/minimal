@@ -120,7 +120,7 @@
     </div>
     <!-- row closed -->
     <div class="modal fade"  id="addspecialtie">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <form action="{{route('admin.brands.store')}}" class="save" enctype="multipart/form-data" method="post">
                     @csrf

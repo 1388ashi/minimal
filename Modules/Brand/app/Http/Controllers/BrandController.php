@@ -74,6 +74,7 @@ class BrandController extends Controller implements HasMiddleware
         $brand = Brand::query()->create([
             'status' => filled($request->status) ?: 0,
             'title' => $request->title,
+            'slug' => $request->slug,
             'description' => $request->description,
         ]);
         $brand->uploadFiles($request);
@@ -98,6 +99,7 @@ class BrandController extends Controller implements HasMiddleware
     {
         $brand->update([
             'title' => $request->title,
+            'slug' => $request->slug,
             'status' => filled($request->status) ?: 0,
             'description' => $request->description,
             'category_id' => $request->category_id,

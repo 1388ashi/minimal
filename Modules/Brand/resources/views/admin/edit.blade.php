@@ -1,7 +1,7 @@
 @foreach($brands as $brand)
     <div class="modal fade mt-5" tabindex="-1" id="edit-menu-{{ $brand->id }}" role="dialog"
         aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <form action="{{route('admin.brands.update', $brand->id)}}" enctype="multipart/form-data" method="POST">
                     @csrf
