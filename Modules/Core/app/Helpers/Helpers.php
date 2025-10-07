@@ -92,12 +92,12 @@ class Helpers
         {
             $settings = Cache::rememberForever('settings', function () {
                     return Setting::query()
-                        ->select(['id', 'name', 'value'])
+                        ->select(['id', 'name', 'text'])
                         ->get();
             });
             $setting = $settings->where('name', $key)->first();
 
-            return $setting ? $setting->value : $default;
+            return $setting ? $setting->text : $default;
         }
     // public static function setting(string $name, string $default = '')
     // {
