@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Brand\Http\Controllers\front;
+namespace Modules\Brand\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
@@ -12,30 +12,21 @@ class BrandController extends Controller
 {
     public function index()
     {
-        $brands = Brand::select('brands.id', 'brands.title', 'brands.status', 'brands.description')  
-            ->with('categories:id,title')->orderBy('order', 'asc')->get();  
-
-        $categoryIds = $brands->pluck('categories.*.id')->flatten()->unique();
-        $categories = Category::whereIn('id', $categoryIds)->get();
+       $brands = Brand::select('id','title','status','description','category_id')->get();
+       $categories = Category::whereIn('id', Brand::pluck('category_id'))->get();
         
         return response()->success('',compact('brands','categories'));
     }
     public function show(Brand $brand): mixed  
     {  
-        $moreBrands = Brand::all();  
-        
-        $products = Product::where('brand_id', $brand->id)->take(4)->get();  
-        
-        if ($products->isEmpty()) {  
-            $products = Product::latest('id')->take(5)->get();  
+        $moreBrands = Brand::where('id', '!=', $brand->id)->get();  
+        $products = Product::where('brand_id',$brand->id)->with('categories:id,title')->take(4)->get();
+        if (!$products) {
+            $products = Product::latest('id')->take(5)->get();
         }  
-        
-        $categoryIds = $brand->categories()->pluck('categories.id');
-        $categories = Category::whereIn('id', $categoryIds)->get();  
-        if ($categories->isEmpty()) {
-            $categories = Category::whereNull('parent_id')->take(4)->get();  
-        }  
-    
-        return response()->success('', compact('brand', 'products', 'moreBrands', 'categories'));  
-    }
+        $categories = Category::whereNull('parent_id')->take(4)->get();  
+
+        return response()->success('', 
+        compact('brand','products', 'moreBrands','categories'));  
+    }  
 }

@@ -170,6 +170,12 @@
 					</a>
 				</li>
 				@endcan
+				<li class="slide">
+					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.about-us.edit')}}">
+						<i class="fa fa-about-us sidemenu_icon"></i>
+						<span class="side-menu__label">مدیریت درباره ما</span>
+					</a>
+				</li>
 				@can('view settings')
 				<li class="slide">
 					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.settings.index')}}">

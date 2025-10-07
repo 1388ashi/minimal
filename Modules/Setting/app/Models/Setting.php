@@ -5,8 +5,6 @@ namespace Modules\Setting\Models;
 use Illuminate\Http\UploadedFile;
 use Modules\Core\Models\BaseModel;
 use Modules\Core\Traits\HasCache;
-use Spatie\Activitylog\LogOptions;
-use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 

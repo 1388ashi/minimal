@@ -5,6 +5,7 @@ namespace Modules\Home\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Modules\About\Models\AboutUs;
 use Modules\Blog\Models\BlogCategory;
 use Modules\Blog\Models\Post;
 use Modules\Brand\Models\Brand;
@@ -56,8 +57,9 @@ class HomeController extends Controller
         $lastProducts->map(function ($lastProducts) {
             return $lastProducts->setAttribute('final_price', $lastProducts->totalPriceWithDiscount());
         });
+        $aboutUs = AboutUs::all();
 
-        return response()->success('',compact('categories', 'sliders','countCategories','customerReview','brands','posts','products','lastProducts','workSamples'));
+        return response()->success('',compact('categories', 'sliders','aboutUs','countCategories','customerReview','brands','posts','products','lastProducts','workSamples'));
     }
     public function header(): JsonResponse
     {
