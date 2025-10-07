@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Brand\Http\Controllers\Front;
+namespace Modules\Brand\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
@@ -12,23 +12,30 @@ class BrandController extends Controller
 {
     public function index()
     {
-       $brands = Brand::select('id','title','slug','status','description','category_id')->get();
-       $categories = Category::whereIn('id', Brand::pluck('category_id'))->get();
+        $brands = Brand::select('brands.id', 'brands.title', 'brands.status', 'brands.description')  
+            ->with('categories:id,title')->orderBy('order', 'asc')->get();  
+
+        $categoryIds = $brands->pluck('categories.*.id')->flatten()->unique();
+        $categories = Category::whereIn('id', $categoryIds)->get();
         
         return response()->success('',compact('brands','categories'));
     }
-    public function show($slug): mixed  
+    public function show(Brand $brand): mixed  
     {  
-        dd(Brand::where('slug',$slug)->first());
-        $brand = Brand::where('slug',$slug)->firstOrFail();
-        $moreBrands = Brand::where('id', '!=', $brand->id)->get();  
-        $products = Product::where('brand_id',$brand->id)->with('categories:id,title')->take(4)->get();
-        if (!$products) {
-            $products = Product::latest('id')->take(5)->get();
+        $moreBrands = Brand::all();  
+        
+        $products = Product::where('brand_id', $brand->id)->take(4)->get();  
+        
+        if ($products->isEmpty()) {  
+            $products = Product::latest('id')->take(5)->get();  
         }  
-        $categories = Category::whereNull('parent_id')->take(4)->get();  
-
-        return response()->success('', 
-        compact('brand','products', 'moreBrands','categories'));  
-    }  
+        
+        $categoryIds = $brand->categories()->pluck('categories.id');
+        $categories = Category::whereIn('id', $categoryIds)->get();  
+        if ($categories->isEmpty()) {
+            $categories = Category::whereNull('parent_id')->take(4)->get();  
+        }  
+    
+        return response()->success('', compact('brand', 'products', 'moreBrands', 'categories'));  
+    }
 }
