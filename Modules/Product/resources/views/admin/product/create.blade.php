@@ -116,6 +116,16 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
+                                        <label for="slug" class="control-label">اسلاگ</label>
+                                        <input type="text" class="form-control" name="slug" id="slug"
+                                               placeholder="اسلاگ محصول اینجا وارد کنید" value="{{ old('slug') }}"
+                                               required autofocus>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
                                         <span class="control-label ">
                                             وضعیت
                                         </span>

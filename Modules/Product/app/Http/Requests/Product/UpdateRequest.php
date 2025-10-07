@@ -28,6 +28,7 @@ class UpdateRequest extends FormRequest
         $productId = $this->route()->parameter('product')->id;
         return [
                 'title' => ['required',Rule::unique('products')->ignore($productId)],
+                'slug' => ['required',Rule::unique('products')->ignore($productId)],
                 'description' => 'nullable',
                 'summary' => 'nullable',    
 

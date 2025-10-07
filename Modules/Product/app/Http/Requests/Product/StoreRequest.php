@@ -26,6 +26,7 @@ class StoreRequest extends FormRequest
     {
         return [
                 'title' => 'required|unique:products,title',
+                'slug' => 'required|unique:products,slug',
                 'description' => 'nullable',
                 'summary' => 'nullable',
 
