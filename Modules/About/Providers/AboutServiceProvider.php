@@ -4,6 +4,7 @@ namespace Modules\About\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+
 class AboutServiceProvider extends ServiceProvider
 {
     protected string $moduleName = 'About';
