@@ -10,6 +10,7 @@ class updateRequest extends FormRequest
     {
         return [
                 'title' => 'required',
+                'slug' => 'required',
                 'writer' => 'required',
                 'read' => 'required',
                 'body' => 'required|string',

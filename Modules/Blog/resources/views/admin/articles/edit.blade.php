@@ -27,13 +27,21 @@
                         @method('PATCH')
 
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">عنوان<span class="text-danger">&starf;</span></label>
                                     <input type="text" class="form-control" name="title" placeholder="عنوان محتوا اینجا وارد کنید" value="{{ old('title', $article->title) }}" required autofocus>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="slug" >اسلاگ<span class="text-danger">&starf;</span></label>
+                                    <input type="text" class="form-control" name="slug" id="slug" placeholder="اسلاگ محتوا اینجا وارد کنید" value="{{ old('slug',$article->slug) }}" required autofocus>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>دسته بندی ها</label><span class="text-danger">&starf;</span>
                                     <select class="form-control select2" name="category_id">
@@ -43,7 +51,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label">زمان انتشار</label>
                                     <div class="input-group">
@@ -73,8 +81,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label >توضیحات</label><span class="text-danger">&starf;</span>
-                            <textarea name="body" class="form-control ckeditor" cols="100" rows="4">{{$article->body}}</textarea>
+                            <div class="col-12">
+                                <label>توضیحات</label><span class="text-danger">&starf;</span>
+                                <textarea name="body" class="form-control ckeditor" cols="100" rows="4">{{$article->body}}</textarea>
+                            </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-4">

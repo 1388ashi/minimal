@@ -15,5 +15,5 @@ use Modules\Blog\Http\Controllers\api\PostsController;
 */
 Route::name('api')->group(function() {
     Route::get('/posts', [PostsController::class,'index']);
-    Route::get('/posts/{id}', [PostsController::class,'show']);
+    Route::get('/posts/{slug}', [PostsController::class,'show']);
 });

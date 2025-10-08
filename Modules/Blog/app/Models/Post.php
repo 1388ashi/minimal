@@ -21,21 +21,19 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
 
 class Post extends BaseModel implements HasMedia, Viewable
 {
-    use HasFactory, InteractsWithMedia,LogsActivity, HasSlug, Filterable, InteractsWithViews;
+    use HasFactory, InteractsWithMedia,LogsActivity, Filterable, InteractsWithViews;
     protected $fillable = [
         'title',
         'category_id',
-        'slug',
         'summary',
         'body',
         'type',
         'published_at',
         'writer',
+        'slug',
         'read',
         'featured',
         'status',
@@ -72,15 +70,6 @@ class Post extends BaseModel implements HasMedia, Viewable
         return LogOptions::defaults()
         ->logOnly($this->fillable)
         ->setDescriptionForEvent(fn(string $eventName) => $description . __('custom.'.$eventName));
-    }
-    public function getSlugOptions() : SlugOptions
-    {
-        return SlugOptions::create()
-            ->usingLanguage('')
-            ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug')
-            ->slugsShouldBeNoLongerThan(191)
-            ->doNotGenerateSlugsOnUpdate();
     }
         //start media-library
         protected $with = ['media'];

@@ -17,7 +17,7 @@ class PostsController extends Controller
     {
         $categoryId = $request->query("category_id");
 
-        $postCategories = Post::select('id','title','summary','body','type','featured','category_id','created_at')
+        $postCategories = Post::select('id','title','summary','body','type','featured','category_id','created_at','slug')
         ->with('category:id,title')
         ->when($request->has('category_id'), function ($query) use ($categoryId) {
             return $query->where('category_id', $categoryId);
@@ -58,13 +58,13 @@ class PostsController extends Controller
         return response()->success('', compact('articlePosts','newsPosts','postCategories','categories','trendPosts'));
     }
 
-    public function show(Request $request,$id): JsonResponse
+    public function show(Request $request,$slug): JsonResponse
     {
-        $post = Post::select('id','title','writer','read','type','category_id','body','summary','created_at')
-        ->with('category:id,title')->where('status',1)->findOrFail($id);
+        $post = Post::select('id','title','writer','read','type','category_id','body','summary','created_at','slug')
+        ->with('category:id,title')->where('status',1)->where('slug',$slug)->firstOrFail();
 
         $searchPost = Post::query()
-        ->select('id','title','writer','read','type','category_id','body','summary','created_at')
+        ->select('id','title','writer','read','type','category_id','body','summary','created_at','slug')
         ->when($request->has('title'), function ($query) use ($request) {
             $query->where('title', 'like', '%' . $request->input('title') . '%');
         })
@@ -77,7 +77,7 @@ class PostsController extends Controller
         $viewCount = views($post)->count();
         $mostViewedPosts = Post::orderByViews()->with('category:id,title')->take(4)->get();
         $categories = BlogCategory::select('id','title')->with('posts:id,title,summary,body,featured,created_at')->take(5)->get();
-        $morePosts = Post::select('id','title','writer','read','type','category_id','body','summary','created_at')->where('category_id',$post->category_id)->take(10)->get();
+        $morePosts = Post::select('id','title','writer','read','type','category_id','summary','created_at','slug')->where('category_id',$post->category_id)->take(10)->get();
 
         return response()->success("مشخصات بلاگ {$post->id}",compact('post','searchPost','viewCount','mostViewedPosts','categories','morePosts'));
     }
