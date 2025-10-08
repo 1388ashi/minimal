@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Brand\Http\Controllers\front\BrandController;
+use Modules\Brand\Http\Controllers\Front\BrandController;
 
 /*
  *--------------------------------------------------------------------------
@@ -16,5 +16,5 @@ use Modules\Brand\Http\Controllers\front\BrandController;
 
 Route::name('api')->group(function() {
     Route::get('/brands', [BrandController::class,'index']);
-    Route::get('/brands/{brand}', [BrandController::class,'show']);
+    Route::get('/brands/{slug}', [BrandController::class,'show']);
 });

@@ -17,6 +17,7 @@ class UpdateRequest extends FormRequest
         $categoryId = $this->route()->parameter('category')->id;
         return [
             'title' => ['required',Rule::unique('categories')->ignore($categoryId)],
+            'slug' => ['required',Rule::unique('categories')->ignore($categoryId)],
             'parent_id' => ['nullable'],
             'image' => 'nullable|image|mimes:jpeg,png,jpg',
             'dark_image' => 'nullable|image',

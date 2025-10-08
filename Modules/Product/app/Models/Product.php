@@ -25,12 +25,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Log;
 use Spatie\Activitylog\LogOptions;
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
 
 class Product extends BaseModel implements Viewable,HasMedia
 {
-    use HasFactory, InteractsWithMedia, LogsActivity,HasSlug, InteractsWithViews;
+    use HasFactory, InteractsWithMedia, LogsActivity, InteractsWithViews;
     protected $fillable = [
         'title',
         'slug',
@@ -51,15 +49,6 @@ class Product extends BaseModel implements Viewable,HasMedia
         return LogOptions::defaults()
         ->logOnly($this->fillable)
         ->setDescriptionForEvent(fn(string $eventName) => $description . __('custom.'.$eventName));
-    }
-    public function getSlugOptions() : SlugOptions
-    {
-        return SlugOptions::create()
-            ->usingLanguage('')
-            ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug')
-            ->slugsShouldBeNoLongerThan(191)
-            ->doNotGenerateSlugsOnUpdate();
     }
     public function totalPriceWithDiscount(): int
 	{

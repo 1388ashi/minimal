@@ -57,6 +57,7 @@ class CategoryController extends Controller implements HasMiddleware
     {
         $category = Category::query()->create([
             'title' => $request->input('title'),
+            'slug' => $request->input('slug'),
             'parent_id' => $request->input('parent_id'),
             'featured' => filled($request->featured) ?: 0,
             'status' => filled($request->status) ?: 0
@@ -101,6 +102,7 @@ class CategoryController extends Controller implements HasMiddleware
     {
         $category->update([
             'title' => $request->title,
+            'slug' => $request->slug,
             'parent_id' => $request->input('parent_id'),
             'featured' => filled($request->featured) ?: 0,
             'status' => filled($request->status) ?: 0

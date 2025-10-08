@@ -29,6 +29,7 @@ class Category extends BaseModel implements HasMedia
         'title',
         'parent_id',
         'featured',
+        'slug',
         'status',
     ];/**\
      */

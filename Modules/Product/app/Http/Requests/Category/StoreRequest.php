@@ -16,6 +16,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'title' => 'required|unique:categories,title',
+            'slug' => 'required|unique:categories,slug',
             'parent_id' => ['nullable', 'numeric'],
             'image' => 'nullable|image',
             'dark_image' => 'nullable|image',

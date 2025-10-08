@@ -17,7 +17,10 @@ class ProductController extends Controller
     {
         $sortBy = $request->sortBy;
 
-        $brands = Brand::select('id','title')->latest('id')->get();
+        $brands = Brand::select('id', 'title')
+            ->latest('id')
+            ->get()
+            ->makeHidden(['white_image', 'dark_image', 'background']);
         $colors = Color::select('id','title','code')->latest('id')->get();
         $categories = Category::select('id','title','parent_id')
         ->where('status',1)
@@ -80,11 +83,11 @@ class ProductController extends Controller
                 ->selectRaw('*, (price - discount) as final_price')
                 ->where('slug',$slug)->firstOrFail();
 
-        $averageStar = Comment::where('product_id', $id)
+        $averageStar = Comment::where('product_id', $product->id)
         ->where('status', 'accepted')
         ->avg('star');
 
-        $comments = Comment::where('product_id',$id)
+        $comments = Comment::where('product_id',$product->id)
         ->where('status', 'accepted')
         ->get();
 

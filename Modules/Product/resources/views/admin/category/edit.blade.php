@@ -80,6 +80,12 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    <label for="slug" class="control-label">اسلاگ <span class="text-danger">&starf;</span></label>
+                                    <input type="text" class="form-control" name="slug" id="slug" placeholder="اسلاگ دسته بندی اینجا وارد کنید" value="{{ old('slug',$category->slug) }}" required autofocus>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
                                     <span class="control-label ">
                                         ویژه
                                     </span>

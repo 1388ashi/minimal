@@ -10,7 +10,7 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $aboutUs = AboutUs::all();
+        $aboutUs = AboutUs::pluck('text', 'name');
 
         return response()->success('',compact('aboutUs'));
     }

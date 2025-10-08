@@ -57,7 +57,7 @@ class HomeController extends Controller
         $lastProducts->map(function ($lastProducts) {
             return $lastProducts->setAttribute('final_price', $lastProducts->totalPriceWithDiscount());
         });
-        $aboutUs = AboutUs::all();
+        $aboutUs = AboutUs::pluck('text', 'name');
 
         return response()->success('',compact('categories', 'sliders','aboutUs','countCategories','customerReview','brands','posts','products','lastProducts','workSamples'));
     }
@@ -76,7 +76,7 @@ class HomeController extends Controller
         return response()->success('',compact('productCategories', 'postCategories'));
     }
     public function menus(){
-        $brands = Brand::select('id', 'title', 'status', 'description')->orderBy('order', 'asc')->get();
+        $brands = Brand::select('id', 'title', 'status', 'description')->orderBy('order', 'asc')->get()->makeHidden(['background']);
         foreach ($brands as $brand) {
             $brand['link']  = '/brands/' . $brand->id; 
         }
