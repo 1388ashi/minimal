@@ -38,7 +38,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label >دسته بندی ها</label><span class="text-danger">&starf;</span>
                                     <select class="form-control select2" name="category_id">
@@ -49,7 +49,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group ">
                                     <label class="form-label">زمان انتشار</label>
                                     <div class="input-group">
@@ -63,6 +63,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="label" >تصویر اصلی</label><span class="text-danger">&starf;</span>
+                                    <input  class="form-control" type="file" name="image">
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8">
@@ -73,8 +79,8 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="label" >تصویر اصلی</label><span class="text-danger">&starf;</span>
-                                    <input  class="form-control" type="file" name="image">
+                                    <label for="image_alt" >آلت تصویر<span class="text-danger">&starf;</span></label>
+                                    <input type="text" class="form-control" name="image_alt" id="image_alt" placeholder="آلت تصویر محتوا اینجا وارد کنید" value="{{ old('image_alt') }}" required autofocus>
                                 </div>
                             </div>
                         </div>

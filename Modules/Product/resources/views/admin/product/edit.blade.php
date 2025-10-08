@@ -176,12 +176,21 @@
                                         </select>
                                     </div>
                                 </div>
-                                 <div class="col-md-4">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="slug" class="control-label">اسلاگ</label>
+                                        <label for="slug" class="control-label">اسلاگ<span
+                                                class="text-danger">&starf;</span></label>
                                         <input type="text" class="form-control" name="slug" id="slug"
                                                placeholder="اسلاگ محصول اینجا وارد کنید" value="{{ old('slug',$product->slug) }}"
                                                required autofocus>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="image_alt" class="control-label">آلت تصویر</label>
+                                        <input type="text" class="form-control" name="image_alt" id="image_alt"
+                                               placeholder="آلت تصویر محصول اینجا وارد کنید" value="{{ old('image_alt',$product->image_alt) }}"
+                                                autofocus>
                                     </div>
                                 </div>
                                 <div class="col-md-4">

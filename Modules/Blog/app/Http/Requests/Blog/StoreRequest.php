@@ -14,6 +14,7 @@ class StoreRequest extends FormRequest
         return [
                 'title' => 'required|unique:posts,title',
                 'slug' => 'required|unique:posts,slug',
+                'image_alt' => 'nullable',
                 'writer' => 'required',
                 'read' => 'required',
                 'type' => 'required',

@@ -31,6 +31,7 @@ class StoreRequest extends FormRequest
                 'summary' => 'nullable',
 
                 'price' => 'nullable|integer',
+                'image_alt' => 'nullable|string',
                 'discount' => 'nullable|integer',
                 'status' => ['nullable', 'in:1'],
                 'brand_id' => 'nullable|exists:brands,id',

@@ -31,6 +31,7 @@ class UpdateRequest extends FormRequest
                 'slug' => ['required',Rule::unique('products')->ignore($productId)],
                 'description' => 'nullable',
                 'summary' => 'nullable',    
+                'image_alt' => 'nullable|string',
 
                 'price' => 'nullable|integer',
                 'discount' => 'nullable|integer ',

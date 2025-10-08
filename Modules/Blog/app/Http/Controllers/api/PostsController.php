@@ -17,7 +17,7 @@ class PostsController extends Controller
     {
         $categoryId = $request->query("category_id");
 
-        $postCategories = Post::select('id','title','summary','body','type','featured','category_id','created_at','slug')
+        $postCategories = Post::select('id','title','summary','body','type','featured','category_id','created_at','slug','image_alt')
         ->with('category:id,title')
         ->when($request->has('category_id'), function ($query) use ($categoryId) {
             return $query->where('category_id', $categoryId);
@@ -30,7 +30,7 @@ class PostsController extends Controller
         $categories  = BlogCategory::select('id','title')->with('posts')->where('status',1)->get();
 
         $articlePosts = Post::query()  
-        ->select('id', 'title', 'summary', 'type', 'body', 'featured', 'created_at')  
+        ->select('id', 'title', 'summary', 'type', 'body', 'featured', 'created_at','image_alt')  
         ->where('type', 'article')  
         ->where('status', 1)  
         ->take(7)  
@@ -40,7 +40,7 @@ class PostsController extends Controller
         $postsToSkip = count($articlePosts);
 
         $newsPosts = Post::query()  
-        ->select('id', 'title', 'summary', 'body', 'type', 'created_at')  
+        ->select('id', 'title', 'summary', 'body', 'type', 'created_at','image_alt')  
         ->where('status', 1)  
         ->latest('id')  
         ->where('type','news')  
@@ -48,7 +48,7 @@ class PostsController extends Controller
         ->paginate();  
         
         $trendPosts = Post::query()  
-        ->select('id', 'title', 'summary', 'body', 'type', 'created_at')  
+        ->select('id', 'title', 'summary', 'body', 'type', 'created_at','image_alt')  
         ->where('status', 1)  
         ->where('type', 'trend')
         ->take(6)  
@@ -60,7 +60,7 @@ class PostsController extends Controller
 
     public function show(Request $request,$slug): JsonResponse
     {
-        $post = Post::select('id','title','writer','read','type','category_id','body','summary','created_at','slug')
+        $post = Post::select('id','title','writer','read','type','category_id','body','summary','created_at','slug','image_alt')
         ->with('category:id,title')->where('status',1)->where('slug',$slug)->firstOrFail();
 
         $searchPost = Post::query()
@@ -77,7 +77,8 @@ class PostsController extends Controller
         $viewCount = views($post)->count();
         $mostViewedPosts = Post::orderByViews()->with('category:id,title')->take(4)->get();
         $categories = BlogCategory::select('id','title')->with('posts:id,title,summary,body,featured,created_at')->take(5)->get();
-        $morePosts = Post::select('id','title','writer','read','type','category_id','summary','created_at','slug')->where('category_id',$post->category_id)->take(10)->get();
+        $morePosts = Post::select('id','title','writer','read','type','category_id','summary','created_at','slug','image_alt')
+            ->where('category_id',$post->category_id)->take(10)->get();
 
         return response()->success("مشخصات بلاگ {$post->id}",compact('post','searchPost','viewCount','mostViewedPosts','categories','morePosts'));
     }

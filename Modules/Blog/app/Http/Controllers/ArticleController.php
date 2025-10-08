@@ -59,6 +59,7 @@ class ArticleController extends Controller implements HasMiddleware
         }
         $article = Post::query()->create([
             'title' => $request->title,
+            'image_alt' => $request->image_alt,
             'slug' => $request->slug,
             'writer' => $request->writer,
             'read' => $request->read,
@@ -113,6 +114,7 @@ class ArticleController extends Controller implements HasMiddleware
         $article->update([
             'title' => $request->title,
             'slug' => $request->slug,
+            'image_alt' => $request->image_alt,
             'type' => $request->type,
             'writer' => $request->writer,
             'category_id' => $request->category_id,

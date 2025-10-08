@@ -37,7 +37,7 @@ class HomeController extends Controller
         });
         $countCategories = Category::whereNull('parent_id')->select('id','title')->where('status',1)->withCount('products')->get();
         $customerReview = CustomerReview::select('id','name','city','description')->latest('id')->get();
-        $posts = Post::select('id','title','writer','summary','created_at','slug')->where('status',1)->latest('id')->take(4)->get();
+        $posts = Post::select('id','title','writer','summary','created_at','slug','image_alt')->where('status',1)->latest('id')->take(4)->get();
         $brands = Brand::select('id','status','order','slug')->where('status',1)->orderBy('order', 'asc')->get();
 
         $categories = Category::query()

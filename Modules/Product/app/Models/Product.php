@@ -32,6 +32,7 @@ class Product extends BaseModel implements Viewable,HasMedia
     protected $fillable = [
         'title',
         'slug',
+        'image_alt',
         'description',
         'price',
         'discount',
