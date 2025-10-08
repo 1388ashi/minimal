@@ -98,6 +98,7 @@ class HomeController extends Controller
             [
                 'link' => '/',
                 'title' => 'مینیمال زی',
+                'children' => [],
                 'group' => 'general'
             ],
             [
@@ -115,11 +116,13 @@ class HomeController extends Controller
             [
                 'link' => '/weblog/',
                 'title' => 'بلاگ',
+                'children' => [],
                 'group' => 'general'
             ],
             [
                 'link' => '/about-us/',
                 'title' => 'درباره ما',
+                'children' => [],
                 'group' => 'general'
             ],
         ];
