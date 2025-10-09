@@ -18,6 +18,7 @@ class StoreRequest extends FormRequest
                 'string',
                 'url',
             ],
+            'type' => 'required|in:up,down',
             'image' => 'required|image|mimes:jpeg,png,jpg',
             'logo' => 'required|image|mimes:jpeg,png,jpg',
         ];

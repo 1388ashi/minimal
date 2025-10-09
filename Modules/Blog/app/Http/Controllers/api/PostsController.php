@@ -60,26 +60,14 @@ class PostsController extends Controller
 
     public function show(Request $request,$slug): JsonResponse
     {
-        $post = Post::select('id','title','writer','read','type','category_id','body','summary','created_at','slug','image_alt')
-        ->with('category:id,title')->where('status',1)->where('slug',$slug)->firstOrFail();
-
-        $searchPost = Post::query()
-        ->select('id','title','writer','read','type','category_id','body','summary','created_at','slug')
-        ->when($request->has('title'), function ($query) use ($request) {
-            $query->where('title', 'like', '%' . $request->input('title') . '%');
-        })
-        ->with('category:id,title')
-        ->where('status',1)
-        ->latest('id')
-        ->paginate(12);
-        views($post)->record();
-
-        $viewCount = views($post)->count();
-        $mostViewedPosts = Post::orderByViews()->with('category:id,title')->take(4)->get();
-        $categories = BlogCategory::select('id','title')->with('posts:id,title,summary,body,featured,created_at')->take(5)->get();
-        $morePosts = Post::select('id','title','writer','read','type','category_id','summary','created_at','slug','image_alt')
+        $post = Post::with('productCategories:id,title,slug')->select('id','title','category_id','body','slug','image_alt')
+            ->where('status',1)->where('slug',$slug)->firstOrFail();
+        $productCategories = $post->productCategories->makeHidden(['dark_image']);
+        unset($post->productCategories);
+        $morePosts = Post::select('id','title','category_id','summary','created_at','slug','image_alt')
             ->where('category_id',$post->category_id)->take(10)->get();
+        
 
-        return response()->success("مشخصات بلاگ {$post->id}",compact('post','searchPost','viewCount','mostViewedPosts','categories','morePosts'));
+        return response()->success("مشخصات بلاگ {$post->id}",compact('post','morePosts','productCategories'));
     }
 }

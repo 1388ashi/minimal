@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Slider\Http\Requests\Slider;
+namespace Modules\Slider\Http\Requests\BrandSlider;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -12,7 +12,7 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required',
+             'title' => 'required',
             'link' => [
                 'nullable',
                 'string',

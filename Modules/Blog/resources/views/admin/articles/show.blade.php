@@ -65,6 +65,42 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xl-12 col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="header p-3 " style="font-size: 20px" data-sider-select-id="9307cbef-94b5-42d0-80a4-80f8306b0261">دسته بندی محصول مرتبط:
+                            @foreach($article->productCategories as $key => $item)
+                                {{$item->title}}
+                                @if($key < $article->productCategories->count() - 1),@endif
+                            @endforeach
+                        </p>
+                        <form action="{{route('admin.articles.update-product-categories', $article->id)}}" method="POST">
+                            @csrf
+                            @method('PATCH')
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>دسته بندی محصول</label>
+                                        <select class="form-control select2" name="categories[]" multiple>
+                                            <option value="">انتخاب کنید</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->id }}" @selected($article->productCategories->contains($category->id))>
+                                                    {{ $category->title }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 d-flex align-items-center mt-1">
+                                    <button class="btn btn-sm btn-warning">به روزرسانی</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         @if ($article->body)
         <div class="row">
             <div class="col-xl-12 col-md-12">

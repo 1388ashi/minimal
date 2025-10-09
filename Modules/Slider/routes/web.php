@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Slider\Http\Controllers\BrandSliderController;
 use Modules\Slider\Http\Controllers\SliderController;
 
 /*
@@ -15,6 +16,6 @@ use Modules\Slider\Http\Controllers\SliderController;
 */
 
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
-
     Route::resource('sliders',SliderController::class);
+    Route::resource('brand-sliders',BrandSliderController::class);
 });

@@ -20,7 +20,9 @@ use Modules\Blog\Http\Controllers\PostController;
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
 
     Route::resource('blog-categories',CategoryController::class);
-    // Route::delete('categories/deleteImage/{category}', [CategoryController::class, 'destroyImage'])->name('categories.image.destroy');
+    
+    Route::patch('articles/update-product-categories/{id}', [ArticleController::class, 'updateProductCategories'])
+        ->name('articles.update-product-categories');
 
     Route::resource('news',NewsController::class);
     Route::resource('articles',ArticleController::class);

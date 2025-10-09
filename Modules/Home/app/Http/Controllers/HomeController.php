@@ -22,61 +22,21 @@ class HomeController extends Controller
      */
     public function home(Request $request): JsonResponse
     {
-        $sliders = Slider::query()->where('status',1)->select('id','title','link','status')->latest('id')->take(4)->get();
-
-        $products = Product::query()
-        ->select('id','title','price','discount')
-        ->when($request->has('title'), function ($query) use ($request) {
-            $query->where('title', 'like', '%' . $request->input('title') . '%');
-        })
-        ->where('status',1)
-        ->latest('id')
-        ->paginate();
-        $products->map(function ($products) {
-            return $products->setAttribute('final_price', $products->totalPriceWithDiscount());
-        });
-        $countCategories = Category::whereNull('parent_id')->select('id','title')->where('status',1)->withCount('products')->get();
-        $customerReview = CustomerReview::select('id','name','city','description')->latest('id')->get();
-        $posts = Post::select('id','title','writer','summary','created_at','slug','image_alt')->where('status',1)->latest('id')->take(4)->get();
-        $brands = Brand::select('id','status','order','slug')->where('status',1)->orderBy('order', 'asc')->get();
-
-        $categories = Category::query()
-        ->with(['parent:id,title', 'children:id,title,parent_id', 'recursiveChildren:id,title,parent_id', 'products'])
-        ->whereHas('products')
-        ->take(8)
-        ->get();  
-        $workSamples = WorkSample::select('id','title')->take(5)->latest('id')->get();
-        $lastProducts = Product::query()
-            ->WhereHas('suggestion', function($query) {
-                return $query->with('suggestion');
-            })
-            ->latest('id')
-            ->where('status',1)
-            ->take(8)
-            ->get();
-        $lastProducts->map(function ($lastProducts) {
-            return $lastProducts->setAttribute('final_price', $lastProducts->totalPriceWithDiscount());
-        });
+        $upSliders = Slider::query()->where('status',1)->where('type','up')
+            ->select('id','title','link','status','type')->latest('id')->take(4)->get();
+        $downSliders = Slider::query()->where('status',1)->where('type','down')
+            ->select('id','title','link','status','type')->latest('id')->take(4)->get();
+        $posts = Post::select('id','title','writer','created_at','slug','image_alt')->where('status',1)->latest('id')->take(4)->get();
+        $brands = Brand::select('id','status','order','slug')->where('status',1)->orderBy('order', 'asc')->get()->makeHidden(['white_image','background']);
+        $categories = Category::query()->select('id','title','parent_id','slug','status')
+            ->where('status',1)->whereNull('parent_id')->take(8)->get()->makeHidden(['dark_image']);  
+       
         $aboutUs = AboutUs::pluck('text', 'name');
 
-        return response()->success('',compact('categories', 'sliders','aboutUs','countCategories','customerReview','brands','posts','products','lastProducts','workSamples'));
-    }
-    public function header(): JsonResponse
-    {
-        $productCategories = Category::select('id','title','parent_id')
-        ->where('status',1)
-        ->whereNull('parent_id')
-        ->with(['children:id,title,parent_id'])
-        ->get();
-
-        $postCategories = BlogCategory::select('id','title')
-        ->where('status',1)
-        ->get();
-
-        return response()->success('',compact('productCategories', 'postCategories'));
+        return response()->success('',compact('categories','upSliders','downSliders','aboutUs','brands','posts'));
     }
     public function menus(){
-        $brands = Brand::select('id', 'title', 'status', 'description')->orderBy('order', 'asc')->get()->makeHidden(['background']);
+        $brands = Brand::select('id', 'title', 'status')->orderBy('order', 'asc')->get()->makeHidden(['background']);
         foreach ($brands as $brand) {
             $brand['link']  = '/brands/' . $brand->id; 
         }
@@ -84,15 +44,15 @@ class HomeController extends Controller
             ->where('status',1)
             ->whereNull('parent_id')
             ->with(['children:id,title,parent_id'])
-            ->get();
+            ->get()
+            ->makeHidden(['image']);
         foreach ($productCategories as $item) {
             $item['link'] = '/products?category_id=' . $item->id; 
             foreach ($item->children as $child) {
+                $child->makeHidden(['image','dark_image']);
                 $child['link'] = '/products?category_id=' . $child->id; 
             }
         }
-
-
         
         $menus = [
             [

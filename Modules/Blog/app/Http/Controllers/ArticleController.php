@@ -5,6 +5,7 @@ namespace Modules\Blog\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Cache;
@@ -12,6 +13,7 @@ use Modules\Blog\Http\Requests\Blog\StoreRequest;
 use Modules\Blog\Http\Requests\Blog\updateRequest;
 use Modules\Blog\Models\Post;
 use Modules\Blog\Models\BlogCategory;
+use Modules\Product\Models\Category;
 
 class ArticleController extends Controller implements HasMiddleware
 {
@@ -88,8 +90,9 @@ class ArticleController extends Controller implements HasMiddleware
     public function show(Post $article)
     {
         $article->load(['category:id,title']);
+        $categories = Category::select('id','title')->get();
 
-        return view('blog::admin.articles.show', compact('article'));
+        return view('blog::admin.articles.show', compact('article','categories'));
     }
 
     /**
@@ -134,6 +137,22 @@ class ArticleController extends Controller implements HasMiddleware
 
         return redirect()->route('admin.articles.index')
         ->with($data);
+    }
+
+    public function updateProductCategories($id, Request $request): RedirectResponse
+    {
+        $article = Post::findOrFail($id);
+        $article->productCategories()->detach();
+        foreach ($request->categories as $category) {
+            $article->productCategories()->attach($category);
+        }
+
+        $data = [
+            'status' => 'success',
+            'message' => 'دسته بندی مقاله با موفقیت به روزرسانی شد'
+        ];
+
+        return redirect()->back()->with($data);
     }
 
     /**

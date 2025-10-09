@@ -22,18 +22,28 @@
 
                     <x-alert-danger></x-alert-danger>
 
-                    <form action="{{ route('admin.sliders.update',$slider) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.sliders.update',$slider->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="name" class="control-label">عنوان<span class="text-danger">&starf;</span></label>
                                     <input type="text" class="form-control" name="title" id="title" placeholder="عنوان اسلایدر اینجا وارد کنید" value="{{ old('title', $slider->title) }}" required autofocus>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">جایگاه<span class="text-danger">&starf;</span></label>
+                                    <select class="form-control select2" name="type" required>
+                                        <option selected disabled>-- انتخاب کنید --</option>
+                                        <option value="up" @selected($slider->type == 'up')>بالا</option>
+                                        <option value="down" @selected($slider->type == 'down')>پایین</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="link" class="control-label">لینک</label>
                                     <input type="text" class="form-control" name="link" id="link" placeholder="لینک اسلایدر اینجا وارد کنید"  value="{{ old('link', $slider->link) }}"  autofocus>

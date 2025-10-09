@@ -19,6 +19,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Modules\Blog\Models\Post;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Category extends BaseModel implements HasMedia
@@ -68,6 +69,10 @@ class Category extends BaseModel implements HasMedia
     {
         return $this->children()->with('children');
     }
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class);
+    }
     public function specifications() : BelongsToMany{
 		return $this->belongsToMany(Specification::class);
     }
@@ -81,28 +86,29 @@ class Category extends BaseModel implements HasMedia
         $this->addMediaCollection('category_dark_image')->singleFile();
     }
     
-    protected function darkImage() : Attribute 
-    {
-        $media = $this->getFirstMedia('category_dark_image');
-
-        return Attribute::make(
-            get: fn () => [
-                'id' => $media?->id,
-                'url' => $media?->getFullUrl(),
-                'name' => $media?->file_name
-            ],
-        );
-    }
-    protected function image() : Attribute 
+    protected function image(): Attribute 
     {
         $media = $this->getFirstMedia('category_images');
 
         return Attribute::make(
-            get: fn () => [
-                'id' => $media?->id,
-                'url' => $media?->getFullUrl(),
-                'name' => $media?->file_name
-            ],
+            get: fn () => $media ? [
+                'id' => $media->id,
+                'url' => $media->getFullUrl(),
+                'name' => $media->file_name
+            ] : null
+        );
+    }
+
+    protected function darkImage(): Attribute 
+    {
+        $media = $this->getFirstMedia('category_dark_image');
+
+        return Attribute::make(
+            get: fn () => $media ? [
+                'id' => $media->id,
+                'url' => $media->getFullUrl(),
+                'name' => $media->file_name
+            ] : null
         );
     }
     public function addImage(UploadedFile $file): bool|\Spatie\MediaLibrary\MediaCollections\Models\Media

@@ -30,6 +30,16 @@
                                     <input type="text" class="form-control" name="title" id="title" placeholder="عنوان اسلایدر اینجا وارد کنید" value="{{ old('title') }}" required autofocus>
                                 </div>
                             </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">جایگاه<span class="text-danger">&starf;</span></label>
+                                    <select class="form-control select2" name="type" required>
+                                        <option selected disabled>-- انتخاب کنید --</option>
+                                        <option value="up" @selected(old('type' == 'up'))>بالا</option>
+                                        <option value="down" @selected(old('type' == 'down'))>پایین</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="link" class="control-label">لینک</label>
@@ -42,8 +52,6 @@
                                     <input  class="form-control" type="file" name="image" required>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="label" class="control-label">لوگو<span class="text-danger">&starf;</span></label>

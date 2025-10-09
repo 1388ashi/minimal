@@ -104,12 +104,18 @@
 					</ul>
 					@endcan
 				</li>
-				@can('view faq')
+				@can('view sliders')
 				<li class="slide">
-					<a class="side-menu__item" data-toggle="slide" href="{{route('admin.sliders.index')}}">
+					<a class="side-menu__item" style="cursor: pointer" data-toggle="slide" >
 						<i class="fa fa-sliders sidemenu_icon"></i>
-						<span class="side-menu__label">اسلایدر ها</span>
+						<span class="side-menu__label">مدیریت اسلایدر ها</span><i class="angle fa fa-angle-left"></i>
 					</a>
+					<ul class="slide-menu">
+						<li><a href="{{route('admin.sliders.index')}}" class="slide-item">اسلایدر ها</a></li>
+					</ul>
+					<ul class="slide-menu">
+						<li><a href="{{route('admin.brand-sliders.index')}}" class="slide-item">اسلایدر های برند</a></li>
+					</ul>
 				</li>
 				@endcan
 				@can('view faq')

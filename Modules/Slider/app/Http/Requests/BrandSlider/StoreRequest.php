@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Slider\Http\Requests\Slider;
+namespace Modules\Slider\Http\Requests\BrandSlider;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -19,8 +19,8 @@ class UpdateRequest extends FormRequest
                 'url',
             ],
             'type' => 'required|in:up,down',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg',
+            'image' => 'required|image|mimes:jpeg,png,jpg',
+            'logo' => 'required|image|mimes:jpeg,png,jpg',
         ];
     }
 

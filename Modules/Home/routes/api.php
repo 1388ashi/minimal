@@ -16,6 +16,5 @@ use Modules\Home\Http\Controllers\HomeController;
 
 Route::name('api')->group(function() {
         Route::get('/home', [HomeController::class,'home']);
-        Route::get('/header', [HomeController::class,'header']);
         Route::get('/menus', [HomeController::class,'menus']);
 });

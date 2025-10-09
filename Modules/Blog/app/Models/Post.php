@@ -17,6 +17,7 @@ use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
+use Modules\Product\Models\Category;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
@@ -61,6 +62,10 @@ class Post extends BaseModel implements HasMedia, Viewable
     public function category(): BelongsTo
     {
         return $this->belongsTo(BlogCategory::class);
+    }
+    public function productCategories()
+    {
+        return $this->belongsToMany(Category::class);
     }
     public function getActivitylogOptions() : LogOptions
     {

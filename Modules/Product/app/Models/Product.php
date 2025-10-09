@@ -108,11 +108,11 @@ class Product extends BaseModel implements Viewable,HasMedia
             $media = $this->getFirstMedia('product_videos');
 
             return Attribute::make(
-                get: fn () => [
+                get: fn () => $media ? [
                     'id' => $media?->id,
                     'url' => $media?->getFullUrl(),
                     'name' => $media?->file_name
-                ],
+                ] : null
             );
         }
 

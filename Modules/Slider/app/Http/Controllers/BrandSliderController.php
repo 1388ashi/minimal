@@ -3,14 +3,14 @@
 namespace Modules\Slider\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Routing\Controllers\Middleware;
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Modules\Slider\Http\Requests\Slider\StoreRequest;
-use Modules\Slider\Http\Requests\Slider\UpdateRequest;
-use Modules\Slider\Models\Slider;
+use Modules\Slider\Http\Requests\BrandSlider\StoreRequest;
+use Modules\Slider\Http\Requests\BrandSlider\UpdateRequest;
+use Modules\Slider\Models\BrandSlider;
 
-class SliderController extends Controller implements HasMiddleware
+class BrandSliderController extends Controller implements HasMiddleware
 {
     public static function middleware(){
         return [
@@ -20,27 +20,23 @@ class SliderController extends Controller implements HasMiddleware
             new Middleware('can:delete sliders',['destroy']),
         ];
     }
-
-    /**
-     * Display a listing of the resource.
-     */
     public function index(): Renderable
     {
-        $sliders = Slider::query()->select('id','title','link','status')->latest()->paginate();
+        $sliders = BrandSlider::query()->select('id','title','link','status')->latest()->paginate();
 
-        return view('slider::admin.slider.index', compact('sliders'));
+        return view('slider::admin.brand-slider.index', compact('sliders'));
     }
 
     public function create(): Renderable
     {
-        return view('slider::admin.slider.create');
+        return view('slider::admin.brand-slider.create');
     }
     public function store(StoreRequest $request)
     {
         if (is_null($request->status)) {
             $request->status = false;
         }
-        $slider = Slider::query()->create([
+        $slider = BrandSlider::query()->create([
             'title' => $request->title,
             'link' => $request->link,
             'type' => $request->type,
@@ -53,15 +49,17 @@ class SliderController extends Controller implements HasMiddleware
             'message' => 'اسلایدر با موفقیت ثبت شد'
         ];
 
-        return redirect()->route('admin.sliders.index')
+        return redirect()->route('admin.brand-sliders.index')
         ->with($data);
     }
 
-    public function edit(Slider $slider): Renderable
+    public function edit($id): Renderable
     {
-        return view('slider::admin.slider.edit', compact('slider'));
+        $slider = BrandSlider::find($id);
+
+        return view('slider::admin.brand-slider.edit', compact('slider'));
     }
-    public function update(UpdateRequest $request, Slider $slider)
+    public function update(UpdateRequest $request, BrandSlider $slider)
     {
         if (is_null($request->status)) {
             $request->status = false;
@@ -78,15 +76,13 @@ class SliderController extends Controller implements HasMiddleware
             'status' => 'success',
             'message' => 'اسلایدر با موفقیت به روزرسانی شد'
         ];
-        return redirect()->route('admin.sliders.index')
+        return redirect()->route('admin.brand-sliders.index')
         ->with($data);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Slider $slider)
+    public function destroy($id)
     {
+        $slider = BrandSlider::find($id);
         $slider->delete();
 
         $data = [
@@ -94,7 +90,7 @@ class SliderController extends Controller implements HasMiddleware
             'message' => 'اسلایدر با موفقیت حذف شد'
         ];
 
-        return redirect()->route('admin.sliders.index')
+        return redirect()->route('admin.brand-sliders.index')
             ->with($data);
     }
 }

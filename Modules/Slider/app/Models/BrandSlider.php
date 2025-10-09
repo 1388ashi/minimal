@@ -15,7 +15,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
-class Slider extends Model implements HasMedia
+class BrandSlider extends Model implements HasMedia
 {
     use HasFactory, LogsActivity,InteractsWithMedia;
 
@@ -33,10 +33,6 @@ class Slider extends Model implements HasMedia
     protected $hidden = ['media'];
     protected $appends = ['image','logo'];
     
-    public function registerMediaCollections(): void {
-        $this->addMediaCollection('slider_images')->singleFile();
-        $this->addMediaCollection('slider_logos')->singleFile();
-    }
     public function getActivitylogOptions() : LogOptions
     {
         $modelid = $this->attributes['id'];
@@ -47,9 +43,13 @@ class Slider extends Model implements HasMedia
         ->logOnly($this->fillable)
         ->setDescriptionForEvent(fn(string $eventName) => $description . __('custom.'.$eventName));
     }
+    public function registerMediaCollections(): void {
+        $this->addMediaCollection('brand_slider_images')->singleFile();
+        $this->addMediaCollection('brand_slider_logos')->singleFile();
+    }
     protected function logo() : Attribute 
     {
-        $media = $this->getFirstMedia('slider_logos');
+        $media = $this->getFirstMedia('brand_slider_logos');
 
         return Attribute::make(
             get: fn () => [
@@ -61,7 +61,7 @@ class Slider extends Model implements HasMedia
     }
     protected function image() : Attribute 
     {
-        $media = $this->getFirstMedia('slider_images');
+        $media = $this->getFirstMedia('brand_slider_images');
 
         return Attribute::make(
             get: fn () => [
@@ -73,11 +73,11 @@ class Slider extends Model implements HasMedia
     }
     public function addImage(UploadedFile $file): bool|\Spatie\MediaLibrary\MediaCollections\Models\Media
     {
-        return $this->addMedia($file)->toMediaCollection('slider_images');
+        return $this->addMedia($file)->toMediaCollection('brand_slider_images');
     }
     public function addLogo(UploadedFile $file): bool|\Spatie\MediaLibrary\MediaCollections\Models\Media
     {
-        return $this->addMedia($file)->toMediaCollection('slider_logos');
+        return $this->addMedia($file)->toMediaCollection('brand_slider_logos');
     }
     public function uploadFiles(Request $request): void
     {
