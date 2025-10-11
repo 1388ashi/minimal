@@ -17,45 +17,26 @@ class PostsController extends Controller
     {
         $categoryId = $request->query("category_id");
 
-        $postCategories = Post::select('id','title','summary','body','type','featured','category_id','created_at','slug','image_alt')
-        ->with('category:id,title')
-        ->when($request->has('category_id'), function ($query) use ($categoryId) {
-            return $query->where('category_id', $categoryId);
-        })
-        ->when($request->has('title'), function ($query) use ($request) {
-            return $query->where('title', 'like', '%'. $request->input('title'). '%');
-        })
-        ->paginate();
-
-        $categories  = BlogCategory::select('id','title')->with('posts')->where('status',1)->get();
+        $categories  = BlogCategory::select('id','title')->where('status',1)->get();
 
         $articlePosts = Post::query()  
-        ->select('id', 'title', 'summary', 'type', 'body', 'featured', 'created_at','image_alt')  
-        ->where('type', 'article')  
-        ->where('status', 1)  
-        ->take(7)  
-        ->latest('id')  
-        ->get(); 
-
-        $postsToSkip = count($articlePosts);
-
-        $newsPosts = Post::query()  
-        ->select('id', 'title', 'summary', 'body', 'type', 'created_at','image_alt')  
-        ->where('status', 1)  
-        ->latest('id')  
-        ->where('type','news')  
-        ->skip($postsToSkip)  
-        ->paginate();  
+            ->select('id', 'title','slug','category_id','summary','status', 'type','created_at','image_alt')  
+            ->where('type', 'article')  
+            ->where('status', 1)  
+            ->when($categoryId, fn ($q) => $q->where('category_id',$categoryId))
+            ->take(8)  
+            ->latest('id')  
+            ->get(); 
         
         $trendPosts = Post::query()  
-        ->select('id', 'title', 'summary', 'body', 'type', 'created_at','image_alt')  
-        ->where('status', 1)  
-        ->where('type', 'trend')
-        ->take(6)  
-        ->latest('id')  
-        ->get();  
+            ->select('id', 'title','slug','category_id','status', 'summary', 'type', 'created_at','image_alt')  
+            ->where('status', 1)  
+            ->where('type', 'trend')
+            ->take(6)  
+            ->latest('id')  
+            ->get();  
 
-        return response()->success('', compact('articlePosts','newsPosts','postCategories','categories','trendPosts'));
+        return response()->success('', compact('articlePosts','categories','trendPosts'));
     }
 
     public function show(Request $request,$slug): JsonResponse

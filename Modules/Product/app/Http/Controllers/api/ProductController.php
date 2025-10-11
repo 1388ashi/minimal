@@ -21,60 +21,57 @@ class ProductController extends Controller
             ->latest('id')
             ->get()
             ->makeHidden(['white_image', 'dark_image', 'background']);
-        $colors = Color::select('id','title','code')->latest('id')->get();
         $categories = Category::select('id','title','parent_id')
         ->where('status',1)
         ->whereNull('parent_id')
         ->with(['children:id,title,parent_id'])
-        ->get();
+        ->get()
+        ->makeHidden(['dark_image','image']);
+        $categories->each(function($product) {
+            $product->children->each->makeHidden(['dark_image', 'image']);
+        });
 
         $products = Product::query()
-        ->whereHas('categories', function($query) {
-            $query->where('status', 1);
-        })
-        ->when($request->has('category_id'), function ($query) use ($request) {
-            $query->whereHas('categories', function ($q) use ($request) {
-                $q->where('category_id', $request->input('category_id'))->with(['children:id,title,parent_id']);
-            });
-        })
-        ->when($request->has('color_id'), function ($query) use ($request) {
-            $query->whereHas('colors', function ($q) use ($request) {
-                $q->where('color_id', $request->input('color_id'));
-            });
-        })
-        ->when($request->has('brand_id'), function ($query) use ($request) {
-            $query->where('brand_id', $request->input('brand_id'));
-        })
-        ->when($request->has('title'), function ($query) use ($request) {
-            $query->where('title', 'like', '%' . $request->input('title') . '%');
-        })
-        ->when($request->has('min_price') && $request->has('max_price'), function ($query) use ($request) {
-            $query->whereBetween('price', [$request->input('min_price'), $request->input('max_price')]);
-        })
-        ->when($sortBy, function ($query) use ($sortBy) {
-            if ($sortBy == 'mostViewed') {
-                return $query->orderByViews()->latest('id');
-            } elseif ($sortBy == 'topPrice') {
-                return $query->orderByDesc('price');
-            } elseif ($sortBy == 'topCheap') {
-                return $query->orderBy('price', 'ASC');
-            } elseif ($sortBy == 'mostDiscount') {
-                return $query->where('discount','!=','0')->orderByDesc('discount');
-            } elseif ($sortBy == 'lastProducts') {
-                return $query->latest('id');
-            }
-        })
-        ->with('categories:id,title,parent_id')
-        ->withCount('views')
-        ->where('status',1)
-        ->paginate(20);
-        
-        $products->map(function ($product) {
-            return $product->setAttribute('final_price', $product->totalPriceWithDiscount());
+            ->select('id','title','slug','image_alt','brand_id','status')
+            ->whereHas('categories', function($query) {
+                $query->where('status', 1);
+            })
+            ->when($request->has('category_id'), function ($query) use ($request) {
+                $query->whereHas('categories', function ($q) use ($request) {
+                    $q->where('category_id', $request->input('category_id'))->with(['children:id,title,parent_id']);
+                });
+            })
+            ->when($request->has('brand_id'), function ($query) use ($request) {
+                $query->where('brand_id', $request->input('brand_id'));
+            })
+            ->when($request->has('title'), function ($query) use ($request) {
+                $query->where('title', 'like', '%' . $request->input('title') . '%');
+            })
+            ->when($request->has('min_price') && $request->has('max_price'), function ($query) use ($request) {
+                $query->whereBetween('price', [$request->input('min_price'), $request->input('max_price')]);
+            })
+            ->when($sortBy, function ($query) use ($sortBy) {
+                if ($sortBy == 'mostViewed') {
+                    return $query->orderByViews()->latest('id');
+                } elseif ($sortBy == 'topPrice') {
+                    return $query->orderByDesc('price');
+                } elseif ($sortBy == 'topCheap') {
+                    return $query->orderBy('price', 'ASC');
+                } elseif ($sortBy == 'mostDiscount') {
+                    return $query->where('discount','!=','0')->orderByDesc('discount');
+                } elseif ($sortBy == 'lastProducts') {
+                    return $query->latest('id');
+                }
+            })
+            ->with('categories:id,title,parent_id')
+            ->where('status',1)
+            ->paginate(20);
+        $products->getCollection()->each->makeHidden(['video']);
+        $products->getCollection()->each(function($product) {
+            $product->categories->each->makeHidden(['dark_image', 'image']);
         });
-        $topPrice = Product::orderByDesc('price')->value('price');
-
-        return response()->success('', compact('products','categories','colors','topPrice','brands'));
+        
+        return response()->success('', compact('products','categories','brands'));
     }
 
    public function show($slug): JsonResponse

@@ -82,7 +82,8 @@ class Product extends BaseModel implements Viewable,HasMedia
 
     protected $hidden = ['media'];
 
-        protected $appends = ['image', 'galleries','video','total_price_with_discount'];
+        protected $appends = ['image', 'galleries','video'];
+        // protected $appends = ['image', 'galleries','video','total_price_with_discount'];
 
         public function registerMediaCollections() : void
         {
@@ -245,11 +246,11 @@ class Product extends BaseModel implements Viewable,HasMedia
         {
             return $this->hasOne(Suggestion::class);
         }
-    public function getTotalPriceWithDiscountAttribute(): int
-        {
-            $price = $this->attributes['price'];
-            $discount = $this->attributes['discount'];
+    // public function getTotalPriceWithDiscountAttribute(): int
+    //     {
+    //         $price = $this->attributes['price'];
+    //         $discount = $this->attributes['discount'];
 
-            return $price - $discount;
-        }
+    //         return $price - $discount;
+    //     }
 }
