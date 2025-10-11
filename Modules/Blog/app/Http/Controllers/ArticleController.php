@@ -71,6 +71,7 @@ class ArticleController extends Controller implements HasMiddleware
             'body' => $request->body,
             'published_at' => $published_at,
             'featured' => filled($request->featured) ?: 0,
+            'robots' => filled($request->robots) ?: 0,
             'status' => filled($request->status) ?: 0
         ]);
         $article->uploadFiles($request);
@@ -126,6 +127,7 @@ class ArticleController extends Controller implements HasMiddleware
             'body' => $request->body,
             'published_at' => $published_at,
             'featured' => filled($request->featured) ?: 0,
+            'robots' => filled($request->robots) ?: 0,
             'status' => filled($request->status) ?: 0
         ]);
         $article->uploadFiles($request);

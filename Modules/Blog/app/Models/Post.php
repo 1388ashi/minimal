@@ -34,6 +34,7 @@ class Post extends BaseModel implements HasMedia, Viewable
         'type',
         'published_at',
         'image_alt',
+        'robots',
         'writer',
         'slug',
         'read',
