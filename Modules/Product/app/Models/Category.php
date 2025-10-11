@@ -91,11 +91,11 @@ class Category extends BaseModel implements HasMedia
         $media = $this->getFirstMedia('category_images');
 
         return Attribute::make(
-            get: fn () => $media ? [
+            get: fn () =>[
                 'id' => $media->id,
                 'url' => $media->getFullUrl(),
                 'name' => $media->file_name
-            ] : null
+            ] 
         );
     }
 
@@ -104,11 +104,11 @@ class Category extends BaseModel implements HasMedia
         $media = $this->getFirstMedia('category_dark_image');
 
         return Attribute::make(
-            get: fn () => $media ? [
+            get: fn () =>[
                 'id' => $media->id,
                 'url' => $media->getFullUrl(),
                 'name' => $media->file_name
-            ] : null
+            ] 
         );
     }
     public function addImage(UploadedFile $file): bool|\Spatie\MediaLibrary\MediaCollections\Models\Media

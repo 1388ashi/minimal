@@ -32,7 +32,7 @@ class ProductController extends Controller
         });
 
         $products = Product::query()
-            ->select('id','title','slug','image_alt','brand_id','status')
+            ->select('id','title','slug','image_alt','brand_id','status','robots')
             ->whereHas('categories', function($query) {
                 $query->where('status', 1);
             })

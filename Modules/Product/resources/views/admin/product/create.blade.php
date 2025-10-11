@@ -145,6 +145,18 @@
                                         </label>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <span class="control-label">
+                                            روباتس
+                                        </span>
+                                        <label style="cursor: pointer" class="custom-control custom-checkbox mr-1 mt-1">
+                                            <input type="checkbox" class="custom-control-input" name="robots"
+                                                   value="1" @checked(old('robots') == '1')>
+                                            <span class="custom-control-label">فعال</span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                             <hr>
                             <p>رنگ ها</p>

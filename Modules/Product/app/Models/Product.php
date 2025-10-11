@@ -31,6 +31,7 @@ class Product extends BaseModel implements Viewable,HasMedia
     use HasFactory, InteractsWithMedia, LogsActivity, InteractsWithViews;
     protected $fillable = [
         'title',
+        'robots',
         'slug',
         'image_alt',
         'description',
@@ -109,11 +110,11 @@ class Product extends BaseModel implements Viewable,HasMedia
             $media = $this->getFirstMedia('product_videos');
 
             return Attribute::make(
-                get: fn () => $media ? [
+                get: fn () => [
                     'id' => $media?->id,
                     'url' => $media?->getFullUrl(),
                     'name' => $media?->file_name
-                ] : null
+                ]
             );
         }
 

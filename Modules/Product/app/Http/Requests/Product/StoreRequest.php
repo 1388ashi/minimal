@@ -34,6 +34,7 @@ class StoreRequest extends FormRequest
                 'image_alt' => 'nullable|string',
                 'discount' => 'nullable|integer',
                 'status' => ['nullable', 'in:1'],
+                'robots' => ['nullable', 'in:1'],
                 'brand_id' => 'nullable|exists:brands,id',
 
 
@@ -56,6 +57,7 @@ class StoreRequest extends FormRequest
     public function validated($key = null, $default = null) {
         $validated = parent::validated();
         $validated['status'] = $this->filled('status') ? 1 : 0;
+        $validated['robots'] = $this->filled('robots') ? 1 : 0;
         unset(
             $validated['categories'],
             $validated['specifications'],

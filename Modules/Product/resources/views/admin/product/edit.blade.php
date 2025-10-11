@@ -202,7 +202,22 @@
                                             <label style="cursor: pointer"
                                                    class="custom-control custom-checkbox mr-1 mt-1">
                                                 <input type="checkbox" class="custom-control-input" name="status"
-                                                       value="1" @checked(old('status',$product->status) == '1') checked>
+                                                       value="1" @checked(old('status',$product->status) == '1') >
+                                                <span class="custom-control-label">فعال</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                        <span class="control-label ">
+                                            روباتس
+                                        </span>
+                                            <label style="cursor: pointer"
+                                                   class="custom-control custom-checkbox mr-1 mt-1">
+                                                <input type="checkbox" class="custom-control-input" name="robots"
+                                                       value="1" @checked(old('robots',$product->robots) == '1') >
                                                 <span class="custom-control-label">فعال</span>
                                             </label>
                                         </div>
