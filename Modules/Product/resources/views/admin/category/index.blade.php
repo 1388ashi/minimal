@@ -55,7 +55,7 @@
                                 <td>{{ $category->title }}</td>
                                 @if (!empty($category->parent->title))<td>{{ $category->parent->title}}</td>@else<td>-</td>@endif
                                 <td class="text-center">
-                                {{-- @if ($category->image && $category->image['url'])
+                                @if ($category->image && $category->image['url'])
                                 <a href="{{ $category->image['url'] }}" target="_blanck">
                                     <div class="bg-light pb-1 pt-1 img-holder img-show w-100" style="max-height: 50px;border-radius: 4px;">
                                         <img src="{{ $category->image['url'] }}" style="height: 40px;"  alt="{{ $category->image['name'] }}">
@@ -63,7 +63,7 @@
                                 </a>
                                 @else
                                 -
-                                @endif --}}
+                                @endif
                                 </td>
                                 <td class="text-center">@include('includes.status',["status" => $category->featured])</td>
                                 <td class="text-center">@include('includes.status',["status" => $category->status])</td>
