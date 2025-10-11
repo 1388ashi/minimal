@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Product\Http\Controllers\api\CategoryController;
 use Modules\Product\Http\Controllers\api\ProductController;
 
 /*
@@ -15,5 +16,6 @@ use Modules\Product\Http\Controllers\api\ProductController;
 */
 
 Route::name('api')->group(function() {
-    route::resource('products',ProductController::class);
+    route::resource('products',ProductController::class)->except(['create','edit','destroy','store','update']);
+    Route::get('/categories', [CategoryController::class,'index']);
 });
