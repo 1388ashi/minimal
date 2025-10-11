@@ -1,5 +1,4 @@
 <?php
-
 namespace Modules\Blog\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
@@ -20,7 +19,7 @@ class PostsController extends Controller
         $categories  = BlogCategory::select('id','title')->where('status',1)->get();
 
         $articlePosts = Post::query()  
-            ->select('id', 'title','slug','category_id','summary','status', 'type','created_at','image_alt')  
+            ->select('id', 'title','slug','category_id','summary','status', 'type','created_at','image_alt','robots')  
             ->where('type', 'article')  
             ->where('status', 1)  
             ->when($categoryId, fn ($q) => $q->where('category_id',$categoryId))
@@ -29,7 +28,7 @@ class PostsController extends Controller
             ->get(); 
         
         $trendPosts = Post::query()  
-            ->select('id', 'title','slug','category_id','status', 'summary', 'type', 'created_at','image_alt')  
+            ->select('id', 'title','slug','category_id','status', 'summary', 'type', 'created_at','image_alt','robots')  
             ->where('status', 1)  
             ->where('type', 'trend')
             ->take(6)  
@@ -41,7 +40,7 @@ class PostsController extends Controller
 
     public function show(Request $request,$slug): JsonResponse
     {
-        $post = Post::with('productCategories:id,title,slug')->select('id','title','category_id','body','slug','image_alt')
+        $post = Post::with('productCategories:id,title,slug')->select('id','title','category_id','body','slug','image_alt','robots')
             ->where('status',1)->where('slug',$slug)->firstOrFail();
         $productCategories = $post->productCategories->makeHidden(['dark_image']);
         unset($post->productCategories);
