@@ -32,12 +32,15 @@ class UpdateRequest extends FormRequest
                 'description' => 'nullable',
                 'summary' => 'nullable',    
                 'image_alt' => 'nullable|string',
+                'canonical_tag' => 'string|nullable',
 
                 'price' => 'nullable|integer',
                 'discount' => 'nullable|integer ',
                 'status' => ['nullable', 'in:1'],
                 'robots' => ['nullable', 'in:1'],
                 'brand_id' => 'nullable|exists:brands,id',
+                'title_page' => 'string|nullable',
+                'meta_description' => 'string|nullable',
 
                 'image' => 'nullable',
                 'video' => 'nullable',

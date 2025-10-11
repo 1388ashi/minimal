@@ -40,7 +40,7 @@ class PostsController extends Controller
 
     public function show(Request $request,$slug): JsonResponse
     {
-        $post = Post::with('productCategories:id,title,slug')->select('id','title','category_id','body','slug','image_alt','robots')
+        $post = Post::with('productCategories:id,title,slug')->select('id','title','category_id','body','slug','image_alt','robots','canonical_tag')
             ->where('status',1)->where('slug',$slug)->firstOrFail();
         $productCategories = $post->productCategories->makeHidden(['dark_image']);
         unset($post->productCategories);

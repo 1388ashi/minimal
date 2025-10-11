@@ -29,6 +29,9 @@ class StoreRequest extends FormRequest
                 'slug' => 'required|unique:products,slug',
                 'description' => 'nullable',
                 'summary' => 'nullable',
+                'canonical_tag' => 'string|nullable',
+                'meta_description' => 'string|nullable',
+                'title_page' => 'string|nullable',
 
                 'price' => 'nullable|integer',
                 'image_alt' => 'nullable|string',
