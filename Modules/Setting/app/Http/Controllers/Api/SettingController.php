@@ -15,7 +15,7 @@ class SettingController extends Controller
         $groupedSettings = [];
 
         foreach ($settings as $setting) {
-            if ($setting->type === 'image' && isset($setting->file['url'])) {
+            if ($setting->type == 'image' && isset($setting->file['url'])) {
                 $setting->value = $setting->file['url'];
             }
 

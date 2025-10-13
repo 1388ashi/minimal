@@ -44,6 +44,7 @@ class UpdateRequest extends FormRequest
 
                 'image' => 'nullable',
                 'video' => 'nullable',
+                'video_poster' => 'nullable|file',
                 'galleries.*' => 'nullable',
                 'galleries' => 'nullable|array',  
                 
@@ -57,7 +58,6 @@ class UpdateRequest extends FormRequest
                 'specifications.value' => 'string',
         ];
     }
-
     public function validated($key = null, $default = null) {
         $validated = parent::validated();
         $validated['status'] = $this->filled('status') ? 1 : 0;

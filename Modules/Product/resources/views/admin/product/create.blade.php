@@ -79,11 +79,17 @@
                             </div>
                             <div class="col-12">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-8">
                                         <div class="form-group">
                                             <label class="control-label">خلاصه توضیحات</label>
                                             <textarea class="form-control" name="summary" cols="134"
                                                       rows="3">{{old('summary')}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="label" class="control-label">پوستر ویدیو<span class="text-danger">(در صورت وارد کردن ویدیو الزامیست!)</span></label>
+                                            <input class="form-control" type="file" name="video_poster">
                                         </div>
                                     </div>
                                 </div>

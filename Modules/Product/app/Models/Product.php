@@ -86,12 +86,13 @@ class Product extends BaseModel implements Viewable,HasMedia
 
     protected $hidden = ['media'];
 
-        protected $appends = ['image', 'galleries','video'];
+        protected $appends = ['image', 'galleries','video','video_poster'];
         // protected $appends = ['image', 'galleries','video','total_price_with_discount'];
 
         public function registerMediaCollections() : void
         {
             $this->addMediaCollection('product_images')->singleFile();
+            $this->addMediaCollection('product_video_poster')->singleFile();
             $this->addMediaCollection('product_videos')->singleFile();
             $this->addMediaCollection('product_galleries');
         }
@@ -106,6 +107,18 @@ class Product extends BaseModel implements Viewable,HasMedia
                     'url' => $media?->getFullUrl(),
                     'name' => $media?->file_name
                 ],
+            );
+        }
+        protected function videoPoster(): Attribute
+        {
+            $media = $this->getFirstMedia('product_video_poster');
+
+            return Attribute::make(
+                get: fn () => $media ? [
+                    'id' => $media->id,
+                    'url' => $media->getFullUrl(),
+                    'name' => $media->file_name
+                ] : []
             );
         }
         protected function video(): Attribute
@@ -158,6 +171,10 @@ class Product extends BaseModel implements Viewable,HasMedia
         {
             return $this->addMedia($file)->toMediaCollection('product_images');
         }
+        public function addVideoPoster(UploadedFile $file): bool|\Spatie\MediaLibrary\MediaCollections\Models\Media
+        {
+            return $this->addMedia($file)->toMediaCollection('product_video_poster');
+        }
 
         public function addVideo(UploadedFile $file): bool|\Spatie\MediaLibrary\MediaCollections\Models\Media
         {
@@ -176,6 +193,7 @@ class Product extends BaseModel implements Viewable,HasMedia
 
             $this->uploadImage($request);
             $this->uploadVideo($request);
+            $this->uploadVideoPoster($request);
             $this->uploadGalleries($request);
         }
         public function uploadImage(Request $request): void
@@ -183,6 +201,19 @@ class Product extends BaseModel implements Viewable,HasMedia
             try {
                 if ($request->hasFile('image') && $request->file('image')->isValid()) {
                     $this->addImage($request->file('image'));
+                }
+            } catch (FileDoesNotExist $e) {
+                Log::error('Product upload file (FileDoesNotExist): ' . $e->getMessage());
+            }catch (FileIsTooBig $e) {
+                Log::error('Product upload file (FileIsTooBig): ' . $e->getMessage());
+            }
+        }
+        
+        public function uploadVideoPoster(Request $request): void
+        {
+            try {
+                if ($request->hasFile('video_poster') && $request->file('video_poster')->isValid()) {
+                    $this->addVideoPoster($request->file('video_poster'));
                 }
             } catch (FileDoesNotExist $e) {
                 Log::error('Product upload file (FileDoesNotExist): ' . $e->getMessage());

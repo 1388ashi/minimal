@@ -43,6 +43,7 @@ class StoreRequest extends FormRequest
 
                 'image' => 'required',
                 'video' => 'nullable',
+                'video_poster' => 'nullable',
                 'galleries.*' => 'nullable',
                 'galleries' => 'nullable|array',
 
@@ -56,7 +57,12 @@ class StoreRequest extends FormRequest
                 'specifications.value' => 'string',
         ];
     }
-
+    public function withValidator($validator)
+    {
+        $validator->sometimes('video_poster', 'required|file', function ($input) {
+            return isset($input->video);
+        });
+    }
     public function validated($key = null, $default = null) {
         $validated = parent::validated();
         $validated['status'] = $this->filled('status') ? 1 : 0;
