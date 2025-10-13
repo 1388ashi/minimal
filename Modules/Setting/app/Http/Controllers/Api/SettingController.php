@@ -10,8 +10,27 @@ class SettingController extends Controller
 {
     public function index(): JsonResponse
     {
-        $settings = Setting::all();
+       $settings = Setting::all();
 
-        return response()->success('',compact('settings'));
+        $groupedSettings = [];
+
+        foreach ($settings as $setting) {
+            if ($setting->type === 'image' && isset($setting->file['url'])) {
+                $setting->value = $setting->file['url'];
+            }
+
+            $group = $setting->group ?? 'default';
+            $name = $setting->name;
+
+            if (!isset($groupedSettings[$group])) {
+                $groupedSettings[$group] = [];
+            }
+
+            $groupedSettings[$group][$name] = $setting;
+        }
+
+        return response()->json([
+            'settings' => $groupedSettings,
+        ]);
     }
 }
