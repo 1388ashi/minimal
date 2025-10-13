@@ -65,6 +65,7 @@ class ProductController extends Controller
             })
             ->with('categories:id,title,parent_id')
             ->where('status',1)
+            ->latest('id')
             ->paginate(20);
         $products->getCollection()->each->makeHidden(['video']);
         $products->getCollection()->each(function($product) {
