@@ -47,34 +47,49 @@ class BrandController extends Controller
     }
     public function show($slug): mixed  
     {  
-        $brand = Brand::where('slug', $slug)->firstOrFail()->makeHidden('dark_image');
+        $brand = Brand::where('slug', $slug)->first()->makeHidden('dark_image');
+        
+        if($brand){
+            $moreBrands = Brand::select('id','title','slug')->where('id', '!=', $brand->id)->take(5)->get();
+            
+            $products = Product::select('id','title','slug')
+                ->where('brand_id', $brand->id)
+                ->take(4)
+                ->get()
+                ->makeHidden(['galleries','video','total_price_with_discount']);
 
-        $moreBrands = Brand::select('id','title','slug')->where('id', '!=', $brand->id)->take(5)->get();
+            if ($products->isEmpty()) {
+                $products = Product::select('id','title','slug')
+                    ->latest('id')
+                    ->take(5)
+                    ->get()
+                    ->makeHidden(['galleries','video','total_price_with_discount']);
+            }
 
-        $products = Product::select('id','title','slug')
-            ->where('brand_id', $brand->id)
-            ->take(4)
-            ->get()
-            ->makeHidden(['galleries','video','total_price_with_discount']);
-
-        if ($products->isEmpty()) {
+            $categories = Category::select('id','title','slug')->whereHas('brands', fn ($q) => $q->where('brands.id', $brand->id))
+                ->take(4)
+                ->get()
+                ->makeHidden('dark_image');
+            if ($categories->isEmpty()) {
+                $categories = Category::select('id','title','slug')
+                    ->latest('id')
+                    ->take(4)
+                    ->get()
+                    ->makeHidden('dark_image');
+            }
+        }else{
             $products = Product::select('id','title','slug')
                 ->latest('id')
                 ->take(5)
                 ->get()
                 ->makeHidden(['galleries','video','total_price_with_discount']);
-        }
-
-        $categories = Category::select('id','title','slug')->whereHas('brands', fn ($q) => $q->where('brands.id', $brand->id))
-            ->take(4)
-            ->get()
-            ->makeHidden('dark_image');
-        if ($categories->isEmpty()) {
             $categories = Category::select('id','title','slug')
                 ->latest('id')
                 ->take(4)
                 ->get()
                 ->makeHidden('dark_image');
+            $brand = [];
+            $moreBrands = [];
         }
             
         return response()->success('', 
