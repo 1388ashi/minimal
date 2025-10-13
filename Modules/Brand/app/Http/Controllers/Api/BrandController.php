@@ -47,9 +47,10 @@ class BrandController extends Controller
     }
     public function show($slug): mixed  
     {  
-        $brand = Brand::where('slug', $slug)->first()->makeHidden('dark_image');
+        $brand = Brand::where('slug', $slug)->first();
         
         if($brand){
+            $brand->makeHidden('dark_image');
             $moreBrands = Brand::select('id','title','slug')->where('id', '!=', $brand->id)->take(5)->get();
             
             $products = Product::select('id','title','slug')
