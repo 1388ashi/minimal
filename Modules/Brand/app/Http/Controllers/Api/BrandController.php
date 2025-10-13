@@ -49,7 +49,7 @@ class BrandController extends Controller
     {  
         $brand = Brand::where('slug', $slug)->firstOrFail()->makeHidden('dark_image');
 
-        $moreBrands = Brand::select('ia','title','slug')->where('id', '!=', $brand->id)->take(5)->get();
+        $moreBrands = Brand::select('id','title','slug')->where('id', '!=', $brand->id)->take(5)->get();
 
         $products = Product::select('id','title','slug')
             ->where('brand_id', $brand->id)
