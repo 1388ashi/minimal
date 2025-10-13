@@ -39,7 +39,7 @@
                                     <input  class="form-control" type="file" name="image">
                                 </div>
                             </div>
-                            @if ($category->image['url'])
+                            @if ($category->image && $category->image['url'])
                             <div class="col-md-4">
                                 <figure class="figure" style="min-width: 170px;max-height: 170px">
                                     <a target="blank" href="{{ $category->image['url'] }}">
