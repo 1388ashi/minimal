@@ -59,8 +59,9 @@ class BrandSliderController extends Controller implements HasMiddleware
 
         return view('slider::admin.brand-slider.edit', compact('slider'));
     }
-    public function update(UpdateRequest $request, BrandSlider $slider)
+    public function update(UpdateRequest $request,$id)
     {
+        $slider = BrandSlider::find($id);
         if (is_null($request->status)) {
             $request->status = false;
         }
