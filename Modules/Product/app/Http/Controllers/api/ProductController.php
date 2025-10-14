@@ -125,7 +125,7 @@ class ProductController extends Controller
             ->whereHas('categories', function($query) use ($category) {
                 $query->where('status', 1);
                 if ($category) {
-                    $query->where('id', $category->id);
+                    $query->where('categories.id', $category->id);
                 }
             })
             ->when($request->has('category_id'), function ($query) use ($request) {
