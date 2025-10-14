@@ -124,7 +124,9 @@ class ProductController extends Controller
             ->select('id','title','slug','image_alt','brand_id','status','robots','canonical_tag')
             ->whereHas('categories', function($query) use ($category) {
                 $query->where('status', 1);
-                $query->where('id', $category->id);
+                if ($category) {
+                    $query->where('id', $category->id);
+                }
             })
             ->when($request->has('category_id'), function ($query) use ($request) {
                 $query->whereHas('categories', function ($q) use ($request) {
