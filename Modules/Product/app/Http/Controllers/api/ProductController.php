@@ -17,14 +17,14 @@ class ProductController extends Controller
     {
         $sortBy = $request->sortBy;
 
-        $brands = Brand::select('id', 'title')
+        $brands = Brand::select('id', 'title','slug')
             ->latest('id')
             ->get()
             ->makeHidden(['white_image', 'dark_image', 'background']);
-        $categories = Category::select('id','title','parent_id')
+        $categories = Category::select('id','title','parent_id','slug')
         ->where('status',1)
         ->whereNull('parent_id')
-        ->with(['children:id,title,parent_id'])
+        ->with(['children:id,title,parent_id,slug'])
         ->get()
         ->makeHidden(['dark_image','image']);
         $categories->each(function($product) {
@@ -63,7 +63,7 @@ class ProductController extends Controller
                     return $query->latest('id');
                 }
             })
-            ->with('categories:id,title,parent_id')
+            ->with('categories:id,title,parent_id,slug')
             ->where('status',1)
             ->latest('id')
             ->paginate(20);
