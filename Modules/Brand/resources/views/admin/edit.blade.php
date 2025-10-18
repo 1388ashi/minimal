@@ -71,6 +71,18 @@
                                 <input class="form-control" type="text" name="slug" value="{{old('slug',$brand->slug)}}">
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="title_page" >عنوان صفحه</label>
+                                <input type="text" class="form-control" name="title_page" id="title_page" placeholder="عنوان صفحه محتوا اینجا وارد کنید" value="{{old('title_page',$brand->title_page)}}" autofocus>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="title_page">متا دسکریپشن</label>
+                                <textarea name="meta_description"  class="form-control" id="">{{ old('meta_description',$brand->meta_description) }}</textarea>
+                            </div>
+                        </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <span class="control-label ">

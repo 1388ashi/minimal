@@ -166,7 +166,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label>دسته بندی ها</label><span class="text-danger">&starf;</span>
                                 <select class="form-control selectMultiple" name="categories[]" required multiple>
@@ -176,14 +176,28 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="label" >اسلاگ</label><span class="text-danger">&starf;</span>
                                 <input class="form-control" type="text" name="slug" value="{{old('slug')}}">
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="title_page" >عنوان صفحه</label>
+                                <input type="text" class="form-control" name="title_page" id="title_page" placeholder="عنوان صفحه محتوا اینجا وارد کنید" value="{{ old('title_page') }}" autofocus>
+                            </div>
+                        </div>
+                            <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="title_page">متا دسکریپشن</label>
+                                <textarea name="meta_description"  class="form-control" id="">{{ old('meta_description') }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-6">
                             <div class="form-group">
                                 <span class="control-label ">

@@ -16,6 +16,8 @@ class UpdateRequest extends FormRequest
             'background' => 'nullable|image|mimes:jpeg,png,jpg',
             'title' => 'required',
             'description' => 'required',
+            'title_page' => 'nullable|string',
+            'meta_description' => 'nullable|string',
             'category_id' => 'nullable'
         ];
     }

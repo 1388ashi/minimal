@@ -33,7 +33,7 @@ class Brand extends Model implements HasMedia, Sortable
       'sort_when_creating' => true,
     ];
     protected $fillable = [
-        'title','status','description','slug'
+        'title','status','description','slug','title_page','meta_description'
     ];
     protected $with = ['media'];
     protected $hidden = ['media'];

@@ -13,7 +13,7 @@ class BrandController extends Controller
 {
     public function index()
     {
-        $brands = Brand::select('id', 'title', 'status', 'slug')
+        $brands = Brand::select('id', 'title', 'status', 'slug','title_page','meta_description')
             ->with('categories:id,title')
             ->orderBy('order', 'asc')
             ->get()

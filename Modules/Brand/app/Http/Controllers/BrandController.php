@@ -47,7 +47,7 @@ class BrandController extends Controller implements HasMiddleware
     }
     public function index()
     {
-        $brands = Brand::select('id','title','description','status','order','slug')->with('categories:id,title')->orderBy('order', 'asc')->paginate();
+        $brands = Brand::select('id','title','description','status','order','slug','title_page','meta_description')->with('categories:id,title')->orderBy('order', 'asc')->paginate();
         $categories = Category::query()
         ->latest('id')
         ->whereNull('parent_id')
@@ -75,6 +75,8 @@ class BrandController extends Controller implements HasMiddleware
             'status' => filled($request->status) ?: 0,
             'title' => $request->title,
             'slug' => $request->slug,
+            'title_page' => $request->title_page,
+            'meta_description' => $request->meta_description,
             'description' => $request->description,
         ]);
         $brand->uploadFiles($request);
@@ -103,6 +105,8 @@ class BrandController extends Controller implements HasMiddleware
             'status' => filled($request->status) ?: 0,
             'description' => $request->description,
             'category_id' => $request->category_id,
+            'title_page' => $request->title_page,
+            'meta_description' => $request->meta_description,
         ]);
         $brand->uploadFiles($request);
 
