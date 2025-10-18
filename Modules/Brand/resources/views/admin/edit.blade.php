@@ -83,7 +83,7 @@
                                 <textarea name="meta_description"  class="form-control" id="">{{ old('meta_description',$brand->meta_description) }}</textarea>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-4">
                             <div class="form-group">
                                 <span class="control-label ">
                                     وضعیت
