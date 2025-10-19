@@ -89,7 +89,7 @@ class BrandController extends Controller
                 ->take(4)
                 ->get()
                 ->makeHidden('dark_image');
-            $brand = [];
+            $brand = null;
             $moreBrands = [];
         }
             
