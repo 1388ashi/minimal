@@ -43,14 +43,14 @@ class HomeController extends Controller
         $productCategories = Category::select('id','title','parent_id','slug')
             ->where('status',1)
             ->whereNull('parent_id')
-            ->with(['children:id,title,parent_id'])
+            ->with(['children:id,title,parent_id,slug'])
             ->get()
             ->makeHidden(['image']);
         foreach ($productCategories as $item) {
-            $item['link'] = '/products?category_id=' . $item->id; 
+            $item['link'] = '/products/' . $item->slug; 
             foreach ($item->children as $child) {
                 $child->makeHidden(['image','dark_image']);
-                $child['link'] = '/products?category_id=' . $child->id; 
+                $child['link'] = '/products/' . $child->slug; 
             }
         }
         
