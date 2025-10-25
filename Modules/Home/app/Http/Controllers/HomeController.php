@@ -36,11 +36,11 @@ class HomeController extends Controller
         return response()->success('',compact('categories','upSliders','downSliders','aboutUs','brands','posts'));
     }
     public function menus(){
-        $brands = Brand::select('id', 'title', 'status')->orderBy('order', 'asc')->get()->makeHidden(['background']);
+        $brands = Brand::select('id', 'title', 'status','slug')->orderBy('order', 'asc')->get()->makeHidden(['background']);
         foreach ($brands as $brand) {
-            $brand['link']  = '/brands/' . $brand->id; 
+            $brand['link']  = '/brands/' . $brand->slug; 
         }
-        $productCategories = Category::select('id','title','parent_id')
+        $productCategories = Category::select('id','title','parent_id','slug')
             ->where('status',1)
             ->whereNull('parent_id')
             ->with(['children:id,title,parent_id'])
